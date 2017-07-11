@@ -15,7 +15,7 @@
     <description>Mule runtime modules for BOMs</description>
 
     <properties>
-        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
     <modules>

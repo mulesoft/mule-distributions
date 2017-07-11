@@ -17,7 +17,7 @@
     <description>Includes the Mule server with all of its modules and transports.</description>
 
     <properties>
-        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
     <build>

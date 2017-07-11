@@ -14,7 +14,7 @@
     <description>Assembles the Mule core, modules, and transports into a single library (jar). This is useful for embedding Mule into an existing project.</description>
 
     <properties>
-        <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
+        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
 
     <build>

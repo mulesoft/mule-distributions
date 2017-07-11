@@ -14,7 +14,7 @@
     <description>A BOM project that provides all the implementation libraries required by the Mule runtime</description>
 
     <properties>
-        <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
+        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
 
     <dependencies>

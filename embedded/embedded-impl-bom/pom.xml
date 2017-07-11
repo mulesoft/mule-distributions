@@ -15,7 +15,7 @@
     <description>This project contains all the specific dependencies of the embedded runtime implementation independent from the runtime version</description>
 
     <properties>
-        <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
+        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
 
     <dependencies>
