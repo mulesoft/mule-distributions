@@ -31,7 +31,7 @@
         <muleOAuthServiceVersion>1.0.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.0.0-SNAPSHOT</muleSoapServiceVersion>
 
-        <formatterConfigPath>../formatter.xml</formatterConfigPath>
+        <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
 
     <modules>
