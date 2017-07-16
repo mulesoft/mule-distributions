@@ -26,6 +26,7 @@ import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYM
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
+
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.tck.junit4.AbstractMuleTestCase;
@@ -44,12 +45,14 @@ import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import ru.yandex.qatools.allure.annotations.Description;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Features;
+import io.qameta.allure.Stories;
+import io.qameta.allure.Story;
 
-@Features({EMBEDDED_API, DEPLOYMENT_TYPE})
-@Stories({CONFIGURATION, EMBEDDED})
+@Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
+@Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
 public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
   private static final String LOGGING_FILE = "app.log";
