@@ -132,7 +132,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-repository-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-spring-config-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-spring-security-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-tls-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-tooling-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-mvel2-2.1.9-MULE-012.jar
@@ -168,7 +167,6 @@
 /mule-standalone-${productVersion}/lib/opt/asm-3.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/asm-commons-3.1.jar
 /mule-standalone-${productVersion}/lib/opt/asm-tree-3.1.jar
-/mule-standalone-${productVersion}/lib/opt/aspectjrt-1.8.10.jar
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.8.10.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.3.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.9.jar
@@ -180,7 +178,6 @@
 /mule-standalone-${productVersion}/lib/opt/config-1.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/dom4j-1.6.1.jar
 /mule-standalone-${productVersion}/lib/opt/geronimo-j2ee-connector_1.5_spec-2.0.0.jar
-/mule-standalone-${productVersion}/lib/opt/geronimo-servlet_3.0_spec-1.0.jar
 /mule-standalone-${productVersion}/lib/opt/grabbag-1.8.1.jar
 /mule-standalone-${productVersion}/lib/opt/gson-2.6.2.jar
 /mule-standalone-${productVersion}/lib/opt/guava-18.0.jar
@@ -223,11 +220,6 @@
 /mule-standalone-${productVersion}/lib/opt/spring-context-4.1.9.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-core-4.1.9.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-expression-4.1.9.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-security-config-4.0.4.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-security-core-4.0.4.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-security-web-4.0.4.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-security-ldap-4.0.4.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-ldap-core-2.0.2.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-web-4.1.9.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/stax-api-1.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/stringtemplate-3.2.1.jar
