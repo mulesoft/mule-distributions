@@ -30,11 +30,6 @@ updateParentVersion() {
 }
 
 VERSION_TO_DEPS=$1
-VERSION_CONNECTORS_MODULES=$2
-VERSION_TO_MULE=$3
-VERSION_TO_DEPS_AUX=$4
-VERSION_CONNECTORS_MODULES_AUX=$5
-
 
 # Properties with Deps Version (1.0.x) in the root pom.xml
 propertiesDeps=("muleEmbeddedApiVersion")
