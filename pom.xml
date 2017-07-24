@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.mule.runtime</groupId>
         <artifactId>mule</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>4.0.0-rc.batman</version>
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
@@ -25,15 +25,15 @@
     </build>
 
 	<properties>
-        <muleEmbeddedApiVersion>1.0.0-SNAPSHOT</muleEmbeddedApiVersion>
+        <muleEmbeddedApiVersion>1.0.0-rc.batman</muleEmbeddedApiVersion>
 
-        <muleSchedulerServiceVersion>1.0.0-SNAPSHOT</muleSchedulerServiceVersion>
-        <muleHttpServiceVersion>1.0.0-SNAPSHOT</muleHttpServiceVersion>
-        <muleOAuthServiceVersion>1.0.0-SNAPSHOT</muleOAuthServiceVersion>
-        <muleSoapServiceVersion>1.0.0-SNAPSHOT</muleSoapServiceVersion>
+        <muleSchedulerServiceVersion>1.0.0-rc.batman</muleSchedulerServiceVersion>
+        <muleHttpServiceVersion>1.0.0-rc.batman</muleHttpServiceVersion>
+        <muleOAuthServiceVersion>1.0.0-rc.batman</muleOAuthServiceVersion>
+        <muleSoapServiceVersion>1.0.0-rc.batman</muleSoapServiceVersion>
 
-        <muleHttpConnectorTestVersion>1.0.0-SNAPSHOT</muleHttpConnectorTestVersion>
-        <muleFileConnectorTestVersion>1.0.0-SNAPSHOT</muleFileConnectorTestVersion>
+        <muleHttpConnectorTestVersion>0.9.0-rc.batman</muleHttpConnectorTestVersion>
+        <muleFileConnectorTestVersion>0.9.0-rc.batman</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
