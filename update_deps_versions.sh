@@ -29,12 +29,16 @@ updateParentVersion() {
   perl -0777 -i -pe "s/(<parent>.*<version)(.*)(\/version>.*<\/parent>)/\${1}>$VERSION_TO<\${3}/s" "$POM_PROPERTY_PATH"
 }
 
+
 VERSION_TO_DEPS=$1
+VERSION_TO_CONN_MOD=$2
+VERSION_TO_MULE=$3
+
 
 # Properties with Deps Version (1.0.x) in the root pom.xml
 propertiesDeps=("muleEmbeddedApiVersion")
 
-updatePropertiesVersion "$VERSION_TO_DEPS" distributions/pom.xml propertiesDeps[@]
+updatePropertiesVersion "$VERSION_TO_DEPS" pom.xml propertiesDeps[@]
 
 # Properties with Deps Version (1.0.x) in the root pom.xml
 propertiesDeps=("muleSchedulerServiceVersion"
@@ -42,4 +46,12 @@ propertiesDeps=("muleSchedulerServiceVersion"
                 "muleOAuthServiceVersion"
                 "muleSoapServiceVersion")
 
-updatePropertiesVersion "$VERSION_TO_DEPS" distributions/pom.xml propertiesDeps[@]
+updatePropertiesVersion "$VERSION_TO_DEPS" pom.xml propertiesDeps[@]
+
+# Properties with Deps Version (1.0.x) in the root pom.xml
+propertiesDeps=("muleHttpConnectorTestVersion"
+                "muleFileConnectorTestVersion")
+
+updatePropertiesVersion "$VERSION_TO_CONN_MOD" pom.xml propertiesDeps[@]
+
+updateParentVersion "$VERSION_TO_MULE" pom.xml

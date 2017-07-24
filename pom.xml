@@ -8,7 +8,7 @@
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
-    <version>4.0.0-rc.batman-TEST-RELEASE</version>
+    <version>4.0.0-rc.batman</version>
     <packaging>pom</packaging>
     <name>Mule Distributions</name>
 
@@ -31,6 +31,9 @@
         <muleHttpServiceVersion>1.0.0-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.0.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.0.0-SNAPSHOT</muleSoapServiceVersion>
+
+        <muleHttpConnectorTestVersion>1.0.0-SNAPSHOT</muleHttpConnectorTestVersion>
+        <muleFileConnectorTestVersion>1.0.0-SNAPSHOT</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
