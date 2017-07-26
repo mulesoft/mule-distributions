@@ -168,7 +168,6 @@
 /mule-standalone-${productVersion}/lib/opt/asm-commons-3.1.jar
 /mule-standalone-${productVersion}/lib/opt/asm-tree-3.1.jar
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.8.10.jar
-/mule-standalone-${productVersion}/lib/opt/cdi-api-1.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.3.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.9.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
@@ -182,7 +181,6 @@
 /mule-standalone-${productVersion}/lib/opt/grabbag-1.8.1.jar
 /mule-standalone-${productVersion}/lib/opt/gson-2.6.2.jar
 /mule-standalone-${productVersion}/lib/opt/guava-18.0.jar
-/mule-standalone-${productVersion}/lib/opt/guice-4.0-no_aop.jar
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.2.6.jar
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.2.5.jar
 /mule-standalone-${productVersion}/lib/opt/javassist-3.7.ga.jar
@@ -195,27 +193,20 @@
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.69.jar
 /mule-standalone-${productVersion}/lib/opt/jgrapht-jdk1.5-0.7.3.jar
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.9.1.jar
-/mule-standalone-${productVersion}/lib/opt/jsr250-api-1.0.jar
 /mule-standalone-${productVersion}/lib/opt/maven-aether-provider-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-artifact-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.3.9.jar
-/mule-standalone-${productVersion}/lib/opt/maven-core-3.3.9.jar
-/mule-standalone-${productVersion}/lib/opt/maven-compat-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-model-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-model-builder-3.3.9.jar
-/mule-standalone-${productVersion}/lib/opt/maven-plugin-api-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-repository-metadata-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.0.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.0.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-packager-3.0.0-+
-/mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.inject-0.3.2.jar
-/mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.3.2.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.osgi.bundles.org.json-1.0.0-v20140107.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-1.4.jar
-/mule-standalone-${productVersion}/lib/opt/plexus-classworlds-2.5.2.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-component-annotations-1.6.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-interpolation-1.21.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-sec-dispatcher-1.3.jar
@@ -234,7 +225,6 @@
 /mule-standalone-${productVersion}/lib/opt/stax-api-1.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/stringtemplate-3.2.1.jar
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.0.jar
-/mule-standalone-${productVersion}/lib/opt/wagon-provider-api-2.10.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-2.6.0.jar
 
 #
