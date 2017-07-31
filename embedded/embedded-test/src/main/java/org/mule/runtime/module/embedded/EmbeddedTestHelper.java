@@ -94,11 +94,11 @@ public class EmbeddedTestHelper {
         MavenConfiguration.MavenConfigurationBuilder mavenConfigurationBuilder =
             enterprise ? createDefaultEnterpriseMavenConfigurationBuilder() : createDefaultCommunityMavenConfigurationBuilder();
         embeddedContainerBuilder = builder()
-            .withMuleVersion(System.getProperty("mule.version"))
-            .withContainerConfiguration(ContainerConfiguration.builder().withContainerFolder(containerFolder).build())
-            .withMavenConfiguration(mavenConfigurationBuilder.withLocalMavenRepositoryLocation(localRepositoryFolder)
-                .withRemoteRepository(newRemoteRepositoryBuilder().withId("local.repo")
-                    .withUrl(getLocalRepositoryFolder().toURI().toURL())
+            .muleVersion(System.getProperty("mule.version"))
+            .containerConfiguration(ContainerConfiguration.builder().containerFolder(containerFolder).build())
+            .mavenConfiguration(mavenConfigurationBuilder.localMavenRepositoryLocation(localRepositoryFolder)
+                .remoteRepository(newRemoteRepositoryBuilder().id("local.repo")
+                    .url(getLocalRepositoryFolder().toURI().toURL())
                     .build())
                 .build());
         embeddedContainerConfigurer.accept(embeddedContainerBuilder);

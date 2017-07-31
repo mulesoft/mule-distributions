@@ -65,7 +65,7 @@ public class EmbeddedController {
       if (artifactConfiguration.getDeploymentConfiguration().enableTestDependencies()) {
         setProperty(ADD_TEST_DEPENDENCIES_KEY, "true");
       }
-      muleContainer.getDeploymentService().deploy(artifactConfiguration.getApplicationLocation().toURI());
+      muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI());
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
