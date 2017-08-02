@@ -157,9 +157,9 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
       embeddedTestHelper.recreateContainerFolder();
       embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
         try {
-          embeddedContainerBuilder.withLog4jConfigurationFile(log4JConfigurationFileOptional
+          embeddedContainerBuilder.log4jConfigurationFile(log4JConfigurationFileOptional
               .orElse(getClass().getClassLoader().getResource("log4j2-default.xml").toURI()))
-              .withProduct(MULE)
+              .product(MULE)
               .build();
 
         } catch (Exception e) {
@@ -167,9 +167,9 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
         }
       }, () -> {
         ArtifactConfiguration applicationConfiguration = ArtifactConfiguration.builder()
-            .withArtifactLocation(applicationFolder)
-            .withDeploymentConfiguration(DeploymentConfiguration.builder()
-                .withTestDependenciesEnabled(enableTestDependencies)
+            .artifactLocation(applicationFolder)
+            .deploymentConfiguration(DeploymentConfiguration.builder()
+                .testDependenciesEnabled(enableTestDependencies)
                 .build())
             .build();
         embeddedTestHelper.getContainer().getDeploymentService().deployApplication(applicationConfiguration);
