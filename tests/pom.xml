@@ -110,7 +110,7 @@
     <dependencies>
         <!-- Allure annotations -->
         <dependency>
-            <groupId>com.mulesoft.mule.tests</groupId>
+            <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-allure</artifactId>
             <version>${project.version}</version>
         </dependency>
