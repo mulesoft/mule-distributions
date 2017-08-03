@@ -112,6 +112,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-xml-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-json-1.0.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-metadata-model-raml-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-persistence-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-catalog-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-message-metadata-model-1.0.0-SNAPSHOT.jar
@@ -161,6 +162,7 @@
 /mule-standalone-${productVersion}/lib/opt/aether-transport-file-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-transport-http-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-util-1.0.2.v20150114.jar
+/mule-standalone-${productVersion}/lib/opt/annotations-3.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/ant-1.9.6.jar
 /mule-standalone-${productVersion}/lib/opt/ant-launcher-1.9.6.jar
 /mule-standalone-${productVersion}/lib/opt/antlr-runtime-3.5.jar
@@ -169,10 +171,12 @@
 /mule-standalone-${productVersion}/lib/opt/asm-commons-3.1.jar
 /mule-standalone-${productVersion}/lib/opt/asm-tree-3.1.jar
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.8.10.jar
+/mule-standalone-${productVersion}/lib/opt/btf-1.2.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.3.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.9.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
 /mule-standalone-${productVersion}/lib/opt/commons-io-2.4.jar
+/mule-standalone-${productVersion}/lib/opt/commons-lang-2.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang3-3.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-pool-1.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-pool2-2.4.2.jar
@@ -184,9 +188,16 @@
 /mule-standalone-${productVersion}/lib/opt/guava-18.0.jar
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.2.6.jar
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.2.5.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-annotations-2.4.0.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-core-2.7.0.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.8.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-databind-2.7.0.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.4.4.jar
 /mule-standalone-${productVersion}/lib/opt/javassist-3.7.ga.jar
 /mule-standalone-${productVersion}/lib/opt/javax.inject-1.jar
 /mule-standalone-${productVersion}/lib/opt/javax.jms-api-2.0.1.jar
+/mule-standalone-${productVersion}/lib/opt/javax.json-1.0.4.jar
+/mule-standalone-${productVersion}/lib/opt/javax.json-api-1.0.jar
 /mule-standalone-${productVersion}/lib/opt/javax.transaction-api-1.2.jar
 /mule-standalone-${productVersion}/lib/opt/jaxb-api-2.1.jar
 /mule-standalone-${productVersion}/lib/opt/jaxb-impl-2.1.13.jar
@@ -194,6 +205,13 @@
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.69.jar
 /mule-standalone-${productVersion}/lib/opt/jgrapht-jdk1.5-0.7.3.jar
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.9.1.jar
+/mule-standalone-${productVersion}/lib/opt/jopt-simple-4.6.jar
+/mule-standalone-${productVersion}/lib/opt/json-schema-core-1.2.5.jar
+/mule-standalone-${productVersion}/lib/opt/json-schema-validator-2.2.6.jar
+/mule-standalone-${productVersion}/lib/opt/jsr305-3.0.0.jar
+/mule-standalone-${productVersion}/lib/opt/juniversalchardet-1.0.3.jar
+/mule-standalone-${productVersion}/lib/opt/libphonenumber-6.2.jar
+/mule-standalone-${productVersion}/lib/opt/mailapi-1.4.3.jar
 /mule-standalone-${productVersion}/lib/opt/maven-aether-provider-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-artifact-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.3.9.jar
@@ -202,6 +220,7 @@
 /mule-standalone-${productVersion}/lib/opt/maven-repository-metadata-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.3.9.jar
+/mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.0.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.0.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-packager-3.0.0-+
@@ -212,9 +231,11 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-interpolation-1.21.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-sec-dispatcher-1.3.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-3.0.22.jar
+/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.13.jar
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.0.7.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/reflections-0.9.10.jar
+/mule-standalone-${productVersion}/lib/opt/rhino-1.7R4.jar
 /mule-standalone-${productVersion}/lib/opt/Saxon-HE-9.7.0-15.jar
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-1.18.jar
 /mule-standalone-${productVersion}/lib/opt/spring-aop-4.1.9.RELEASE.jar
@@ -225,8 +246,11 @@
 /mule-standalone-${productVersion}/lib/opt/spring-web-4.1.9.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/stax-api-1.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/stringtemplate-3.2.1.jar
+/mule-standalone-${productVersion}/lib/opt/uri-template-0.9.jar
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.0.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-2.6.0.jar
+/mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
+/mule-standalone-${productVersion}/lib/opt/yagi-1.0.13.jar
 
 #
 # /lib/user

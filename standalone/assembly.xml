@@ -118,6 +118,7 @@
                 <include>org.mule.runtime:mule-metadata-model-persistence</include>
                 <include>org.mule.runtime:mule-metadata-model-xml</include>
                 <include>org.mule.runtime:mule-metadata-model-json</include>
+                <include>org.mule.runtime:mule-metadata-model-raml</include>
                 <include>org.mule.runtime:mule-metadata-model-catalog</include>
                 <include>org.mule.runtime:mule-message-metadata-model</include>
                 <!-- extensions API -->
@@ -201,6 +202,7 @@
                 <exclude>org.mule.runtime:mule-metadata-model-persistence</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-xml</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-json</exclude>
+                <exclude>org.mule.runtime:mule-metadata-model-raml</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-catalog</exclude>
                 <exclude>org.mule.runtime:mule-message-metadata-model</exclude>
                 <!--extensions API-->
