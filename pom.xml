@@ -39,5 +39,6 @@
         <module>bom</module>
         <module>embedded</module>
         <module>standalone</module>
+        <module>tests</module>
     </modules>
 </project>
