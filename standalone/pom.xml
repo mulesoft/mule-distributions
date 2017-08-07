@@ -18,6 +18,8 @@
 
     <properties>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
+
+        <jackson2Version>2.9.0</jackson2Version>
     </properties>
 
     <build>
@@ -206,6 +208,18 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <classifier>indy</classifier>
+        </dependency>
+
+        <!-- Overwrite Jackson dependency with our own version -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson2Version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson2Version}</version>
         </dependency>
     </dependencies>
 </project>
