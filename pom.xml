@@ -27,7 +27,7 @@
 	<properties>
         <muleEmbeddedApiVersion>1.0.0-SNAPSHOT</muleEmbeddedApiVersion>
 
-        <muleSchedulerServiceVersion>1.0.0-rc.cyborg</muleSchedulerServiceVersion>
+        <muleSchedulerServiceVersion>1.0.0-rc.cyborg-SNAPSHOT</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.0.0-rc.cyborg-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.0.0-rc.cyborg-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.0.0-rc.cyborg</muleSoapServiceVersion>
