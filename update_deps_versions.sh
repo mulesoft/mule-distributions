@@ -48,3 +48,5 @@ propertiesDeps=("muleSchedulerServiceVersion"
                 "muleSoapServiceVersion")
 
 updatePropertiesVersion "$VERSION_TO_DEPS" distributions/pom.xml propertiesDeps[@]
+
+updateParentVersion "$VERSION_TO_MULE" pom.xml
