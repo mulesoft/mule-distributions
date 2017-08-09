@@ -35,6 +35,6 @@ VERSION_TO_MULE=$2
 # Properties with Deps Version (1.0.x) in the root pom.xml
 propertiesDeps=("muleEmbeddedApiVersion")
 
-updatePropertiesVersion "$VERSION_TO_DEPS" distributions/pom.xml propertiesDeps[@]
+updatePropertiesVersion "$VERSION_TO_DEPS" pom.xml propertiesDeps[@]
 
 updateParentVersion "$VERSION_TO_MULE" pom.xml
