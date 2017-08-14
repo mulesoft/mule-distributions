@@ -169,6 +169,7 @@
 /mule-standalone-${productVersion}/lib/opt/aopalliance-1.0.jar
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.8.10.jar
 /mule-standalone-${productVersion}/lib/opt/btf-1.2.jar
+/mule-standalone-${productVersion}/lib/opt/cglib-nodep-3.2.5.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.3.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.9.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
