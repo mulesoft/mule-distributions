@@ -30,7 +30,7 @@
         <muleSchedulerServiceVersion>true</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.0.0-rc.cyborg-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>true</muleOAuthServiceVersion>
-        <muleSoapServiceVersion>1.0.0-rc.cyborg-SNAPSHOT</muleSoapServiceVersion>
+        <muleSoapServiceVersion>true</muleSoapServiceVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
