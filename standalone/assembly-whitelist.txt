@@ -145,10 +145,10 @@
 # /services
 #
 /mule-standalone-${productVersion}/services
-/mule-standalone-${productVersion}/services/mule-service-scheduler-true.zip
+/mule-standalone-${productVersion}/services/mule-service-scheduler-1.0.0-rc.cyborg.zip
 /mule-standalone-${productVersion}/services/mule-service-http-1.0.0-rc.cyborg.zip
-/mule-standalone-${productVersion}/services/mule-service-oauth-true.zip
-/mule-standalone-${productVersion}/services/mule-service-soap-true.zip
+/mule-standalone-${productVersion}/services/mule-service-oauth-1.0.0-rc.cyborg.zip
+/mule-standalone-${productVersion}/services/mule-service-soap-1.0.0-rc.cyborg.zip
 /mule-standalone-${productVersion}/services/mule-service-weave-2.0.0-+
 #
 # /lib/opt
@@ -218,8 +218,8 @@
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.0.0-rc.cyborg-+
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.0.0-rc.cyborg-+
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.0.0-rc.cyborg.jar
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.0.0-rc.cyborg.jar
 /mule-standalone-${productVersion}/lib/opt/mule-packager-3.0.0-+
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.osgi.bundles.org.json-1.0.0-v20140107.jar
