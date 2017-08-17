@@ -27,7 +27,6 @@
             <artifactId>mule-service-scheduler</artifactId>
             <version>${muleSchedulerServiceVersion}</version>
             <classifier>mule-service</classifier>
-            <type>jar</type>
             <exclusions>
                 <!--TODO(gfernandes): remove this, see validation's comment-->
                 <exclusion>
@@ -45,14 +44,12 @@
             <artifactId>mule-service-oauth</artifactId>
             <version>${muleOAuthServiceVersion}</version>
             <classifier>mule-service</classifier>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-http</artifactId>
             <version>${muleHttpServiceVersion}</version>
             <classifier>mule-service</classifier>
-            <type>jar</type>
             <exclusions>
                 <!-- Runtime Dependencies-->
                 <exclusion>
@@ -102,7 +99,6 @@
             <artifactId>mule-service-soap</artifactId>
             <version>${muleSoapServiceVersion}</version>
             <classifier>mule-service</classifier>
-            <type>jar</type>
             <exclusions>
                 <!-- Runtime Dependencies-->
                 <exclusion>
