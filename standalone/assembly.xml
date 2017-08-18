@@ -46,6 +46,20 @@
                 <include>*.txt</include>
             </includes>
         </fileSet>
+
+        <!--
+            ============================
+            Services
+            ============================
+        -->
+        <fileSet>
+            <directory>target/services</directory>
+            <outputDirectory>services</outputDirectory>
+            <includes>
+                <include>*.zip</include>
+            </includes>
+        </fileSet>
+
         <fileSet>
             <directory>src/main/resources/lib/boot/exec</directory>
             <outputDirectory>lib/boot/exec</outputDirectory>
