@@ -14,9 +14,11 @@ import static java.lang.Thread.sleep;
 import static java.nio.file.Files.delete;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
@@ -29,18 +31,25 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedAp
 
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
+import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
+import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.tck.junit4.rule.FreePortFinder;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -57,7 +66,13 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
   private static final String LOGGING_FILE = "app.log";
 
+  private static final String LISTENER_URL = "http://localhost:%d/test";
+
   private static EmbeddedTestHelper embeddedTestHelper = new EmbeddedTestHelper(false);
+
+
+  @Rule
+  public DynamicPort isAlivePort = new DynamicPort("isAlivePort");
 
   @Rule
   public TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -135,6 +150,170 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
     }
   }
 
+  @Test
+  @Description("Deploys an app with an http listener an checks that communication works")
+  public void deployListenerIsAlive() throws Exception {
+    runWithContainer((container) -> {
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+      assertAppIsRunning(true);
+    });
+  }
+
+  @Test
+  @Description("If config files are modified within an app. Redeployment should be triggered")
+  public void redeploymentOfModifiedAppAfterFailingShouldExecute() throws Exception {
+    runWithContainer((container) -> {
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      overrideFileModificationTimeStamp(testAppLocation, System.currentTimeMillis()); //To force time to be different from first
+
+      //Since redeployment will be triggered due to config file change, we should expect another failure
+      try {
+        container.getDeploymentService()
+            .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+        fail();
+      } catch (RuntimeException e) {
+        //Do nothing
+      }
+
+      //And app should not be running
+      assertAppIsRunning(false);
+    });
+  }
+
+  @Test
+  @Description("If a well written app with the same name as a failing app is deployed after the failing one, it should work")
+  public void redeploymentOfSuccessfulAppAfterFailingWithSameNameShouldWork() throws Exception {
+    runWithContainer((container) -> {
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, System.currentTimeMillis()); //To force time to be different from failing app.
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+      assertAppIsRunning(true);
+    });
+  }
+
+  @Test
+  @Description("Even if 2 apps have the same name and were created at the same time, if one of them have different config files, redeployment should be triggered")
+  public void redeploymentOfSuccessfulAppAfterFailingWithSameNameAndTimeStampButDifferentConfigShouldWork() throws Exception {
+    runWithContainer((container) -> {
+      long time = System.currentTimeMillis();
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time);
+
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time); //To force time to be the same of failing app.
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+
+      assertAppIsRunning(true);
+    });
+  }
+
+  @Test
+  @Description("If only one config file is modified, redeployment should still be triggered")
+  public void modificationOfOneConfigShouldAcceptRedeployment() throws Exception {
+    runWithContainer((container) -> {
+
+      long time = System.currentTimeMillis();
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time);
+
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      File muleConfig = new File(testAppLocation, "mule-config.xml");
+      assertThat(muleConfig.exists(), is(true));
+      overrideFileModificationTimeStamp(muleConfig, time + 9999); //Change just mule-config.xml
+
+      //Since redeployment should be triggered we should expect another exception
+      try {
+        container.getDeploymentService()
+            .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+        fail();
+      } catch (RuntimeException e) {
+        //Do nothing
+      }
+
+      //Since no redeployment, app should not be running
+      assertAppIsRunning(false);
+
+    });
+  }
+
+  @Test
+  @Description("If a non config file is modified, no redeployment should take place")
+  public void modificationOfNonConfigShouldNotRedeploy() throws Exception {
+    runWithContainer((container) -> {
+      long time = System.currentTimeMillis();
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time);
+
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      File muleArtifact = new File(testAppLocation, "META-INF/mule-artifact/mule-artifact.json");
+      assertThat(muleArtifact.exists(), is(true));
+      //Change mule-artifact.json
+      overrideFileModificationTimeStamp(muleArtifact, time + 99999); //change time
+
+      //No exception should be triggered
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+
+      //App should not be running
+      assertAppIsRunning(false);
+    });
+  }
+
+  private void deployExpectingFailureAndUndeploy(EmbeddedContainer container, File app) {
+    try {
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(app).build());
+      fail();
+    } catch (RuntimeException e) {
+      container.getDeploymentService().undeployApplication(app.getName());
+    }
+  }
+
+  private void overrideFileModificationTimeStamp(File root, long time) {
+    File[] files = root.listFiles();
+    if (files != null) {
+      for (int i = 0; i < files.length; i++) {
+        if (files[i].isDirectory()) {
+          overrideFileModificationTimeStamp(files[i], time);
+        } else {
+          files[i].setLastModified(time);
+        }
+      }
+    }
+    root.setLastModified(time);
+  }
+
+  private void assertAppIsRunning(boolean shouldRun) {
+    try {
+      HttpClient client = HttpClientBuilder.create().build();
+      HttpGet request = new HttpGet(String.format(LISTENER_URL, isAlivePort.getNumber()));
+      org.apache.http.HttpResponse response = client.execute(request);
+      assertThat(IOUtils.toString(response.getEntity().getContent()), containsString("ok"));
+      if (!shouldRun) {
+        fail();
+      }
+    } catch (IOException e) {
+      if (shouldRun) {
+        fail();
+      }
+    }
+  }
+
   private void waitForPollToBeExecuted() {
     try {
       sleep(200);
@@ -165,7 +344,7 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
         } catch (Exception e) {
           throw new RuntimeException(e);
         }
-      }, () -> {
+      }, (container) -> {
         ArtifactConfiguration applicationConfiguration = ArtifactConfiguration.builder()
             .artifactLocation(applicationFolder)
             .deploymentConfiguration(DeploymentConfiguration.builder()
@@ -178,6 +357,24 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
     });
 
   }
+
+  private void runWithContainer(Consumer<EmbeddedContainer> task) throws Exception {
+    try {
+      embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
+        try {
+          embeddedContainerBuilder.log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
+              .product(MULE)
+              .build();
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
+      }, task);
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail();
+    }
+  }
+
 
   @Override
   public int getTestTimeoutSecs() {

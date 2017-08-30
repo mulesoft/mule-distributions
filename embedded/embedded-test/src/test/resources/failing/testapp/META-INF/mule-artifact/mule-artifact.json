@@ -1,0 +1,20 @@
+{
+  "name": "Test app",
+  "minMuleVersion": "4.0.0",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  },
+  "configs" : [
+    "mule-config.xml",
+    "foo.xml"
+  ]
+
+}

@@ -86,7 +86,7 @@ public class EmbeddedTestHelper {
    * @param test function that run the tests
    */
   public void testWithDefaultSettings(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
-                                      Runnable test) {
+                                      Consumer<EmbeddedContainer> test) {
     test(() -> {
       EmbeddedContainer.EmbeddedContainerBuilder embeddedContainerBuilder;
       try {
@@ -110,7 +110,7 @@ public class EmbeddedTestHelper {
       try {
         container = embeddedContainerBuilder.build();
         container.start();
-        test.run();
+        test.accept(container);
       } finally {
         if (container != null)
           try {
