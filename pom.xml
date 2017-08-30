@@ -30,7 +30,7 @@
         <muleSchedulerServiceVersion>1.0.0-rc.darkseid</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.0.0-rc.darkseid</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.0.0-rc.darkseid</muleOAuthServiceVersion>
-        <muleSoapServiceVersion>1.0.0-rc.darkseid-SNAPSHOT</muleSoapServiceVersion>
+        <muleSoapServiceVersion>1.0.0-rc.darkseid</muleSoapServiceVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
