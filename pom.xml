@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.mule.runtime</groupId>
         <artifactId>mule</artifactId>
-        <version>4.0.0-rc.darkseid-SNAPSHOT</version>
+        <version>4.0.0-rc.darkseid</version>
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
@@ -25,7 +25,7 @@
     </build>
 
 	<properties>
-        <muleEmbeddedApiVersion>1.0.0-rc.darkseid-SNAPSHOT</muleEmbeddedApiVersion>
+        <muleEmbeddedApiVersion>1.0.0-rc.darkseid</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.0.0-rc.darkseid</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.0.0-rc.darkseid</muleHttpServiceVersion>
