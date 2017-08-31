@@ -255,6 +255,27 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
     });
   }
 
+  @Test
+  @Description("Even if 2 apps have the same name and were created at the same time, if one of them have different config files, redeployment should be triggered")
+  public void redeploymentOfSuccessfulAppAfterFailingWithSameNameAndTimeStampButDifferentConfigShouldWork() throws Exception {
+    runWithContainer((container) -> {
+      long time = System.currentTimeMillis();
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time);
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time); //To force time to be the same of failing app.
+      File artifactFile = new File(testAppLocation, "META-INF/mule-artifact/mule-artifact.json");
+      assertThat(artifactFile.exists(), is(true));
+      overrideFileModificationTimeStamp(artifactFile, time + 99999);
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+
+      assertAppIsRunning(true);
+    });
+  }
+
   private void deployExpectingFailureAndUndeploy(EmbeddedContainer container, File app) {
     try {
       container.getDeploymentService()
