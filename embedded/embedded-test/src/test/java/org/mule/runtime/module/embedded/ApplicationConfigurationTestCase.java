@@ -241,10 +241,10 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
 
-      File muleArtifact = new File(testAppLocation, "META-INF/mule-artifact/mule-artifact.json");
-      assertThat(muleArtifact.exists(), is(true));
+      File pom = new File(testAppLocation, "/META-INF/maven/org.mule.test/testapp/pom.xml");
+      assertThat(pom.exists(), is(true));
       //Change mule-artifact.json
-      overrideFileModificationTimeStamp(muleArtifact, time + 99999); //change time
+      overrideFileModificationTimeStamp(pom, time + 99999); //change time
 
       //No exception should be triggered
       container.getDeploymentService()
