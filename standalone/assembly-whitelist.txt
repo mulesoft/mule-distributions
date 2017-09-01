@@ -250,14 +250,6 @@
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
 /mule-standalone-${productVersion}/lib/opt/yagi-1.0.14.jar
 
-# Xerces fork from rackspace
-/mule-standalone-${productVersion}/lib/opt/icu4j-4.6.jar
-/mule-standalone-${productVersion}/lib/opt/java-cup-10k.jar
-/mule-standalone-${productVersion}/lib/opt/org.eclipse.wst.xml.xpath2.processor-2.1.100.jar
-/mule-standalone-${productVersion}/lib/opt/xerces2-xsd11-2.11.2.jar
-/mule-standalone-${productVersion}/lib/opt/xml-apis-1.4.01.jar
-/mule-standalone-${productVersion}/lib/opt/xml-resolver-1.2.jar
-
 #
 # /lib/user
 #
