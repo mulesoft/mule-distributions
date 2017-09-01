@@ -67,6 +67,7 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
   private static final String LOGGING_FILE = "app.log";
 
   private static final String LISTENER_URL = "http://localhost:%d/test";
+  private static final String DESCRIPTOR_RELATIVE_PATH = "META-INF/mule-artifact/mule-artifact.json";
 
   private static EmbeddedTestHelper embeddedTestHelper = new EmbeddedTestHelper(false);
 
@@ -266,7 +267,7 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
       testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
       overrideFileModificationTimeStamp(testAppLocation, time); //To force time to be the same of failing app.
-      File artifactFile = new File(testAppLocation, "META-INF/mule-artifact/mule-artifact.json");
+      File artifactFile = new File(testAppLocation, DESCRIPTOR_RELATIVE_PATH);
       assertThat(artifactFile.exists(), is(true));
       overrideFileModificationTimeStamp(artifactFile, time + 99999);
       container.getDeploymentService()

@@ -15,6 +15,7 @@
   "configs" : [
     "mule-config.xml",
     "foo.xml"
-  ]
+  ],
+  "redeploymentEnabled" : true
 
 }
