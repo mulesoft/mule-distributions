@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
+import static org.mule.runtime.module.artifact.api.descriptor.ArtifactDescriptor.MULE_ARTIFACT_JSON_DESCRIPTOR_LOCATION;
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
@@ -241,10 +242,10 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
 
-      File muleArtifact = new File(testAppLocation, "META-INF/mule-artifact/mule-artifact.json");
-      assertThat(muleArtifact.exists(), is(true));
+      File pom = new File(testAppLocation, "/META-INF/maven/org.mule.test/testapp/pom.xml");
+      assertThat(pom.exists(), is(true));
       //Change mule-artifact.json
-      overrideFileModificationTimeStamp(muleArtifact, time + 99999); //change time
+      overrideFileModificationTimeStamp(pom, time + 99999); //change time
 
       //No exception should be triggered
       container.getDeploymentService()
@@ -252,6 +253,27 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
       //App should not be running
       assertAppIsRunning(false);
+    });
+  }
+
+  @Test
+  @Description("Even if 2 apps have the same name and were created at the same time, if one of them have different config files, redeployment should be triggered")
+  public void redeploymentOfSuccessfulAppAfterFailingWithSameNameAndTimeStampButDifferentConfigShouldWork() throws Exception {
+    runWithContainer((container) -> {
+      long time = System.currentTimeMillis();
+      File testAppLocation = embeddedTestHelper.getFolderForApplication("failing/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time);
+      deployExpectingFailureAndUndeploy(container, testAppLocation);
+
+      testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
+      overrideFileModificationTimeStamp(testAppLocation, time); //To force time to be the same of failing app.
+      File artifactFile = new File(testAppLocation, MULE_ARTIFACT_JSON_DESCRIPTOR_LOCATION);
+      assertThat(artifactFile.exists(), is(true));
+      overrideFileModificationTimeStamp(artifactFile, time + 99999);
+      container.getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
+
+      assertAppIsRunning(true);
     });
   }
 
