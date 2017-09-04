@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
+import static org.mule.runtime.module.artifact.api.descriptor.ArtifactDescriptor.MULE_ARTIFACT_JSON_DESCRIPTOR_LOCATION;
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
@@ -67,7 +68,6 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
   private static final String LOGGING_FILE = "app.log";
 
   private static final String LISTENER_URL = "http://localhost:%d/test";
-  private static final String DESCRIPTOR_RELATIVE_PATH = "META-INF/mule-artifact/mule-artifact.json";
 
   private static EmbeddedTestHelper embeddedTestHelper = new EmbeddedTestHelper(false);
 
@@ -267,7 +267,7 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
       testAppLocation = embeddedTestHelper.getFolderForApplication("successful/testapp");
       overrideFileModificationTimeStamp(testAppLocation, time); //To force time to be the same of failing app.
-      File artifactFile = new File(testAppLocation, DESCRIPTOR_RELATIVE_PATH);
+      File artifactFile = new File(testAppLocation, MULE_ARTIFACT_JSON_DESCRIPTOR_LOCATION);
       assertThat(artifactFile.exists(), is(true));
       overrideFileModificationTimeStamp(artifactFile, time + 99999);
       container.getDeploymentService()
