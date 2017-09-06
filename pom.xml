@@ -28,7 +28,7 @@
         <muleEmbeddedApiVersion>1.0.0-rc-SNASPHOT</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.0.0-rc-SNASPHOT</muleSchedulerServiceVersion>
-        <muleHttpServiceVersion>1.0.0-rc-SNASPHOT</muleHttpServiceVersion>
+        <muleHttpServiceVersion>1.0.0-rc-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.0.0-rc-SNASPHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.0.0-rc-SNASPHOT</muleSoapServiceVersion>
 
