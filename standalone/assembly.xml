@@ -157,7 +157,6 @@
                 <include>org.mule.runtime:mule-module-dsl-api</include>
                 <include>org.mule.runtime:mule-module-service</include>
                 <include>org.mule.runtime:mule-module-container</include>
-                <include>org.mule.runtime:mule-module-builders</include>
                 <include>org.mule.runtime:mule-module-extensions-support</include>
                 <include>org.mule.runtime:mule-module-extensions-soap-support</include>
                 <include>org.mule.runtime:mule-module-extensions-spring-support</include>
@@ -234,7 +233,6 @@
                 <exclude>org.mule.distributions:mule-services-all</exclude>
                 <exclude>org.mule.runtime:mule-modules-all</exclude>
                 <exclude>org.mule.runtime:mule-module-artifact</exclude>
-                <exclude>org.mule.runtime:mule-module-builders</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-soap-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-spring-support</exclude>
