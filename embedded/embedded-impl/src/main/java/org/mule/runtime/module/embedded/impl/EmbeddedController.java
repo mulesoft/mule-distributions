@@ -70,7 +70,9 @@ public class EmbeddedController {
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
-      muleContainer.getDeploymentService().getLock().unlock();
+      if (muleContainer.getDeploymentService().getLock().isHeldByCurrentThread()) {
+        muleContainer.getDeploymentService().getLock().unlock();
+      }
       setProperty(ADD_TEST_DEPENDENCIES_KEY, "false");
     }
   }
