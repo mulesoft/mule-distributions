@@ -67,10 +67,10 @@ public class EmbeddedController {
       }
       muleContainer.getDeploymentService().getLock().lock();
       muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI());
-      muleContainer.getDeploymentService().getLock().unlock();
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
+      muleContainer.getDeploymentService().getLock().unlock();
       setProperty(ADD_TEST_DEPENDENCIES_KEY, "false");
     }
   }
