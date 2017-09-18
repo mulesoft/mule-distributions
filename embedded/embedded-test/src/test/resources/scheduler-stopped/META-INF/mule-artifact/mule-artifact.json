@@ -1,6 +1,7 @@
 {
   "name": "SchedulerStopped",
   "minMuleVersion": "4.0.0",
+  "requiredProduct": "MULE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
