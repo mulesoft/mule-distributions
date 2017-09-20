@@ -23,6 +23,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjVersion}/aspectjweaver-${aspectjVersion}.jar" -Xmx1024m -Xms256m -Dfile.encoding=UTF-8</argLine>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                     <workingDirectory>${project.build.directory}</workingDirectory>
                     <properties>
                         <property>
