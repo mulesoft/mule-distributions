@@ -6,6 +6,7 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
+import static java.lang.Boolean.valueOf;
 import static java.lang.System.setProperty;
 import static org.apache.commons.io.FileUtils.copyFile;
 import static org.apache.commons.io.FileUtils.toFile;
@@ -17,10 +18,24 @@ import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServerPluginsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServicesFolder;
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
-import static org.mule.runtime.module.deployment.impl.internal.application.DeployableMavenClassLoaderModelLoader.ADD_TEST_DEPENDENCIES_KEY;
 import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
+import org.mule.runtime.api.artifact.Registry;
+import org.mule.runtime.api.connectivity.ConnectivityTestingService;
 import org.mule.runtime.api.exception.MuleException;
+import org.mule.runtime.api.metadata.MetadataService;
+import org.mule.runtime.api.value.ValueProviderService;
+import org.mule.runtime.core.api.MuleContext;
+import org.mule.runtime.core.api.context.notification.MuleContextListener;
+import org.mule.runtime.deployment.model.api.DeploymentStartException;
+import org.mule.runtime.deployment.model.api.InstallException;
+import org.mule.runtime.deployment.model.api.application.Application;
+import org.mule.runtime.deployment.model.api.application.ApplicationDescriptor;
+import org.mule.runtime.deployment.model.api.application.ApplicationPolicyManager;
+import org.mule.runtime.deployment.model.api.application.ApplicationStatus;
+import org.mule.runtime.deployment.model.api.domain.Domain;
+import org.mule.runtime.deployment.model.api.plugin.ArtifactPlugin;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
+import org.mule.runtime.module.artifact.api.classloader.RegionClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.launcher.MuleContainer;
@@ -28,8 +43,9 @@ import org.mule.runtime.module.launcher.MuleContainer;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import net.lingala.zip4j.core.ZipFile;
 
@@ -46,6 +62,7 @@ public class EmbeddedController {
   private ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
   private MuleContainer muleContainer;
+  private Map<String, Application> applicationsByName = new ConcurrentHashMap<>();
 
   public EmbeddedController(byte[] serializedContainerInfo)
       throws IOException, ClassNotFoundException {
@@ -62,42 +79,39 @@ public class EmbeddedController {
   public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
     try {
-      if (artifactConfiguration.getDeploymentConfiguration().enableTestDependencies()) {
-        setProperty(ADD_TEST_DEPENDENCIES_KEY, "true");
-      }
       muleContainer.getDeploymentService().getLock().lock();
-      muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI());
+      // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify this code inside deploymentService!
+      if (valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled())) {
+        Application application =
+            muleContainer.getApplicationFactory().createArtifact(artifactConfiguration.getArtifactLocation());
+        application.install();
+        application.lazyInit(!valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
+        application.start();
+        applicationsByName.put(artifactConfiguration.getArtifactLocation().getName(), application);
+      } else {
+        muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI());
+        applicationsByName.put(artifactConfiguration.getArtifactLocation().getName(), new NoOpApplication());
+      }
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
       if (muleContainer.getDeploymentService().getLock().isHeldByCurrentThread()) {
         muleContainer.getDeploymentService().getLock().unlock();
       }
-      setProperty(ADD_TEST_DEPENDENCIES_KEY, "false");
     }
   }
 
   public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
     String applicationName = deserialize(serializedApplicationName);
-    muleContainer.getDeploymentService().undeploy(applicationName);
-  }
-
-  // TODO MULE-10392: To be removed once we have methods to deploy with properties
-  private void withSystemProperties(Map<String, String> systemProperties, Runnable runnable) {
-    Map<String, String> previousPropertyValues = new HashMap<>();
-    systemProperties.entrySet().stream().forEach(entry -> {
-      String previousValue = System.getProperty(entry.getKey());
-      if (previousValue != null) {
-        previousPropertyValues.put(entry.getKey(), entry.getValue());
-      }
-      setProperty(entry.getKey(), entry.getValue());
-    });
     try {
-      runnable.run();
-    } catch (Exception e) {
-      previousPropertyValues.entrySet().stream().forEach(entry -> {
-        setProperty(entry.getKey(), entry.getValue());
-      });
+      Application application = applicationsByName.get(applicationName);
+      if (application != null && !(application instanceof NoOpApplication)) {
+        application.dispose();
+      } else {
+        muleContainer.getDeploymentService().undeploy(applicationName);
+      }
+    } finally {
+      applicationsByName.remove(applicationName);
     }
   }
 
@@ -175,6 +189,133 @@ public class EmbeddedController {
 
     void run() throws Exception;
 
+  }
+
+  // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify this code inside deploymentService!
+  /**
+   * Just a temporary implementation of an Application in order to handle both deployments until code is unified.
+   */
+  private class NoOpApplication implements Application {
+
+    @Override
+    public RegionClassLoader getRegionClassLoader() {
+      return null;
+    }
+
+    @Override
+    public String getArtifactName() {
+      return null;
+    }
+
+    @Override
+    public String getArtifactId() {
+      return null;
+    }
+
+    @Override
+    public File[] getResourceFiles() {
+      return new File[0];
+    }
+
+    @Override
+    public ArtifactClassLoader getArtifactClassLoader() {
+      return null;
+    }
+
+    @Override
+    public void install() throws InstallException {
+
+    }
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public void lazyInit() {
+
+    }
+
+    @Override
+    public void lazyInit(boolean disableXmlValidations) {
+
+    }
+
+    @Override
+    public void start() throws DeploymentStartException {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
+
+    @Override
+    public ApplicationDescriptor getDescriptor() {
+      return null;
+    }
+
+    @Override
+    public void dispose() {
+
+    }
+
+    @Override
+    public MuleContext getMuleContext() {
+      return null;
+    }
+
+    @Override
+    public Registry getRegistry() {
+      return null;
+    }
+
+    @Override
+    public File getLocation() {
+      return null;
+    }
+
+    @Override
+    public ConnectivityTestingService getConnectivityTestingService() {
+      return null;
+    }
+
+    @Override
+    public MetadataService getMetadataService() {
+      return null;
+    }
+
+    @Override
+    public ValueProviderService getValueProviderService() {
+      return null;
+    }
+
+    @Override
+    public List<ArtifactPlugin> getArtifactPlugins() {
+      return null;
+    }
+
+    @Override
+    public void setMuleContextListener(MuleContextListener muleContextListener) {
+
+    }
+
+    @Override
+    public Domain getDomain() {
+      return null;
+    }
+
+    @Override
+    public ApplicationStatus getStatus() {
+      return null;
+    }
+
+    @Override
+    public ApplicationPolicyManager getPolicyManager() {
+      return null;
+    }
   }
 
 }
