@@ -29,7 +29,7 @@
 
         <muleSchedulerServiceVersion>1.0.0-rc-SNAPSHOT</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.0.0-rc</muleHttpServiceVersion>
-        <muleOAuthServiceVersion>1.0.0-rc-SNAPSHOT</muleOAuthServiceVersion>
+        <muleOAuthServiceVersion>1.0.0-rc</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.0.0-rc-SNAPSHOT</muleSoapServiceVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
