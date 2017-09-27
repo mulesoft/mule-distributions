@@ -37,16 +37,18 @@ public class EmbeddedTestHelper {
 
   private final TemporaryFolder temporaryFolder;
   private final boolean enterprise;
+  private final boolean forceUpdateSnapshots;
   private File containerFolder;
   private File localRepositoryFolder;
   private EmbeddedContainer container;
 
-  public EmbeddedTestHelper(boolean enterprise) {
+  public EmbeddedTestHelper(boolean enterprise, boolean forceUpdateSnapshots) {
     try {
       temporaryFolder = new TemporaryFolder();
       temporaryFolder.create();
       this.localRepositoryFolder = temporaryFolder.newFolder();
       this.enterprise = enterprise;
+      this.forceUpdateSnapshots = forceUpdateSnapshots;
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -92,7 +94,8 @@ public class EmbeddedTestHelper {
       try {
         recreateContainerFolder();
         MavenConfiguration.MavenConfigurationBuilder mavenConfigurationBuilder =
-            enterprise ? createDefaultEnterpriseMavenConfigurationBuilder() : createDefaultCommunityMavenConfigurationBuilder();
+            enterprise ? createDefaultEnterpriseMavenConfigurationBuilder(forceUpdateSnapshots)
+                : createDefaultCommunityMavenConfigurationBuilder(forceUpdateSnapshots);
         embeddedContainerBuilder = builder()
             .muleVersion(System.getProperty("mule.version"))
             .containerConfiguration(ContainerConfiguration.builder().containerFolder(containerFolder).build())

@@ -16,9 +16,11 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.junit.rules.ExpectedException.none;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
@@ -29,7 +31,6 @@ import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYM
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
-
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
@@ -42,11 +43,17 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Features;
+import io.qameta.allure.Stories;
+import io.qameta.allure.Story;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -54,12 +61,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Features;
-import io.qameta.allure.Stories;
-import io.qameta.allure.Story;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -69,8 +72,10 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
   private static final String LISTENER_URL = "http://localhost:%d/test";
 
-  private static EmbeddedTestHelper embeddedTestHelper = new EmbeddedTestHelper(false);
+  private static EmbeddedTestHelper embeddedTestHelper = new EmbeddedTestHelper(false, false);
 
+  @Rule
+  public ExpectedException expectedException = none();
 
   @Rule
   public DynamicPort isAlivePort = new DynamicPort("isAlivePort");
@@ -109,7 +114,28 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
           } catch (UnirestException e) {
             throw new RuntimeException(e);
           }
-        }, true, empty());
+        });
+  }
+
+  @Description("Embedded runs an application in lazy init mode")
+  @Test
+  public void applicationDeploymentLazyInit() throws Exception {
+    doWithinApplication(embeddedTestHelper.getFolderForApplication("http-echo"), port -> {
+      try {
+        post(format("http://localhost:%s/", port)).body("test-message").asString();
+        fail("HTTP listener should not be initialized when deploying an application using lazy initialization");
+      } catch (UnirestException e) {
+        assertThat(org.apache.commons.lang3.exception.ExceptionUtils.getRootCause(e), instanceOf(ConnectException.class));
+      }
+    }, true, false, empty(), false);
+  }
+
+  @Description("Embedded runs an application in lazy init mode and enable xml validations")
+  @Test
+  public void applicationDeploymentLazyInitButEnableXmlValidations() throws Exception {
+    expectedException.expectMessage(containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
+    doWithinApplication(embeddedTestHelper.getFolderForApplication("http-echo-invalid-xml"), port -> {
+    }, true, true, empty(), false);
   }
 
   @Description("Embedded runs an application with scheduler not started by using the " + DISABLE_SCHEDULER_SOURCES_PROPERTY
@@ -141,7 +167,7 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }
-    }, false, of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()));
+    }, false, true, of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
     try {
       File expectedLoggingFile = new File(LOGGING_FILE);
       assertThat(expectedLoggingFile.exists(), is(true));
@@ -327,11 +353,12 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
 
   private void doWithinApplication(File applicationFolder, Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinApplication(applicationFolder, portConsumer, false, empty());
+    doWithinApplication(applicationFolder, portConsumer, false, true, empty(), true);
   }
 
-  private void doWithinApplication(File applicationFolder, Consumer<Integer> portConsumer, boolean enableTestDependencies,
-                                   Optional<URI> log4JConfigurationFileOptional)
+  private void doWithinApplication(File applicationFolder, Consumer<Integer> portConsumer, boolean lazyInitializationEnabled,
+                                   boolean xmlValidationsEnabled,
+                                   Optional<URI> log4JConfigurationFileOptional, boolean validateUsageOfDeploymentService)
       throws Exception {
 
     Integer httpListenerPort = new FreePortFinder(6000, 9000).find();
@@ -351,14 +378,19 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
         ArtifactConfiguration applicationConfiguration = ArtifactConfiguration.builder()
             .artifactLocation(applicationFolder)
             .deploymentConfiguration(DeploymentConfiguration.builder()
-                .testDependenciesEnabled(enableTestDependencies)
+                .lazyInitialization(lazyInitializationEnabled)
+                .xmlValidations(xmlValidationsEnabled)
                 .build())
             .build();
         embeddedTestHelper.getContainer().getDeploymentService().deployApplication(applicationConfiguration);
-        assertThat(new File(getAppsFolder(), applicationFolder.getName().replace(".jar", "")).exists(), is(true));
+        // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify code for deployment!
+        if (validateUsageOfDeploymentService) {
+          assertThat(new File(getAppsFolder(), applicationFolder.getName().replace(".jar", "")).exists(), is(true));
+        }
+
+        portConsumer.accept(httpListenerPort);
       });
     });
-
   }
 
   private void runWithContainer(Consumer<EmbeddedContainer> task) throws Exception {
