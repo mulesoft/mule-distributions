@@ -108,7 +108,7 @@ public class ApplicationConfigurationTestCase extends AbstractMuleTestCase {
     doWithinApplication(embeddedTestHelper
         .getPackagedApplication(embeddedTestHelper.getFolderForApplication("http-test-dependency")), port -> {
           try {
-            String httpBody = "org.mobicents.xcap.client.impl.XcapClientImpl";
+            String httpBody = "Something";
             HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
             assertThat(response.getBody(), is(httpBody));
           } catch (UnirestException e) {

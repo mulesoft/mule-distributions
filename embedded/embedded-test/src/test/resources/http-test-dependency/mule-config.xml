@@ -11,6 +11,6 @@
 
     <flow name="main">
         <http:listener path="/" config-ref="httpListenerConfig"/>
-        <set-payload value="#[mel:Thread.currentThread().getContextClassLoader().loadClass('org.mobicents.xcap.client.impl.XcapClientImpl').getName()]"/>
+        <logger message="#[payload]" />
     </flow>
 </mule>

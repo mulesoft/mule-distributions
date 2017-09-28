@@ -19,23 +19,7 @@
             <artifactId>mule-http-connector</artifactId>
             <version>${muleHttpConnectorTestVersion}</version>
             <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mobicents</groupId>
-            <artifactId>xcap-client-api</artifactId>
-            <version>${xcap.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>*</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
