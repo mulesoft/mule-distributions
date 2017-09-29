@@ -164,6 +164,7 @@
                 <include>org.mule.runtime:mule-module-extensions-spring-support</include>
                 <include>org.mule.runtime:mule-module-extensions-xml-support</include>
                 <include>org.mule.runtime:mule-module-http-policy-api</include>
+                <include>org.mule.runtime:mule-module-license-api</include>
                 <include>org.mule.runtime:mule-module-policy-api</include>
                 <include>org.mule.runtime:mule-module-repository</include>
                 <include>org.mule.runtime:mule-module-spring-config</include>
@@ -250,6 +251,7 @@
                 <exclude>org.mule.runtime:mule-module-deployment-model-impl</exclude>
                 <exclude>org.mule.runtime:mule-module-dsl-api</exclude>
                 <exclude>org.mule.runtime:mule-module-http-policy-api</exclude>
+                <exclude>org.mule.runtime:mule-module-license-api</exclude>
                 <exclude>org.mule.runtime:mule-module-service</exclude>
                 <exclude>org.mule.runtime:mule-module-policy-api</exclude>
                 <exclude>org.mule.runtime:mule-module-reboot</exclude>

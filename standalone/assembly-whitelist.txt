@@ -129,6 +129,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-dsl-api-1.0.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-http-policy-api-1.0.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-license-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-service-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-container-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.0.0-SNAPSHOT.jar
@@ -140,7 +141,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
-
 #
 # /services
 #
