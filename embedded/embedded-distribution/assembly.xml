@@ -17,7 +17,7 @@ Assembly descriptor for the composite Mule library (jar).
             <outputDirectory>META-INF</outputDirectory>
             <includes>
                 <include>spring.schemas</include>
-                <include>spring.handlers</include>
+                <include>mule.schemas</include>
                 <include>mule.custom-property-editors</include>
             </includes>
         </fileSet>

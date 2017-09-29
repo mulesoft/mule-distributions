@@ -32,16 +32,16 @@ new File("$project.build.directory/spring.schemas").withWriter
     }
 }
 
-// aggregate all spring.handlers files into one
+// aggregate all mule.schemas files into one
 fileScanner = ant.fileScanner
 {
     fileset(dir: muleRoot) 
     {
-        include(name: "**/spring.handlers")
+        include(name: "**/mule.schemas")
         exclude(name: "**/target/**")
     }
 }
-new File("$project.build.directory/spring.handlers").withWriter
+new File("$project.build.directory/mule.schemas").withWriter
 { writer ->
 
     fileScanner.each
