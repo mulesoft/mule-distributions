@@ -24,7 +24,6 @@ import org.mule.runtime.api.connectivity.ConnectivityTestingService;
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.metadata.MetadataService;
 import org.mule.runtime.api.value.ValueProviderService;
-import org.mule.runtime.core.api.MuleContext;
 import org.mule.runtime.core.api.context.notification.MuleContextListener;
 import org.mule.runtime.deployment.model.api.DeploymentStartException;
 import org.mule.runtime.deployment.model.api.InstallException;
@@ -260,11 +259,6 @@ public class EmbeddedController {
     @Override
     public void dispose() {
 
-    }
-
-    @Override
-    public MuleContext getMuleContext() {
-      return null;
     }
 
     @Override
