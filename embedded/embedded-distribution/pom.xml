@@ -30,7 +30,7 @@
                         </goals>
                         <configuration>
                             <includeGroupIds>org.mule</includeGroupIds>
-                            <excludes>**/spring.handlers,**/spring.schemas,**/registry-bootstrap.properties,**/mule.custom-property-editors,org/slf4j/**,org/apache/commons/logging/**</excludes>
+                            <excludes>**/spring.schemas,**/mule.schemas,**/registry-bootstrap.properties,**/mule.custom-property-editors,org/slf4j/**,org/apache/commons/logging/**</excludes>
                             <excludeTypes>pom</excludeTypes>
                         </configuration>
                     </execution>
