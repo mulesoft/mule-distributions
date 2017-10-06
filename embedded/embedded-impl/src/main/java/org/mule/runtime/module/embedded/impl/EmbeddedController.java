@@ -6,6 +6,7 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
+import static java.util.Optional.empty;
 import static java.lang.Boolean.valueOf;
 import static java.lang.System.setProperty;
 import static org.apache.commons.io.FileUtils.copyFile;
@@ -82,7 +83,7 @@ public class EmbeddedController {
       // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify this code inside deploymentService!
       if (valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled())) {
         Application application =
-            muleContainer.getApplicationFactory().createArtifact(artifactConfiguration.getArtifactLocation());
+            muleContainer.getApplicationFactory().createArtifact(artifactConfiguration.getArtifactLocation(), empty());
         application.install();
         application.lazyInit(!valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
         application.start();
