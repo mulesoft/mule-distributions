@@ -6,7 +6,6 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
-import static java.util.Optional.empty;
 import static java.lang.Boolean.valueOf;
 import static java.lang.System.setProperty;
 import static org.apache.commons.io.FileUtils.copyFile;
@@ -25,6 +24,7 @@ import org.mule.runtime.api.connectivity.ConnectivityTestingService;
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.metadata.MetadataService;
 import org.mule.runtime.api.value.ValueProviderService;
+import org.mule.runtime.core.api.config.MuleDeploymentProperties;
 import org.mule.runtime.core.api.context.notification.MuleContextListener;
 import org.mule.runtime.deployment.model.api.DeploymentStartException;
 import org.mule.runtime.deployment.model.api.InstallException;
@@ -44,8 +44,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Properties;
 
 import net.lingala.zip4j.core.ZipFile;
 
@@ -62,7 +61,6 @@ public class EmbeddedController {
   private ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
   private MuleContainer muleContainer;
-  private Map<String, Application> applicationsByName = new ConcurrentHashMap<>();
 
   public EmbeddedController(byte[] serializedContainerInfo)
       throws IOException, ClassNotFoundException {
@@ -80,18 +78,13 @@ public class EmbeddedController {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
     try {
       muleContainer.getDeploymentService().getLock().lock();
-      // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify this code inside deploymentService!
-      if (valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled())) {
-        Application application =
-            muleContainer.getApplicationFactory().createArtifact(artifactConfiguration.getArtifactLocation(), empty());
-        application.install();
-        application.lazyInit(!valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
-        application.start();
-        applicationsByName.put(artifactConfiguration.getArtifactLocation().getName(), application);
-      } else {
-        muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI());
-        applicationsByName.put(artifactConfiguration.getArtifactLocation().getName(), new NoOpApplication());
-      }
+      Properties deploymentProperties = new Properties();
+      deploymentProperties.put(MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY,
+                               valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled()));
+      deploymentProperties.put(MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY,
+                               valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
+
+      muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties);
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
@@ -103,16 +96,7 @@ public class EmbeddedController {
 
   public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
     String applicationName = deserialize(serializedApplicationName);
-    try {
-      Application application = applicationsByName.get(applicationName);
-      if (application != null && !(application instanceof NoOpApplication)) {
-        application.dispose();
-      } else {
-        muleContainer.getDeploymentService().undeploy(applicationName);
-      }
-    } finally {
-      applicationsByName.remove(applicationName);
-    }
+    muleContainer.getDeploymentService().undeploy(applicationName);
   }
 
   public void executeWithinContainerClassLoader(ContainerTask task) {
