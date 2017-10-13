@@ -74,14 +74,12 @@ fi
 # command
 MULE_HOME=`echo ${MULE_HOME} | sed -e 's/\/$//'`
 export MULE_HOME
-echo "MULE_HOME is set to ${MULE_HOME}"
 
 # If MULE_BASE is not set, set it to MULE_HOME
 if [ -z "$MULE_BASE" ] ; then
     MULE_BASE=$MULE_HOME
 fi
 export MULE_BASE
-echo "MULE_BASE is set to ${MULE_BASE}"
 
 # Application
 if [ "$MULE_APP" = "" ]
@@ -631,37 +629,48 @@ checkAdditionalJvmParams() {
     fi
 }
 
+logMuleHome() {
+    echo "MULE_HOME is set to ${MULE_HOME}"
+    echo "MULE_BASE is set to ${MULE_BASE}"
+}
+
 case "$1" in
 
     'console')
+        logMuleHome
         checkUser touchlock $*
         checkAdditionalJvmParams $*
         console
         ;;
 
     'start')
+        logMuleHome
         checkUser touchlock $*
         checkAdditionalJvmParams $*
         start
         ;;
 
     'stop')
+        logMuleHome
         checkUser "" $*
         stopit
         ;;
 
     'restart')
+        logMuleHome
         checkUser touchlock $*
         stopit
         start
         ;;
 
     'status')
+        logMuleHome
         checkUser "" $*
         status
         ;;
 
     'dump')
+        logMuleHome
         checkUser "" $*
         dump
         ;;
