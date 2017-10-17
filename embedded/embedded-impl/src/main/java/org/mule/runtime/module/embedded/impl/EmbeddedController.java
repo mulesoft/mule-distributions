@@ -6,7 +6,7 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
-import static java.lang.Boolean.valueOf;
+import static java.lang.String.valueOf;
 import static java.lang.System.setProperty;
 import static org.apache.commons.io.FileUtils.copyFile;
 import static org.apache.commons.io.FileUtils.toFile;
