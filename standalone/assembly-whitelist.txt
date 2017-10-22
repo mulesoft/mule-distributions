@@ -185,9 +185,9 @@
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.2.6.jar
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.2.5.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-annotations-2.9.0.jar
-/mule-standalone-${productVersion}/lib/opt/jackson-core-2.9.0.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-core-2.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.8.jar
-/mule-standalone-${productVersion}/lib/opt/jackson-databind-2.9.0.jar
+/mule-standalone-${productVersion}/lib/opt/jackson-databind-2.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.9.0.jar
 /mule-standalone-${productVersion}/lib/opt/javassist-3.7.ga.jar
 /mule-standalone-${productVersion}/lib/opt/javax.inject-1.jar
