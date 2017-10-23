@@ -31,10 +31,16 @@ updateParentVersion() {
 
 VERSION_TO_DEPS=$1
 VERSION_TO_MULE=$2
+VERSION_TO_CONNECTORS=$3
 
 # Properties with Deps Version (1.0.x) in the root pom.xml
 propertiesDeps=("muleEmbeddedApiVersion")
 
 updatePropertiesVersion "$VERSION_TO_DEPS" pom.xml propertiesDeps[@]
+
+propertiesConnectors=("muleHttpConnectorTestVersion"
+                      "muleFileConnectorTestVersion")
+
+updatePropertiesVersion "$VERSION_TO_CONNECTORS" pom.xml propertiesConnectors[@]
 
 updateParentVersion "$VERSION_TO_MULE" pom.xml
