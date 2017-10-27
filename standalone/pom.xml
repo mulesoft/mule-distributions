@@ -55,7 +55,7 @@
                                     <groupId>org.mule.services</groupId>
                                     <artifactId>mule-service-weave</artifactId>
                                     <version>${weaveVersion}</version>
-                                    <type>zip</type>
+                                    <classifier>mule-service</classifier>
                                     <outputDirectory>${project.build.directory}/services</outputDirectory>
                                 </artifactItem>
                             </artifactItems>

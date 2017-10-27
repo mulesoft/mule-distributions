@@ -167,7 +167,7 @@
             <artifactId>mule-service-weave</artifactId>
             <groupId>org.mule.services</groupId>
             <version>${weaveVersion}</version>
-            <type>zip</type>
+            <classifier>mule-service</classifier>
         </dependency>
     </dependencies>
 </project>
