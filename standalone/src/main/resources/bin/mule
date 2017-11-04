@@ -99,9 +99,6 @@ APP_LONG_NAME=${MULE_APP_LONG}
 WRAPPER_CMD="${MULE_HOME}/lib/boot/exec/wrapper"
 WRAPPER_CONF="${MULE_BASE}/conf/wrapper.conf"
 
-# redirect JUL logs to log4j2
-JUL_LOG_MANAGER=-M-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager
-
 MULE_OPTS="wrapper.working.dir=\"$STARTUP_DIR\" \
            wrapper.app.parameter.1=$2 \
            wrapper.app.parameter.2=$3 \
@@ -621,7 +618,7 @@ dump() {
 
 checkAdditionalJvmParams() {
     # The string passed to eval must handle spaces in paths correctly.
-    "$MULE_HOME/bin/launcher" \"$MULE_HOME/bin/additional.groovy\" \"$WRAPPER_CONF\" \"$JPDA_OPTS\" \"$JUL_LOG_MANAGER\" $@
+    "$MULE_HOME/bin/launcher" \"$MULE_HOME/bin/additional.groovy\" \"$WRAPPER_CONF\" \"$JPDA_OPTS\" $@
     EXIT_STATUS=$?
 
     if [ "$EXIT_STATUS" -ne "0" ] ; then        
