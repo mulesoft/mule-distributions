@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.mule.runtime</groupId>
         <artifactId>mule</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>4.0.0</version>
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
@@ -25,15 +25,15 @@
     </build>
 
 	<properties>
-        <muleEmbeddedApiVersion>1.0.0-SNAPSHOT</muleEmbeddedApiVersion>
+        <muleEmbeddedApiVersion>1.0.0</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.0.0</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.0.0</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.0.0</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.0.0</muleSoapServiceVersion>
 
-        <muleHttpConnectorTestVersion>1.0.0-SNAPSHOT</muleHttpConnectorTestVersion>
-        <muleFileConnectorTestVersion>1.0.0-SNAPSHOT</muleFileConnectorTestVersion>
+        <muleHttpConnectorTestVersion>1.0.0</muleHttpConnectorTestVersion>
+        <muleFileConnectorTestVersion>1.0.0</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
