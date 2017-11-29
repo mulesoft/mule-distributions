@@ -183,8 +183,8 @@
 /mule-standalone-${productVersion}/lib/opt/grabbag-1.8.1.jar
 /mule-standalone-${productVersion}/lib/opt/gson-2.8.1.jar
 /mule-standalone-${productVersion}/lib/opt/guava-18.0.jar
-/mule-standalone-${productVersion}/lib/opt/httpclient-4.2.6.jar
-/mule-standalone-${productVersion}/lib/opt/httpcore-4.2.5.jar
+/mule-standalone-${productVersion}/lib/opt/httpclient-4.5.3.jar
+/mule-standalone-${productVersion}/lib/opt/httpcore-4.4.6.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-annotations-2.9.0.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-core-2.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.8.jar
