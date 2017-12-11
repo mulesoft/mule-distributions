@@ -193,8 +193,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
+            <groupId>org.mule.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
             <version>${javaXmlBindVersion}</version>
             <exclusions>
                 <exclusion>
