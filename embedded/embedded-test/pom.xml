@@ -15,6 +15,8 @@
     <properties>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
+        <packagerVersion>3.0.0</packagerVersion>
     </properties>
 
     <build>
@@ -31,6 +33,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <mule.version>${project.version}</mule.version>
+                        <settings.file>${settingsFile}</settings.file>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -67,6 +70,12 @@
             <groupId>com.mashape.unirest</groupId>
             <artifactId>unirest-java</artifactId>
             <version>${unirestVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.tests</groupId>
+            <artifactId>mule-tests-infrastructure</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
