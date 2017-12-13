@@ -106,7 +106,6 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                 .build())
             .build();
         deployConsumer.accept(container, artifactConfiguration);
-        // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify code for deployment!
         if (validateUsageOfDeploymentService) {
           validateArtifactState(artifactDeploymentFolder, artifactFile, container, true);
         }
