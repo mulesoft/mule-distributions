@@ -17,6 +17,8 @@ import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServerPluginsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServicesFolder;
+import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY;
+import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
 import org.mule.runtime.api.artifact.Registry;
@@ -76,15 +78,36 @@ public class EmbeddedController {
 
   public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
+    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> muleContainer.getDeploymentService()
+        .deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
+  }
+
+  public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
+    String applicationName = deserialize(serializedApplicationName);
+    muleContainer.getDeploymentService().undeploy(applicationName);
+  }
+
+  public synchronized void deployDomain(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
+    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
+    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> muleContainer.getDeploymentService()
+        .deployDomain(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
+  }
+
+  public void undeployDomain(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
+    String applicationName = deserialize(serializedApplicationName);
+    muleContainer.getDeploymentService().undeployDomain(applicationName);
+  }
+
+  private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {
     try {
       muleContainer.getDeploymentService().getLock().lock();
       Properties deploymentProperties = new Properties();
-      deploymentProperties.put(MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY,
+      deploymentProperties.put(MULE_LAZY_INIT_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled()));
-      deploymentProperties.put(MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY,
+      deploymentProperties.put(MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
 
-      muleContainer.getDeploymentService().deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties);
+      deploymentTask.deploy(deploymentProperties);
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
@@ -92,11 +115,6 @@ public class EmbeddedController {
         muleContainer.getDeploymentService().getLock().unlock();
       }
     }
-  }
-
-  public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
-    String applicationName = deserialize(serializedApplicationName);
-    muleContainer.getDeploymentService().undeploy(applicationName);
   }
 
   public void executeWithinContainerClassLoader(ContainerTask task) {
@@ -163,6 +181,13 @@ public class EmbeddedController {
         throw new IllegalStateException(e);
       }
     });
+  }
+
+  @FunctionalInterface
+  interface DeploymentTask {
+
+    void deploy(Properties deploymentProperties) throws IOException;
+
   }
 
   /**

@@ -22,6 +22,7 @@ import org.mule.runtime.module.embedded.internal.classloading.JdkOnlyClassLoader
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.function.Consumer;
 
 import net.lingala.zip4j.core.ZipFile;
@@ -39,14 +40,12 @@ public class EmbeddedTestHelper {
   private final boolean enterprise;
   private final boolean forceUpdateSnapshots;
   private File containerFolder;
-  private File localRepositoryFolder;
   private EmbeddedContainer container;
 
   public EmbeddedTestHelper(boolean enterprise, boolean forceUpdateSnapshots) {
     try {
       temporaryFolder = new TemporaryFolder();
       temporaryFolder.create();
-      this.localRepositoryFolder = temporaryFolder.newFolder();
       this.enterprise = enterprise;
       this.forceUpdateSnapshots = forceUpdateSnapshots;
     } catch (IOException e) {
@@ -99,7 +98,7 @@ public class EmbeddedTestHelper {
         embeddedContainerBuilder = builder()
             .muleVersion(System.getProperty("mule.version"))
             .containerConfiguration(ContainerConfiguration.builder().containerFolder(containerFolder).build())
-            .mavenConfiguration(mavenConfigurationBuilder.localMavenRepositoryLocation(localRepositoryFolder)
+            .mavenConfiguration(mavenConfigurationBuilder
                 .remoteRepository(newRemoteRepositoryBuilder().id("local.repo")
                     .url(getLocalRepositoryFolder().toURI().toURL())
                     .build())
@@ -149,7 +148,11 @@ public class EmbeddedTestHelper {
   }
 
   public File getFolderForApplication(String applicationFolderName) {
-    return toFile(getClass().getClassLoader().getResource(applicationFolderName));
+    return toFile(getClass().getClassLoader().getResource(Paths.get("artifacts", "apps", applicationFolderName).toString()));
+  }
+
+  public File getFolderForDomain(String domainFolderName) {
+    return toFile(getClass().getClassLoader().getResource(Paths.get("artifacts", "domains", domainFolderName).toString()));
   }
 
   public EmbeddedContainer getContainer() {
