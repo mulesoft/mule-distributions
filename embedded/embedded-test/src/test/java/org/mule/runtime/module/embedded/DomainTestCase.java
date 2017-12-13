@@ -12,6 +12,7 @@ import static java.lang.String.format;
 import static java.util.Optional.empty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
@@ -21,6 +22,7 @@ import static org.mule.test.infrastructure.maven.MavenTestUtils.getDomainBundleD
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
+import org.mule.tck.junit4.rule.DynamicPort;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -34,18 +36,22 @@ import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
 import org.junit.AfterClass;
+import org.junit.Rule;
 import org.junit.Test;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
 public class DomainTestCase extends AbstractEmbeddedTestCase {
 
+  @Rule
+  public DynamicPort dynamicPort = new DynamicPort("httpPort");
+
   @AfterClass
   public static void dispose() {
     embeddedTestHelper.dispose();
   }
 
-  @Description("Embedded runs an application depending on a connector")
+  @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
   public void domainWithHttpConnector() throws Exception {
     BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
@@ -63,6 +69,25 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
       }
     });
 
+  }
+
+  @Description("Embedded deploys and undeploys a domain")
+  @Test
+  public void deployUndeployDomain() throws Exception {
+    runWithContainer(container -> {
+      try {
+        testWithSystemProperty("httpPort", dynamicPort.getValue(), () -> {
+          BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
+          File domainFile = installMavenArtifact(getDomainFolder("simple-domain"), domainBundleDescriptor);
+          container.getDeploymentService().deployDomain(ArtifactConfiguration.builder().artifactLocation(domainFile).build());
+          validateDomainIsDeployed(container, domainFile);
+          container.getDeploymentService().undeployDomain(domainFile.getName().replace(".jar", ""));
+          validateDomainIsUndeployed(container, domainFile);
+        });
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    });
   }
 
   private String getDomainFolder(String domainName) {

@@ -22,7 +22,6 @@ import static org.junit.Assert.fail;
 import static org.junit.rules.ExpectedException.none;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
-import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
@@ -42,7 +41,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.file.Paths;
-import java.util.function.Consumer;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -344,23 +342,6 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       sleep(200);
     } catch (InterruptedException e) {
       // do nothing
-    }
-  }
-
-  private void runWithContainer(Consumer<EmbeddedContainer> task) throws Exception {
-    try {
-      embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
-        try {
-          embeddedContainerBuilder.log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-              .product(MULE)
-              .build();
-        } catch (Exception e) {
-          throw new RuntimeException(e);
-        }
-      }, task);
-    } catch (Exception e) {
-      e.printStackTrace();
-      fail();
     }
   }
 

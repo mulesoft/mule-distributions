@@ -10,6 +10,7 @@ import static java.lang.String.valueOf;
 import static java.util.Optional.empty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import static org.mule.runtime.container.api.MuleFoldersUtil.DOMAINS_FOLDER;
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
@@ -107,14 +108,45 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
         deployConsumer.accept(container, artifactConfiguration);
         // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify code for deployment!
         if (validateUsageOfDeploymentService) {
-          assertThat(new File(new File(container.getContainerFolder(), artifactDeploymentFolder),
-                              artifactFile.getName().replace(".jar", "")).exists(),
-                     is(true));
+          validateArtifactState(artifactDeploymentFolder, artifactFile, container, true);
         }
 
         portConsumer.accept(httpListenerPort);
       });
     });
+  }
+
+
+  protected void validateDomainIsDeployed(EmbeddedContainer embeddedContainer, File domainFile) {
+    validateArtifactState(DOMAINS_FOLDER, domainFile, embeddedContainer, true);
+  }
+
+  protected void validateDomainIsUndeployed(EmbeddedContainer embeddedContainer, File domainFile) {
+    validateArtifactState(DOMAINS_FOLDER, domainFile, embeddedContainer, false);
+  }
+
+  private void validateArtifactState(String artifactDeploymentFolder, File artifactFile, EmbeddedContainer container,
+                                     boolean deployed) {
+    assertThat(new File(new File(container.getContainerFolder(), artifactDeploymentFolder),
+                        artifactFile.getName().replace(".jar", "")).exists(),
+               is(deployed));
+  }
+
+  protected void runWithContainer(Consumer<EmbeddedContainer> task) throws Exception {
+    try {
+      embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
+        try {
+          embeddedContainerBuilder.log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
+              .product(MULE)
+              .build();
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
+      }, task);
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail();
+    }
   }
 
   @Override
