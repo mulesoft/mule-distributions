@@ -52,6 +52,7 @@
                     <systemPropertyVariables>
                         <mule.version>${project.version}</mule.version>
                         <settings.file>${settingsFile}</settings.file>
+                        <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
