@@ -38,7 +38,6 @@ The Mule distribution contains the following directories and files:
 /bin            Shell and batch scripts for controlling Mule from the command
                 line
 /conf           Configuration files
-/docs           API documentation (Javadoc) for Mule and its sub-projects
 /lib/boot       Libraries used by the Java Service Wrapper to boot the server
 /lib/launcher   Libraries required to launch the Java Service Wrapper
 /lib/mule       Mule libraries
@@ -48,7 +47,6 @@ The Mule distribution contains the following directories and files:
                 distributed Mule classes. You must restart Mule after adding
                 files to this directory.
 /logs           Log file output when running in background mode
-/src            The source code for all Mule modules
 LICENSE.txt     License agreement for Mule
 README.txt      The Getting Started document you are reading
 
@@ -87,7 +85,7 @@ using start, stop, or restart as the first parameter as needed.
     mule start|stop|restart
 
 For more information on running Mule, see
-https://developer.mulesoft.com/docs/display/current/Downloading+and+Starting+Mule+ESB.
+https://developer.mulesoft.com/docs/display/current/Downloading+and+Starting+Mule+ESB
 
 
 Where Do I Go Next?
@@ -95,16 +93,16 @@ Where Do I Go Next?
 
 This document has provided a brief overview of getting started with Mule. What follows is information about where to go next.
 
-- For complete information on using Mule, go to the Mule User Guide at:
-https://developer.mulesoft.com/docs/display/current/Home
+- For complete information on using Mule, go to the Mule Documentation at:
+https://docs.mulesoft.com/
 
 - As a Mule Enterprise user, if you need assistance see the support page at
 https://www.mulesoft.com/support-and-services/mule-esb-support-license-subscription
 
 - If you are evaluating Mule and want to find out about subscription
 options, you can submit a request for MuleSoft to contact you by
-going to https://www.mulesoft.com/platform/soa/mule-esb-open-source-esb.
+going to https://www.mulesoft.com/platform/soa/mule-esb-open-source-esb
 
 - If you experience problems with the Mule software or documentation,
 please log an issue in the MuleSoft issue-tracking system, located at
-http://www.mulesoft.org/jira/browse/MULE
+https://www.mulesoft.org/jira/browse/MULE
