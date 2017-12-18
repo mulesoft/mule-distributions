@@ -4,9 +4,7 @@
 /mule-standalone-${productVersion}/apps
 /mule-standalone-${productVersion}/bin
 /mule-standalone-${productVersion}/conf
-/mule-standalone-${productVersion}/docs
 /mule-standalone-${productVersion}/domains
-/mule-standalone-${productVersion}/examples
 /mule-standalone-${productVersion}/lib
 /mule-standalone-${productVersion}/logs
 /mule-standalone-${productVersion}/LICENSE.txt
@@ -23,7 +21,6 @@
 /mule-standalone-${productVersion}/bin/mule
 /mule-standalone-${productVersion}/bin/mule.bat
 
-
 #
 # /conf
 #
@@ -33,23 +30,10 @@
 /mule-standalone-${productVersion}/conf/tls-default.conf
 /mule-standalone-${productVersion}/conf/tls-fips140-2.conf
 
-
-#
-# /docs
-#
-/mule-standalone-${productVersion}/docs/api
-/mule-standalone-${productVersion}/docs/api/+
-
 #
 # /domains
 #
 /mule-standalone-${productVersion}/domains/default
-
-
-#
-# /examples
-#
-/mule-standalone-${productVersion}/examples/README.txt
 
 #
 # /lib/boot
