@@ -30,13 +30,19 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 
 
 public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
 
-  protected static EmbeddedTestHelper embeddedTestHelper = new EmbeddedTestHelper(false, false);
+  protected static EmbeddedTestHelper embeddedTestHelper;
 
   private static final String APPS_FOLDER = "apps";
+
+  @BeforeClass
+  public static void initialise() {
+    embeddedTestHelper = new EmbeddedTestHelper(false, false);
+  }
 
   @AfterClass
   public static void dispose() {

@@ -46,11 +46,6 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   @Rule
   public DynamicPort dynamicPort = new DynamicPort("httpPort");
 
-  @AfterClass
-  public static void dispose() {
-    embeddedTestHelper.dispose();
-  }
-
   @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
   public void domainWithHttpConnector() throws Exception {
