@@ -79,13 +79,6 @@
                 <include>*.txt</include>
             </includes>
         </fileSet>
-
-        <!-- Copy javadocs (the build must be run with -DperformRelease=true) -->
-        <fileSet>
-            <directory>../../target/site/apidocs</directory>
-            <outputDirectory>docs/api</outputDirectory>
-            <fileMode>0644</fileMode>
-        </fileSet>
     </fileSets>
 
     <!--
