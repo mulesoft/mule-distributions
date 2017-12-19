@@ -130,8 +130,8 @@
                     <artifactId>xmlsec</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.opensaml</groupId>
-                    <artifactId>opensaml</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk15on</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.apache.commons</groupId>
