@@ -35,7 +35,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 

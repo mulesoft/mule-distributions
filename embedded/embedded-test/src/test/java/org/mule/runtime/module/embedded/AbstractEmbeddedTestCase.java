@@ -52,7 +52,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                      Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
                      APPS_FOLDER, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration));
   }
@@ -62,10 +62,12 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                      Consumer<Integer> portConsumer,
                                      boolean lazyInitializationEnabled,
                                      boolean xmlValidationsEnabled,
+                                     boolean lazyConnectionsEnabled,
                                      Optional<URI> log4JConfigurationFileOptional,
                                      boolean validateUsageOfDeploymentService)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled, xmlValidationsEnabled,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled,
+                     xmlValidationsEnabled, lazyConnectionsEnabled,
                      log4JConfigurationFileOptional, validateUsageOfDeploymentService,
                      APPS_FOLDER, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration));
@@ -74,7 +76,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinDomain(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                 Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
                      DOMAINS_FOLDER, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployDomain(artifactConfiguration));
   }
@@ -84,6 +86,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   Consumer<Integer> portConsumer,
                                   boolean lazyInitializationEnabled,
                                   boolean xmlValidationsEnabled,
+                                  boolean lazyConnectionsEnabled,
                                   Optional<URI> log4JConfigurationFileOptional,
                                   boolean validateUsageOfDeploymentService,
                                   String artifactDeploymentFolder,
@@ -109,6 +112,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
             .deploymentConfiguration(DeploymentConfiguration.builder()
                 .lazyInitialization(lazyInitializationEnabled)
                 .xmlValidations(xmlValidationsEnabled)
+                .lazyConnectionsEnabled(lazyConnectionsEnabled)
                 .build())
             .build();
         deployConsumer.accept(container, artifactConfiguration);
