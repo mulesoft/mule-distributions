@@ -115,7 +115,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       } catch (UnirestException e) {
         assertThat(org.apache.commons.lang3.exception.ExceptionUtils.getRootCause(e), instanceOf(ConnectException.class));
       }
-    }, true, false, empty(), false);
+    }, true, false, true, empty(), false);
   }
 
   @Description("Embedded runs an application in lazy init mode and enable xml validations")
@@ -124,7 +124,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-invalid-xml", empty());
     expectedException.expectMessage(containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
     doWithinApplication(bundleDescriptor, getAppFolder("http-invalid-xml"), port -> {
-    }, true, true, empty(), false);
+    }, true, true, true, empty(), false);
   }
 
 
@@ -159,7 +159,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }
-    }, false, true, of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
+    }, false, true, true,
+                        of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
     try {
       File expectedLoggingFile = new File(LOGGING_FILE);
       assertThat(expectedLoggingFile.exists(), is(true));
