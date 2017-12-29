@@ -110,6 +110,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-api-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.1.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-ast-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-xml-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-json-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-raml-1.1.0-SNAPSHOT.jar
