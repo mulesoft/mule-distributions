@@ -123,6 +123,7 @@
                 <!--Metadata API-->
                 <include>org.mule.runtime:mule-metadata-model-api</include>
                 <include>org.mule.runtime:mule-metadata-model-java</include>
+                <include>org.mule.runtime:mule-metadata-model-java-ast</include>
                 <include>org.mule.runtime:mule-metadata-model-persistence</include>
                 <include>org.mule.runtime:mule-metadata-model-xml</include>
                 <include>org.mule.runtime:mule-metadata-model-json</include>
