@@ -210,6 +210,7 @@
                 <!--Metadata API-->
                 <exclude>org.mule.runtime:mule-metadata-model-api</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-java</exclude>
+                <exclude>org.mule.runtime:mule-metadata-model-java-ast</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-persistence</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-xml</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-json</exclude>
