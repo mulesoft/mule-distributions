@@ -22,7 +22,6 @@
         <module>embedded-impl-bom</module>
         <module>embedded-test</module>
         <module>embedded-distribution</module>
-        <module>embedded-compatibility-test</module>
     </modules>
 
 </project>
