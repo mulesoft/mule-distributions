@@ -44,6 +44,7 @@ import org.mule.runtime.module.launcher.MuleContainer;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.Properties;
@@ -141,11 +142,11 @@ public class EmbeddedController {
     });
   }
 
-  private void setUpEnvironment() throws IOException {
+  private void setUpEnvironment() throws IOException, URISyntaxException {
     // Disable log4j2 JMX MBeans since it will fail when trying to recreate the container
     setProperty("log4j2.disable.jmx", "true");
 
-    setProperty(MULE_HOME_DIRECTORY_PROPERTY, containerInfo.getContainerBaseFolder().getPath());
+    setProperty(MULE_HOME_DIRECTORY_PROPERTY, containerInfo.getContainerBaseFolder().toURI().getPath());
     getDomainsFolder().mkdirs();
     getDomainFolder("default").mkdirs();
     getServicesFolder().mkdirs();
