@@ -131,7 +131,7 @@
 /mule-standalone-${productVersion}/services/mule-service-scheduler-1.1.0-DRY-RUN-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-http-1.1.0-DRY-RUN-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.1.0-DRY-RUN-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-soap-1.1.0-SNAPSHOT-mule-service.jar
+/mule-standalone-${productVersion}/services/mule-service-soap-1.1.0-DRY-RUN-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-weave-2.1.0-SNAPSHOT-mule-service.jar
 #
 # /lib/opt
