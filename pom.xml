@@ -27,7 +27,7 @@
 	<properties>
         <muleEmbeddedApiVersion>1.1.0-DRY-RUN</muleEmbeddedApiVersion>
 
-        <muleSchedulerServiceVersion>1.1.0-SNAPSHOT</muleSchedulerServiceVersion>
+        <muleSchedulerServiceVersion>1.1.0-DRY-RUN</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.1.0-DRY-RUN</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.1.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.1.0-SNAPSHOT</muleSoapServiceVersion>
