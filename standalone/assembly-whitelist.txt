@@ -214,7 +214,7 @@
 /mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
 /mule-standalone-${productVersion}/lib/opt/api-annotations-1.0.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-3.1.0-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.1.0-+
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.1.0-DRY-RUN.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.1.0-+
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.5.0.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-1.4.jar
