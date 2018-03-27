@@ -32,7 +32,7 @@
         <muleOAuthServiceVersion>1.1.2-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.1.3-SNAPSHOT</muleSoapServiceVersion>
         <muleHttpConnectorTestVersion>1.2.0</muleHttpConnectorTestVersion>
-        <muleFileConnectorTestVersion>1.1.3-SNAPSHOT</muleFileConnectorTestVersion>
+        <muleFileConnectorTestVersion>1.1.2</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
