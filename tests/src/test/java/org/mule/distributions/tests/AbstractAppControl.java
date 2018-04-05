@@ -7,14 +7,20 @@
 package org.mule.distributions.tests;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Runtime.getRuntime;
+import static java.lang.System.getProperties;
 import static java.lang.System.getProperty;
+import static java.lang.System.getenv;
+import static java.util.Arrays.stream;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.stream.Collectors.toMap;
 import static org.apache.commons.lang3.ArrayUtils.add;
 import static org.apache.commons.lang3.ArrayUtils.addAll;
 import static org.junit.Assert.assertFalse;
 import static org.junit.rules.RuleChain.outerRule;
+import static org.mule.distributions.tests.DistributionFinder.findDistribution;
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.test.infrastructure.process.MuleStatusProbe.isNotRunning;
 import static org.mule.test.infrastructure.process.MuleStatusProbe.isRunning;
@@ -29,12 +35,6 @@ import org.mule.test.infrastructure.process.rules.MuleDeployment;
 import org.mule.test.infrastructure.process.rules.MuleInstallation;
 import org.mule.test.infrastructure.process.rules.MuleServerFailureLogger;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
@@ -44,16 +44,19 @@ import org.junit.rules.TestRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+
 public class AbstractAppControl extends AbstractMuleTestCase {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AbstractAppControl.class);
   public static final String LOCAL_REPOSITORY = "localRepository";
   protected static MuleProcessController mule;
-  protected static MuleInstallation installation = new MuleInstallation(getProperty("mule.distribution"));
+  protected static MuleInstallation installation = new MuleInstallation(findDistribution());
   private static Prober prober = new PollingProber(getDeploymentTimeout(), 1000);
 
-  private static int timeout =
-      Integer.parseInt(System.getProperty(TEST_TIMEOUT_SYSTEM_PROPERTY, Integer.toString(DEFAULT_TEST_TIMEOUT_SECS)));
+  private static int timeout = parseInt(getProperty(TEST_TIMEOUT_SYSTEM_PROPERTY, Integer.toString(DEFAULT_TEST_TIMEOUT_SECS)));
 
   private static final Thread shutdownHookThread = new Thread(() -> stopMule());
 
@@ -82,14 +85,14 @@ public class AbstractAppControl extends AbstractMuleTestCase {
     removeShutdownHooks();
   }
 
-  private static String getSystemOrEnvProperty(String key) {
+  protected static String getSystemOrEnvProperty(String key) {
     return getSystemOrEnvProperty(key, null);
   }
 
   private static String getSystemOrEnvProperty(String key, String def) {
-    String property = System.getProperty(key);
+    String property = getProperty(key);
     if (property == null) {
-      property = System.getenv(key);
+      property = getenv(key);
     }
     return property != null ? property : def;
   }
@@ -134,10 +137,10 @@ public class AbstractAppControl extends AbstractMuleTestCase {
     return builder;
   }
 
-  private static String[] getArgumentsIncludingDefaults(Boolean addRepositoryLocation, String... arguments) {
+  protected static String[] getArgumentsIncludingDefaults(Boolean addRepositoryLocation, String... arguments) {
     Optional<String> localRepository = getLocalRepository();
 
-    for (Entry<Object, Object> sysPropEntry : System.getProperties().entrySet()) {
+    for (Entry<Object, Object> sysPropEntry : getProperties().entrySet()) {
       final String key = (String) sysPropEntry.getKey();
       if (key.startsWith("-M")) {
         arguments = add(arguments, key + "=" + sysPropEntry.getValue());
@@ -155,17 +158,17 @@ public class AbstractAppControl extends AbstractMuleTestCase {
                   "-M-Dmule.verbose.exceptions=true");
   }
 
-  private static String[] getArgumentsIncludingDefaults(String... arguments) {
+  public static String[] getArgumentsIncludingDefaults(String... arguments) {
     return getArgumentsIncludingDefaults(true, arguments);
   }
 
-  private static Map<String, String> getDefaultArguments() {
-    return Arrays.stream(getArgumentsIncludingDefaults()).map(property -> property.split("="))
-        .collect(Collectors.toMap(e -> e[0], e -> e[1]));
+  protected static Map<String, String> getDefaultArguments() {
+    return stream(getArgumentsIncludingDefaults()).map(property -> property.split("="))
+        .collect(toMap(e -> e[0], e -> e[1]));
   }
 
-  private static Optional<String> getLocalRepository() {
-    final String localRepository = System.getProperty(LOCAL_REPOSITORY);
+  protected static Optional<String> getLocalRepository() {
+    final String localRepository = getProperty(LOCAL_REPOSITORY);
     if (localRepository != null) {
       return of(localRepository);
     }
@@ -173,11 +176,14 @@ public class AbstractAppControl extends AbstractMuleTestCase {
   }
 
   private static void addShutdownHooks() {
-    Runtime.getRuntime().addShutdownHook(shutdownHookThread);
+    getRuntime().addShutdownHook(shutdownHookThread);
   }
 
   private static void removeShutdownHooks() {
-    Runtime.getRuntime().removeShutdownHook(shutdownHookThread);
+    getRuntime().removeShutdownHook(shutdownHookThread);
   }
 
+  public static MuleProcessController getMule() {
+    return mule;
+  }
 }

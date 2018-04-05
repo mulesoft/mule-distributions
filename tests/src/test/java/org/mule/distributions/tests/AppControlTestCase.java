@@ -11,17 +11,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 import static org.mule.runtime.core.api.util.ClassUtils.getResource;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import io.qameta.allure.Issue;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
-@Ignore("MULE-13040")
-@Issue("MULE-13040")
 public class AppControlTestCase extends AbstractAppControl {
 
   private static final String SINGLE_APP_COMMAND = "-app";
@@ -31,51 +27,51 @@ public class AppControlTestCase extends AbstractAppControl {
 
   @Before
   public void setup() throws IOException {
-    mule.deploy(getResourceAsString("apps", EMPTY_APP));
+    getMule().deploy(getResourceAsString("apps", EMPTY_APP));
   }
 
   @After
   public void tearDown() {
-    mule.stop();
+    getMule().stop();
     assertMuleStops();
   }
 
   @Test
   public void muleStarts() throws IOException {
-    mule.start();
+    getMule().start();
     assertMuleStarts();
     assertAppIsDeployed(EMPTY_APP);
   }
 
   @Test
   public void stopShouldStopMule() {
-    mule.start();
+    getMule().start();
     assertMuleStarts();
-    mule.stop();
+    getMule().stop();
     assertMuleStops();
   }
 
   @Test
   public void restartSpawnsANewProcess() {
-    mule.start();
-    int id = mule.getProcessId();
-    mule.restart();
+    getMule().start();
+    int id = getMule().getProcessId();
+    getMule().restart();
     assertAppIsDeployed(EMPTY_APP);
     assertMuleStarts();
-    assertThat(mule.getProcessId(), not(is(id)));
+    assertThat(getMule().getProcessId(), not(is(id)));
   }
 
   @Test
   public void restartStartStoppedServer() {
-    mule.restart();
+    getMule().restart();
     assertAppIsDeployed(EMPTY_APP);
     assertMuleStarts();
   }
 
   @Test
   public void deploySingleApplication() {
-    mule.deploy(getResourceAsString("apps", EMPTY_APP));
-    mule.start(SINGLE_APP_COMMAND, EMPTY_APP);
+    getMule().deploy(getResourceAsString("apps", EMPTY_APP));
+    getMule().start(SINGLE_APP_COMMAND, EMPTY_APP);
     assertAppIsDeployed(EMPTY_APP);
     assertAppNotDeployed(DEFAULT);
     assertMuleStarts();
