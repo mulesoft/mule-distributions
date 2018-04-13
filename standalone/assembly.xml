@@ -32,7 +32,6 @@
             <includes>
                 <include>launcher</include>
                 <include>mule</include>
-                <include>setup_local_instance.sh</include>
             </includes>
         </fileSet>
         <fileSet>
@@ -43,7 +42,6 @@
                 <include>*.groovy</include>
                 <include>*.bat</include>
                 <include>*.conf</include>
-                <include>*.txt</include>
             </includes>
         </fileSet>
 

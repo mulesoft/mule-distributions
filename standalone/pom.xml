@@ -87,27 +87,6 @@
                 </executions>
             </plugin>
 
-            <!--
-                Create a dummy javadoc folder so the assembly always succeeds
-                even without a full site run.
-             -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <tasks>
-                                <mkdir dir="../../../target/site/apidocs"/>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.mule.tools</groupId>
                 <artifactId>mule-assembly-verifier</artifactId>
