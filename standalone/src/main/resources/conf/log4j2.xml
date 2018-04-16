@@ -4,25 +4,18 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%-5p %d [%t] %X{correlationId}%c: %m%n"/>
         </Console>
+        <Console name="ConsoleLogUtil" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
     </Appenders>
 
     <Loggers>
 
-        <!-- CXF is used heavily by Mule for web services -->
-        <AsyncLogger name="org.apache.cxf" level="WARN"/>
+        <AsyncLogger name="org.mule.runtime.core.internal.logging" additivity="false" level="INFO">
+            <AppenderRef ref="ConsoleLogUtil"/>
+        </AsyncLogger>
 
-        <!-- Apache Commons tend to make a lot of noise which can clutter the log-->
-        <AsyncLogger name="org.apache" level="WARN"/>
-
-        <!-- Reduce startup noise -->
-        <AsyncLogger name="org.springframework.beans.factory" level="WARN"/>
-        <AsyncLogger name="org.quartz" level="WARN"/>
-
-        <!-- Mule classes -->
-        <AsyncLogger name="org.mule" level="INFO"/>
-        <AsyncLogger name="com.mulesoft" level="INFO"/>
-
-        <AsyncRoot level="INFO">
+        <AsyncRoot level="WARN">
             <AppenderRef ref="Console"/>
         </AsyncRoot>
     </Loggers>
