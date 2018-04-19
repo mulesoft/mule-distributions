@@ -11,6 +11,8 @@
 
     <Loggers>
 
+        <AsyncLogger name="org.mule.runtime.core.internal.processor.LoggerMessageProcessor" level="INFO"/>
+
         <AsyncLogger name="org.mule.runtime.core.internal.logging" additivity="false" level="INFO">
             <AppenderRef ref="ConsoleLogUtil"/>
         </AsyncLogger>
@@ -18,6 +20,7 @@
         <AsyncRoot level="WARN">
             <AppenderRef ref="Console"/>
         </AsyncRoot>
+
     </Loggers>
 
 </Configuration>
