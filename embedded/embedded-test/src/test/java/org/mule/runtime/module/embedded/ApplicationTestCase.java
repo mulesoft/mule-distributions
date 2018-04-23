@@ -88,6 +88,21 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     });
   }
 
+  @Description("Embedded runs an application declaring a remote repository for a dependency")
+  @Test
+  public void applicationWithRemoteRepositories() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("pom-with-remote-repositories", empty());
+    doWithinApplicationNotInstalled(bundleDescriptor, getAppFolder("pom-with-remote-repositories"), port -> {
+      try {
+        String httpBody = "test-message";
+        HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
+        assertThat(response.getBody(), is(httpBody));
+      } catch (UnirestException e) {
+        throw new RuntimeException(e);
+      }
+    });
+  }
+
   @Description("Embedded runs an application using test dependencies and deploying a jar file")
   @Test
   public void applicationWithTestDependency() throws Exception {

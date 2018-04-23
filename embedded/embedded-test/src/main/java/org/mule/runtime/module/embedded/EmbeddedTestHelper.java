@@ -39,15 +39,17 @@ public class EmbeddedTestHelper {
   private final TemporaryFolder temporaryFolder;
   private final boolean enterprise;
   private final boolean forceUpdateSnapshots;
+  private boolean ignoreArtifactDescriptorRepositories = false;
   private File containerFolder;
   private EmbeddedContainer container;
 
-  public EmbeddedTestHelper(boolean enterprise, boolean forceUpdateSnapshots) {
+  public EmbeddedTestHelper(boolean enterprise, boolean forceUpdateSnapshots, boolean ignoreArtifactDescriptorRepositories) {
     try {
       temporaryFolder = new TemporaryFolder();
       temporaryFolder.create();
       this.enterprise = enterprise;
       this.forceUpdateSnapshots = forceUpdateSnapshots;
+      this.ignoreArtifactDescriptorRepositories = ignoreArtifactDescriptorRepositories;
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -95,6 +97,7 @@ public class EmbeddedTestHelper {
         MavenConfiguration.MavenConfigurationBuilder mavenConfigurationBuilder =
             enterprise ? createDefaultEnterpriseMavenConfigurationBuilder(forceUpdateSnapshots)
                 : createDefaultCommunityMavenConfigurationBuilder(forceUpdateSnapshots);
+        mavenConfigurationBuilder.ignoreArtifactDescriptorRepositories(ignoreArtifactDescriptorRepositories);
         embeddedContainerBuilder = builder()
             .muleVersion(System.getProperty("mule.version"))
             .containerConfiguration(ContainerConfiguration.builder().containerFolder(containerFolder).build())

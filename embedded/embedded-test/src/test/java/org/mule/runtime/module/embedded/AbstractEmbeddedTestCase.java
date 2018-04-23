@@ -8,6 +8,7 @@ package org.mule.runtime.module.embedded;
 
 import static java.lang.String.valueOf;
 import static java.util.Optional.empty;
+import static org.apache.commons.io.FileUtils.toFile;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -24,7 +25,6 @@ import org.mule.tck.junit4.rule.FreePortFinder;
 
 import java.io.File;
 import java.net.URI;
-import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -37,11 +37,12 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
 
   protected static EmbeddedTestHelper embeddedTestHelper;
 
+  private static final String ARTIFACTS_FOLDER = "artifacts";
   private static final String APPS_FOLDER = "apps";
 
   @BeforeClass
   public static void initialise() {
-    embeddedTestHelper = new EmbeddedTestHelper(false, false);
+    embeddedTestHelper = new EmbeddedTestHelper(false, false, false);
   }
 
   @AfterClass
@@ -53,8 +54,17 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                      Consumer<Integer> portConsumer)
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
-                     APPS_FOLDER, (container, artifactConfiguration) -> container.getDeploymentService()
+                     APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration));
+  }
+
+  protected void doWithinApplicationNotInstalled(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
+                                                 Consumer<Integer> portConsumer)
+      throws Exception {
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+                     APPS_FOLDER, false, (container, artifactConfiguration) -> container.getDeploymentService()
+                         .deployApplication(artifactConfiguration));
+
   }
 
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor,
@@ -69,7 +79,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled,
                      xmlValidationsEnabled, lazyConnectionsEnabled,
                      log4JConfigurationFileOptional, validateUsageOfDeploymentService,
-                     APPS_FOLDER, (container, artifactConfiguration) -> container.getDeploymentService()
+                     APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration));
   }
 
@@ -77,7 +87,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                 Consumer<Integer> portConsumer)
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
-                     DOMAINS_FOLDER, (container, artifactConfiguration) -> container.getDeploymentService()
+                     DOMAINS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployDomain(artifactConfiguration));
   }
 
@@ -90,9 +100,11 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   Optional<URI> log4JConfigurationFileOptional,
                                   boolean validateUsageOfDeploymentService,
                                   String artifactDeploymentFolder,
+                                  boolean installArtifact,
                                   BiConsumer<EmbeddedContainer, ArtifactConfiguration> deployConsumer)
       throws Exception {
-    File artifactFile = installMavenArtifact(artifactFolder, applicationBundleDescriptor);
+    File artifactFile =
+        installArtifact ? installMavenArtifact(artifactFolder, applicationBundleDescriptor) : new File(artifactFolder);
     Integer httpListenerPort = new FreePortFinder(6000, 9000).find();
     testWithSystemProperty("httpPort", valueOf(httpListenerPort), () -> {
       embeddedTestHelper.recreateContainerFolder();
@@ -164,7 +176,8 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   }
 
   protected String getAppFolder(String appName) {
-    return Paths.get(APPS_FOLDER, appName).toString();
+    return toFile(this.getClass().getClassLoader().getResource(ARTIFACTS_FOLDER + "/" + APPS_FOLDER + "/" + appName))
+        .getAbsolutePath();
   }
 
 }
