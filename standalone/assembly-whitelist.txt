@@ -249,7 +249,6 @@
 # /lib/user
 #
 /mule-standalone-${productVersion}/lib/user
-/mule-standalone-${productVersion}/lib/user/README.txt
 
 
 #
