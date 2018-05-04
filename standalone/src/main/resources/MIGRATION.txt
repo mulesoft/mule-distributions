@@ -2,7 +2,8 @@ MIGRATION GUIDE
 ===============
 
 Migration changes from 4.1.1 to 4.1.2
-MULE-14910: logged event ID will not be formatted anymore. Replace "%X{correlationId}" by "[event: %X{correlationId}]" in log config files to keep behavior. 
+MULE-14910: logged event ID will not be formatted anymore. Replace "%X{correlationId}" by "[event: %X{correlationId}]" in log config files to keep behavior.
+MULE-14962: increased default value for fixed-frequency component to 1 minute. Add 'frequency="1000"' to keep behavior (e.g. '<fixed-frequency frequency="1000"/>').
 
 For a guide on how to migrate from Mule Runtime Community Edition 3.x to 4.x, please refer to our documentation:
 https://docs.mulesoft.com
