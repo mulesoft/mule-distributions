@@ -259,4 +259,4 @@
 # /lib/launcher
 #
 /mule-standalone-${productVersion}/lib/launcher
-/mule-standalone-${productVersion}/lib/launcher/groovy-all-2.4.4-indy.jar
+/mule-standalone-${productVersion}/lib/launcher/groovy-all-2.4.15-indy.jar
