@@ -62,6 +62,9 @@
 /mule-standalone-${productVersion}/lib/boot/log4j-core-2.11.0.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-slf4j-impl-2.11.0.jar
 /mule-standalone-${productVersion}/lib/boot/slf4j-api-1.7.25.jar
+/mule-standalone-${productVersion}/lib/boot/jackson-annotations-2.9.0.jar
+/mule-standalone-${productVersion}/lib/boot/jackson-core-2.9.5.jar
+/mule-standalone-${productVersion}/lib/boot/jackson-databind-2.9.5.jar
 
 #
 # /lib/boot/exec
@@ -173,10 +176,7 @@
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.5.3.jar
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.4.6.jar
 /mule-standalone-${productVersion}/lib/opt/j2objc-annotations-1.1.jar
-/mule-standalone-${productVersion}/lib/opt/jackson-annotations-2.9.0.jar
-/mule-standalone-${productVersion}/lib/opt/jackson-core-2.9.5.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.8.jar
-/mule-standalone-${productVersion}/lib/opt/jackson-databind-2.9.5.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.9.5.jar
 /mule-standalone-${productVersion}/lib/opt/javassist-3.7.ga.jar
 /mule-standalone-${productVersion}/lib/opt/javax.inject-1.jar
