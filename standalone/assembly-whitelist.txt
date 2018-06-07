@@ -159,7 +159,7 @@
 /mule-standalone-${productVersion}/lib/opt/commons-digester-1.8.1.jar
 /mule-standalone-${productVersion}/lib/opt/commons-io-2.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang-2.6.jar
-/mule-standalone-${productVersion}/lib/opt/commons-lang3-3.6.jar
+/mule-standalone-${productVersion}/lib/opt/commons-lang3-3.7.jar
 /mule-standalone-${productVersion}/lib/opt/commons-pool-1.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-pool2-2.5.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-validator-1.5.1.jar
