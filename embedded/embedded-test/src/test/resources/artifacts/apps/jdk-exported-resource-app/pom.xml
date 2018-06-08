@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>test</groupId>
-    <artifactId>http-test-dependency</artifactId>
+    <artifactId>jdk-exported-resource-app</artifactId>
     <version>1.0.0</version>
     <packaging>mule-application</packaging>
 
@@ -27,7 +27,6 @@
             <artifactId>mule-http-connector</artifactId>
             <version>${muleHttpConnectorTestVersion}</version>
             <classifier>mule-plugin</classifier>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -38,9 +37,6 @@
                 <artifactId>mule-maven-plugin</artifactId>
                 <version>${packagerVersion}</version>
                 <extensions>true</extensions>
-                <configuration>
-                    <lightweightPackage>true</lightweightPackage>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

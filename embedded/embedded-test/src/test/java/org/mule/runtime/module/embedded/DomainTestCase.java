@@ -81,5 +81,4 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   private String getDomainFolder(String domainName) {
     return Paths.get("domains", domainName).toString();
   }
-
 }

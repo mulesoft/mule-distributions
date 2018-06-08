@@ -1,13 +1,11 @@
 {
-  "name": "Database",
+  "name": "jdk-resource",
   "minMuleVersion": "4.0.0",
   "requiredProduct": "MULE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
-      "exportedPackages": [
-        "org.mule.test"
-      ],
+      "exportedPackages": ["org.mule.test"],
       "exportedResources": [],
       "includeTestDependencies": "true"
     }

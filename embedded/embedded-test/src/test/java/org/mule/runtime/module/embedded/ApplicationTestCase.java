@@ -91,7 +91,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), port -> {
       try {
         HttpResponse<String> response = post(format("http://localhost:%s/", port)).asString();
-        assertThat(response.getBody(), containsString(""));
+        assertThat(response.getBody(), containsString("SAAJ0567.soap.null.input=SAAJ0567: Null {0} argument to {1}"));
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }
@@ -104,16 +104,6 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     String appName = "pom-with-remote-repositories";
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(appName, empty());
     doWithinApplicationNotInstalled(bundleDescriptor, getAppFolder(appName), ApplicationTestCase::assertTestMessage);
-  }
-
-  static void assertTestMessage(Integer port) {
-    try {
-      String httpBody = "test-message";
-      HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
-      assertThat(response.getBody(), is(httpBody));
-    } catch (UnirestException e) {
-      throw new RuntimeException(e);
-    }
   }
 
   @Description("Embedded runs an application using test dependencies and deploying a jar file")
@@ -180,8 +170,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   public void applicationWithCustomLogger() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), port -> {
-                          assertTestMessage(port);
-                        }, false, true, true,
+      assertTestMessage(port);
+    }, false, true, true,
                         of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
     try {
       File expectedLoggingFile = new File(LOGGING_FILE);
@@ -365,6 +355,16 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       sleep(200);
     } catch (InterruptedException e) {
       // do nothing
+    }
+  }
+
+  static void assertTestMessage(Integer port) {
+    try {
+      String httpBody = "test-message";
+      HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
+      assertThat(response.getBody(), is(httpBody));
+    } catch (UnirestException e) {
+      throw new RuntimeException(e);
     }
   }
 
