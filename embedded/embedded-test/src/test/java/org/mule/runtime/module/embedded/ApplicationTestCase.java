@@ -86,6 +86,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application that retrieves a resource from the JDK")
   @Test
+  // This test may fail depending on the JDK used to run the tests
   public void jdkResourceAvailableFromApp() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("jdk-exported-resource-app", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), port -> {
