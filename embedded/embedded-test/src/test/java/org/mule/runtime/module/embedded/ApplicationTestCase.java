@@ -91,7 +91,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), port -> {
       try {
         HttpResponse<String> response = post(format("http://localhost:%s/", port)).asString();
-        assertThat(response.getBody(), containsString("SAAJ0567.soap.null.input=SAAJ0567: Null {0} argument to {1}"));
+        assertThat(response.getBody(), containsString("# The character set used to read documents with the \\ansi control"));
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }

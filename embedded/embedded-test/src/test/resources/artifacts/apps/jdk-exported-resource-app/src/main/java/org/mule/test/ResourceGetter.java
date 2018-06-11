@@ -11,6 +11,6 @@ import java.io.InputStream;
 public class ResourceGetter {
 
   public static InputStream getJdkResource() {
-    return Thread.currentThread().getContextClassLoader().getResourceAsStream("com/sun/xml/internal/messaging/saaj/soap/LocalStrings.properties");
+    return Thread.currentThread().getContextClassLoader().getResourceAsStream("javax/swing/text/rtf/charsets/ansi.txt");
   }
 }
