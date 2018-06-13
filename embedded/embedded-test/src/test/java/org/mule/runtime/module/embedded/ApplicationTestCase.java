@@ -29,6 +29,8 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_A
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
+
+import org.hamcrest.core.StringContains;
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
@@ -78,10 +80,19 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   public void applicationWithConnector() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), port -> {
+      assertTestMessage(port);
+    });
+  }
+
+  @Description("Embedded runs an application that retrieves a resource from the JDK")
+  @Test
+  // This test may fail depending on the JDK used to run the tests
+  public void jdkResourceAvailableFromApp() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("jdk-exported-resource-app", empty());
+    doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), port -> {
       try {
-        String httpBody = "test-message";
-        HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
-        assertThat(response.getBody(), is(httpBody));
+        HttpResponse<String> response = post(format("http://localhost:%s/", port)).asString();
+        assertThat(response.getBody(), containsString("# The character set used to read documents with the \\ansi control"));
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }
@@ -91,16 +102,9 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Description("Embedded runs an application declaring a remote repository for a dependency")
   @Test
   public void applicationWithRemoteRepositories() throws Exception {
-    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("pom-with-remote-repositories", empty());
-    doWithinApplicationNotInstalled(bundleDescriptor, getAppFolder("pom-with-remote-repositories"), port -> {
-      try {
-        String httpBody = "test-message";
-        HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
-        assertThat(response.getBody(), is(httpBody));
-      } catch (UnirestException e) {
-        throw new RuntimeException(e);
-      }
-    });
+    String appName = "pom-with-remote-repositories";
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(appName, empty());
+    doWithinApplicationNotInstalled(bundleDescriptor, getAppFolder(appName), ApplicationTestCase::assertTestMessage);
   }
 
   @Description("Embedded runs an application using test dependencies and deploying a jar file")
@@ -167,13 +171,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   public void applicationWithCustomLogger() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), port -> {
-      try {
-        String httpBody = "test-message";
-        HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
-        assertThat(response.getBody(), is(httpBody));
-      } catch (UnirestException e) {
-        throw new RuntimeException(e);
-      }
+      assertTestMessage(port);
     }, false, true, true,
                         of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
     try {
@@ -358,6 +356,16 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       sleep(200);
     } catch (InterruptedException e) {
       // do nothing
+    }
+  }
+
+  static void assertTestMessage(Integer port) {
+    try {
+      String httpBody = "test-message";
+      HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
+      assertThat(response.getBody(), is(httpBody));
+    } catch (UnirestException e) {
+      throw new RuntimeException(e);
     }
   }
 

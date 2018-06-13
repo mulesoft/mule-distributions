@@ -54,13 +54,7 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
       File applicationFile = installMavenArtifact(getAppFolder("http-echo-domain-app"), appBundleDescriptor);
       embeddedTestHelper.getContainer().getDeploymentService()
           .deployApplication(ArtifactConfiguration.builder().artifactLocation(applicationFile).build());
-      try {
-        String httpBody = "test-message";
-        HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
-        assertThat(response.getBody(), is(httpBody));
-      } catch (UnirestException e) {
-        throw new RuntimeException(e);
-      }
+      ApplicationTestCase.assertTestMessage(port);
     });
 
   }
@@ -87,5 +81,4 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   private String getDomainFolder(String domainName) {
     return Paths.get("domains", domainName).toString();
   }
-
 }
