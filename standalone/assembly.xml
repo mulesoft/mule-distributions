@@ -101,6 +101,9 @@
                 <include>org.slf4j:jcl-over-slf4j</include>
                 <include>org.slf4j:jul-to-slf4j</include>
                 <include>com.lmax:disruptor</include>
+                <include>com.fasterxml.jackson.core:jackson-databind</include>
+                <include>com.fasterxml.jackson.core:jackson-core</include>
+                <include>com.fasterxml.jackson.core:jackson-annotations</include>
             </includes>
         </dependencySet>
 
@@ -258,6 +261,9 @@
                 <exclude>org.slf4j:jul-to-slf4j</exclude>
                 <exclude>commons-logging:commons-logging</exclude>
                 <exclude>com.lmax:disruptor</exclude>
+                <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
+                <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
+                <exclude>com.fasterxml.jackson.core:jackson-annotations</exclude>
 
                 <!-- Excludes libraries on lib/launcher-->
                 <exclude>org.codehaus.groovy:groovy-all</exclude>
