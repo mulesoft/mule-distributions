@@ -69,11 +69,11 @@
                     <artifactId>geronimo-servlet_3.0_spec</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.glassfish.grizzly</groupId>
+                    <groupId>org.mule.glassfish.grizzly</groupId>
                     <artifactId>grizzly-http-server</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.glassfish.grizzly</groupId>
+                    <groupId>org.mule.glassfish.grizzly</groupId>
                     <artifactId>connection-pool</artifactId>
                 </exclusion>
                 <exclusion>
@@ -81,11 +81,11 @@
                     <artifactId>mail</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.glassfish.grizzly</groupId>
+                    <groupId>org.mule.glassfish.grizzly</groupId>
                     <artifactId>grizzly-http-client</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.glassfish.grizzly</groupId>
+                    <groupId>org.mule.glassfish.grizzly</groupId>
                     <artifactId>grizzly-websockets</artifactId>
                 </exclusion>
                 <exclusion>
