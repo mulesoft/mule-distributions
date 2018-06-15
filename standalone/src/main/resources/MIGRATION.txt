@@ -1,6 +1,9 @@
 MIGRATION GUIDE
 ===============
 
+Migration changes from 4.1.2 to 4.1.3
+MULE-15167: a new property "mule.deploy.applications" was added to deploy specific applications on startup time. Old command line option "-app" is still functional but deprecated.
+
 Migration changes from 4.1.1 to 4.1.2
 MULE-14910: logged event ID will not be formatted anymore. Replace "%X{correlationId}" by "[event: %X{correlationId}]" in log config files to keep behavior.
 MULE-14962: increased default value for fixed-frequency component to 1 minute. Add 'frequency="1000"' to keep behavior (e.g. '<fixed-frequency frequency="1000"/>').
