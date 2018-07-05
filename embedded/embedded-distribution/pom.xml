@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-modules-all</artifactId>
-            <version>${project.version}</version>
+            <version>4.1.2</version>
             <type>pom</type>
         </dependency>
 
@@ -103,7 +103,7 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-services-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
