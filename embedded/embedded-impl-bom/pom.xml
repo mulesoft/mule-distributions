@@ -5,16 +5,19 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-embedded</artifactId>
-        <version>4.1.2-hf1</version>
+        <version>4.1.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mule-module-embedded-impl-bom</artifactId>
+    <version>4.1.2-hf1</version>
+    
     <packaging>pom</packaging>
     <name>Mule Module Embedded Implementation Distribution BOM</name>
     <description>This project contains all the specific dependencies of the embedded runtime implementation independent from the runtime version</description>
 
     <properties>
+        <mule.version>4.1.2</mule.version>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
 
@@ -22,7 +25,7 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-module-embedded-impl</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.mule.distributions</groupId>

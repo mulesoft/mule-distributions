@@ -9,6 +9,7 @@
         <version>4.1.2</version>
     </parent>
     <artifactId>mule-embedded-distribution</artifactId>
+    <version>4.1.2-hf1</version>
     <packaging>pom</packaging>
     <name>Embedded (Single jar file)</name>
     <description>Assembles the Mule core, modules, and transports into a single library (jar). This is useful for embedding Mule into an existing project.</description>
