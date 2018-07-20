@@ -25,9 +25,6 @@
         <fileSet>
             <directory>target/services</directory>
             <outputDirectory>services</outputDirectory>
-            <includes>
-                <include>*.jar</include>
-            </includes>
         </fileSet>
 
         <!-- Make binary files executable. -->
@@ -165,13 +162,41 @@
 
         <!-- Mule Services -->
         <dependencySet>
-            <outputDirectory>services</outputDirectory>
+            <outputDirectory>services/${artifact.artifactId}-${artifact.baseVersion}</outputDirectory>
             <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
             <useStrictFiltering>true</useStrictFiltering>
+            <unpack>true</unpack>
             <includes>
                 <include>org.mule.services:mule-service-scheduler</include>
+            </includes>
+        </dependencySet>
+
+        <dependencySet>
+            <outputDirectory>services/${artifact.artifactId}-${artifact.baseVersion}</outputDirectory>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <useStrictFiltering>true</useStrictFiltering>
+            <unpack>true</unpack>
+            <includes>
                 <include>org.mule.services:mule-service-http</include>
+            </includes>
+        </dependencySet>
+
+        <dependencySet>
+            <outputDirectory>services/${artifact.artifactId}-${artifact.baseVersion}</outputDirectory>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <useStrictFiltering>true</useStrictFiltering>
+            <unpack>true</unpack>
+            <includes>
                 <include>org.mule.services:mule-service-oauth</include>
+            </includes>
+        </dependencySet>
+
+        <dependencySet>
+            <outputDirectory>services/${artifact.artifactId}-${artifact.baseVersion}</outputDirectory>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <useStrictFiltering>true</useStrictFiltering>
+            <unpack>true</unpack>
+            <includes>
                 <include>org.mule.services:mule-service-soap</include>
             </includes>
         </dependencySet>
