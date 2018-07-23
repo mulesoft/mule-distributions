@@ -132,11 +132,11 @@
 # /services
 #
 /mule-standalone-${productVersion}/services
-/mule-standalone-${productVersion}/services/mule-service-scheduler-1.2.0-SNAPSHOT-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-http-1.2.0-SNAPSHOT-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-oauth-1.2.0-SNAPSHOT-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-soap-1.2.0-SNAPSHOT-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-weave-2.1.4-+
+/mule-standalone-${productVersion}/services/mule-service-scheduler-1.2.0-SNAPSHOT+
+/mule-standalone-${productVersion}/services/mule-service-http-1.2.0-SNAPSHOT+
+/mule-standalone-${productVersion}/services/mule-service-oauth-1.2.0-SNAPSHOT+
+/mule-standalone-${productVersion}/services/mule-service-soap-1.2.0-SNAPSHOT+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.1.4-SNAPSHOT+
 #
 # /lib/opt
 #

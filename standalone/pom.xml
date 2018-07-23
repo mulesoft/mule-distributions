@@ -47,7 +47,7 @@
                         <id>copy-additional-services</id>
                         <phase>generate-sources</phase>
                         <goals>
-                            <goal>copy</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <configuration>
                             <artifactItems>
@@ -56,7 +56,7 @@
                                     <artifactId>mule-service-weave</artifactId>
                                     <version>${weaveVersion}</version>
                                     <classifier>mule-service</classifier>
-                                    <outputDirectory>${project.build.directory}/services</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/services/mule-service-weave-${weaveVersion}</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
