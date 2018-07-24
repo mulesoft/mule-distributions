@@ -163,7 +163,6 @@ public class EmbeddedController {
       File destinationFile = new File(getServicesFolder(), getName(originalFile.getPath()).replaceAll("-mule-service\\.jar", ""));
       destinationFile.mkdirs();
       unzip(originalFile, destinationFile, false);
-      //copyFile(originalFile, destinationFile);
     }
     containerInfo.getServerPlugins().stream().forEach(serverPluginUrl -> {
       File originalFile = toFile(serverPluginUrl);
