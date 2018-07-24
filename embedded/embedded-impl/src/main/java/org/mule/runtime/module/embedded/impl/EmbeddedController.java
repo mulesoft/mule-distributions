@@ -8,7 +8,6 @@ package org.mule.runtime.module.embedded.impl;
 
 import static java.lang.String.valueOf;
 import static java.lang.System.setProperty;
-import static org.apache.commons.io.FileUtils.copyFile;
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.apache.commons.io.FilenameUtils.getName;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
@@ -21,6 +20,7 @@ import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZ
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
+import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
 import org.mule.runtime.api.artifact.Registry;
 import org.mule.runtime.api.connectivity.ConnectivityTestingService;
@@ -160,8 +160,10 @@ public class EmbeddedController {
 
     for (URL url : containerInfo.getServices()) {
       File originalFile = toFile(url);
-      File destinationFile = new File(getServicesFolder(), getName(originalFile.getPath()));
-      copyFile(originalFile, destinationFile);
+      File destinationFile = new File(getServicesFolder(), getName(originalFile.getPath()).replaceAll("-mule-service\\.jar", ""));
+      destinationFile.mkdirs();
+      unzip(originalFile, destinationFile, false);
+      //copyFile(originalFile, destinationFile);
     }
     containerInfo.getServerPlugins().stream().forEach(serverPluginUrl -> {
       File originalFile = toFile(serverPluginUrl);
