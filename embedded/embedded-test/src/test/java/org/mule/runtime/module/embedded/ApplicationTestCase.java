@@ -53,6 +53,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -77,6 +78,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application depending on a connector")
   @Test
+  @Ignore("MULE-15480")
   public void applicationWithConnector() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), port -> {
@@ -86,6 +88,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application that retrieves a resource from the JDK")
   @Test
+  @Ignore("MULE-15480")
   // This test may fail depending on the JDK used to run the tests
   public void jdkResourceAvailableFromApp() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("jdk-exported-resource-app", empty());
@@ -101,6 +104,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application declaring a remote repository for a dependency")
   @Test
+  @Ignore("MULE-15480")
   public void applicationWithRemoteRepositories() throws Exception {
     String appName = "pom-with-remote-repositories";
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(appName, empty());
@@ -109,6 +113,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application using test dependencies and deploying a jar file")
   @Test
+  @Ignore("MULE-15480")
   public void applicationWithTestDependency() throws Exception {
     BundleDescriptor bundleDescriptor =
         getApplicationBundleDescriptor("http-test-dependency", of("mule-application-light-package"));
@@ -168,6 +173,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application using a custom log4j configuration file")
   @Test
+  @Ignore("MULE-15480")
   public void applicationWithCustomLogger() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), port -> {
@@ -185,6 +191,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Test
   @Description("Deploys an app with an http listener an checks that communication works")
+  @Ignore("MULE-15481")
   public void deployListenerIsAlive() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
     File artifactFile = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor);
@@ -221,6 +228,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Test
   @Description("If a well written app with the same name as a failing app is deployed after the failing one, it should work")
+  @Ignore("MULE-15481")
   public void redeploymentOfSuccessfulAppAfterFailingWithSameNameShouldWork() throws Exception {
     runWithContainer((container) -> {
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
@@ -290,6 +298,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Test
   @Description("Even if 2 apps have the same name and were created at the same time, if one of them have different config files, redeployment should be triggered")
+  @Ignore("MULE-15481")
   public void redeploymentOfSuccessfulAppAfterFailingWithSameNameAndTimeStampButDifferentConfigShouldWork() throws Exception {
     runWithContainer((container) -> {
       long time = System.currentTimeMillis();
