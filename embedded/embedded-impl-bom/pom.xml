@@ -10,8 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mule-module-embedded-impl-bom</artifactId>
-    <version>4.1.2-hf1</version>
-    
+
     <packaging>pom</packaging>
     <name>Mule Module Embedded Implementation Distribution BOM</name>
     <description>This project contains all the specific dependencies of the embedded runtime implementation independent from the runtime version</description>
