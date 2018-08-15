@@ -27,7 +27,7 @@
         </dependency>
         <dependency>
             <groupId>org.mule.patches</groupId>
-            <artifactId>MULE-15411-4.1.2</artifactId>
+            <artifactId>MULE-15441-4.1.2</artifactId>
             <version>1.1</version>
         </dependency>
         <dependency>
