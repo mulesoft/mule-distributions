@@ -2,7 +2,7 @@ MIGRATION GUIDE
 ===============
 
 Migration changes from 4.1.x to 4.2
-MULE-15586: `lookup` function in DataWeave now has a timeout. The default timeout may be increased by setting the `mule.dwScript.lookupTimeoutMillis` system property to the wanted value.
+MULE-15586: `lookup` function in DataWeave now has a timeout. The timeout for a specific lookup call may be increased by providing the new value with a third parameter (i.e.: lookup(vars.flow, payload, 10000).
 
 Migration changes from 4.1.2 to 4.1.3
 MULE-15167: a new property "mule.deploy.applications" was added to deploy specific applications on startup time. Old command line option "-app" is still functional but deprecated.
