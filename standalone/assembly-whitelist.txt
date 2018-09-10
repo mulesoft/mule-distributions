@@ -232,11 +232,11 @@
 /mule-standalone-${productVersion}/lib/opt/rhino-1.7R4.jar
 /mule-standalone-${productVersion}/lib/opt/semver4j-2.0.3.jar
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-1.18.jar
-/mule-standalone-${productVersion}/lib/opt/spring-aop-4.3.17.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-beans-4.3.17.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-context-4.3.17.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-core-4.3.17.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/spring-expression-4.3.17.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/spring-aop-4.3.18.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/spring-beans-4.3.18.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/spring-context-4.3.18.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/spring-core-4.3.18.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/spring-expression-4.3.18.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/stringtemplate-3.2.1.jar
 /mule-standalone-${productVersion}/lib/opt/uri-template-0.9.jar
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.0.jar
