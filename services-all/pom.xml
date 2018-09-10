@@ -78,7 +78,7 @@
                 </exclusion>
                 <exclusion>
                     <groupId>javax.mail</groupId>
-                    <artifactId>mail</artifactId>
+                    <artifactId>javax.mail-api</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.mule.glassfish.grizzly</groupId>
