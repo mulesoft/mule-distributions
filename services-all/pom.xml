@@ -77,8 +77,8 @@
                     <artifactId>connection-pool</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>javax.mail</groupId>
-                    <artifactId>javax.mail-api</artifactId>
+                    <groupId>com.sun.mail</groupId>
+                    <artifactId>mailapi</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.mule.glassfish.grizzly</groupId>
