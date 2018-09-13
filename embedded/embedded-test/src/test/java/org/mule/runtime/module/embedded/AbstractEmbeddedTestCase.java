@@ -22,6 +22,8 @@ import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 import org.mule.tck.junit4.rule.FreePortFinder;
+import org.mule.tck.probe.JUnitProbe;
+import org.mule.tck.probe.PollingProber;
 
 import java.io.File;
 import java.net.URI;
@@ -178,6 +180,30 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected String getAppFolder(String appName) {
     return toFile(this.getClass().getClassLoader().getResource(ARTIFACTS_FOLDER + "/" + APPS_FOLDER + "/" + appName))
         .getAbsolutePath();
+  }
+
+  public Consumer<Integer> createRetryTestOperation(Consumer<Integer> originalTestOperation) {
+    return value -> new PollingProber(10000, 100)
+        .check(new JUnitProbe() {
+
+          @Override
+          protected boolean test() {
+            originalTestOperation.accept(value);
+            return true;
+          }
+        });
+  }
+
+  public void executeWithRetry(Runnable runnable) {
+    new PollingProber(10000, 100)
+        .check(new JUnitProbe() {
+
+          @Override
+          protected boolean test() {
+            runnable.run();
+            return true;
+          }
+        });
   }
 
 }
