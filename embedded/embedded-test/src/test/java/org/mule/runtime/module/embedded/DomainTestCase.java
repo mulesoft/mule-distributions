@@ -7,11 +7,7 @@
 
 package org.mule.runtime.module.embedded;
 
-import static com.mashape.unirest.http.Unirest.post;
-import static java.lang.String.format;
 import static java.util.Optional.empty;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
@@ -23,9 +19,6 @@ import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArti
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.tck.junit4.rule.DynamicPort;
-
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -54,7 +47,7 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
       File applicationFile = installMavenArtifact(getAppFolder("http-echo-domain-app"), appBundleDescriptor);
       embeddedTestHelper.getContainer().getDeploymentService()
           .deployApplication(ArtifactConfiguration.builder().artifactLocation(applicationFile).build());
-      ApplicationTestCase.assertTestMessage(port);
+      executeWithRetry(() -> ApplicationTestCase.assertTestMessage(port));
     });
 
   }
@@ -68,9 +61,9 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
           BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
           File domainFile = installMavenArtifact(getDomainFolder("simple-domain"), domainBundleDescriptor);
           container.getDeploymentService().deployDomain(ArtifactConfiguration.builder().artifactLocation(domainFile).build());
-          validateDomainIsDeployed(container, domainFile);
+          executeWithRetry(() -> validateDomainIsDeployed(container, domainFile));
           container.getDeploymentService().undeployDomain(domainFile.getName().replace(".jar", ""));
-          validateDomainIsUndeployed(container, domainFile);
+          executeWithRetry(() -> validateDomainIsUndeployed(container, domainFile));
         });
       } catch (Exception e) {
         throw new RuntimeException(e);
