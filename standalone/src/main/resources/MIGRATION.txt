@@ -3,6 +3,7 @@ MIGRATION GUIDE
 
 Migration changes from 4.1.x to 4.2
 MULE-15586: `lookup` function in DataWeave now has a timeout. The timeout for a specific lookup call may be increased by providing the new value with a third parameter (i.e.: lookup(vars.flow, payload, 10000).
+MULE-15730: TLS keystore entries must now reference at least one key to use or reference a key alias. Using an invalid keystore will result in an initialisation failure.
 
 Migration changes from 4.1.3 to 4.1.4
 MULE-14148: HTTP wire logging now depends on the server/client names to allow more fine grained logging.
