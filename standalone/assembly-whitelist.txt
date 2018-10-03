@@ -227,8 +227,8 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-3.0.24.jar
 /mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.23.jar
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.0.2.jar
-/mule-standalone-${productVersion}/lib/opt/reactor-core-3.2.0.M1-MULE-002.jar
-/mule-standalone-${productVersion}/lib/opt/reactor-extra-3.1.2.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/reactor-core-3.2.0.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/reactor-extra-3.1.6.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/reflections-0.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/rhino-1.7R4.jar
 /mule-standalone-${productVersion}/lib/opt/semver4j-2.0.3.jar
