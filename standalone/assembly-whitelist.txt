@@ -109,6 +109,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-xml-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-global-config-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-javaee-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-launcher-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-logging-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-${productVersion}.jar
@@ -141,7 +142,6 @@
 # /lib/opt
 #
 /mule-standalone-${productVersion}/lib/opt
-/mule-standalone-${productVersion}/lib/opt/activation-1.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/aether-api-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-connector-basic-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-impl-1.0.2.v20150114.jar
@@ -180,12 +180,16 @@
 /mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.8.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.9.6.jar
 /mule-standalone-${productVersion}/lib/opt/javassist-3.7.ga.jar
+/mule-standalone-${productVersion}/lib/opt/javax.activation-1.2.0.jar
 /mule-standalone-${productVersion}/lib/opt/javax.annotation-api-1.2.jar
 /mule-standalone-${productVersion}/lib/opt/javax.inject-1.jar
 /mule-standalone-${productVersion}/lib/opt/javax.jms-api-2.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/javax.json-1.0.4.jar
 /mule-standalone-${productVersion}/lib/opt/javax.json-api-1.0.jar
+/mule-standalone-${productVersion}/lib/opt/javax.jws-api-1.1.jar
 /mule-standalone-${productVersion}/lib/opt/javax.transaction-api-1.2.jar
+/mule-standalone-${productVersion}/lib/opt/javax.xml.soap-api-1.4.0.jar
+/mule-standalone-${productVersion}/lib/opt/jaxws-api-2.3.0.jar
 /mule-standalone-${productVersion}/lib/opt/jaxb-runtime-2.3.0-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/FastInfoset-1.2.13.jar
 /mule-standalone-${productVersion}/lib/opt/istack-commons-runtime-3.0.5.jar
