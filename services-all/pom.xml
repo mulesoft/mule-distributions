@@ -89,6 +89,10 @@
                     <artifactId>grizzly-websockets</artifactId>
                 </exclusion>
                 <exclusion>
+                    <groupId>org.mule.glassfish.grizzly</groupId>
+                    <artifactId>grizzly-http-servlet</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>org.apache.commons</groupId>
                     <artifactId>commons-text</artifactId>
                 </exclusion>
