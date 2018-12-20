@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration status="trace" packages="com.mycompany.log4j.logger">
+
+    <Appenders>
+        <File name="file" fileName="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}log4j-plugin.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p %d [%t] %c: %m%n"/>
+        </Console>
+
+        <Rewrite name="rewrite">
+            <AppenderRef ref="file"/>
+            <CustomLogInterceptor/>
+        </Rewrite>
+    </Appenders>
+
+    <Loggers>
+        <AsyncLogger name="com.mycompany" level="DEBUG">
+            <AppenderRef ref="rewrite"/>
+        </AsyncLogger>
+
+        <AsyncRoot level="ERROR">
+            <AppenderRef ref="console" />
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

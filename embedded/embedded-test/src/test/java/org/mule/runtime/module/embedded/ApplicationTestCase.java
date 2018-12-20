@@ -21,18 +21,31 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.junit.rules.ExpectedException.none;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
+import static org.mule.runtime.core.api.util.FileUtils.newFile;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
+import static org.mule.tck.probe.PollingProber.probe;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
+import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
+
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.tck.junit4.rule.DynamicPort;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -47,14 +60,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.apache.commons.io.IOUtils;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -306,6 +311,26 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     });
   }
 
+  @Test
+  @Description("Custom Log4j plugins are applied correctly on apps deployed to an embedded container")
+  public void applicationWithLog4jCustomPlugin() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("log4j-plugin", empty());
+    doWithinApplication(bundleDescriptor, getAppFolder("log4j-plugin"), createRetryTestOperation(port -> {
+      String logPath = format("%s/log4j-plugin.log", new File(embeddedTestHelper.getContainerFolder(), "logs").getAbsoluteFile());
+      File logFile = newFile(logPath);
+
+      assertTestMessage(port);
+
+      String expectedMessage = "I have intercepted your message :)";
+      String unexpectedMessage = "This log message should be intercepted...";
+      probe(() -> hasLine(containsString(expectedMessage)).matches(logFile),
+            () -> format("Text '%s' not present in the logs", expectedMessage));
+      probe(() -> !hasLine(containsString(unexpectedMessage)).matches(logFile),
+            () -> format("Text '%s' is present in the logs", unexpectedMessage));
+    }));
+  }
+
+
   private File getAppFolderInContainer(EmbeddedContainer container, File testAppLocation) {
     return new File(container.getContainerFolder(), Paths.get("apps", testAppLocation.getName().replace(".jar", "")).toString());
   }
@@ -323,11 +348,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   private void overrideFileModificationTimeStamp(File root, long time) {
     File[] files = root.listFiles();
     if (files != null) {
-      for (int i = 0; i < files.length; i++) {
-        if (files[i].isDirectory()) {
-          overrideFileModificationTimeStamp(files[i], time);
+      for (File file : files) {
+        if (file.isDirectory()) {
+          overrideFileModificationTimeStamp(file, time);
         } else {
-          files[i].setLastModified(time);
+          file.setLastModified(time);
         }
       }
     }
