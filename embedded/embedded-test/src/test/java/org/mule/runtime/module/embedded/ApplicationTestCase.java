@@ -90,7 +90,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), createRetryTestOperation(port -> {
       try {
         HttpResponse<String> response = post(format("http://localhost:%s/", port)).asString();
-        assertThat(response.getBody(), containsString("# The character set used to read documents with the \\ansi control"));
+        assertThat(response.getBody(), containsString("Manifest-Version: 1.0"));
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }
