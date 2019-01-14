@@ -6,6 +6,7 @@
  */
 package org.mule.distributions.tests;
 
+import static java.lang.Boolean.parseBoolean;
 import static java.lang.Integer.parseInt;
 import static java.lang.Runtime.getRuntime;
 import static java.lang.System.getProperties;
@@ -24,7 +25,6 @@ import static org.mule.distributions.tests.DistributionFinder.findDistribution;
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.test.infrastructure.process.MuleStatusProbe.isNotRunning;
 import static org.mule.test.infrastructure.process.MuleStatusProbe.isRunning;
-
 import org.mule.tck.junit4.AbstractMuleTestCase;
 import org.mule.tck.junit4.rule.SystemProperty;
 import org.mule.tck.probe.JUnitLambdaProbe;
@@ -35,6 +35,10 @@ import org.mule.test.infrastructure.process.rules.MuleDeployment;
 import org.mule.test.infrastructure.process.rules.MuleInstallation;
 import org.mule.test.infrastructure.process.rules.MuleServerFailureLogger;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
@@ -43,10 +47,6 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.rules.TestRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
 
 public class AbstractAppControl extends AbstractMuleTestCase {
 
@@ -74,6 +74,13 @@ public class AbstractAppControl extends AbstractMuleTestCase {
     LOGGER.info("Distribution: " + getProperty("mule.distribution"));
     String muleHome = installation.getMuleHome();
     mule = new MuleProcessController(muleHome, (int) SECONDS.toMillis(timeout));
+    if (parseBoolean(getProperty("mule.test.debug", "false"))) {
+      mule.addConfProperty("-Xdebug");
+      mule.addConfProperty("-Xnoagent");
+      mule.addConfProperty("-Djava.compiler=NONE");
+      mule.addConfProperty("-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005");
+    }
+
     addShutdownHooks();
     LOGGER.info("MULE_HOME: " + muleHome);
   }
