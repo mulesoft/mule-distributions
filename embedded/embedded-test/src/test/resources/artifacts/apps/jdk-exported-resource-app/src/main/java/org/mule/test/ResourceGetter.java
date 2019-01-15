@@ -11,6 +11,6 @@ import java.io.InputStream;
 public class ResourceGetter {
 
   public static InputStream getJdkResource() {
-    return Thread.currentThread().getContextClassLoader().getResourceAsStream("javax/swing/text/rtf/charsets/ansi.txt");
+    return Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/MANIFEST.MF");
   }
 }
