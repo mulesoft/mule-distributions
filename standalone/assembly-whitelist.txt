@@ -194,7 +194,6 @@
 /mule-standalone-${productVersion}/lib/opt/FastInfoset-1.2.15.jar
 /mule-standalone-${productVersion}/lib/opt/istack-commons-runtime-3.0.7.jar
 /mule-standalone-${productVersion}/lib/opt/jaxb-api-2.3.1.jar
-/mule-standalone-${productVersion}/lib/opt/jaxb-core-2.3.1-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/stax-ex-1.8.jar
 /mule-standalone-${productVersion}/lib/opt/txw2-2.3.1-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.69.jar
