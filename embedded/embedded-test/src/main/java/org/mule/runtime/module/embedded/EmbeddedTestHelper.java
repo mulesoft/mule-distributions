@@ -73,7 +73,7 @@ public class EmbeddedTestHelper {
     ClassLoader contextClassLoader = currentThread().getContextClassLoader();
     try {
       // Sets a classloader with the JDK only to ensure that dependencies are read form the embedded container classloader
-      FilteringClassLoader jdkOnlyClassLoader = JdkOnlyClassLoaderFactory.create();
+      FilteringClassLoader jdkOnlyClassLoader = JdkOnlyClassLoaderFactory.create(EmbeddedTestHelper.class.getClassLoader());
       currentThread().setContextClassLoader(jdkOnlyClassLoader);
 
       runnable.run();
