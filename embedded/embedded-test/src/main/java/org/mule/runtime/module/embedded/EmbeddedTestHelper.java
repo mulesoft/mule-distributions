@@ -14,11 +14,11 @@ import static org.mule.maven.client.test.MavenTestHelper.createDefaultCommunityM
 import static org.mule.maven.client.test.MavenTestHelper.createDefaultEnterpriseMavenConfigurationBuilder;
 import static org.mule.maven.client.test.MavenTestHelper.getLocalRepositoryFolder;
 import static org.mule.runtime.module.embedded.api.EmbeddedContainer.builder;
+import static org.mule.runtime.module.embedded.internal.classloading.JdkOnlyClassLoaderFactory.create;
 import org.mule.maven.client.api.model.MavenConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.runtime.module.embedded.internal.classloading.FilteringClassLoader;
-import org.mule.runtime.module.embedded.internal.classloading.JdkOnlyClassLoaderFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +73,7 @@ public class EmbeddedTestHelper {
     ClassLoader contextClassLoader = currentThread().getContextClassLoader();
     try {
       // Sets a classloader with the JDK only to ensure that dependencies are read form the embedded container classloader
-      FilteringClassLoader jdkOnlyClassLoader = JdkOnlyClassLoaderFactory.create(EmbeddedTestHelper.class.getClassLoader());
+      FilteringClassLoader jdkOnlyClassLoader = create(EmbeddedTestHelper.class.getClassLoader());
       currentThread().setContextClassLoader(jdkOnlyClassLoader);
 
       runnable.run();
