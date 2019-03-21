@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mule-embedded</artifactId>
-    <version>4.1.4-hf3-SNAPSHOT</version>
+    <version>4.1.4-hf4</version>
     <packaging>pom</packaging>
     <name>Mule Embedded</name>
 
