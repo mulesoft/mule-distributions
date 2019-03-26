@@ -90,6 +90,26 @@ public class EmbeddedTestHelper {
    */
   public void testWithDefaultSettings(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
                                       Consumer<EmbeddedContainer> test) {
+    testWithEmbeddedNotStarted(embeddedContainerConfigurer, embeddedContainer -> {
+      try {
+        embeddedContainer.start();
+        test.accept(container);
+      } finally {
+        if (embeddedContainer != null) {
+          try {
+            embeddedContainer.stop();
+            deleteDirectory(containerFolder);
+          } catch (Throwable containerStopException) {
+            // Never mind
+          }
+        }
+      }
+
+    });
+  }
+
+  public void testWithEmbeddedNotStarted(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
+                                         Consumer<EmbeddedContainer> test) {
     test(() -> {
       EmbeddedContainer.EmbeddedContainerBuilder embeddedContainerBuilder;
       try {
@@ -112,21 +132,11 @@ public class EmbeddedTestHelper {
       }
 
       container = null;
-      try {
-        container = embeddedContainerBuilder.build();
-        container.start();
-        test.accept(container);
-      } finally {
-        if (container != null)
-          try {
-            container.stop();
-            deleteDirectory(containerFolder);
-          } catch (Throwable containerStopException) {
-            // Never mind
-          }
-      }
+      container = embeddedContainerBuilder.build();
+      test.accept(container);
     });
   }
+
 
   public File getContainerFolder() {
     return containerFolder;

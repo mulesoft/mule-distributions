@@ -32,8 +32,6 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedAp
 import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
-
-import org.hamcrest.core.StringContains;
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
@@ -69,6 +67,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   private static final String LISTENER_URL = "http://localhost:%d/test";
 
+  private static final String HTTP_ECHO = "http-echo";
+
   @Rule
   public ExpectedException expectedException = none();
 
@@ -81,8 +81,17 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Description("Embedded runs an application depending on a connector")
   @Test
   public void applicationWithConnector() throws Exception {
-    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
-    doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), createRetryTestOperation(port -> {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
+      assertTestMessage(port);
+    }));
+  }
+
+  @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
+  @Test
+  public void restartEmbedded() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplicationRestartingEmbedded(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
       assertTestMessage(port);
     }));
   }

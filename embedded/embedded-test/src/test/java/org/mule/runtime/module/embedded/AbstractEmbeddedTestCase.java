@@ -8,6 +8,7 @@ package org.mule.runtime.module.embedded;
 
 import static java.lang.String.valueOf;
 import static java.util.Optional.empty;
+import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -57,7 +58,17 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
                      APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
-                         .deployApplication(artifactConfiguration));
+                         .deployApplication(artifactConfiguration),
+                     false);
+  }
+
+  protected void doWithinApplicationRestartingEmbedded(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
+                                                       Consumer<Integer> portConsumer)
+      throws Exception {
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+                     APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
+                         .deployApplication(artifactConfiguration),
+                     true);
   }
 
   protected void doWithinApplicationNotInstalled(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
@@ -65,7 +76,8 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
                      APPS_FOLDER, false, (container, artifactConfiguration) -> container.getDeploymentService()
-                         .deployApplication(artifactConfiguration));
+                         .deployApplication(artifactConfiguration),
+                     false);
 
   }
 
@@ -82,7 +94,8 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                      xmlValidationsEnabled, lazyConnectionsEnabled,
                      log4JConfigurationFileOptional, validateUsageOfDeploymentService,
                      APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
-                         .deployApplication(artifactConfiguration));
+                         .deployApplication(artifactConfiguration),
+                     false);
   }
 
   protected void doWithinDomain(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
@@ -90,7 +103,8 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
                      DOMAINS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
-                         .deployDomain(artifactConfiguration));
+                         .deployDomain(artifactConfiguration),
+                     false);
   }
 
   protected void doWithinArtifact(BundleDescriptor applicationBundleDescriptor,
@@ -103,14 +117,15 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   boolean validateUsageOfDeploymentService,
                                   String artifactDeploymentFolder,
                                   boolean installArtifact,
-                                  BiConsumer<EmbeddedContainer, ArtifactConfiguration> deployConsumer)
+                                  BiConsumer<EmbeddedContainer, ArtifactConfiguration> deployConsumer,
+                                  boolean restartingEmbedded)
       throws Exception {
     File artifactFile =
         installArtifact ? installMavenArtifact(artifactFolder, applicationBundleDescriptor) : new File(artifactFolder);
     Integer httpListenerPort = new FreePortFinder(6000, 9000).find();
     testWithSystemProperty("httpPort", valueOf(httpListenerPort), () -> {
       embeddedTestHelper.recreateContainerFolder();
-      embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
+      Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerBuilderConsumer = embeddedContainerBuilder -> {
         try {
           embeddedContainerBuilder.log4jConfigurationFile(log4JConfigurationFileOptional
               .orElse(getClass().getClassLoader().getResource("log4j2-default.xml").toURI()))
@@ -120,7 +135,8 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
         } catch (Exception e) {
           throw new RuntimeException(e);
         }
-      }, (container) -> {
+      };
+      Consumer<EmbeddedContainer> embeddedContainerConsumer = (container) -> {
         ArtifactConfiguration artifactConfiguration = ArtifactConfiguration.builder()
             .artifactLocation(artifactFile)
             .deploymentConfiguration(DeploymentConfiguration.builder()
@@ -135,7 +151,30 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
         }
 
         portConsumer.accept(httpListenerPort);
-      });
+      };
+      if (restartingEmbedded) {
+        embeddedTestHelper.testWithEmbeddedNotStarted(embeddedContainerBuilderConsumer, container -> {
+          // Runs the test with the embedded container for the first time
+          container.start();
+          try {
+            embeddedContainerConsumer.accept(container);
+            container.stop();
+            // After container is stopped, it starts the same embedded container instance and runs the test again
+            container.start();
+            try {
+              embeddedContainerConsumer.accept(container);
+            } catch (Exception e) {
+              container.stop();
+              deleteQuietly(embeddedTestHelper.getContainerFolder());
+            }
+          } catch (Exception e) {
+            container.stop();
+            deleteQuietly(embeddedTestHelper.getContainerFolder());
+          }
+        });
+      } else {
+        embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilderConsumer, embeddedContainerConsumer);
+      }
     });
   }
 
