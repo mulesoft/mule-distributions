@@ -32,20 +32,10 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedAp
 import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
-
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.tck.junit4.rule.DynamicPort;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -60,6 +50,14 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -68,6 +66,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   private static final String LOGGING_FILE = "app.log";
 
   private static final String LISTENER_URL = "http://localhost:%d/test";
+
+  private static final String HTTP_ECHO = "http-echo";
 
   @Rule
   public ExpectedException expectedException = none();
@@ -81,8 +81,17 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Description("Embedded runs an application depending on a connector")
   @Test
   public void applicationWithConnector() throws Exception {
-    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
-    doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), createRetryTestOperation(port -> {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
+      assertTestMessage(port);
+    }));
+  }
+
+  @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
+  @Test
+  public void restartEmbedded() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplicationRestartingEmbedded(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
       assertTestMessage(port);
     }));
   }
