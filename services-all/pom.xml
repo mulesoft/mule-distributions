@@ -34,7 +34,7 @@
                     <artifactId>quartz</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.mule.mchange</groupId>
+                    <groupId>com.mchange</groupId>
                     <artifactId>c3p0</artifactId>
                 </exclusion>
             </exclusions>
