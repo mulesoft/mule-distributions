@@ -78,8 +78,7 @@ public class AppControlTestCase extends AbstractAppControl {
   }
 
   private static String getResourceAsString(String directory, String name) {
-    return getResource(Paths.get(directory, name).toString(), AppControlTestCase.class).getPath();
-
+    return getResource(directory + "/" + name, AppControlTestCase.class).getPath();
   }
 
 }
