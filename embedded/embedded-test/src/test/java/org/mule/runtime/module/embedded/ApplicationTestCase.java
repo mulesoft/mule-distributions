@@ -13,6 +13,7 @@ import static java.lang.Thread.sleep;
 import static java.nio.file.Files.delete;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
@@ -32,19 +33,20 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedAp
 import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
+
+import org.junit.AfterClass;
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.tck.junit4.rule.DynamicPort;
-
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.file.Paths;
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
@@ -77,6 +79,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Rule
   public TemporaryFolder temporaryFolder = new TemporaryFolder();
+
+  @AfterClass
+  public static void tearDown() {
+    deleteQuietly(Paths.get(LOGGING_FILE).toFile());
+  }
 
   @Description("Embedded runs an application depending on a connector")
   @Test
@@ -187,13 +194,9 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       assertTestMessage(port);
     }), false, true, true,
                         of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
-    try {
-      File expectedLoggingFile = new File(LOGGING_FILE);
-      assertThat(expectedLoggingFile.exists(), is(true));
-      assertThat(expectedLoggingFile.length(), greaterThan(0l));
-    } finally {
-      delete(Paths.get(LOGGING_FILE));
-    }
+    File expectedLoggingFile = new File(LOGGING_FILE);
+    assertThat(expectedLoggingFile.exists(), is(true));
+    assertThat(expectedLoggingFile.length(), greaterThan(0l));
   }
 
   @Test
