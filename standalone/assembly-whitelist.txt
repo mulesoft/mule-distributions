@@ -191,7 +191,6 @@
 /mule-standalone-${productVersion}/lib/opt/jaxb-core-2.3.0-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/stax-ex-1.7.8.jar
 /mule-standalone-${productVersion}/lib/opt/txw2-2.3.0-MULE-001.jar
-/mule-standalone-${productVersion}/lib/opt/jaxen-1.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.69.jar
 /mule-standalone-${productVersion}/lib/opt/jgrapht-jdk1.5-0.7.3.jar
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.9.1.jar
