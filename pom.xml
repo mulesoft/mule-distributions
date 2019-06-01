@@ -29,7 +29,7 @@
 
         <muleSchedulerServiceVersion>1.3.0-SNAPSHOT</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.5.0-SNAPSHOT</muleHttpServiceVersion>
-        <muleOAuthServiceVersion>2.0.0-SNAPSHOT</muleOAuthServiceVersion>
+        <muleOAuthServiceVersion>2.1.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.3.0-SNAPSHOT</muleSoapServiceVersion>
         <muleHttpConnectorTestVersion>1.6.0-SNAPSHOT</muleHttpConnectorTestVersion>
         <muleFileConnectorTestVersion>2.0.0-SNAPSHOT</muleFileConnectorTestVersion>
