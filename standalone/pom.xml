@@ -19,7 +19,7 @@
     <properties>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
 
-        <jackson2Version>2.9.8</jackson2Version>
+        <jackson2Version>2.9.9</jackson2Version>
     </properties>
 
     <build>
@@ -125,6 +125,10 @@
                     <groupId>xalan</groupId>
                     <artifactId>xalan</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.module</groupId>
+                    <artifactId>jackson-module-jsonSchema</artifactId>
+                </exclusion>                          
             </exclusions>
         </dependency>
 
@@ -198,6 +202,11 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>${jackson2Version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jsonSchema</artifactId>
             <version>${jackson2Version}</version>
         </dependency>
     </dependencies>
