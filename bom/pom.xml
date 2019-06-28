@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <artifactId>mule-bom</artifactId>
-    <version>4.1.5-hf5-SNAPSHOT</version>
+    <version>4.1.5-hf5</version>
     
     <packaging>pom</packaging>
     <name>Mule Runtime BOM</name>
