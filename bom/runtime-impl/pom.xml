@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-bom</artifactId>
-        <version>4.2.0</version>
+        <version>4.2.0-hf1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -22,7 +22,6 @@
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
         </dependency>
-        <version>${mule.version}</version>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-modules-all</artifactId>
