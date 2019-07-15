@@ -15,6 +15,7 @@
     <description>Mule runtime modules for BOMs</description>
 
     <properties>
+        <mule.version>4.2.0</mule.version>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
