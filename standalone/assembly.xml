@@ -126,6 +126,8 @@
                 <include>org.mule.runtime:mule-extensions-soap-api</include>
                 <include>org.mule.runtime:mule-extensions-api-persistence</include>
                 <include>org.mule.runtime:mule-extensions-api-dsql</include>
+                <!-- AST -->
+                <include>org.mule.runtime:mule-artifact-ast</include>
                 <!-- Core -->
                 <include>org.mule.runtime:mule-core</include>
                 <!--Services-->
@@ -241,6 +243,8 @@
                 <exclude>org.mule.runtime:mule-extensions-soap-api</exclude>
                 <exclude>org.mule.runtime:mule-extensions-api-persistence</exclude>
                 <exclude>org.mule.runtime:mule-extensions-api-dsql</exclude>
+                <!-- AST -->
+                <exclude>org.mule.runtime:mule-artifact-ast</exclude>
                 <!--Services-->
                 <exclude>org.mule.runtime:mule-service-http-api</exclude>
                 <exclude>org.mule.runtime:mule-service-oauth-api</exclude>

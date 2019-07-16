@@ -40,6 +40,12 @@
             </dependency>
             <dependency>
                 <groupId>org.mule.runtime</groupId>
+                <artifactId>mule-artifact-ast</artifactId>
+                <version>${muleAstVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mule.runtime</groupId>
                 <artifactId>mule-module-http-policy-api</artifactId>
                 <version>${muleHttpPolicyApiVersion}</version>
             </dependency>
