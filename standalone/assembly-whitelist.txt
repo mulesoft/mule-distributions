@@ -201,7 +201,8 @@
 /mule-standalone-${productVersion}/lib/opt/stax-ex-1.8.jar
 /mule-standalone-${productVersion}/lib/opt/txw2-2.3.1-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.69.jar
-/mule-standalone-${productVersion}/lib/opt/jgrapht-jdk1.5-0.7.3.jar
+/mule-standalone-${productVersion}/lib/opt/jgrapht-core-1.3.1.jar
+/mule-standalone-${productVersion}/lib/opt/jheaps-0.10.jar
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.9.1.jar
 /mule-standalone-${productVersion}/lib/opt/jopt-simple-5.0.3.jar
 /mule-standalone-${productVersion}/lib/opt/json-schema-core-1.2.10.jar
