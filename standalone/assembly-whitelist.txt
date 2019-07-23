@@ -236,7 +236,7 @@
 /mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.37.jar
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.0.2.jar
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.2.10.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/reactor-extra-3.1.6.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/reactor-extra-3.2.3.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/reflections-0.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/rhino-1.7.7.1.jar
 /mule-standalone-${productVersion}/lib/opt/semver4j-2.0.3.jar
