@@ -10,11 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
     
     <artifactId>mule-bom</artifactId>
+    <version>4.2.1-hf1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Mule Runtime BOM</name>
     <description>Mule runtime modules for BOMs</description>
 
     <properties>
+        <mule.version>4.2.1</mule.version>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 

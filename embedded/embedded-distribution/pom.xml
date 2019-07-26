@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-embedded</artifactId>
-        <version>4.2.1</version>
+        <version>4.2.1-hf1-SNAPSHOT</version>
     </parent>
     <artifactId>mule-embedded-distribution</artifactId>
     <packaging>pom</packaging>
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-modules-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
         </dependency>
 
@@ -103,7 +103,7 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-services-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
