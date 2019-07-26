@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-runtime-impl-bom</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>

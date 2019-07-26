@@ -68,7 +68,7 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-module-embedded-impl</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.tests</groupId>
