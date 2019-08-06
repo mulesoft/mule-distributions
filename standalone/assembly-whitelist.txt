@@ -192,7 +192,7 @@
 /mule-standalone-${productVersion}/lib/opt/javax.xml.soap-api-1.4.0.jar
 /mule-standalone-${productVersion}/lib/opt/jaxws-api-2.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/jaxb-runtime-2.3.1-MULE-001.jar
-/mule-standalone-${productVersion}/lib/opt/failsafe-2.0.1.jar
+/mule-standalone-${productVersion}/lib/opt/failsafe-2.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/FastInfoset-1.2.15.jar
 /mule-standalone-${productVersion}/lib/opt/istack-commons-runtime-3.0.7.jar
 /mule-standalone-${productVersion}/lib/opt/jaxb-api-2.3.1.jar
