@@ -169,6 +169,7 @@
 /mule-standalone-${productVersion}/lib/opt/config-1.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/dom4j-2.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/error_prone_annotations-2.1.3.jar
+/mule-standalone-${productVersion}/lib/opt/failsafe-2.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/geronimo-j2ee-connector_1.5_spec-2.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/gson-2.8.5.jar
