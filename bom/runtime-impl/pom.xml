@@ -29,10 +29,10 @@
             <artifactId>EE-6830-4.1.5</artifactId>
             <version>1.0</version>
         </dependency>
-             
+
         <dependency>
             <groupId>org.mule.patches</groupId>
-            <artifactId>SE-10165-4.1.5</artifactId>
+            <artifactId>SE-10165-SE-9559-4.1.5</artifactId>
             <version>1.0</version>
         </dependency>
 
