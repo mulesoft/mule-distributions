@@ -49,7 +49,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Properties;
 
-import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.ZipFile;
 
 /**
  * Controller class for the runtime. It spin ups a new container instance using a temporary folder and dynamically loading the
