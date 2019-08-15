@@ -155,7 +155,7 @@
 /mule-standalone-${productVersion}/lib/opt/caffeine-2.6.2.jar
 /mule-standalone-${productVersion}/lib/opt/cglib-nodep-3.2.6.jar
 /mule-standalone-${productVersion}/lib/opt/checker-qual-2.0.0.jar
-/mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.3.jar
+/mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.9.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
 /mule-standalone-${productVersion}/lib/opt/commons-digester-1.8.1.jar
