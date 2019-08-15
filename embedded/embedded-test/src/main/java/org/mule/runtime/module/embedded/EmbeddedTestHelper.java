@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.function.Consumer;
 
-import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.model.ZipParameters;
 import org.junit.rules.TemporaryFolder;
 
