@@ -39,6 +39,11 @@
             <artifactId>SE-11912-4.2.0</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-12451-4.2.0</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.mule.runtime</groupId>
