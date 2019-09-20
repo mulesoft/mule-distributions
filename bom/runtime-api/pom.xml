@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-bom</artifactId>
-        <version>4.1.6</version>
+        <version>4.1.6-hf1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -51,19 +51,19 @@
             <dependency>
                 <groupId>org.mule.runtime</groupId>
                 <artifactId>mule-service-soap-api</artifactId>
-                <version>${project.version}</version>
+                <version>${mule.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.mule.runtime</groupId>
                 <artifactId>mule-service-http-api</artifactId>
-                <version>${project.version}</version>
+                <version>${mule.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.mule.runtime</groupId>
                 <artifactId>mule-service-oauth-api</artifactId>
-                <version>${project.version}</version>
+                <version>${mule.version}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>

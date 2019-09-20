@@ -11,10 +11,12 @@
 
     <artifactId>mule-embedded</artifactId>
     <packaging>pom</packaging>
+    <version>4.1.6-hf1-SNAPSHOT</version>
     <name>Mule Embedded</name>
 
     <properties>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
+        <mule.version>4.1.6</mule.version>
     </properties>
 
     <modules>

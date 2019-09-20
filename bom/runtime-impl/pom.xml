@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-bom</artifactId>
-        <version>4.1.6</version>
+        <version>4.1.6-hf1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -19,36 +19,42 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>MULE-17096-4.1.6</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-modules-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-services-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-service-soap-api</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-service-http-api</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-service-oauth-api</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
     </dependencies>
 

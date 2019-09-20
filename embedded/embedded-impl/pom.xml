@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-embedded</artifactId>
-        <version>4.1.6</version>
+        <version>4.1.6-hf1-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -27,12 +27,12 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-runtime-impl-bom</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>net.lingala.zip4j</groupId>
