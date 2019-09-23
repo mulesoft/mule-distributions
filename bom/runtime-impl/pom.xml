@@ -21,7 +21,8 @@
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-weave</artifactId>
-            <version>2.1.8-SE-10844</version>
+            <version>2.1.8-SE-10844-SE-11664</version>
+            <classifier>mule-service</classifier>
         </dependency>
 
         <dependency>
