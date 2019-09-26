@@ -40,7 +40,7 @@
             </dependency>
             <dependency>
                 <groupId>org.mule.runtime</groupId>
-                <artifactId>mule-artifact-ast</artifactId>
+                <artifactId>mule-artifact-ast-dependency-graph</artifactId>
                 <version>${muleAstVersion}</version>
                 <scope>provided</scope>
             </dependency>
