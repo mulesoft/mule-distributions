@@ -128,6 +128,7 @@
                 <include>org.mule.runtime:mule-extensions-api-dsql</include>
                 <!-- AST -->
                 <include>org.mule.runtime:mule-artifact-ast</include>
+                <include>org.mule.runtime:mule-artifact-ast-dependency-graph</include>
                 <!-- Core -->
                 <include>org.mule.runtime:mule-core</include>
                 <!--Services-->
@@ -245,6 +246,7 @@
                 <exclude>org.mule.runtime:mule-extensions-api-dsql</exclude>
                 <!-- AST -->
                 <exclude>org.mule.runtime:mule-artifact-ast</exclude>
+                <exclude>org.mule.runtime:mule-artifact-ast-dependency-graph</exclude>
                 <!--Services-->
                 <exclude>org.mule.runtime:mule-service-http-api</exclude>
                 <exclude>org.mule.runtime:mule-service-oauth-api</exclude>
