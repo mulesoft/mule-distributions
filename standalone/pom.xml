@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mule-standalone</artifactId>
+    <version>4.2.0-hf1-SNAPSHOT</version>
     <!-- Packaging 'pom' ensures that maven does not try to bind a plugin to the
          'package' phase. We bind the assembly plugin here, that's enough. -->
     <packaging>pom</packaging>
@@ -20,6 +21,11 @@
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
 
         <jackson2Version>2.9.8</jackson2Version>
+
+        <mule.version>4.2.0</mule.version>
+
+        <libPatchesOutputDir>${project.build.directory}/lib/patches</libPatchesOutputDir>
+        <muleArtifactsPatchesOutputDir>${libPatchesOutputDir}/mule-artifact-patches</muleArtifactsPatchesOutputDir>
     </properties>
 
     <build>
@@ -57,6 +63,67 @@
                                     <version>${weaveVersion}</version>
                                     <classifier>mule-service</classifier>
                                     <outputDirectory>${project.build.directory}/services/mule-service-weave-${weaveVersion}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-lib-patches-jars</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <!-- Lib Patches -->
+                                <artifactItem>
+                                    <groupId>com.mulesoft.mule.patches</groupId>
+                                    <artifactId>MULE-17243-${mule.version}</artifactId>
+                                    <version>3.0</version>
+                                    <type>jar</type>
+                                    <outputDirectory>${libPatchesOutputDir}</outputDirectory>
+                                </artifactItem>
+
+                                <!-- Mule Artifact patches -->
+                                <artifactItem>
+                                    <groupId>com.mulesoft.mule.patches</groupId>
+                                    <artifactId>SE-12551-1.0.0-1.0.1</artifactId>
+                                    <version>1.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${muleArtifactsPatchesOutputDir}</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.mulesoft.mule.patches</groupId>
+                                    <artifactId>SE-12551-1.1.0-1.1.15</artifactId>
+                                    <version>2.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${muleArtifactsPatchesOutputDir}</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.mulesoft.mule.patches</groupId>
+                                    <artifactId>SE-12551-1.2.0-1.3.0</artifactId>
+                                    <version>1.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${muleArtifactsPatchesOutputDir}</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.mulesoft.mule.patches</groupId>
+                                    <artifactId>SE-12551-1.3.1-1.3.4</artifactId>
+                                    <version>1.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${muleArtifactsPatchesOutputDir}</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.mulesoft.mule.patches</groupId>
+                                    <artifactId>SE-12562-1.0.0-1.5.5</artifactId>
+                                    <version>1.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${muleArtifactsPatchesOutputDir}</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -104,6 +171,24 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>net.nicoulaj.maven.plugins</groupId>
+                <artifactId>checksum-maven-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>artifacts</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <attachChecksums>true</attachChecksums>
+                    <algorithms>
+                        <algorithm>SHA-256</algorithm>
+                    </algorithms>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -112,13 +197,13 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <!-- Include all Mule Modules -->
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-modules-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
             <exclusions>
                 <exclusion>
@@ -132,7 +217,7 @@
         <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-services-all</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
             <type>pom</type>
             <exclusions>
                 <!--TODO(gfernandes): remove this, see validation's comment-->
@@ -147,22 +232,22 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-reboot</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-launcher</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-deployment</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-service</artifactId>
-            <version>${project.version}</version>
+            <version>${mule.version}</version>
         </dependency>
 
         <!-- add aspectj weaver dependency that was removed from spring-security-3.1 -->
