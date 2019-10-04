@@ -79,6 +79,13 @@
                 <include>*.txt</include>
             </includes>
         </fileSet>
+
+        <!-- Lib Patches -->
+        <fileSet>
+            <directory>target/lib/patches</directory>
+            <outputDirectory>lib/patches</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
     </fileSets>
 
     <!--

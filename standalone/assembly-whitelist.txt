@@ -50,7 +50,7 @@
 /mule-standalone-${productVersion}/lib/boot/libwrapper-solaris-sparc-64.so
 /mule-standalone-${productVersion}/lib/boot/libwrapper-solaris-x86-32.so
 /mule-standalone-${productVersion}/lib/boot/commons-cli-1.2.jar
-/mule-standalone-${productVersion}/lib/boot/mule-module-reboot-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/boot/mule-module-reboot-4.1.1.jar
 /mule-standalone-${productVersion}/lib/boot/README.txt
 /mule-standalone-${productVersion}/lib/boot/wrapper-3.2.3.jar
 /mule-standalone-${productVersion}/lib/boot/wrapper-windows-x86-32.dll
@@ -86,12 +86,12 @@
 /mule-standalone-${productVersion}/lib/mule
 /mule-standalone-${productVersion}/lib/mule/mule-api-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.1.1.jar
-/mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-core-4.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.1.1.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-artifact-4.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-api-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-xml-1.1.1.jar
@@ -100,30 +100,30 @@
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-persistence-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-catalog-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-message-metadata-model-1.1.1.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-xml-support-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-global-config-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-launcher-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-logging-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-deployment-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-impl-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-xml-support-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-global-config-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-launcher-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-logging-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-deployment-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-impl-4.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-dsl-api-1.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-http-policy-api-1.1.1.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-license-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-service-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-container-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-license-api-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-service-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-container-4.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.1.1.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-repository-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-spring-config-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-tls-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-tooling-support-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-repository-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-spring-config-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-tls-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-tooling-support-4.1.1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-mvel2-2.1.9-MULE-015.jar
-/mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-service-http-api-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-4.1.1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-4.1.1.jar
 #
 # /services
 #
@@ -251,6 +251,18 @@
 /mule-standalone-${productVersion}/lib/user
 /mule-standalone-${productVersion}/lib/user/README.txt
 
+#
+# /lib/patches
+#
+/mule-standalone-${productVersion}/lib/patches
+/mule-standalone-${productVersion}/lib/patches/MULE-17243-4.1.1-3.0.jar
+
+/mule-standalone-${productVersion}/lib/patches/mule-artifact-patches
+/mule-standalone-${productVersion}/lib/patches/mule-artifact-patches/SE-12551-1.0.0-1.0.1-1.0.jar
+/mule-standalone-${productVersion}/lib/patches/mule-artifact-patches/SE-12551-1.1.0-1.1.15-2.0.jar
+/mule-standalone-${productVersion}/lib/patches/mule-artifact-patches/SE-12551-1.2.0-1.3.0-1.0.jar
+/mule-standalone-${productVersion}/lib/patches/mule-artifact-patches/SE-12551-1.3.1-1.3.4-1.0.jar
+/mule-standalone-${productVersion}/lib/patches/mule-artifact-patches/SE-12562-1.0.0-1.5.5-1.0.jar
 
 #
 # /lib/logs
