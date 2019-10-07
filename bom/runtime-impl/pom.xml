@@ -23,6 +23,21 @@
             <artifactId>MULE-16920-4.2.1</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-12167-4.2.1</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-12193-4.2.1</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-12743-4.2.1</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.mule.runtime</groupId>
