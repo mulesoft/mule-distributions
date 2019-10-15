@@ -20,6 +20,11 @@
     <dependencies>
         <dependency>
             <groupId>org.mule.patches</groupId>
+            <artifactId>MULE-17096-4.2.1</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.patches</groupId>
             <artifactId>MULE-16920-4.2.1</artifactId>
             <version>1.0</version>
         </dependency>
