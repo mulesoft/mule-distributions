@@ -21,6 +21,16 @@
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
     
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.mule.services</groupId>
+                <artifactId>mule-service-http</artifactId>  
+                <version>${muleHttpServiceVersion}</version>
+            </dependency>  	
+        </dependencies>
+    </dependencyManagement>
+    
     <dependencies>
         <dependency>
             <groupId>org.mule.services</groupId>
