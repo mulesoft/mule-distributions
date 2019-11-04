@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.mule.patches</groupId>
             <artifactId>SE-12095-SE-13429-SE-13404-MULE-17096-4.1.6</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
 
         <dependency>
