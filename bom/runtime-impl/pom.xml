@@ -15,9 +15,20 @@
 
     <properties>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <maven.client.version>1.4.2-hf1</maven.client.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.mule</groupId>
+            <artifactId>mule-maven-client-impl</artifactId>
+            <version>${maven.client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule</groupId>
+            <artifactId>mule-maven-client-impl</artifactId>
+            <version>${maven.client.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
