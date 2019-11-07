@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>org.mule</groupId>
-            <artifactId>mule-maven-client-impl</artifactId>
+            <artifactId>mule-maven-client-api</artifactId>
             <version>${maven.client.version}</version>
         </dependency>
         <dependency>
