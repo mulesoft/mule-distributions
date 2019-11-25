@@ -74,6 +74,13 @@
             <outputDirectory>lib/patches</outputDirectory>
             <fileMode>0644</fileMode>
         </fileSet>
+
+        <!-- Lib User -->
+        <fileSet>
+            <directory>target/lib/user</directory>
+            <outputDirectory>lib/user</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
     </fileSets>
 
     <!--

@@ -257,12 +257,12 @@
 # /lib/user
 #
 /mule-standalone-${productVersion}/lib/user
+/mule-standalone-${productVersion}/lib/user/MULE-17243-4.2.0-3.0.jar
 
 #
 # /lib/patches
 #
 /mule-standalone-${productVersion}/lib/patches
-/mule-standalone-${productVersion}/lib/patches/MULE-17243-4.2.0-3.0.jar
 
 /mule-standalone-${productVersion}/lib/patches/mule-artifact-patches
 /mule-standalone-${productVersion}/lib/patches/mule-artifact-patches/SE-12551-1.0.0-1.0.1-1.0.jar
