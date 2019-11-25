@@ -25,6 +25,8 @@
 
         <mule.version>4.1.1</mule.version>
 
+        <libUserOutputDir>${project.build.directory}/lib/user</libUserOutputDir>
+
         <libPatchesOutputDir>${project.build.directory}/lib/patches</libPatchesOutputDir>
         <muleArtifactsPatchesOutputDir>${libPatchesOutputDir}/mule-artifact-patches</muleArtifactsPatchesOutputDir>
     </properties>
@@ -82,7 +84,7 @@
                                     <artifactId>MULE-17243-${mule.version}</artifactId>
                                     <version>3.0</version>
                                     <type>jar</type>
-                                    <outputDirectory>${libPatchesOutputDir}</outputDirectory>
+                                    <outputDirectory>${libUserOutputDir}</outputDirectory>
                                 </artifactItem>
 
                                 <!-- Mule Artifact patches -->
