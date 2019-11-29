@@ -3,6 +3,7 @@ MIGRATION GUIDE
 Migration changes from 4.2.x to 4.3
 MULE-16681: Updated cipher suites for FIPS140-2 mode (check tls-fips140-2.conf file)
 MULE-15596: Added support to Error Handler for "when" filtering for a certain "type". Before 4.3.0 Setting "when" and "type" simple ignores "when" expression
+MULE-17800: ParseTemplateProcessor Type Inconsistencies when setting target and target variable
 
 Migration changes from 4.1.x to 4.2
 MULE-15586: `lookup` function in DataWeave now has a timeout. The timeout for a specific lookup call may be increased by providing the new value with a third parameter (i.e.: lookup(vars.flow, payload, 10000).
