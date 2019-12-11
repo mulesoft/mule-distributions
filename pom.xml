@@ -17,7 +17,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-            </plugin>
+            </plugin> 
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
             </plugin>
