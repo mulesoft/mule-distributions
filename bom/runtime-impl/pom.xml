@@ -74,6 +74,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-13533-4.1.5</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-12167-4.1.5</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
             <version>${mule.version}</version>
