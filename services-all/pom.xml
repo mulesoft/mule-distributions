@@ -27,7 +27,19 @@
                 <groupId>org.mule.services</groupId>
                 <artifactId>mule-service-http</artifactId>  
                 <version>${muleHttpServiceVersion}</version>
-            </dependency>  	
+            </dependency>
+            <dependency>
+                <groupId>org.mule.services</groupId>
+                <artifactId>mule-service-oauth</artifactId>
+                <version>${muleOAuthServiceVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mule.services</groupId>
+                <artifactId>mule-service-oauth</artifactId>
+                <version>${muleOAuthServiceVersion}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     
