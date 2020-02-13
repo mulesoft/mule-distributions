@@ -28,7 +28,7 @@
         <muleEmbeddedApiVersion>1.2.2-SNAPSHOT</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.2.5-SNAPSHOT</muleSchedulerServiceVersion>
-        <muleHttpServiceVersion>1.4.10</muleHttpServiceVersion>
+        <muleHttpServiceVersion>1.4.10-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.3.3-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.2.2-SNAPSHOT</muleSoapServiceVersion>
         <muleHttpConnectorTestVersion>1.6.0-SNAPSHOT</muleHttpConnectorTestVersion>
