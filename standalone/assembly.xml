@@ -89,6 +89,7 @@
                 <include>commons-cli:commons-cli</include>
                 <include>tanukisoft:wrapper</include>
                 <include>org.slf4j:slf4j-api</include>
+                <include>org.slf4j:slf4j-ext</include>
                 <include>org.apache.logging.log4j:log4j-api</include>
                 <include>org.apache.logging.log4j:log4j-core</include>
                 <include>org.apache.logging.log4j:log4j-slf4j-impl</include>
@@ -284,6 +285,7 @@
                 <exclude>commons-cli:commons-cli</exclude>
                 <exclude>tanukisoft:wrapper</exclude>
                 <exclude>org.slf4j:slf4j-api</exclude>
+                <exclude>org.slf4j:slf4j-ext</exclude>
                 <exclude>org.apache.logging.log4j:log4j-api</exclude>
                 <exclude>org.apache.logging.log4j:log4j-core</exclude>
                 <exclude>org.apache.logging.log4j:log4j-slf4j-impl</exclude>
