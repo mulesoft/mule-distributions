@@ -50,6 +50,11 @@
             <artifactId>mule-service-oauth-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mule.runtime</groupId>
+            <artifactId>mule-dwb-api</artifactId>
+            <version>${weaveVersion}</version>
+        </dependency>
     </dependencies>
 
 </project>
