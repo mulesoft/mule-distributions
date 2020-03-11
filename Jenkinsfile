@@ -4,7 +4,7 @@ def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/mule-4.x",
                                "Mule-runtime/mule-scheduler-service/master",
                                "Mule-runtime/mule-soap-service/master",
                                "Mule-runtime/mule-embedded-api/1.3.x",
-                               "Mule-runtime/mule-maven-client/master" ]
+                               "Mule-runtime/mule-maven-client/1.5.x" ]
 
 Map pipelineParams = [ "upstreamProjects" : UPSTREAM_PROJECTS_LIST.join(','),
                        "archiveArtifacts" : '**/logs/**,**/conf/wrapper*.conf',
