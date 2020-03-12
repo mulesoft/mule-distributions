@@ -147,6 +147,13 @@
             </exclusions>
         </dependency>
 
+        <!-- Add mule-dwb-api dep used by the DW mule-service-weave -->
+        <dependency>
+            <groupId>org.mule.runtime</groupId>
+            <artifactId>mule-dwb-api</artifactId>
+            <version>${weaveVersion}</version>
+        </dependency>
+
         <!-- Modules for standalone container -->
         <dependency>
             <groupId>org.mule.runtime</groupId>
