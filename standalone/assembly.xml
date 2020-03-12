@@ -136,6 +136,8 @@
                 <include>org.mule.runtime:mule-service-http-api</include>
                 <include>org.mule.runtime:mule-service-oauth-api</include>
                 <include>org.mule.runtime:mule-service-soap-api</include>
+                <include>org.mule.runtime:mule-dwb-api</include>
+                <include>org.mule.weave:dwb-api</include>
                 <!-- Modules -->
                 <include>org.mule.runtime:mule-module-artifact</include>
                 <include>org.mule.runtime:mule-module-launcher</include>
@@ -252,6 +254,8 @@
                 <exclude>org.mule.runtime:mule-service-http-api</exclude>
                 <exclude>org.mule.runtime:mule-service-oauth-api</exclude>
                 <exclude>org.mule.runtime:mule-service-soap-api</exclude>
+                <exclude>org.mule.runtime:mule-dwb-api</exclude>
+                <exclude>org.mule.weave:dwb-api</exclude>
                 <!-- lib/mule -->
                 <exclude>org.mule.mvel:mule-mvel2</exclude>
                 <exclude>org.mule.runtime:mule-core</exclude>
