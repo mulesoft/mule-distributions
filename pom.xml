@@ -35,6 +35,8 @@
         <muleFileConnectorTestVersion>1.3.2</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
+
+        <mule.version>4.3.0-ea1</mule.version>
     </properties>
 
     <modules>
