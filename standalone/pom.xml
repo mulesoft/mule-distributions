@@ -196,7 +196,7 @@
         <!-- Groovy is required to execute the launcher script -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
+            <artifactId>groovy</artifactId>
             <classifier>indy</classifier>
         </dependency>
 
