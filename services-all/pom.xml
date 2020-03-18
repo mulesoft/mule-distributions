@@ -199,7 +199,11 @@
                     <groupId>org.cryptacular</groupId>
                     <artifactId>cryptacular</artifactId>
                 </exclusion>
-            </exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>                    
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <artifactId>mule-service-weave</artifactId>
