@@ -15,6 +15,7 @@ import static org.mule.maven.client.test.MavenTestHelper.createDefaultEnterprise
 import static org.mule.maven.client.test.MavenTestHelper.getLocalRepositoryFolder;
 import static org.mule.runtime.module.embedded.api.EmbeddedContainer.builder;
 import static org.mule.runtime.module.embedded.internal.classloading.JdkOnlyClassLoaderFactory.create;
+
 import org.mule.maven.client.api.model.MavenConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
@@ -31,7 +32,7 @@ import org.junit.rules.TemporaryFolder;
 
 /**
  * Helper class for running embedded tests.
- * 
+ *
  * @since 4.0
  */
 public class EmbeddedTestHelper {
@@ -65,9 +66,9 @@ public class EmbeddedTestHelper {
 
   /**
    * Sets the proper context for creating an embedded container
-   * 
+   *
    * @param runnable a task that will create a {@link org.mule.runtime.module.embedded.api.EmbeddedContainer} for testing
-   *        purposes.
+   *                 purposes.
    */
   public void test(Runnable runnable) {
     ClassLoader contextClassLoader = currentThread().getContextClassLoader();
@@ -84,9 +85,9 @@ public class EmbeddedTestHelper {
 
   /**
    * Preconfigures the {@link EmbeddedContainer} with default settings
-   * 
+   *
    * @param embeddedContainerConfigurer function to add configuration to the embedded container
-   * @param test function that run the tests
+   * @param test                        function that run the tests
    */
   public void testWithDefaultSettings(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
                                       Consumer<EmbeddedContainer> test) {
