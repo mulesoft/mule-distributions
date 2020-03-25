@@ -35,7 +35,13 @@
             <artifactId>MULE-16987-4.2.2</artifactId>
             <version>1.0</version>
         </dependency>
-        
+
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>SE-13533-4.2.2</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
