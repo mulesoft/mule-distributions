@@ -215,7 +215,7 @@
             <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
             <scope>runtime</scope>
             <includes>
-                <include>org.codehaus.groovy:groovy-all</include>
+                <include>org.codehaus.groovy:groovy</include>
             </includes>
         </dependencySet>
         
@@ -303,7 +303,7 @@
                 <exclude>com.fasterxml.jackson.core:jackson-annotations</exclude>
 
                 <!-- Excludes libraries on lib/launcher-->
-                <exclude>org.codehaus.groovy:groovy-all</exclude>
+                <exclude>org.codehaus.groovy:groovy</exclude>
 
                 <!-- Excludes services-->
                 <exclude>org.mule.services:*</exclude>

@@ -151,7 +151,6 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-dwb-api</artifactId>
-            <version>${weaveVersion}</version>
         </dependency>
 
         <!-- Modules for standalone container -->
@@ -185,7 +184,6 @@
         <dependency>
             <groupId>org.mule.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>${javaXmlBindVersion}</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.xml.stream</groupId>
@@ -196,8 +194,9 @@
         <!-- Groovy is required to execute the launcher script -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
+            <artifactId>groovy</artifactId>
             <classifier>indy</classifier>
+            <version>${groovyVersion}</version>
         </dependency>
 
         <!-- Overwrite Jackson dependency with our own version -->
