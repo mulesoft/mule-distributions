@@ -19,6 +19,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.mule.services</groupId>
+            <artifactId>mule-service-http</artifactId>
+            <version>1.4.14</version>
+            <classifier>mule-service</classifier>
+        </dependency>
+
+        <dependency>
             <groupId>org.mule.patches</groupId>
             <artifactId>MULE-17096-4.2.1</artifactId>
             <version>2.0</version>
@@ -70,6 +77,12 @@
             <artifactId>mule-services-all</artifactId>
             <version>${mule.version}</version>
             <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mule.services</groupId>
+                    <artifactId>mule-service-http</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
