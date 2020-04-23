@@ -11,7 +11,7 @@
 
     <artifactId>mule-embedded</artifactId>
     <packaging>pom</packaging>
-    <version>4.1.6-hf4-SNAPSHOT</version>
+    <version>4.1.6-hf5-SNAPSHOT</version>
     <name>Mule Embedded</name>
 
     <properties>
