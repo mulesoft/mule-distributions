@@ -24,7 +24,9 @@
         </plugins>
     </build>
 
-	<properties>
+    <properties>
+        <mule.version>4.1.1</mule.version>
+
         <muleEmbeddedApiVersion>1.1.1</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.1.4</muleSchedulerServiceVersion>
@@ -35,7 +37,7 @@
         <muleFileConnectorTestVersion>1.1.1</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
-	</properties>
+    </properties>
 
     <modules>
         <module>services-all</module>
