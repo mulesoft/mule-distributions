@@ -73,7 +73,7 @@
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-unit</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule</groupId>
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-allure</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mashape.unirest</groupId>
@@ -93,7 +93,7 @@
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-infrastructure</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
