@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>net.lingala.zip4j</groupId>
