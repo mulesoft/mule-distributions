@@ -133,13 +133,13 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <!-- Include all Mule Modules -->
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-modules-all</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
             <type>pom</type>
             <exclusions>
                 <exclusion>
@@ -168,22 +168,22 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-reboot</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-launcher</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-deployment</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-service</artifactId>
-            <version>${mule.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- add aspectj weaver dependency that was removed from spring-security-3.1 -->
