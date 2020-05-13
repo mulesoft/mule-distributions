@@ -137,7 +137,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.4.14+
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.3.3+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.2.1+
-/mule-standalone-${productVersion}/services/mule-service-weave-2.2.2-SE-13951-SE-14613-SE-14623-SE-14606-SE-14421-SE-14808-DW-112+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.2.2-SE-13951-SE-14613-SE-14623-SE-14606-SE-14421-SE-14808-DW-112-SE-15201-SE-15362-SE-15642-SE-15741-SE-15159-SE-15453-SE-9907-SE-15970+
 #
 # /lib/opt
 #
