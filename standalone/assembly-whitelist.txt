@@ -238,7 +238,7 @@
 /mule-standalone-${productVersion}/lib/opt/reactor-extra-3.1.6.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/reflections-0.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/rhino-1.7.7.1.jar
-/mule-standalone-${productVersion}/lib/opt/semver4j-2.0.3.jar
+/mule-standalone-${productVersion}/lib/opt/semver4j-3.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-1.21.jar
 /mule-standalone-${productVersion}/lib/opt/spring-aop-5.1.6.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-beans-5.1.6.RELEASE.jar
