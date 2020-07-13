@@ -134,7 +134,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.3.1-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/dwb-api-2.3.1-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-oauth-client-1.0.0-SNAPSHOT.jar
 #
 # /services
 #
@@ -234,7 +233,7 @@
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-3.5.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.6.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.6.0-+
-/mule-standalone-${productVersion}/lib/opt/mule-oauth-client-1.0.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/opt/mule-oauth-client-0.8.0-+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.3.2.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.5.1.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-1.4.jar
