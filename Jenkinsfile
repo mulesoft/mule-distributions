@@ -1,6 +1,6 @@
 def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/master-JULY-DRY-RUN",
                                "Mule-runtime/mule-http-service/master-JULY-DRY-RUN",
-                               "Mule-runtime/mule-oauth-service/master",
+                               "Mule-runtime/mule-oauth-service/master-JULY-DRY-RUN",
                                "Mule-runtime/mule-scheduler-service/master-JULY-DRY-RUN",
                                "Mule-runtime/mule-soap-service/master",
                                "Mule-runtime/mule-embedded-api/master-JULY-DRY-RUN",
