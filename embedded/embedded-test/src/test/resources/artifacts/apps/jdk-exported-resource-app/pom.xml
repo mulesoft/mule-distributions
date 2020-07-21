@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>com.mulesoft.mule.runtime.bom</groupId>
                 <artifactId>mule-dependencies-bom</artifactId>
-                <version>1.x-SNAPSHOT</version>
+                <version>${muleDependenciesVersion}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

@@ -30,6 +30,7 @@
         <muleHttpServiceVersion>1.6.0-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.1.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.4.0-SNAPSHOT</muleSoapServiceVersion>
+        <muleDependenciesVersion>1.x-SNAPSHOT</muleDependenciesVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
@@ -39,7 +40,7 @@
             <dependency>
                 <groupId>com.mulesoft.mule.runtime.bom</groupId>
                 <artifactId>mule-dependencies-bom</artifactId>
-                <version>1.x-SNAPSHOT</version>
+                <version>${muleDependenciesVersion}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
