@@ -26,16 +26,25 @@
 
 	<properties>
         <muleEmbeddedApiVersion>1.4.0-SNAPSHOT</muleEmbeddedApiVersion>
-
         <muleSchedulerServiceVersion>1.4.0-SNAPSHOT</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.6.0-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.1.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.4.0-SNAPSHOT</muleSoapServiceVersion>
-        <muleHttpConnectorTestVersion>1.6.0-SNAPSHOT</muleHttpConnectorTestVersion>
-        <muleFileConnectorTestVersion>2.0.0-SNAPSHOT</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.mulesoft.mule.runtime.bom</groupId>
+                <artifactId>mule-dependencies-bom</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>services-all</module>

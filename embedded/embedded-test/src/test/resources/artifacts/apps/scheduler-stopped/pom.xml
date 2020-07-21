@@ -13,7 +13,6 @@
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-file-connector</artifactId>
-            <version>${muleFileConnectorTestVersion}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
