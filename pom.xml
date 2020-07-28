@@ -31,11 +31,21 @@
         <muleHttpServiceVersion>1.5.3-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.0.1-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.3.1-SNAPSHOT</muleSoapServiceVersion>
-        <muleHttpConnectorTestVersion>1.5.20-SNAPSHOT</muleHttpConnectorTestVersion>
-        <muleFileConnectorTestVersion>1.3.2</muleFileConnectorTestVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.mulesoft.mule.runtime.bom</groupId>
+                <artifactId>mule-test-dependencies-bom</artifactId>
+                <version>${muleDependenciesVersion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>services-all</module>
