@@ -9,11 +9,22 @@
     <version>1.0.0</version>
     <packaging>mule-application</packaging>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.mulesoft.mule.runtime.bom</groupId>
+                <artifactId>mule-test-dependencies-bom</artifactId>
+                <version>${muleDependenciesVersion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-file-connector</artifactId>
-            <version>${muleFileConnectorTestVersion}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
