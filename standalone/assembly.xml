@@ -128,6 +128,8 @@
                 <include>org.mule.runtime:mule-extensions-soap-api</include>
                 <include>org.mule.runtime:mule-extensions-api-persistence</include>
                 <include>org.mule.runtime:mule-extensions-api-dsql</include>
+                <!-- SDK API -->
+                <include>org.mule.sdk:mule-sdk-api</include>
                 <!-- AST -->
                 <include>org.mule.runtime:mule-artifact-ast</include>
                 <include>org.mule.runtime:mule-artifact-ast-dependency-graph</include>
@@ -286,6 +288,7 @@
                 <exclude>org.mule.runtime:mule-module-spring-config</exclude>
                 <exclude>org.mule.runtime:mule-module-tls</exclude>
                 <exclude>org.mule.runtime:mule-module-tooling-support</exclude>
+                <exclude>org.mule.sdk:mule-sdk-api</exclude>
 
                 <!-- lib/boot -->
                 <exclude>commons-cli:commons-cli</exclude>
