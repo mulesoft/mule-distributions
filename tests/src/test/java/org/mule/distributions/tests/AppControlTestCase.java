@@ -14,11 +14,14 @@ import static org.mule.runtime.core.api.util.ClassUtils.getResource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.nio.file.Files;
 
 public class AppControlTestCase extends AbstractAppControl {
+  private static final Logger LOGGER = LoggerFactory.getLogger(AppControlTestCase.class);
 
   private static final String SINGLE_APP_COMMAND = "-app";
   private static final String DEFAULT = "default";
@@ -32,6 +35,7 @@ public class AppControlTestCase extends AbstractAppControl {
 
   @After
   public void tearDown() {
+    logMuleEE();
     getMule().stop();
     assertMuleStops();
   }
@@ -79,6 +83,16 @@ public class AppControlTestCase extends AbstractAppControl {
 
   private static String getResourceAsString(String directory, String name) {
     return getResource(directory + "/" + name, AppControlTestCase.class).getPath();
+  }
+
+  private void logMuleEE() {
+    try {
+      LOGGER.info("====================== Server log ===============================");
+      Files.lines(getMule().getLog().toPath()).forEach(LOGGER::info);
+      LOGGER.info("=================================================================");
+    } catch (IOException e) {
+      LOGGER.warn("Error on logging EE", e);
+    }
   }
 
 }
