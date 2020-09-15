@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class AppControlTestCase extends AbstractAppControl {
+
   private static final Logger LOGGER = LoggerFactory.getLogger(AppControlTestCase.class);
 
   private static final String SINGLE_APP_COMMAND = "-app";
