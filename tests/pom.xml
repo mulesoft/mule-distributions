@@ -38,7 +38,6 @@
                     </systemProperties>
                     <systemPropertyVariables>
                         <mule.distribution>${org.mule.distributions:mule-standalone:zip}</mule.distribution>
-                        <mule.deployment.notifier.plugin>${org.mule.tests:deployment-notifier-plugin:jar}</mule.deployment.notifier.plugin>
                         <scheduler.service>${org.mule.services:mule-service-scheduler:zip}</scheduler.service>
                         <http.service>${org.mule.services:mule-service-http:zip}</http.service>
                         <el.service>${com.mulesoft.services:mule-service-weave-ee:zip}</el.service>
@@ -112,12 +111,6 @@
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-infrastructure</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.tests</groupId>
-            <artifactId>deployment-notifier-plugin</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.tests</groupId>
