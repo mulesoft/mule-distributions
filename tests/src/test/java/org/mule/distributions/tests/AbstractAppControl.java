@@ -44,6 +44,8 @@ import org.junit.rules.TestRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -98,7 +100,13 @@ public class AbstractAppControl extends AbstractMuleTestCase {
   }
 
   protected static void assertAppIsDeployed(String appName) {
-    prober.check(new JUnitLambdaProbe(() -> mule.isDeployed(appName),
+    prober.check(new JUnitLambdaProbe(() -> {
+      boolean deployed = mule.isDeployed(appName);
+      if (!deployed) {
+        logMuleEE();
+      }
+      return deployed;
+    },
                                       () -> "Application [" + appName + "] is not deployed."));
   }
 
@@ -185,5 +193,15 @@ public class AbstractAppControl extends AbstractMuleTestCase {
 
   public static MuleProcessController getMule() {
     return mule;
+  }
+
+  private static void logMuleEE() {
+    try {
+      LOGGER.info("====================== Server log ===============================");
+      Files.lines(getMule().getLog().toPath()).forEach(LOGGER::warn);
+      LOGGER.info("=================================================================");
+    } catch (IOException e) {
+      LOGGER.warn("Error on logging EE", e);
+    }
   }
 }

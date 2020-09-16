@@ -89,7 +89,7 @@ public class AppControlTestCase extends AbstractAppControl {
   private void logMuleEE() {
     try {
       LOGGER.info("====================== Server log ===============================");
-      Files.lines(getMule().getLog().toPath()).forEach(LOGGER::info);
+      Files.lines(getMule().getLog().toPath()).forEach(LOGGER::warn);
       LOGGER.info("=================================================================");
     } catch (IOException e) {
       LOGGER.warn("Error on logging EE", e);
