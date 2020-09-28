@@ -31,7 +31,7 @@
         <muleEmbeddedApiVersion>1.1.1</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.1.4</muleSchedulerServiceVersion>
-        <muleHttpServiceVersion>1.1.1</muleHttpServiceVersion>
+        <muleHttpServiceVersion>1.1.2</muleHttpServiceVersion>
         <muleOAuthServiceVersion>1.1.1</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.1.2</muleSoapServiceVersion>
         <muleHttpConnectorTestVersion>1.1.0</muleHttpConnectorTestVersion>
