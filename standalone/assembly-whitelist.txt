@@ -89,7 +89,7 @@
 # /lib/mule
 #
 /mule-standalone-${productVersion}/lib/mule
-/mule-standalone-${productVersion}/lib/mule/mule-api-1.3.0-20200824.jar
+/mule-standalone-${productVersion}/lib/mule/mule-api-1.3.0-20201013.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.3.0-20201013.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.3.0-20200824.jar
