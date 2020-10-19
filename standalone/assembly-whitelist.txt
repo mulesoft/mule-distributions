@@ -160,7 +160,7 @@
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.13.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
-/mule-standalone-${productVersion}/lib/opt/commons-io-2.6.jar
+/mule-standalone-${productVersion}/lib/opt/commons-io-2.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang-2.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang3-3.8.1.jar
 /mule-standalone-${productVersion}/lib/opt/commons-math3-3.6.1.jar
