@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-bom</artifactId>
-        <version>4.1.2-HF-SNAPSHOT</version>
+        <version>4.1.2-20201019</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
