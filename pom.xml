@@ -34,6 +34,8 @@
         <muleDependenciesVersion>1.0.3</muleDependenciesVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
+
+        <muleCoreAbpVersion>4.3.0-abp1</muleCoreAbpVersion>
 	</properties>
 
     <dependencyManagement>

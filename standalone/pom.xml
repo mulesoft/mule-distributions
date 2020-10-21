@@ -112,7 +112,7 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
+            <version>${muleCoreAbpVersion}</version>
         </dependency>
         <!-- Include all Mule Modules -->
         <dependency>

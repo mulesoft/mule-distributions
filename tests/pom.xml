@@ -120,7 +120,7 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
+            <version>${muleCoreAbpVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.mule.distributions</groupId>
