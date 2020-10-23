@@ -23,6 +23,11 @@
             <artifactId>SE-12095-SE-13429-SE-13404-MULE-17096-MULE-18312-4.1.6</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.mule.patches</groupId>
+            <artifactId>MULE-18922-4.1.6</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.mule.runtime</groupId>
