@@ -19,7 +19,7 @@
     <properties>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
 
-        <jackson2Version>2.10.0</jackson2Version>
+        <jackson2Version>2.11.3</jackson2Version>
     </properties>
 
     <build>
