@@ -137,6 +137,7 @@
                 <include>org.mule.runtime:mule-properties-api</include>
                 <!-- Core -->
                 <include>org.mule.runtime:mule-core</include>
+                <include>org.mule.runtime:mule-runtime-extension-model</include>
                 <!--Services-->
                 <include>org.mule.runtime:mule-service-http-api</include>
                 <include>org.mule.runtime:mule-service-oauth-api</include>
@@ -267,6 +268,7 @@
                 <!-- lib/mule -->
                 <exclude>org.mule.mvel:mule-mvel2</exclude>
                 <exclude>org.mule.runtime:mule-core</exclude>
+                <exclude>org.mule.runtime:mule-runtime-extension-model</exclude>
                 <exclude>org.mule.distributions:mule-services-all</exclude>
                 <exclude>org.mule.runtime:mule-modules-all</exclude>
                 <exclude>org.mule.runtime:mule-module-artifact</exclude>
