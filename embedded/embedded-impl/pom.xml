@@ -37,7 +37,7 @@
         <dependency>
             <groupId>net.lingala.zip4j</groupId>
             <artifactId>zip4j</artifactId>
-            <version>2.1.2</version>
+            <version>2.6.3</version>
         </dependency>
         <!-- TODO MULE-11458 - this dependency is not downloaded by maven because the zip extension -->
         <dependency>
