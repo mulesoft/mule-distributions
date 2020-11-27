@@ -39,12 +39,6 @@
             <artifactId>zip4j</artifactId>
             <version>2.1.2</version>
         </dependency>
-        <!-- TODO MULE-11458 - this dependency is not downloaded by maven because the zip extension -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
     </dependencies>
 
 </project>
