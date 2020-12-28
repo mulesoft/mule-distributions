@@ -28,6 +28,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -40,6 +41,7 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
+  @Ignore("MULE-19061")
   public void domainWithHttpConnector() throws Exception {
     BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
     doWithinDomain(domainBundleDescriptor, getDomainFolder("simple-domain"), port -> {
@@ -54,6 +56,7 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded deploys and undeploys a domain")
   @Test
+  @Ignore("MULE-19061")
   public void deployUndeployDomain() throws Exception {
     runWithContainer(container -> {
       try {
