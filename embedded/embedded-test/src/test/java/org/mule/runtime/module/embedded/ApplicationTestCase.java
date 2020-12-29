@@ -88,6 +88,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application depending on a connector")
   @Test
+  @Ignore("MULE-19062")
   public void applicationWithConnector() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
