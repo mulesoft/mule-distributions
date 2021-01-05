@@ -223,7 +223,7 @@
 /mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
 /mule-standalone-${productVersion}/lib/opt/api-annotations-1.1.1-20210105.jar
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-3.3.4.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.4.2-20201203.jar
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.4.2-20210105.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.4.2-20201203.jar
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.3.2.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.5.1.jar
