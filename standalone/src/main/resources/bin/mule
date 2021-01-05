@@ -288,12 +288,12 @@ then
 else
     if [ "$DIST_OS" = "macosx" ]
     then
-        WRAPPER_TEST_CMD="$WRAPPER_CMD-$DIST_OS-universal-32"
+        WRAPPER_TEST_CMD="$WRAPPER_CMD-$DIST_OS-universal-64"
         if [ -x "$WRAPPER_TEST_CMD" ]
         then
             WRAPPER_CMD="$WRAPPER_TEST_CMD"
         else
-            WRAPPER_TEST_CMD="$WRAPPER_CMD-$DIST_OS-$DIST_ARCH-64"
+            WRAPPER_TEST_CMD="$WRAPPER_CMD-$DIST_OS-$DIST_ARCH-32"
             if [ -x "$WRAPPER_TEST_CMD" ]
             then
                 WRAPPER_CMD="$WRAPPER_TEST_CMD"
