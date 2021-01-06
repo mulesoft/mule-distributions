@@ -122,7 +122,9 @@ PRIORITY=
 
 # If set, the status, start_msg and stop_msg commands will print out detailed
 #   state information on the Wrapper and Java processes.
-DETAIL_STATUS=true
+if [ "X$DETAIL_STATUS" = "X" ]; then
+	DETAIL_STATUS=false
+fi
 
 # Location of the pid file.
 PIDDIR="$MULE_BASE/."
@@ -353,11 +355,11 @@ else
 fi
 
 # Build the status file clause.
-if [ "X$DETAIL_STATUS" = "X" ]
+if [ "$DETAIL_STATUS" = "true" ]
 then
-   STATUSPROP=
-else
    STATUSPROP="wrapper.statusfile=\"$STATUSFILE\" wrapper.java.statusfile=\"$JAVASTATUSFILE\""
+else
+   STATUSPROP=
 fi
 
 # Build the lock file clause.  Only create a lock file if the lock directory exists on this platform.
@@ -633,12 +635,12 @@ status() {
         eval echo `gettext '$APP_LONG_NAME \(standalone\) is not running.'`
         exit 1
     else
-        if [ "X$DETAIL_STATUS" = "X" ]
+        if [ "$DETAIL_STATUS" = "true" ]
         then
-            eval echo `gettext '$APP_LONG_NAME \(standalone\) is running: PID:$pid'`
-        else
             getstatus
             eval echo `gettext '$APP_LONG_NAME \(standalone\) is running: PID:$pid, Wrapper:$STATUS, Java:$JAVASTATUS'`
+        else
+            eval echo `gettext '$APP_LONG_NAME \(standalone\) is running \($pid\)'`
         fi
         exit 0
     fi
