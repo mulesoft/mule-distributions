@@ -11,14 +11,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 import static org.mule.runtime.core.api.util.ClassUtils.getResource;
 
+import org.mule.tck.junit4.rule.EnvironmentVariable;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.nio.file.Paths;
-
 public class AppControlTestCase extends AbstractAppControl {
+
+  @Rule
+  public EnvironmentVariable detailStatus = new EnvironmentVariable("DETAIL_STATUS", "true");
 
   private static final String SINGLE_APP_COMMAND = "-app";
   private static final String DEFAULT = "default";
@@ -26,7 +29,7 @@ public class AppControlTestCase extends AbstractAppControl {
   private static final String EMPTY_APP = "empty";
 
   @Before
-  public void setup() throws IOException {
+  public void setup() {
     getMule().deploy(getResourceAsString("apps", EMPTY_APP));
   }
 
@@ -37,7 +40,7 @@ public class AppControlTestCase extends AbstractAppControl {
   }
 
   @Test
-  public void muleStarts() throws IOException {
+  public void muleStarts() {
     getMule().start();
     assertMuleStarts();
     assertAppIsDeployed(EMPTY_APP);
@@ -82,3 +85,4 @@ public class AppControlTestCase extends AbstractAppControl {
   }
 
 }
+
