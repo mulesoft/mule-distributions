@@ -158,6 +158,7 @@
 /mule-standalone-${productVersion}/lib/opt/aether-spi-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-transport-file-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-transport-http-1.0.2.v20150114.jar
+/mule-standalone-${productVersion}/lib/opt/aether-transport-wagon-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-util-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/animal-sniffer-annotations-1.14.jar
 /mule-standalone-${productVersion}/lib/opt/annotations-3.0.0.jar
@@ -265,6 +266,9 @@
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.1.0.Final.jar
 /mule-standalone-${productVersion}/lib/opt/vibur-object-pool-23.0.jar
+/mule-standalone-${productVersion}/lib/opt/wagon-http-3.4.2.jar
+/mule-standalone-${productVersion}/lib/opt/wagon-http-shared-3.4.2.jar
+/mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.4.2.jar
 /mule-standalone-${productVersion}/lib/opt/xerces2-xsd11-2.11.3.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-3.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
