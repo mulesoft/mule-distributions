@@ -59,6 +59,10 @@
                     <groupId>com.mchange</groupId>
                     <artifactId>c3p0</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.graalvm.js</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
