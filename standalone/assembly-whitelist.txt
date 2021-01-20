@@ -135,7 +135,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.1.4-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.1.5-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-soap-1.1.8-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-weave-2.1.6-CH-SE-10077-SE-10548-SE-10638-SE-10706-DW-112-mule-service.jar
+/mule-standalone-${productVersion}/services/mule-service-weave-2.1.6-HF-+
 #
 # /lib/opt
 #
