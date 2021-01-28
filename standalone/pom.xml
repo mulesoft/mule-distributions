@@ -14,12 +14,13 @@
          'package' phase. We bind the assembly plugin here, that's enough. -->
     <packaging>pom</packaging>
     <name>Full Distribution</name>
-    <description>Includes the Mule server with all of its modules and transports.</description>
+    <description>Includes the Mule server with all of its APIs and internal modules.</description>
 
     <properties>
+        <standaloneStructureDir>${project.build.directory}/distribution-structure</standaloneStructureDir>
+        <standaloneStructure>mule-standalone-structure</standaloneStructure>
+        
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
-
-        <jackson2Version>2.11.3</jackson2Version>
     </properties>
 
     <build>
@@ -44,13 +45,20 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>copy-additional-services</id>
+                        <id>unpack-dependencies</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
                         <configuration>
                             <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.mule.distributions</groupId>
+                                    <artifactId>${standaloneStructure}</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>tar.gz</type>
+                                    <outputDirectory>${standaloneStructureDir}</outputDirectory>
+                                </artifactItem>
                                 <artifactItem>
                                     <groupId>org.mule.services</groupId>
                                     <artifactId>mule-service-weave</artifactId>
@@ -68,7 +76,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptors>
-                        <descriptor>assembly.xml</descriptor>
+                        <descriptor>src/assembly/assembly.xml</descriptor>
                     </descriptors>
                     <appendAssemblyId>false</appendAssemblyId>
                     <tarLongFileMode>posix</tarLongFileMode>
@@ -108,6 +116,14 @@
     </build>
 
     <dependencies>
+        <!-- Mule distribution structure -->
+        <dependency>
+            <groupId>org.mule.distributions</groupId>
+            <artifactId>${standaloneStructure}</artifactId>
+            <version>${project.version}</version>
+            <type>tar.gz</type>
+        </dependency>
+
         <!-- Mule Core -->
         <dependency>
             <groupId>org.mule.runtime</groupId>
