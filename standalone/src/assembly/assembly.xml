@@ -11,10 +11,8 @@
             <directory>src/main/resources</directory>
             <outputDirectory></outputDirectory>
             <excludes>
-                <exclude>**/IGNORE</exclude>
                 <exclude>bin/**</exclude>
                 <exclude>conf/**</exclude>
-                <exclude>lib/boot/exec/**</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -49,7 +47,7 @@
         </fileSet>
 
         <fileSet>
-            <directory>src/main/resources/lib/boot/exec</directory>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot/exec</directory>
             <outputDirectory>lib/boot/exec</outputDirectory>
             <fileMode>700</fileMode>
             <excludes>
@@ -60,12 +58,60 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>src/main/resources/lib/boot/exec</directory>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot/exec</directory>
             <outputDirectory>lib/boot/exec</outputDirectory>
             <fileMode>600</fileMode>
             <includes>
                 <include>*.txt</include>
             </includes>
+        </fileSet>
+
+        <!-- Copy CE READMEs -->
+        <fileSet>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}</directory>
+            <outputDirectory></outputDirectory>
+            <fileMode>0644</fileMode>
+            <includes>
+                <include>README.txt</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/logs</directory>
+            <outputDirectory>logs</outputDirectory>
+            <fileMode>0644</fileMode>
+            <includes>
+                <include>README.txt</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot</directory>
+            <outputDirectory>lib/boot</outputDirectory>
+            <fileMode>0640</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/user</directory>
+            <outputDirectory>lib/user</outputDirectory>
+            <excludes>
+                <exclude>**/IGNORE</exclude>
+            </excludes>
+        </fileSet>
+
+        <!-- Copy CE apps directory -->
+        <fileSet>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/apps</directory>
+            <outputDirectory>apps</outputDirectory>
+            <excludes>
+                <exclude>**/IGNORE</exclude>
+            </excludes>
+        </fileSet>
+
+        <!-- Copy CE domains directory -->
+        <fileSet>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/domains</directory>
+            <outputDirectory>domains</outputDirectory>
+            <excludes>
+                <exclude>**/IGNORE</exclude>
+            </excludes>
         </fileSet>
     </fileSets>
 
@@ -318,6 +364,9 @@
 
                 <!-- Excludes services-->
                 <exclude>org.mule.services:*</exclude>
+
+                <!-- Excludes structure module -->
+                <exclude>org.mule.distributions:mule-standalone-structure</exclude>
             </excludes>
         </dependencySet>
     </dependencySets>

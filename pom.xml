@@ -52,6 +52,7 @@
         <module>bom</module>
         <module>embedded</module>
         <module>standalone</module>
+        <module>standalone-structure</module>
         <module>tests</module>
     </modules>
 </project>

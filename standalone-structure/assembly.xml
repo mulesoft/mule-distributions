@@ -1,0 +1,39 @@
+<!-- Assembly descriptor for the full Mule distribution. -->
+<assembly>
+    <id>standalone-structure</id>
+    <formats>
+        <format>zip</format>
+        <format>tar.gz</format>
+    </formats>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory></outputDirectory>
+            <excludes>
+                <exclude>lib/boot/exec/**</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/resources/lib/boot/exec</directory>
+            <outputDirectory>lib/boot/exec</outputDirectory>
+            <fileMode>700</fileMode>
+            <excludes>
+                <exclude>*.txt</exclude>
+            </excludes>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources/lib/boot/exec</directory>
+            <outputDirectory>lib/boot/exec</outputDirectory>
+            <fileMode>600</fileMode>
+            <includes>
+                <include>*.txt</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+</assembly>
