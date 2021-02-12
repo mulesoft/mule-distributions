@@ -5,6 +5,7 @@
         <groupId>org.mule.runtime</groupId>
         <artifactId>mule</artifactId>
         <version>4.2.0-HF-SNAPSHOT</version>
+        <relativePath/>
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
