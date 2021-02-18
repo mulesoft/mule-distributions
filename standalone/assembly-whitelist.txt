@@ -115,12 +115,12 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-impl-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-dsl-api-1.2.0.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-http-policy-api-1.2.0.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-dsl-api-1.2.0-20200518.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-http-policy-api-1.2.0-20200518.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-license-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-service-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-container-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.2.0.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.2.0-20200518.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-repository-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-spring-config-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-tls-${productVersion}.jar
@@ -137,7 +137,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.4.15+
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.2.0+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.2.0+
-/mule-standalone-${productVersion}/services/mule-service-weave-2.2.0-CH-+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.2.0-HF-+
 #
 # /lib/opt
 #
@@ -219,10 +219,10 @@
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
-/mule-standalone-${productVersion}/lib/opt/api-annotations-1.1.0.jar
+/mule-standalone-${productVersion}/lib/opt/api-annotations-1.1.0-20200709.jar
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-3.3.0.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.4.0.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.4.0.jar
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.4.0-20200518.jar
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.4.0-20200518.jar
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.3.2.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.5.1.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-1.4.jar
