@@ -68,7 +68,7 @@ public class EmbeddedTestHelper {
    * Sets the proper context for creating an embedded container
    *
    * @param runnable a task that will create a {@link org.mule.runtime.module.embedded.api.EmbeddedContainer} for testing
-   *                 purposes.
+   *        purposes.
    */
   public void test(Runnable runnable) {
     ClassLoader contextClassLoader = currentThread().getContextClassLoader();
@@ -87,7 +87,7 @@ public class EmbeddedTestHelper {
    * Preconfigures the {@link EmbeddedContainer} with default settings
    *
    * @param embeddedContainerConfigurer function to add configuration to the embedded container
-   * @param test                        function that run the tests
+   * @param test function that run the tests
    */
   public void testWithDefaultSettings(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
                                       Consumer<EmbeddedContainer> test) {
