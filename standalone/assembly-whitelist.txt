@@ -90,8 +90,8 @@
 #
 /mule-standalone-${productVersion}/lib/mule
 /mule-standalone-${productVersion}/lib/mule/mule-api-1.4.0-20210226.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.4.0-20210226.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.4.0-20210226.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.4.0-20210316.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.4.0-20210316.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.4.0-20210226.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.4.0-20210226.jar
