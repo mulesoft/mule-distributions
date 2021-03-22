@@ -1,5 +1,5 @@
 def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/4.3.0-APRIL-2021",
-                               "Mule-runtime/mule-http-service/support/1.5.x",
+                               "Mule-runtime/mule-http-service/1.5.10",
                                "Mule-runtime/mule-oauth-service/support/2.0.x",
                                "Mule-runtime/mule-scheduler-service/support/1.3.x",
                                "Mule-runtime/mule-soap-service/support/1.3.x",
