@@ -142,7 +142,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.5.11-+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.0.1-+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.3.1-+
-/mule-standalone-${productVersion}/services/mule-service-weave-2.3.0-HF-+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.3.0-20210322+
 #
 # /lib/opt
 #
