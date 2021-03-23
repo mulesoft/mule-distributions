@@ -30,7 +30,7 @@
         <muleHttpServiceVersion>1.6.0-20210323</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.1.0-20210323</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.4.0-20210323</muleSoapServiceVersion>
-        <muleDependenciesVersion>1.x-SNAPSHOT</muleDependenciesVersion>
+        <muleDependenciesVersion>1.0.9</muleDependenciesVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
