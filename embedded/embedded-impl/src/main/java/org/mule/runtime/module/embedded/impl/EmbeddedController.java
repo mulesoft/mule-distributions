@@ -176,6 +176,7 @@ public class EmbeddedController {
     });
 
     muleContainer = new MuleContainer(new String[0]);
+    muleContainer.setEmbeddedMode(true);
     containerClassLoader = muleContainer.getContainerClassLoader();
     executeWithinContainerClassLoader(() -> {
       try {
