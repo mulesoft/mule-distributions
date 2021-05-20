@@ -176,6 +176,9 @@
                 <include>org.mule.runtime:mule-extensions-api-dsql</include>
                 <!-- SDK API -->
                 <include>org.mule.sdk:mule-sdk-api</include>
+                <!-- CONNECTIVITY API -->    
+                <include>org.mule.runtime:mule-connectivity-api</include>
+                <include>org.mule.runtime:mule-connectivity-api-persistence</include>
                 <!-- AST -->
                 <include>org.mule.runtime:mule-artifact-ast</include>
                 <include>org.mule.runtime:mule-artifact-ast-dependency-graph</include>
@@ -341,6 +344,8 @@
                 <exclude>org.mule.runtime:mule-module-tls</exclude>
                 <exclude>org.mule.runtime:mule-module-tooling-support</exclude>
                 <exclude>org.mule.sdk:mule-sdk-api</exclude>
+                <exclude>org.mule.runtime:mule-connectivity-api</exclude>
+                <exclude>org.mule.runtime:mule-connectivity-api-persistence</exclude>
 
                 <!-- lib/boot -->
                 <exclude>commons-cli:commons-cli</exclude>
