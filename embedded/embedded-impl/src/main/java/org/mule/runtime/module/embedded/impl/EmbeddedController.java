@@ -22,6 +22,7 @@ import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZ
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
+
 import org.mule.runtime.api.artifact.Registry;
 import org.mule.runtime.api.connectivity.ConnectivityTestingService;
 import org.mule.runtime.api.exception.MuleException;
@@ -34,6 +35,7 @@ import org.mule.runtime.deployment.model.api.application.Application;
 import org.mule.runtime.deployment.model.api.application.ApplicationDescriptor;
 import org.mule.runtime.deployment.model.api.application.ApplicationPolicyManager;
 import org.mule.runtime.deployment.model.api.application.ApplicationStatus;
+import org.mule.runtime.deployment.model.api.artifact.ArtifactContext;
 import org.mule.runtime.deployment.model.api.domain.Domain;
 import org.mule.runtime.deployment.model.api.plugin.ArtifactPlugin;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
@@ -61,7 +63,7 @@ import net.lingala.zip4j.ZipFile;
  */
 public class EmbeddedController {
 
-  private ContainerInfo containerInfo;
+  private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
   private MuleContainer muleContainer;
 
@@ -278,6 +280,11 @@ public class EmbeddedController {
 
     @Override
     public Registry getRegistry() {
+      return null;
+    }
+
+    @Override
+    public ArtifactContext getArtifactContext() {
       return null;
     }
 
