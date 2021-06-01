@@ -30,7 +30,7 @@
         <muleSchedulerServiceVersion>1.3.2</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.5.11</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.0.0</muleOAuthServiceVersion>
-        <muleSoapServiceVersion>1.3.1</muleSoapServiceVersion>
+        <muleSoapServiceVersion>1.3.0</muleSoapServiceVersion>
         <muleDependenciesVersion>1.0.9</muleDependenciesVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
