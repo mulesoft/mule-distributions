@@ -68,7 +68,6 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
             <classifier>indy</classifier>
-            <version>${groovyVersion}</version>
         </dependency>
     </dependencies>
 </project>

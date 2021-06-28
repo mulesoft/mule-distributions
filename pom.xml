@@ -5,10 +5,10 @@
         <groupId>org.mule.runtime</groupId>
         <artifactId>mule</artifactId>
         <version>4.4.0-SNAPSHOT</version>
+        <relativePath></relativePath>
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
-    <version>4.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Mule Distributions</name>
 
@@ -37,6 +37,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.mule</groupId>
+                <artifactId>mule-runtime-bom</artifactId>
+                <version>4.4.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.mulesoft.mule.runtime.bom</groupId>
                 <artifactId>mule-test-dependencies-bom</artifactId>
