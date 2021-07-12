@@ -98,6 +98,19 @@
             <plugin>
                 <groupId>org.mule.tools</groupId>
                 <artifactId>mule-assembly-verifier</artifactId>
+
+                <configuration>
+                    <skip>${skipVerifications}</skip>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!--
@@ -212,7 +225,6 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
             <classifier>indy</classifier>
-            <version>${groovyVersion}</version>
         </dependency>
 
         <!-- Overwrite Jackson dependency with our own version -->
