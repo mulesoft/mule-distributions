@@ -19,6 +19,8 @@
     <properties>
         <standaloneStructureDir>${project.build.directory}/distribution-structure</standaloneStructureDir>
         <standaloneStructure>mule-standalone-structure</standaloneStructure>
+
+        <jackson2Version>2.12.2</jackson2Version>
         
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
@@ -231,7 +233,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson2Version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -241,7 +242,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
-            <version>${jackson2Version}</version>
         </dependency>
     </dependencies>
 </project>
