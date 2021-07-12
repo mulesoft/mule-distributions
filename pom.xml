@@ -5,10 +5,10 @@
         <groupId>org.mule.runtime</groupId>
         <artifactId>mule</artifactId>
         <version>4.4.0-SNAPSHOT</version>
+        <relativePath></relativePath>
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
-    <version>4.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Mule Distributions</name>
 
@@ -31,12 +31,20 @@
         <muleOAuthServiceVersion>2.1.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.4.0-SNAPSHOT</muleSoapServiceVersion>
         <muleDependenciesVersion>1.x-SNAPSHOT</muleDependenciesVersion>
+        <muleBomVersion>${project.version}</muleBomVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.mule</groupId>
+                <artifactId>mule-runtime-bom</artifactId>
+                <version>${muleBomVersion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.mulesoft.mule.runtime.bom</groupId>
                 <artifactId>mule-test-dependencies-bom</artifactId>
