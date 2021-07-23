@@ -155,7 +155,6 @@
 /mule-standalone-${productVersion}/lib/opt/aether-transport-http-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-transport-wagon-1.0.2.v20150114.jar
 /mule-standalone-${productVersion}/lib/opt/aether-util-1.0.2.v20150114.jar
-/mule-standalone-${productVersion}/lib/opt/animal-sniffer-annotations-1.14.jar
 /mule-standalone-${productVersion}/lib/opt/annotations-3.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/antlr-runtime-3.5.jar
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.9.2.jar
@@ -163,7 +162,7 @@
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.10.7.jar
 /mule-standalone-${productVersion}/lib/opt/caffeine-2.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/cglib-nodep-3.2.10.jar
-/mule-standalone-${productVersion}/lib/opt/checker-qual-2.0.0.jar
+/mule-standalone-${productVersion}/lib/opt/checker-qual-3.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.15.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
@@ -176,14 +175,15 @@
 /mule-standalone-${productVersion}/lib/opt/config-1.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/disruptor-1.2.10.jar
 /mule-standalone-${productVersion}/lib/opt/dom4j-2.1.3.jar
-/mule-standalone-${productVersion}/lib/opt/error_prone_annotations-2.1.3.jar
+/mule-standalone-${productVersion}/lib/opt/error_prone_annotations-2.5.1.jar
+/mule-standalone-${productVersion}/lib/opt/failureaccess-1.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.1.1.jar
 /mule-standalone-${productVersion}/lib/opt/geronimo-j2ee-connector_1.5_spec-2.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/gson-2.8.5.jar
-/mule-standalone-${productVersion}/lib/opt/guava-25.1-jre.jar
+/mule-standalone-${productVersion}/lib/opt/guava-30.1.1-jre.jar
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.5.13.jar
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.4.13.jar
-/mule-standalone-${productVersion}/lib/opt/j2objc-annotations-1.1.jar
+/mule-standalone-${productVersion}/lib/opt/j2objc-annotations-1.3.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.9.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.11.3.jar
 /mule-standalone-${productVersion}/lib/opt/javassist-3.7.ga.jar
@@ -221,6 +221,7 @@
 /mule-standalone-${productVersion}/lib/opt/libphonenumber-8.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/jakarta.activation-1.2.1.jar
 /mule-standalone-${productVersion}/lib/opt/jakarta.mail-1.6.3.jar
+/mule-standalone-${productVersion}/lib/opt/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
 /mule-standalone-${productVersion}/lib/opt/maven-aether-provider-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-artifact-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.3.9.jar
@@ -283,4 +284,4 @@
 # /lib/launcher
 #
 /mule-standalone-${productVersion}/lib/launcher
-/mule-standalone-${productVersion}/lib/launcher/groovy-3.0.2-indy.jar
+/mule-standalone-${productVersion}/lib/launcher/groovy-3.0.7-indy.jar
