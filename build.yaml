@@ -2,7 +2,7 @@ upstreamProjects:
   Mule-runtime/mule-integration-tests/support/4.4.x,
   Mule-runtime/mule-http-service/support/1.6.x,
   Mule-runtime/mule-oauth-service/master,
-  Mule-runtime/mule-scheduler-service/master,
+  Mule-runtime/mule-scheduler-service/support/1.4.x,
   Mule-runtime/mule-soap-service/master,
   Mule-runtime/mule-embedded-api/support/1.4.x,
   Mule-runtime/mule-maven-client/support/1.6.x
