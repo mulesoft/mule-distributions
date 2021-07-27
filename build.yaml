@@ -1,11 +1,11 @@
 upstreamProjects:
-  Mule-runtime/mule-integration-tests/master,
-  Mule-runtime/mule-http-service/master,
-  Mule-runtime/mule-oauth-service/master,
-  Mule-runtime/mule-scheduler-service/master,
-  Mule-runtime/mule-soap-service/master,
-  Mule-runtime/mule-embedded-api/master,
-  Mule-runtime/mule-maven-client/master
+  Mule-runtime/mule-integration-tests/support/4.4.x,
+  Mule-runtime/mule-http-service/support/1.6.x,
+  Mule-runtime/mule-oauth-service/support/2.1.x,
+  Mule-runtime/mule-scheduler-service/support/1.4.x,
+  Mule-runtime/mule-soap-service/support/1.4.x,
+  Mule-runtime/mule-embedded-api/support/1.4.x,
+  Mule-runtime/mule-maven-client/support/1.6.x
 archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
 # MULE-18045: Comment public setting to get raml-parser 2 from private repo until it is released in a public repo
 # "mavenSettingsXmlId" : "mule-runtime-maven-settings-MuleSettings",
