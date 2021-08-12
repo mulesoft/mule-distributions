@@ -271,7 +271,7 @@
 /mule-standalone-${productVersion}/lib/opt/wagon-http-shared-3.4.2.jar
 /mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.4.2.jar
 /mule-standalone-${productVersion}/lib/opt/xerces2-xsd11-2.11.3.jar
-/mule-standalone-${productVersion}/lib/opt/xml-apis-1.4.01.jar
+/mule-standalone-${productVersion}/lib/opt/xercesImpl-2.7.1.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-3.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
 /mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-1.jar
