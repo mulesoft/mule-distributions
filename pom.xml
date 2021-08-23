@@ -30,7 +30,7 @@
         <muleSchedulerServiceVersion>1.4.0-rc2</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.6.0-rc2</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.1.0-rc2</muleOAuthServiceVersion>
-        <muleSoapServiceVersion>1.4.0-SNAPSHOT</muleSoapServiceVersion>
+        <muleSoapServiceVersion>1.4.0-rc2</muleSoapServiceVersion>
         <muleDependenciesVersion>1.0.11</muleDependenciesVersion>
         <muleBomVersion>${project.version}</muleBomVersion>
 
