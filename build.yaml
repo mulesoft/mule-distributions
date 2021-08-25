@@ -1,6 +1,6 @@
 upstreamProjects:
   Mule-runtime/mule-integration-tests/master-SEPTEMBER-2021,
-  Mule-runtime/mule-http-service/master,
+  Mule-runtime/mule-http-service/master-SEPTEMBER-2021,
   Mule-runtime/mule-oauth-service/master,
   Mule-runtime/mule-scheduler-service/master,
   Mule-runtime/mule-soap-service/master,
