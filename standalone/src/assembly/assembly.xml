@@ -212,6 +212,7 @@
                 <include>org.mule.runtime:mule-module-http-policy-api</include>
                 <include>org.mule.runtime:mule-module-license-api</include>
                 <include>org.mule.runtime:mule-module-policy-api</include>
+                <include>org.mule.runtime:mule-module-properties-config</include>
                 <include>org.mule.runtime:mule-module-repository</include>
                 <include>org.mule.runtime:mule-module-spring-config</include>
                 <include>org.mule.runtime:mule-module-tls</include>
@@ -338,6 +339,7 @@
                 <exclude>org.mule.runtime:mule-module-license-api</exclude>
                 <exclude>org.mule.runtime:mule-module-service</exclude>
                 <exclude>org.mule.runtime:mule-module-policy-api</exclude>
+                <exclude>org.mule.runtime:mule-module-properties-config</exclude>
                 <exclude>org.mule.runtime:mule-module-reboot</exclude>
                 <exclude>org.mule.runtime:mule-module-repository</exclude>
                 <exclude>org.mule.runtime:mule-module-spring-config</exclude>
