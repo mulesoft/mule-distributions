@@ -21,33 +21,10 @@
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
     
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.mule.services</groupId>
-                <artifactId>mule-service-http</artifactId>  
-                <version>${muleHttpServiceVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mule.services</groupId>
-                <artifactId>mule-service-oauth</artifactId>
-                <version>${muleOAuthServiceVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mule.services</groupId>
-                <artifactId>mule-service-oauth</artifactId>
-                <version>${muleOAuthServiceVersion}</version>
-                <type>test-jar</type>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    
     <dependencies>
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-scheduler</artifactId>
-            <version>${muleSchedulerServiceVersion}</version>
             <classifier>mule-service</classifier>
             <exclusions>
                 <!--TODO(gfernandes): remove this, see validation's comment-->
@@ -68,13 +45,11 @@
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-oauth</artifactId>
-            <version>${muleOAuthServiceVersion}</version>
             <classifier>mule-service</classifier>
         </dependency>
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-http</artifactId>
-            <version>${muleHttpServiceVersion}</version>
             <classifier>mule-service</classifier>
             <exclusions>
                 <!-- Runtime Dependencies-->
@@ -127,7 +102,6 @@
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-soap</artifactId>
-            <version>${muleSoapServiceVersion}</version>
             <classifier>mule-service</classifier>
             <exclusions>
                 <!-- Runtime Dependencies-->
