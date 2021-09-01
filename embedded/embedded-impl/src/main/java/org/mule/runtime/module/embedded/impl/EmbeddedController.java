@@ -29,6 +29,7 @@ import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.metadata.MetadataService;
 import org.mule.runtime.api.value.ValueProviderService;
 import org.mule.runtime.core.api.context.notification.MuleContextListener;
+import org.mule.runtime.core.api.data.sample.SampleDataService;
 import org.mule.runtime.deployment.model.api.DeploymentStartException;
 import org.mule.runtime.deployment.model.api.InstallException;
 import org.mule.runtime.deployment.model.api.application.Application;
@@ -330,6 +331,11 @@ public class EmbeddedController {
 
     @Override
     public ApplicationPolicyManager getPolicyManager() {
+      return null;
+    }
+
+    @Override
+    public SampleDataService getSampleDataService() {
       return null;
     }
   }
