@@ -195,6 +195,7 @@
                 <include>org.mule.runtime:mule-dwb-api</include>
                 <include>org.mule.weave:dwb-api</include>
                 <!-- Modules -->
+                <include>org.mule.runtime:mule-core-components</include>
                 <include>org.mule.runtime:mule-core-mvel</include>
                 <include>org.mule.runtime:mule-module-artifact</include>
                 <include>org.mule.runtime:mule-module-launcher</include>
@@ -321,6 +322,7 @@
                 <!-- lib/mule -->
                 <exclude>org.mule.mvel:mule-mvel2</exclude>
                 <exclude>org.mule.runtime:mule-core</exclude>
+                <exclude>org.mule.runtime:mule-core-components</exclude>
                 <exclude>org.mule.runtime:mule-core-mvel</exclude>
                 <exclude>org.mule.runtime:mule-runtime-extension-model</exclude>
                 <exclude>org.mule.distributions:mule-services-all</exclude>

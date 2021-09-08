@@ -96,6 +96,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-connectivity-api-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-connectivity-api-persistence-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-mvel-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.5.0-SNAPSHOT.jar
