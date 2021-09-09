@@ -31,7 +31,7 @@
         <muleHttpServiceVersion>1.6.0-SNAPSHOT</muleHttpServiceVersion>
         <muleOAuthServiceVersion>2.1.0-SNAPSHOT</muleOAuthServiceVersion>
         <muleSoapServiceVersion>1.4.0-SNAPSHOT</muleSoapServiceVersion>
-        <muleDependenciesVersion>1.0.14</muleDependenciesVersion>
+        <muleDependenciesVersion>1.0.17</muleDependenciesVersion>
         <muleBomVersion>${project.version}</muleBomVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
