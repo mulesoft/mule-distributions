@@ -215,7 +215,7 @@
 /mule-standalone-${productVersion}/lib/opt/json-schema-core-1.2.10.jar
 /mule-standalone-${productVersion}/lib/opt/json-schema-validator-2.2.10.jar
 /mule-standalone-${productVersion}/lib/opt/json-20160810.jar
-/mule-standalone-${productVersion}/lib/opt/jsoup-1.11.3.jar
+/mule-standalone-${productVersion}/lib/opt/jsoup-1.14.2.jar
 /mule-standalone-${productVersion}/lib/opt/jsr305-3.0.2.jar
 /mule-standalone-${productVersion}/lib/opt/juniversalchardet-1.0.3.jar
 /mule-standalone-${productVersion}/lib/opt/libphonenumber-8.0.0.jar
