@@ -25,7 +25,7 @@
     </build>
 
 	<properties>
-        <muleEmbeddedApiVersion>1.2.1-HF-SNAPSHOT</muleEmbeddedApiVersion>
+        <muleEmbeddedApiVersion>1.2.1-20210915</muleEmbeddedApiVersion>
 
         <muleSchedulerServiceVersion>1.2.6</muleSchedulerServiceVersion>
         <muleHttpServiceVersion>1.4.22</muleHttpServiceVersion>
