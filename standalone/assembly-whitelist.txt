@@ -98,10 +98,10 @@
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-mvel-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.5.0-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.5.0-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.5.0-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.5.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.5.0-20210917.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.5.0-20210917.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.5.0-20210917.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.5.0-20210917.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-api-1.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.5.0-SNAPSHOT.jar
