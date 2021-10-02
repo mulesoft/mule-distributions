@@ -140,8 +140,8 @@
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.4.0.jar
-/mule-standalone-${productVersion}/lib/mule/dwb-api-2.4.0.jar
+/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.4.0-HF-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/dwb-api-2.4.0-HF-SNAPSHOT.jar
 #
 # /services
 #
@@ -150,7 +150,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.6.1-+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.1.1-+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.4.1-+
-/mule-standalone-${productVersion}/services/mule-service-weave-2.4.0+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.4.0-HF-+
 #
 # /lib/opt
 #
