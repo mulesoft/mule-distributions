@@ -89,7 +89,7 @@
 # /lib/mule
 #
 /mule-standalone-${productVersion}/lib/mule
-/mule-standalone-${productVersion}/lib/mule/mule-api-1.5.0-20210917.jar
+/mule-standalone-${productVersion}/lib/mule/mule-api-1.5.0-20211001.jar
 /mule-standalone-${productVersion}/lib/mule/mule-profiling-api-1.0.0-20210917.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.5.0-20211001.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.5.0-20211001.jar
