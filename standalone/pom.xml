@@ -18,8 +18,6 @@
 
     <properties>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
-
-        <jackson2Version>2.11.3</jackson2Version>
     </properties>
 
     <build>
@@ -213,17 +211,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson2Version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson2Version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
-            <version>${jackson2Version}</version>
         </dependency>
     </dependencies>
 </project>
