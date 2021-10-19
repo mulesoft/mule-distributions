@@ -26,10 +26,12 @@ import static org.mule.runtime.module.embedded.impl.SerializationUtils.deseriali
 import org.mule.runtime.api.artifact.Registry;
 import org.mule.runtime.api.connectivity.ConnectivityTestingService;
 import org.mule.runtime.api.exception.MuleException;
+import org.mule.runtime.api.lifecycle.InitialisationException;
 import org.mule.runtime.api.metadata.MetadataService;
 import org.mule.runtime.api.value.ValueProviderService;
 import org.mule.runtime.core.api.context.notification.MuleContextListener;
 import org.mule.runtime.core.api.data.sample.SampleDataService;
+import org.mule.runtime.core.privileged.registry.RegistrationException;
 import org.mule.runtime.deployment.model.api.DeploymentStartException;
 import org.mule.runtime.deployment.model.api.InstallException;
 import org.mule.runtime.deployment.model.api.application.Application;
@@ -145,7 +147,7 @@ public class EmbeddedController {
     });
   }
 
-  private void setUpEnvironment() throws IOException, URISyntaxException {
+  private void setUpEnvironment() throws IOException, URISyntaxException, RegistrationException, InitialisationException {
     // Disable log4j2 JMX MBeans since it will fail when trying to recreate the container
     setProperty("log4j2.disable.jmx", "true");
 
