@@ -3,7 +3,7 @@ upstreamProjects:
   Mule-runtime/mule-http-service/master-NOVEMBER-2021,
   Mule-runtime/mule-oauth-service/master-NOVEMBER-2021,
   Mule-runtime/mule-scheduler-service/master-NOVEMBER-2021,
-  Mule-runtime/mule-soap-service/master,
+  Mule-runtime/mule-soap-service/master-NOVEMBER-2021,
   Mule-runtime/mule-embedded-api/master-NOVEMBER-2021,
   Mule-runtime/mule-maven-client/master-NOVEMBER-2021
 archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
