@@ -149,7 +149,7 @@
 # /services
 #
 /mule-standalone-${productVersion}/services
-/mule-standalone-${productVersion}/services/mule-service-scheduler-1.5.0-+
+/mule-standalone-${productVersion}/services/mule-service-scheduler-1.5.0-20211019+
 /mule-standalone-${productVersion}/services/mule-service-http-1.7.0-20211019+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.2.0-+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.5.0-+
