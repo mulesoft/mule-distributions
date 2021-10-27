@@ -220,6 +220,7 @@
                 <include>org.mule.runtime:mule-module-spring-config</include>
                 <include>org.mule.runtime:mule-module-tls</include>
                 <include>org.mule.runtime:mule-module-tooling-support</include>
+                <include>org.mule.runtime:mule-module-troubleshooting</include>
 
                 <!-- Shared libs -->
                 <include>org.mule.mvel:mule-mvel2</include>
