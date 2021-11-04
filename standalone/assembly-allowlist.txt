@@ -171,6 +171,7 @@
 /mule-standalone-${productVersion}/lib/opt/antlr-runtime-3.5.2.jar
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/btf-1.2.jar
+/mule-standalone-${productVersion}/lib/opt/rxjava-3.1.2.jar
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.10.7.jar
 /mule-standalone-${productVersion}/lib/opt/caffeine-2.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/cglib-nodep-3.2.10.jar
