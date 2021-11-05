@@ -1,6 +1,6 @@
 upstreamProjects:
   Mule-runtime/mule-integration-tests/4.4.0-NOVEMBER-2021,
-  Mule-runtime/mule-http-service/1.6.1,
+  Mule-runtime/mule-http-service/1.6.2,
   Mule-runtime/mule-oauth-service/2.1.1,
   Mule-runtime/mule-scheduler-service/1.4.0,
   Mule-runtime/mule-soap-service/1.4.0,
