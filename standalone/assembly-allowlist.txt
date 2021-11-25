@@ -267,7 +267,7 @@
 /mule-standalone-${productVersion}/lib/opt/spring-core-5.1.20.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-expression-5.1.20.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-jcl-5.1.20.RELEASE.jar
-/mule-standalone-${productVersion}/lib/opt/togglz-core-2.9.8.jar
+/mule-standalone-${productVersion}/lib/opt/togglz-core-3.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/uri-template-0.9.jar
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.1.0.Final.jar
