@@ -118,6 +118,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-xml-support-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-feature-management-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-global-config-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-javaee-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-launcher-${productVersion}.jar
@@ -266,6 +267,7 @@
 /mule-standalone-${productVersion}/lib/opt/spring-core-5.1.20.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-expression-5.1.20.RELEASE.jar
 /mule-standalone-${productVersion}/lib/opt/spring-jcl-5.1.20.RELEASE.jar
+/mule-standalone-${productVersion}/lib/opt/togglz-core-3.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/uri-template-0.9.jar
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.1.0.Final.jar
