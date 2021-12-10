@@ -58,10 +58,10 @@
 /mule-standalone-${productVersion}/lib/boot/disruptor-3.4.2.jar
 /mule-standalone-${productVersion}/lib/boot/jcl-over-slf4j-1.7.30.jar
 /mule-standalone-${productVersion}/lib/boot/jul-to-slf4j-1.7.30.jar
-/mule-standalone-${productVersion}/lib/boot/log4j-1.2-api-2.14.1.jar
-/mule-standalone-${productVersion}/lib/boot/log4j-api-2.14.1.jar
-/mule-standalone-${productVersion}/lib/boot/log4j-core-2.14.1.jar
-/mule-standalone-${productVersion}/lib/boot/log4j-slf4j-impl-2.14.1.jar
+/mule-standalone-${productVersion}/lib/boot/log4j-1.2-api-2.15.0.jar
+/mule-standalone-${productVersion}/lib/boot/log4j-api-2.15.0.jar
+/mule-standalone-${productVersion}/lib/boot/log4j-core-2.15.0.jar
+/mule-standalone-${productVersion}/lib/boot/log4j-slf4j-impl-2.15.0.jar
 /mule-standalone-${productVersion}/lib/boot/slf4j-api-1.7.30.jar
 /mule-standalone-${productVersion}/lib/boot/slf4j-ext-1.7.30.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-annotations-2.12.5.jar
