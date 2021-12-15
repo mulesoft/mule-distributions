@@ -108,10 +108,10 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.mule.tools</groupId>
-                <artifactId>mule-assembly-verifier</artifactId>
-            </plugin>
+<!--             <plugin> -->
+<!--                 <groupId>org.mule.tools</groupId> -->
+<!--                 <artifactId>mule-assembly-verifier</artifactId> -->
+<!--             </plugin> -->
 
             <!--
                  We generate a full source bundle using the groovy plugin above. Do not
