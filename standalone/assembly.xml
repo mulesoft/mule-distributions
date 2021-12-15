@@ -94,10 +94,10 @@
                 <include>commons-cli:commons-cli</include>
                 <include>tanukisoft:wrapper</include>
                 <include>org.slf4j:slf4j-api</include>
-                <include>org.apache.logging.log4j:log4j-api</include>
-                <include>org.apache.logging.log4j:log4j-core</include>
-                <include>org.apache.logging.log4j:log4j-slf4j-impl</include>
-                <include>org.apache.logging.log4j:log4j-1.2-api</include>
+                <include>org.apache.logging.log4j:log4j-api:jar:2.16.0</include>
+                <include>org.apache.logging.log4j:log4j-core:jar:2.16.0</include>
+                <include>org.apache.logging.log4j:log4j-slf4j-impl:jar:2.16.0</include>
+                <include>org.apache.logging.log4j:log4j-1.2-api:jar:2.16.0</include>
                 <include>org.slf4j:jcl-over-slf4j</include>
                 <include>org.slf4j:jul-to-slf4j</include>
                 <include>com.lmax:disruptor</include>
