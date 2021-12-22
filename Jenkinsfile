@@ -3,7 +3,7 @@ def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/4.3.0-NOVEMB
                                "Mule-runtime/mule-oauth-service/2.0.0",
                                "Mule-runtime/mule-scheduler-service/1.3.2",
                                "Mule-runtime/mule-soap-service/1.3.4",
-                               "Mule-runtime/mule-embedded-api/1.3.0-NOVEMBER-2021",
+                               "Mule-runtime/mule-embedded-api/1.3.0-DECEMBER-2021",
                                "Mule-runtime/mule-maven-client/1.5.0-NOVEMBER-2021" ]
 
 Map pipelineParams = [ "upstreamProjects" : UPSTREAM_PROJECTS_LIST.join(','),
