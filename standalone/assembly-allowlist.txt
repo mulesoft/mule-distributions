@@ -132,8 +132,8 @@
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.3.0-20211216.jar
-/mule-standalone-${productVersion}/lib/mule/dwb-api-2.3.0-20211216.jar
+/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.3.0-20211222.jar
+/mule-standalone-${productVersion}/lib/mule/dwb-api-2.3.0-20211222.jar
 #
 # /services
 #
