@@ -131,7 +131,7 @@
 /mule-standalone-${productVersion}/services/mule-service-scheduler-1.1.4+
 /mule-standalone-${productVersion}/services/mule-service-http-1.1.1+
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.1.1+
-/mule-standalone-${productVersion}/services/mule-service-soap-1.1.2-mule-service.jar
+/mule-standalone-${productVersion}/services/mule-service-soap-1.1.2+
 /mule-standalone-${productVersion}/services/mule-service-weave-2.1.2-20210121+
 #
 # /lib/opt
