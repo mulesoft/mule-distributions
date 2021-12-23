@@ -90,10 +90,10 @@
 /mule-standalone-${productVersion}/lib/mule/mule-api-1.1.5-20211222.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.1.2-20211222.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.1.6-HF-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.1.6-HF-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.1.6-HF-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.1.6-HF-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.1.6-20211222.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.1.6-20211222.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.1.6-20211222.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.1.6-20211222.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-api-1.1.6-HF-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.1.6-HF-SNAPSHOT.jar
