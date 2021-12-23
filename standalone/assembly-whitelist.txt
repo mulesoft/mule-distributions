@@ -128,7 +128,7 @@
 # /services
 #
 /mule-standalone-${productVersion}/services
-/mule-standalone-${productVersion}/services/mule-service-scheduler-1.1.4-mule-service.jar
+/mule-standalone-${productVersion}/services/mule-service-scheduler-1.1.4+
 /mule-standalone-${productVersion}/services/mule-service-http-1.1.1+
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.1.1-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-soap-1.1.2-mule-service.jar
