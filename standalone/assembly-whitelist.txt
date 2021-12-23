@@ -132,7 +132,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.1.2-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-oauth-1.1.1-mule-service.jar
 /mule-standalone-${productVersion}/services/mule-service-soap-1.1.6-mule-service.jar
-/mule-standalone-${productVersion}/services/mule-service-weave-2.1.3-HF-+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.1.3-20210121+
 #
 # /lib/opt
 #
