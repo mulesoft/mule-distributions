@@ -181,6 +181,7 @@
                 <include>org.mule.runtime:mule-artifact-ast</include>
                 <include>org.mule.runtime:mule-artifact-ast-dependency-graph</include>
                 <include>org.mule.runtime:mule-artifact-ast-xml-parser</include>
+                <include>org.mule.runtime:mule-artifact-ast-serialization</include>
                 <include>org.mule.runtime:mule-properties-api</include>
                 <!-- Core -->
                 <include>org.mule.runtime:mule-core</include>
@@ -312,6 +313,7 @@
                 <exclude>org.mule.runtime:mule-artifact-ast</exclude>
                 <exclude>org.mule.runtime:mule-artifact-ast-dependency-graph</exclude>
                 <exclude>org.mule.runtime:mule-artifact-ast-xml-parser</exclude>
+                <exclude>org.mule.runtime:mule-artifact-ast-serialization</exclude>
                 <exclude>org.mule.runtime:mule-properties-api</exclude>
                 <!--Services-->
                 <exclude>org.mule.runtime:mule-service-http-api</exclude>
