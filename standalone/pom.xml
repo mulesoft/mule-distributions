@@ -20,6 +20,8 @@
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
 
         <jackson2Version>2.9.5</jackson2Version>
+        <assembly-verifier-version>2.0.0</assembly-verifier-version>
+        <groovy-version>3.0.9</groovy-version>
     </properties>
 
     <build>
@@ -111,6 +113,29 @@
             <plugin>
                 <groupId>org.mule.tools</groupId>
                 <artifactId>mule-assembly-verifier</artifactId>
+                <version>${assembly-verifier-version}</version>
+                <configuration>
+                    <skip>${skipVerifications}</skip>
+                </configuration>
+                <dependencies>
+                    <!--
+                        Groovy dependency is handled by Mule differently,
+                        declare the compatible one explicitly for the plugin.
+                    -->
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy</artifactId>
+                        <version>${groovy-version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!--
