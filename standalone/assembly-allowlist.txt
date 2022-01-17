@@ -112,6 +112,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-dependency-graph-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.1.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-serialization-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-${productVersion}.jar
