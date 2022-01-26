@@ -37,8 +37,6 @@
         <muleHttpConnectorTestVersion>1.2.0</muleHttpConnectorTestVersion>
         <muleFileConnectorTestVersion>1.1.2</muleFileConnectorTestVersion>
 
-        <muleApiVersion>1.1.2-20210119</muleApiVersion>
-
         <formatterConfigPath>formatter.xml</formatterConfigPath>
     </properties>
 
@@ -49,14 +47,6 @@
         <module>standalone</module>
         <module>tests</module>
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-api</artifactId>
-            <version>${muleApiVersion}</version>
-        </dependency>
-    </dependencies>
 
     <profiles>
         <profile>
