@@ -26,7 +26,7 @@
 
     <properties>
         <mule.version>4.1.3</mule.version>
-        <weaveVersion>2.1.4-HF-SNAPSHOT</weaveVersion>
+        <weaveVersion>2.1.4-20220125</weaveVersion>
 
         <muleEmbeddedApiVersion>1.1.3</muleEmbeddedApiVersion>
 
