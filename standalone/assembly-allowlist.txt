@@ -101,6 +101,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-artifact-activation-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-api-1.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-xml-1.5.0-SNAPSHOT.jar
