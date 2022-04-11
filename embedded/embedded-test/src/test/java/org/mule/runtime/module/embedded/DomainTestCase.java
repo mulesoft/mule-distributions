@@ -8,6 +8,7 @@
 package org.mule.runtime.module.embedded;
 
 import static java.util.Optional.empty;
+import static org.mule.runtime.deployment.model.api.plugin.ArtifactPluginDescriptor.MULE_PLUGIN_CLASSIFIER;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
@@ -19,17 +20,25 @@ import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArti
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.tck.junit4.rule.DynamicPort;
+import org.mule.tck.junit4.rule.SystemProperty;
+import org.mule.tck.probe.JUnitLambdaProbe;
+import org.mule.tck.probe.PollingProber;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -37,6 +46,27 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   @Rule
   public DynamicPort dynamicPort = new DynamicPort("httpPort");
+
+  @ClassRule
+  public static TemporaryFolder temporaryFolder = new TemporaryFolder();
+
+  @Rule
+  public SystemProperty workingDir = new SystemProperty("workingDir", getAppFolder("xml-sdk-domain-app"));
+
+  @BeforeClass
+  public static void setUp() throws Exception {
+    if (!temporaryFolder.getRoot().exists()) {
+      temporaryFolder.getRoot().mkdir();
+    }
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
+    new PollingProber(60000, 1000).check(new JUnitLambdaProbe(() -> {
+      temporaryFolder.delete();
+      return temporaryFolder.getRoot().exists() ? false : true;
+    }));
+  }
 
   @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
@@ -49,7 +79,21 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
           .deployApplication(ArtifactConfiguration.builder().artifactLocation(applicationFile).build());
       executeWithRetry(() -> ApplicationTestCase.assertTestMessage(port));
     });
+  }
 
+  @Description("Embedded deploys a domain and an associated application that contains an xml sdk operation")
+  @Test
+  public void domainWithXmlSdkConfig() throws Exception {
+    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core2");
+    installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
+    BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
+    doWithinDomain(domainBundleDescriptor, getDomainFolder("simple-domain"), port -> {
+      BundleDescriptor appBundleDescriptor = getApplicationBundleDescriptor("xml-sdk-domain-app", empty());
+      File applicationFile = installMavenArtifact(getAppFolder("xml-sdk-domain-app"), appBundleDescriptor);
+      embeddedTestHelper.getContainer().getDeploymentService()
+          .deployApplication(ArtifactConfiguration.builder().artifactLocation(applicationFile).build());
+      executeWithRetry(() -> ApplicationTestCase.assertTestMessage(port));
+    });
   }
 
   @Description("Embedded deploys and undeploys a domain")
@@ -73,5 +117,14 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   private String getDomainFolder(String domainName) {
     return Paths.get("domains", domainName).toString();
+  }
+
+  private String getExtensionFolder(String extensionName) {
+    return Paths.get("extensions", extensionName).toString();
+  }
+
+  private static BundleDescriptor getExtensionBundleDescriptor(String extensionName) {
+    return (new BundleDescriptor.Builder().setGroupId("org.mule.extensions")
+        .setArtifactId(extensionName).setVersion("1.0.0").setClassifier(MULE_PLUGIN_CLASSIFIER)).build();
   }
 }

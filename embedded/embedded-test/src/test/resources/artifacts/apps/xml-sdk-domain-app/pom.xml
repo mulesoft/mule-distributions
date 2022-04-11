@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>test</groupId>
-    <artifactId>simple-domain</artifactId>
+    <artifactId>xml-sdk-domain-app</artifactId>
     <version>1.0.0</version>
-    <packaging>mule-domain</packaging>
+    <packaging>mule-application</packaging>
 
     <dependencyManagement>
         <dependencies>
@@ -28,6 +28,18 @@
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.164</version>
+        </dependency>
+        <dependency>
+            <groupId>test</groupId>
+            <artifactId>simple-domain</artifactId>
+            <version>1.0.0</version>
+            <classifier>mule-domain</classifier>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.mule.extensions</groupId>
             <artifactId>smart-connector-using-core</artifactId>
             <classifier>mule-plugin</classifier>
@@ -42,6 +54,10 @@
                 <artifactId>mule-maven-plugin</artifactId>
                 <version>${packagerVersion}</version>
                 <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

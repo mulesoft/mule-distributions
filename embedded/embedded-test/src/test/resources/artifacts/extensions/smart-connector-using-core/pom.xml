@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.mule.extensions</groupId>
+        <artifactId>mule-modules-parent</artifactId>
+        <version>1.1.10</version>
+    </parent>
+
+    <version>1.0.0</version>
+    <artifactId>smart-connector-using-core</artifactId>
+    <packaging>mule-extension</packaging>
+    <name>Smart Connector using core components</name>
+    <description>A Mule extension done with pure Mule DSL that depends JUST in the runtime MPs (set-payload, set-variable, etc.)</description>
+
+    <properties>
+        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- BUILD PLUGIN FOR JAVA_AND_SMART_CONNECTORS -->
+                <groupId>org.mule.runtime.plugins</groupId>
+                <artifactId>mule-extensions-maven-plugin</artifactId>
+                <!-- Change back to latest snapshot MMP-596 once is fixed -->
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
