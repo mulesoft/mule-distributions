@@ -20,25 +20,17 @@ import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArti
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.tck.junit4.rule.DynamicPort;
-import org.mule.tck.junit4.rule.SystemProperty;
-import org.mule.tck.probe.JUnitLambdaProbe;
-import org.mule.tck.probe.PollingProber;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.Optional;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -46,27 +38,6 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   @Rule
   public DynamicPort dynamicPort = new DynamicPort("httpPort");
-
-  @ClassRule
-  public static TemporaryFolder temporaryFolder = new TemporaryFolder();
-
-  @Rule
-  public SystemProperty workingDir = new SystemProperty("workingDir", getAppFolder("xml-sdk-domain-app"));
-
-  @BeforeClass
-  public static void setUp() throws Exception {
-    if (!temporaryFolder.getRoot().exists()) {
-      temporaryFolder.getRoot().mkdir();
-    }
-  }
-
-  @AfterClass
-  public static void tearDown() throws Exception {
-    new PollingProber(60000, 1000).check(new JUnitLambdaProbe(() -> {
-      temporaryFolder.delete();
-      return temporaryFolder.getRoot().exists() ? false : true;
-    }));
-  }
 
   @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
