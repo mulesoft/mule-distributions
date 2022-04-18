@@ -2,11 +2,15 @@
 <mule-domain xmlns="http://www.mulesoft.org/schema/mule/domain"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:http="http://www.mulesoft.org/schema/mule/http"
+             xmlns:sc="http://www.mulesoft.org/schema/mule/module-using-core"
              xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-               http://www.mulesoft.org/schema/mule/domain http://www.mulesoft.org/schema/mule/domain/current/mule-domain.xsd">
+               http://www.mulesoft.org/schema/mule/domain http://www.mulesoft.org/schema/mule/domain/current/mule-domain.xsd
+               http://www.mulesoft.org/schema/mule/module-using-core http://www.mulesoft.org/schema/mule/module-using-core/current/mule-module-using-core.xsd">
 
     <http:listener-config name="httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="${httpPort}"/>
     </http:listener-config>
+
+    <sc:config name="moduleConfig" echoMessage="test-message"/>
 
 </mule-domain>
