@@ -146,11 +146,11 @@ public class EmbeddedController {
     });
   }
 
-  private void setUpEnvironment() throws IOException, URISyntaxException, InitialisationException {
+  private void setUpEnvironment() throws IOException, InitialisationException {
     // Disable log4j2 JMX MBeans since it will fail when trying to recreate the container
     setProperty("log4j2.disable.jmx", "true");
 
-    setProperty(MULE_HOME_DIRECTORY_PROPERTY, containerInfo.getContainerBaseFolder().toURI().getPath());
+    setProperty(MULE_HOME_DIRECTORY_PROPERTY, toFile(containerInfo.getContainerBaseFolder()).getAbsolutePath());
     getDomainsFolder().mkdirs();
     getDomainFolder("default").mkdirs();
     getServicesFolder().mkdirs();
