@@ -21,6 +21,7 @@ import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZ
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.runtime.core.api.util.FileUtils.unzip;
+import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
 import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
 
 import org.mule.runtime.api.artifact.Registry;
@@ -150,7 +151,7 @@ public class EmbeddedController {
     // Disable log4j2 JMX MBeans since it will fail when trying to recreate the container
     setProperty("log4j2.disable.jmx", "true");
 
-    setProperty(MULE_HOME_DIRECTORY_PROPERTY, containerInfo.getContainerBaseFolder().toURI().getPath());
+    setProperty(MULE_HOME_DIRECTORY_PROPERTY, getPath(containerInfo.getContainerBaseFolder()));
     getDomainsFolder().mkdirs();
     getDomainFolder("default").mkdirs();
     getServicesFolder().mkdirs();
