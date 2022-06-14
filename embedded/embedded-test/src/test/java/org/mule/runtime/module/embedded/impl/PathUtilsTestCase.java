@@ -7,6 +7,8 @@
 package org.mule.runtime.module.embedded.impl;
 
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
+import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
+import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,8 +17,15 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Issues;
+import io.qameta.allure.Story;
 import org.junit.Test;
 
+@Feature(EMBEDDED_API)
+@Story(EMBEDDED)
+@Issues({@Issue("W-11193698"), @Issue("MULE-14428")})
 public class PathUtilsTestCase {
 
   private static final URL URL_WITHOUT_SPACES = getUrlWithoutSpaces();
