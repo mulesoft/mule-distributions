@@ -27,11 +27,6 @@
             <artifactId>mule-http-connector</artifactId>
             <classifier>mule-plugin</classifier>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.3.164</version>
-        </dependency>
     </dependencies>
 
     <build>
