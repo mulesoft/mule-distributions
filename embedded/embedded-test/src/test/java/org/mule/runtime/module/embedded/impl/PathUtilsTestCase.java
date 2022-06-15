@@ -13,6 +13,8 @@ import static org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.mule.tck.junit4.AbstractMuleTestCase;
+
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -26,7 +28,7 @@ import org.junit.Test;
 @Feature(EMBEDDED_API)
 @Story(EMBEDDED)
 @Issues({@Issue("W-11193698"), @Issue("MULE-14428")})
-public class PathUtilsTestCase {
+public class PathUtilsTestCase extends AbstractMuleTestCase {
 
   private static final URL URL_WITHOUT_SPACES = getUrlWithoutSpaces();
   private static final URL URL_WITH_SPACES = getUrlWithSpaces();
