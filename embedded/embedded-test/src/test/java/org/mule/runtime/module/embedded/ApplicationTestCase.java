@@ -7,20 +7,6 @@
 
 package org.mule.runtime.module.embedded;
 
-import static com.mashape.unirest.http.Unirest.post;
-import static java.lang.String.format;
-import static java.lang.Thread.sleep;
-import static java.nio.file.Files.delete;
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
-import static org.apache.commons.io.FileUtils.deleteQuietly;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-import static org.junit.rules.ExpectedException.none;
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.core.api.util.FileUtils.newFile;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
@@ -34,7 +20,23 @@ import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 
-import org.junit.AfterClass;
+import static com.mashape.unirest.http.Unirest.get;
+import static com.mashape.unirest.http.Unirest.post;
+import static java.lang.String.format;
+import static java.lang.System.getProperty;
+import static java.lang.Thread.sleep;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
+import static org.apache.commons.io.FileUtils.deleteQuietly;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.startsWith;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+import static org.junit.rules.ExpectedException.none;
+
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
@@ -50,12 +52,14 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
+import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -137,6 +141,22 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
         String httpBody = "Something";
         HttpResponse<String> response = post(format("http://localhost:%s/", port)).body(httpBody).asString();
         assertThat(response.getBody(), is(httpBody));
+      } catch (UnirestException e) {
+        throw new RuntimeException(e);
+      }
+    }));
+  }
+
+  @Test
+  @Issue("W-11193698")
+  @Description("Embedded runs an application returning mule.home property")
+  public void applicationRespondingMuleHome() throws Exception {
+    BundleDescriptor bundleDescriptor =
+        getApplicationBundleDescriptor("http-mule-home", of("mule-application"));
+    doWithinApplication(bundleDescriptor, getAppFolder("http-mule-home"), createRetryTestOperation(port -> {
+      try {
+        HttpResponse<String> response = get(format("http://localhost:%s/", port)).asString();
+        assertThat(response.getBody(), startsWith(getProperty("java.io.tmpdir")));
       } catch (UnirestException e) {
         throw new RuntimeException(e);
       }
