@@ -55,7 +55,7 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   @Description("Embedded deploys a domain and an associated application that contains an xml sdk operation")
   @Test
   public void domainWithXmlSdkConfig() throws Exception {
-    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core2");
+    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
     installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
     BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
     doWithinDomain(domainBundleDescriptor, getDomainFolder("simple-domain"), port -> {
