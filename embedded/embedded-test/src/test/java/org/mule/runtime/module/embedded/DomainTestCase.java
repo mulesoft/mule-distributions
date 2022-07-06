@@ -42,6 +42,8 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
   public void domainWithHttpConnector() throws Exception {
+    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
+    installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
     BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
     doWithinDomain(domainBundleDescriptor, getDomainFolder("simple-domain"), port -> {
       BundleDescriptor appBundleDescriptor = getApplicationBundleDescriptor("http-echo-domain-app", empty());
@@ -73,6 +75,8 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
     runWithContainer(container -> {
       try {
         testWithSystemProperty("httpPort", dynamicPort.getValue(), () -> {
+          BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
+          installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
           BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
           File domainFile = installMavenArtifact(getDomainFolder("simple-domain"), domainBundleDescriptor);
           container.getDeploymentService().deployDomain(ArtifactConfiguration.builder().artifactLocation(domainFile).build());
