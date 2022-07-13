@@ -237,7 +237,7 @@
 /mule-standalone-${productVersion}/lib/opt/maven-aether-provider-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-artifact-3.8.5.jar
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.8.5.jar
-/mule-standalone-${productVersion}/lib/opt/maven-model-3.3.9.jar
+/mule-standalone-${productVersion}/lib/opt/maven-model-3.8.5.jar
 /mule-standalone-${productVersion}/lib/opt/maven-model-builder-3.8.5.jar
 /mule-standalone-${productVersion}/lib/opt/maven-repository-metadata-3.8.5.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.8.5.jar
