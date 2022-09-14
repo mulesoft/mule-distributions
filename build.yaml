@@ -3,7 +3,7 @@ upstreamProjects:
   Mule-runtime/mule-http-service/master-INVERNALIA-2022-DRY-RUN,
   Mule-runtime/mule-oauth-service/master-INVERNALIA-2022-DRY-RUN,
   Mule-runtime/mule-scheduler-service/master-INVERNALIA-2022-DRY-RUN,
-  Mule-runtime/mule-soap-service/master,
+  Mule-runtime/mule-soap-service/master-INVERNALIA-2022-DRY-RUN,
   Mule-runtime/mule-embedded-api/master-INVERNALIA-2022-DRY-RUN,
   Mule-runtime/mule-maven-client/master-INVERNALIA-2022-DRY-RUN
 archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
