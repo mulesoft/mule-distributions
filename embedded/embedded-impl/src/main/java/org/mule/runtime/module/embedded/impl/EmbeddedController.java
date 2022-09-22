@@ -6,16 +6,13 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
-import static java.lang.String.valueOf;
-import static java.lang.System.setProperty;
-import static org.apache.commons.io.FileUtils.toFile;
-import static org.apache.commons.io.FilenameUtils.getName;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getConfFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServerPluginsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServicesFolder;
+import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY;
@@ -23,6 +20,12 @@ import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTOR
 import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
 import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
+
+import static java.lang.String.valueOf;
+import static java.lang.System.setProperty;
+
+import static org.apache.commons.io.FileUtils.toFile;
+import static org.apache.commons.io.FilenameUtils.getName;
 
 import org.mule.runtime.api.artifact.Registry;
 import org.mule.runtime.api.connectivity.ConnectivityTestingService;
@@ -84,29 +87,29 @@ public class EmbeddedController {
 
   public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
-    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> muleContainer.getDeploymentService()
+    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
   public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
     String applicationName = deserialize(serializedApplicationName);
-    muleContainer.getDeploymentService().undeploy(applicationName);
+    getMuleContainer().getDeploymentService().undeploy(applicationName);
   }
 
   public synchronized void deployDomain(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
-    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> muleContainer.getDeploymentService()
+    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deployDomain(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
   public void undeployDomain(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
     String applicationName = deserialize(serializedApplicationName);
-    muleContainer.getDeploymentService().undeployDomain(applicationName);
+    getMuleContainer().getDeploymentService().undeployDomain(applicationName);
   }
 
   private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {
     try {
-      muleContainer.getDeploymentService().getLock().lock();
+      getMuleContainer().getDeploymentService().getLock().lock();
       Properties deploymentProperties = new Properties();
       deploymentProperties.put(MULE_LAZY_INIT_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled()));
@@ -114,13 +117,15 @@ public class EmbeddedController {
                                valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
       deploymentProperties.put(MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().lazyConnectionsEnabled()));
+      deploymentProperties.put(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY,
+                               valueOf(artifactConfiguration.getDeploymentConfiguration().addArtifactAstToRegistry()));
 
       deploymentTask.deploy(deploymentProperties);
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
-      if (muleContainer.getDeploymentService().getLock().isHeldByCurrentThread()) {
-        muleContainer.getDeploymentService().getLock().unlock();
+      if (getMuleContainer().getDeploymentService().getLock().isHeldByCurrentThread()) {
+        getMuleContainer().getDeploymentService().getLock().unlock();
       }
     }
   }
@@ -191,6 +196,10 @@ public class EmbeddedController {
         throw new IllegalStateException(e);
       }
     });
+  }
+
+  protected MuleContainer getMuleContainer() {
+    return muleContainer;
   }
 
   @FunctionalInterface

@@ -12,6 +12,7 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_A
 
 import static java.lang.System.getProperty;
 import static java.util.Collections.emptyList;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -23,11 +24,12 @@ import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Story;
-import org.junit.Before;
-import org.junit.Test;
 
 @Feature(EMBEDDED_API)
 @Story(EMBEDDED)
