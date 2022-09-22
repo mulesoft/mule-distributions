@@ -87,29 +87,29 @@ public class EmbeddedController {
 
   public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
-    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> muleContainer.getDeploymentService()
+    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
   public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
     String applicationName = deserialize(serializedApplicationName);
-    muleContainer.getDeploymentService().undeploy(applicationName);
+    getMuleContainer().getDeploymentService().undeploy(applicationName);
   }
 
   public synchronized void deployDomain(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
     ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
-    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> muleContainer.getDeploymentService()
+    deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deployDomain(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
   public void undeployDomain(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
     String applicationName = deserialize(serializedApplicationName);
-    muleContainer.getDeploymentService().undeployDomain(applicationName);
+    getMuleContainer().getDeploymentService().undeployDomain(applicationName);
   }
 
   private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {
     try {
-      muleContainer.getDeploymentService().getLock().lock();
+      getMuleContainer().getDeploymentService().getLock().lock();
       Properties deploymentProperties = new Properties();
       deploymentProperties.put(MULE_LAZY_INIT_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().lazyInitializationEnabled()));
@@ -124,8 +124,8 @@ public class EmbeddedController {
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
-      if (muleContainer.getDeploymentService().getLock().isHeldByCurrentThread()) {
-        muleContainer.getDeploymentService().getLock().unlock();
+      if (getMuleContainer().getDeploymentService().getLock().isHeldByCurrentThread()) {
+        getMuleContainer().getDeploymentService().getLock().unlock();
       }
     }
   }
@@ -196,6 +196,10 @@ public class EmbeddedController {
         throw new IllegalStateException(e);
       }
     });
+  }
+
+  protected MuleContainer getMuleContainer() {
+    return muleContainer;
   }
 
   @FunctionalInterface
