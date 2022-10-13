@@ -217,6 +217,7 @@
                 <include>org.mule.runtime:mule-module-extensions-xml-support</include>
                 <include>org.mule.runtime:mule-module-http-policy-api</include>
                 <include>org.mule.runtime:mule-module-license-api</include>
+                <include>org.mule.runtime:mule-module-metadata-support</include>
                 <include>org.mule.runtime:mule-module-policy-api</include>
                 <include>org.mule.runtime:mule-module-properties-config</include>
                 <include>org.mule.runtime:mule-module-repository</include>
@@ -352,6 +353,7 @@
                 <exclude>org.mule.runtime:mule-module-dsl-api</exclude>
                 <exclude>org.mule.runtime:mule-module-http-policy-api</exclude>
                 <exclude>org.mule.runtime:mule-module-license-api</exclude>
+                <exclude>org.mule.runtime:mule-module-metadata-support</exclude>
                 <exclude>org.mule.runtime:mule-module-service</exclude>
                 <exclude>org.mule.runtime:mule-module-policy-api</exclude>
                 <exclude>org.mule.runtime:mule-module-properties-config</exclude>
