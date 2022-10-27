@@ -261,12 +261,22 @@ public class EmbeddedController {
     }
 
     @Override
+    public void initTooling() {
+
+    }
+
+    @Override
     public void lazyInit() {
 
     }
 
     @Override
     public void lazyInit(boolean disableXmlValidations) {
+
+    }
+
+    @Override
+    public void lazyInitTooling(boolean disableXmlValidations) {
 
     }
 
