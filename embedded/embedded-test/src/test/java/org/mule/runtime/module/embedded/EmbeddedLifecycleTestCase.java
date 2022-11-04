@@ -38,6 +38,7 @@ import org.junit.rules.TemporaryFolder;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
+import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
 
@@ -116,6 +117,7 @@ public class EmbeddedLifecycleTestCase {
   }
 
   @Test
+  @Issue("W-11996026")
   public void getMuleContainerVersionBeforeStart() throws Exception {
     File containerFolder = temporaryFolder.newFolder();
 
