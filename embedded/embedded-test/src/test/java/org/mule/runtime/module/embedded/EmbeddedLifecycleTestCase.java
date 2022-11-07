@@ -6,17 +6,20 @@
  */
 package org.mule.runtime.module.embedded;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.fail;
 import static org.mule.maven.client.api.model.MavenConfiguration.newMavenConfigurationBuilder;
 import static org.mule.maven.client.test.MavenTestHelper.createDefaultCommunityMavenConfigurationBuilder;
 import static org.mule.maven.client.test.MavenTestHelper.getLocalRepositoryFolder;
+import static org.mule.runtime.core.api.config.MuleManifest.getProductVersion;
 import static org.mule.runtime.module.embedded.api.EmbeddedContainer.builder;
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.fail;
 
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerConfiguration;
@@ -28,14 +31,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Features;
-import io.qameta.allure.Stories;
-import io.qameta.allure.Story;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+
+import io.qameta.allure.Feature;
+import io.qameta.allure.Features;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Stories;
+import io.qameta.allure.Story;
 
 @Features(@Feature(EMBEDDED_API))
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -109,6 +114,26 @@ public class EmbeddedLifecycleTestCase {
     } finally {
       embeddedContainer.stop();
     }
+  }
+
+  @Test
+  @Issue("W-11996026")
+  public void getMuleContainerVersionBeforeStart() throws Exception {
+    File containerFolder = temporaryFolder.newFolder();
+
+    EmbeddedContainer embeddedContainer = builder()
+        .muleVersion(System.getProperty("mule.version"))
+        .containerConfiguration(ContainerConfiguration.builder()
+            .containerFolder(containerFolder)
+            .build())
+        .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
+            .localMavenRepositoryLocation(getLocalRepositoryFolder())
+            .build())
+        .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
+        .product(MULE)
+        .build();
+
+    assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
   }
 
 }
