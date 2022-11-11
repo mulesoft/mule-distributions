@@ -57,7 +57,7 @@ public class EmbeddedLifecycleTestCase {
   public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
   @Test
-  public void shouldFailToStartDueToMissingVersionOfEmbedded() throws IOException, URISyntaxException {
+  public void shouldFailToCreateDueToMissingVersionOfEmbedded() throws IOException, URISyntaxException {
     try {
       builder()
           .muleVersion("1.0.0")
