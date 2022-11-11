@@ -318,4 +318,4 @@
 # /lib/launcher
 #
 /mule-standalone-${productVersion}/lib/launcher
-/mule-standalone-${productVersion}/lib/launcher/groovy-3.0.7-indy.jar
+/mule-standalone-${productVersion}/lib/launcher/groovy-3.0.13-indy.jar
