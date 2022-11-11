@@ -60,6 +60,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -133,6 +134,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application using test dependencies and deploying a jar file")
   @Test
+  @Ignore("W-11203142")
   public void applicationWithTestDependency() throws Exception {
     BundleDescriptor bundleDescriptor =
         getApplicationBundleDescriptor("http-test-dependency", of("mule-application-light-package"));
