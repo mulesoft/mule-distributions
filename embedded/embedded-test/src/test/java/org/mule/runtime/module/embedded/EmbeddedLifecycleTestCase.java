@@ -57,24 +57,21 @@ public class EmbeddedLifecycleTestCase {
   public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
   @Test
-  public void shouldFailToStartDueToMissingVersionOfEmbedded() throws IOException, URISyntaxException {
-    EmbeddedContainer embeddedContainer = builder()
-        .muleVersion("1.0.0")
-        .containerConfiguration(ContainerConfiguration.builder()
-            .containerFolder(temporaryFolder.newFolder())
-            .build())
-        .mavenConfiguration(newMavenConfigurationBuilder().localMavenRepositoryLocation(temporaryFolder.newFolder())
-            .build())
-        .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-        .product(MULE)
-        .build();
+  public void shouldFailToCreateDueToMissingVersionOfEmbedded() throws IOException, URISyntaxException {
     try {
-      embeddedContainer.start();
-      fail("Should fail to start");
+      builder()
+          .muleVersion("1.0.0")
+          .containerConfiguration(ContainerConfiguration.builder()
+              .containerFolder(temporaryFolder.newFolder())
+              .build())
+          .mavenConfiguration(newMavenConfigurationBuilder().localMavenRepositoryLocation(temporaryFolder.newFolder())
+              .build())
+          .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
+          .product(MULE)
+          .build();
+      fail("Should fail to create");
     } catch (IllegalStateException e) {
       assertThat(e.getCause().getMessage(), containsString("Could not find embedded container bom artifact"));
-      // Should be stoppable at this point
-      embeddedContainer.stop();
     }
   }
 
