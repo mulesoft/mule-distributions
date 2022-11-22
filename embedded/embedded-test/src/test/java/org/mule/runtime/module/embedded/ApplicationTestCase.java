@@ -134,7 +134,6 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application using test dependencies and deploying a jar file")
   @Test
-  @Ignore("W-11203142")
   public void applicationWithTestDependency() throws Exception {
     BundleDescriptor bundleDescriptor =
         getApplicationBundleDescriptor("http-test-dependency", of("mule-application-light-package"));
