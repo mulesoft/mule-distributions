@@ -228,6 +228,12 @@
 
                 <!-- Shared libs -->
                 <include>org.mule.mvel:mule-mvel2</include>
+
+                <!-- Mule Tracing Libs -->
+                <include>org.mule.runtime:mule-tracer-api</include>
+                <include>org.mule.runtime:mule-tracer-exporter-api</include>
+                <include>org.mule.runtime:mule-tracer-exporter-impl</include>
+                <include>org.mule.runtime:mule-tracer-internal-impl</include>
             </includes>
         </dependencySet>
 
@@ -391,6 +397,12 @@
 
                 <!-- Excludes structure module -->
                 <exclude>org.mule.distributions:mule-standalone-structure</exclude>
+
+                <!-- Exclude tracing libraries -->
+                <exclude>org.mule.runtime:mule-tracer-api</exclude>
+                <exclude>org.mule.runtime:mule-tracer-exporter-api</exclude>
+                <exclude>org.mule.runtime:mule-tracer-exporter-impl</exclude>
+                <exclude>org.mule.runtime:mule-tracer-internal-impl</exclude>
             </excludes>
         </dependencySet>
     </dependencySets>
