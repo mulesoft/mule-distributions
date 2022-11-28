@@ -7,8 +7,7 @@
 
 package org.mule.runtime.module.embedded;
 
-import static java.util.Optional.empty;
-import static org.mule.runtime.deployment.model.api.plugin.ArtifactPluginDescriptor.MULE_PLUGIN_CLASSIFIER;
+import static org.mule.runtime.module.artifact.api.descriptor.ArtifactPluginDescriptor.MULE_PLUGIN_CLASSIFIER;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
@@ -17,6 +16,9 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedAp
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getDomainBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
+
+import static java.util.Optional.empty;
+
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.tck.junit4.rule.DynamicPort;
