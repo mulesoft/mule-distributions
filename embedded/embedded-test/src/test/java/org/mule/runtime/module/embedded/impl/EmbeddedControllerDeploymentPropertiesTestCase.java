@@ -134,6 +134,22 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
   }
 
   @Test
+  public void toolingObjectsNotToRegistryFalseDeploymentConfigurationForwardedToDeploymentProperties()
+      throws IOException, ClassNotFoundException {
+    ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
+    deployWithProperties(b -> b.doNotAddToolingObjectsToRegistry(false), deploymentPropertiesCaptor);
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("true"));
+  }
+
+  @Test
+  public void toolingObjectsNotToRegistryTrueDeploymentConfigurationForwardedToDeploymentProperties()
+      throws IOException, ClassNotFoundException {
+    ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
+    deployWithProperties(b -> b.doNotAddToolingObjectsToRegistry(true), deploymentPropertiesCaptor);
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("false"));
+  }
+
+  @Test
   public void artifactAstFalseDeploymentConfigurationForwardedToDeploymentProperties()
       throws IOException, ClassNotFoundException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
@@ -149,19 +165,16 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
   }
 
   @Test
-  public void toolingObjectsToRegistryFalseDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+  public void defaultDeploymentProperties() throws IOException, ClassNotFoundException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
-    deployWithProperties(b -> b.toolingObjectsToRegistry(false), deploymentPropertiesCaptor);
-    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("false"));
-  }
+    deployWithProperties(b -> {
+    }, deploymentPropertiesCaptor);
 
-  @Test
-  public void toolingObjectsToRegistryTrueDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
-    ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
-    deployWithProperties(b -> b.toolingObjectsToRegistry(true), deploymentPropertiesCaptor);
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_INIT_DEPLOYMENT_PROPERTY), is("false"));
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY), is("false"));
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY), is("false"));
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("true"));
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY), is("false"));
   }
 
   protected void deployWithProperties(Consumer<DeploymentConfiguration.DeploymentConfigurationBuilder> deploymentConfigBuilderConfigurer,

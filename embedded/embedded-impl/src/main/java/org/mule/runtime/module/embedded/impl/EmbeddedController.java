@@ -119,7 +119,7 @@ public class EmbeddedController {
       deploymentProperties.put(MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().lazyConnectionsEnabled()));
       deploymentProperties.put(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY,
-                               valueOf(artifactConfiguration.getDeploymentConfiguration().addToolingObjectsToRegistry()));
+                               valueOf(!artifactConfiguration.getDeploymentConfiguration().doNotAddToolingObjectsToRegistry()));
       deploymentProperties.put(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().addArtifactAstToRegistry()));
 
