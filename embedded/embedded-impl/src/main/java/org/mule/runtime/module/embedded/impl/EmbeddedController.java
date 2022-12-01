@@ -13,6 +13,7 @@ import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServerPluginsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getServicesFolder;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY;
+import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY;
@@ -117,6 +118,8 @@ public class EmbeddedController {
                                valueOf(artifactConfiguration.getDeploymentConfiguration().xmlValidationsEnabled()));
       deploymentProperties.put(MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().lazyConnectionsEnabled()));
+      deploymentProperties.put(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY,
+                               valueOf(!artifactConfiguration.getDeploymentConfiguration().doNotAddToolingObjectsToRegistry()));
       deploymentProperties.put(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY,
                                valueOf(artifactConfiguration.getDeploymentConfiguration().addArtifactAstToRegistry()));
 
