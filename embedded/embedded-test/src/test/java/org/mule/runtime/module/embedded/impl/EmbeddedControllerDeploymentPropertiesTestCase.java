@@ -8,6 +8,7 @@ package org.mule.runtime.module.embedded.impl;
 
 import static org.mule.runtime.container.api.MuleFoldersUtil.getMuleHomeFolder;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY;
+import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY;
@@ -145,6 +146,22 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.addArtifactAstToRegistry(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY), is("true"));
+  }
+
+  @Test
+  public void toolingObjectsToRegistryFalseDeploymentConfigurationForwardedToDeploymentProperties()
+      throws IOException, ClassNotFoundException {
+    ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
+    deployWithProperties(b -> b.addArtifactAstToRegistry(false), deploymentPropertiesCaptor);
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("false"));
+  }
+
+  @Test
+  public void toolingObjectsToRegistryTrueDeploymentConfigurationForwardedToDeploymentProperties()
+      throws IOException, ClassNotFoundException {
+    ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
+    deployWithProperties(b -> b.addArtifactAstToRegistry(true), deploymentPropertiesCaptor);
+    assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("true"));
   }
 
   protected void deployWithProperties(Consumer<DeploymentConfiguration.DeploymentConfigurationBuilder> deploymentConfigBuilderConfigurer,
