@@ -152,7 +152,7 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
   public void toolingObjectsToRegistryFalseDeploymentConfigurationForwardedToDeploymentProperties()
       throws IOException, ClassNotFoundException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
-    deployWithProperties(b -> b.addArtifactAstToRegistry(false), deploymentPropertiesCaptor);
+    deployWithProperties(b -> b.toolingObjectsToRegistry(false), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("false"));
   }
 
@@ -160,7 +160,7 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
   public void toolingObjectsToRegistryTrueDeploymentConfigurationForwardedToDeploymentProperties()
       throws IOException, ClassNotFoundException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
-    deployWithProperties(b -> b.addArtifactAstToRegistry(true), deploymentPropertiesCaptor);
+    deployWithProperties(b -> b.toolingObjectsToRegistry(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("true"));
   }
 
