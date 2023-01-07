@@ -297,7 +297,7 @@ else
     if [ "$DIST_OS" = "macosx" ]
     then
         WRAPPER_TEST_CMD="$WRAPPER_CMD-$DIST_OS-universal-32"
-        if [ -x "$WRAPPER_TEST_CMD" ]
+        if [ -x "$WRAPPER_TEST_CMD" == 0]
         then
             WRAPPER_CMD="$WRAPPER_TEST_CMD"
         else
