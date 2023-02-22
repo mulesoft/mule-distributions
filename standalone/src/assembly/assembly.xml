@@ -40,7 +40,6 @@
             <outputDirectory>bin</outputDirectory>
             <fileMode>600</fileMode>
             <includes>
-                <include>*.groovy</include>
                 <include>*.bat</include>
                 <include>*.conf</include>
             </includes>
@@ -284,10 +283,10 @@
         <dependencySet>
             <outputDirectory>lib/launcher</outputDirectory>
             <useStrictFiltering>true</useStrictFiltering>
-            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
             <scope>runtime</scope>
             <includes>
-                <include>org.codehaus.groovy:groovy</include>
+                <include>org.mule.distributions:mule-wrapper-additional-parameters-parser</include>
             </includes>
         </dependencySet>
         
@@ -407,6 +406,9 @@
                 <exclude>org.mule.runtime:mule-tracer-internal-impl</exclude>
                 <exclude>org.mule.runtime:mule-tracer-exporter-configuration-api</exclude>
                 <exclude>org.mule.runtime:mule-tracer-exporter-configuration-impl</exclude>
+
+                <!-- Exclude parameter parsing -->
+                <exclude>org.mule.distributions:mule-wrapper-additional-parameters-parser</exclude>
             </excludes>
         </dependencySet>
     </dependencySets>

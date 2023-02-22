@@ -72,14 +72,11 @@ set JAVA=%JAVA_HOME%\bin\java.exe
 
 :HAS_JAVA
 
-rem dynamically evaluate the name of the groovy jar
-for /F %%v in ('dir /b "%MULE_BASE%"\lib\launcher^| findstr groovy') do set GROOVY_JAR=%%v
-set GROOVY_PATH=%MULE_BASE%\lib\launcher\%GROOVY_JAR%
-
-rem dynamically evaluate the name of the commons-cli jar
-for /F %%v in ('dir /b "%MULE_BASE%"\lib\boot^| findstr commons-cli') do set COMMONS_CLI_JAR=%%v
-set COMMONS_CLI_PATH=%MULE_BASE%\lib\boot\%COMMONS_CLI_JAR%
+rem dynamically evaluate the name of some jars
+for /F %%v in ('dir /b "%MULE_HOME%"\lib\boot^| findstr commons-cli') do set COMMONS_CLI_JAR=%%v
+set COMMONS_CLI_PATH=%MULE_HOME%\lib\boot\%COMMONS_CLI_JAR%
 
 set cp=.;"%MULE_HOME%\conf"
-set cp=%cp%;"%GROOVY_PATH%";"%COMMONS_CLI_PATH%"
-"%JAVA%" -Dmule.home="%MULE_HOME%" -cp %cp% org.codehaus.groovy.tools.GroovyStarter --main groovy.ui.GroovyMain --conf "%MULE_HOME%\bin\launcher.conf" %*
+set cp=%cp%;"%COMMONS_CLI_PATH%"
+
+"%JAVA%" -Dmule.home="%MULE_HOME%" -jar  "%MULE_HOME%/lib/launcher/mule-wrapper-additional-parameters-parser.jar" %*
