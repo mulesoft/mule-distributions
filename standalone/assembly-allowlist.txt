@@ -14,10 +14,8 @@
 #
 # /bin
 #
-/mule-standalone-${productVersion}/bin/additional.groovy
 /mule-standalone-${productVersion}/bin/launcher
 /mule-standalone-${productVersion}/bin/launcher.bat
-/mule-standalone-${productVersion}/bin/launcher.conf
 /mule-standalone-${productVersion}/bin/mule
 /mule-standalone-${productVersion}/bin/mule.bat
 
@@ -330,4 +328,4 @@
 # /lib/launcher
 #
 /mule-standalone-${productVersion}/lib/launcher
-/mule-standalone-${productVersion}/lib/launcher/groovy-3.0.13-indy.jar
+/mule-standalone-${productVersion}/lib/launcher/mule-wrapper-additional-parameters-parser.jar

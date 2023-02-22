@@ -238,5 +238,11 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.mule.distributions</groupId>
+            <artifactId>mule-wrapper-additional-parameters-parser</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
