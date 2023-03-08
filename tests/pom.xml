@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-distributions</artifactId>
-        <version>4.4.0-20230123</version>
+        <version>4.4.0-20230223</version>
     </parent>
     <artifactId>mule-distro-tests</artifactId>
     <packaging>jar</packaging>
@@ -105,22 +105,22 @@
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-allure</artifactId>
-            <version>${project.version}</version>
+            <version>4.4.0-20230123</version>
         </dependency>
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-infrastructure</artifactId>
-            <version>${project.version}</version>
+            <version>4.4.0-20230123</version>
         </dependency>
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-unit</artifactId>
-            <version>${project.version}</version>
+            <version>4.4.0-20230123</version>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
+            <version>4.4.0-20230123</version>
         </dependency>
         <dependency>
             <groupId>org.mule.distributions</groupId>
