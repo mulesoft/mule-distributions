@@ -312,7 +312,6 @@
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-common-1.20.1.jar
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-trace-1.20.1.jar
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-semconv-1.20.1-alpha.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-logging-1.20.1.jar
 /mule-standalone-${productVersion}/lib/opt/grpc-api-1.51.0.jar
 /mule-standalone-${productVersion}/lib/opt/grpc-context-1.51.0.jar
 
