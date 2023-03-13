@@ -59,5 +59,6 @@
         <module>standalone</module>
         <module>standalone-structure</module>
         <module>tests</module>
+        <module>mule-wrapper-additional-parameters-parser</module>
     </modules>
 </project>
