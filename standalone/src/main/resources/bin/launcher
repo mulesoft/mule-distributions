@@ -23,13 +23,10 @@ then
     exit 1
 fi
 
-groovyJar=`ls "$MULE_HOME"/lib/launcher/groovy*`
 commonsCliJar=`ls "$MULE_HOME"/lib/boot/commons-cli-*.jar`
 
-cp=.:${MULE_HOME}/conf
-cp=${cp}:${groovyJar}
-cp=${cp}:${commonsCliJar}
+cp=.:$MULE_HOME/conf:$commonsCliJar
 
 # The string passed to eval must handle spaces in paths correctly.
-COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -cp \"${cp}\" org.codehaus.groovy.tools.GroovyStarter --main groovy.ui.GroovyMain --conf \"${MULE_HOME}/bin/launcher.conf\" $@"
+COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -jar ${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar $@"
 eval $COMMAND_LINE
