@@ -115,8 +115,14 @@ rem Customized for Mule
 rem ###############################################################
 
 :console
-"%_WRAPPER_EXE%" -c %_WRAPPER_CONF% %MULE_OPTS%
-goto :eof
+tasklist | find /i "wrapper-windows" >nul
+if not errorlevel 1 (
+    echo "Mule is already running."
+    goto :eof
+) else (
+    "%_WRAPPER_EXE%" -c %_WRAPPER_CONF% %MULE_OPTS%
+    goto :eof
+)
 
 :start
 "%_WRAPPER_EXE%" -t %_WRAPPER_CONF% %MULE_OPTS%
