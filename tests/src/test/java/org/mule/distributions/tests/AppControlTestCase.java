@@ -11,17 +11,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 import static org.mule.runtime.core.api.util.ClassUtils.getResource;
 
-import org.mule.tck.junit4.rule.EnvironmentVariable;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
 public class AppControlTestCase extends AbstractAppControl {
-
-  @Rule
-  public EnvironmentVariable detailStatus = new EnvironmentVariable("DETAIL_STATUS", "true");
 
   private static final String SINGLE_APP_COMMAND = "-app";
   private static final String DEFAULT = "default";
@@ -31,10 +28,14 @@ public class AppControlTestCase extends AbstractAppControl {
   @Before
   public void setup() {
     getMule().deploy(getResourceAsString("apps", EMPTY_APP));
+    Map<String, String> envVars = new HashMap<>();
+    envVars.put("DETAIL_STATUS", "true");
+    getMule().setTestEnvVars(envVars);
   }
 
   @After
   public void tearDown() {
+    getMule().setTestEnvVars(null);
     getMule().stop();
     assertMuleStops();
   }
