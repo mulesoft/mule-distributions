@@ -417,7 +417,23 @@
 
                 <!-- Exclude parameter parsing -->
                 <exclude>org.mule.distributions:mule-wrapper-additional-parameters-parser</exclude>
+
+                <!-- Exclude JVM version specific libraries -->                
+                <exclude>xml-apis:xml-apis</exclude>
+
             </excludes>
+        </dependencySet>
+
+        <!-- 3rd-party libraries, jdk 8 specific -->
+        <dependencySet>
+            <outputDirectory>lib/opt/jdk-8</outputDirectory>
+            <useStrictFiltering>true</useStrictFiltering>
+            <includes>
+                <!-- Include JVM version specific libraries -->                
+
+                <!-- This has colliding packages with java.xml module (org.w3c.*) when running with java11+ -->
+                <include>xml-apis:xml-apis</include>
+            </includes>
         </dependencySet>
     </dependencySets>
 </assembly>
