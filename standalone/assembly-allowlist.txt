@@ -222,7 +222,7 @@
 /mule-standalone-${productVersion}/lib/opt/jopt-simple-5.0.3.jar
 /mule-standalone-${productVersion}/lib/opt/json-schema-core-1.2.10.jar
 /mule-standalone-${productVersion}/lib/opt/json-schema-validator-2.2.10.jar
-/mule-standalone-${productVersion}/lib/opt/json-20220924.jar
+/mule-standalone-${productVersion}/lib/opt/json-20230227.jar
 /mule-standalone-${productVersion}/lib/opt/jsoup-1.15.3.jar
 /mule-standalone-${productVersion}/lib/opt/jsr305-3.0.2.jar
 /mule-standalone-${productVersion}/lib/opt/juniversalchardet-1.0.3.jar
