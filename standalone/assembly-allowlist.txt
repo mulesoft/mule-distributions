@@ -181,11 +181,11 @@
 /mule-standalone-${productVersion}/lib/opt/checker-qual-3.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.15.jar
-/mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
+/mule-standalone-${productVersion}/lib/opt/commons-collections4-4.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-io-2.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang-2.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang3-3.12.0.jar
-/mule-standalone-${productVersion}/lib/opt/commons-pool2-2.6.2.jar
+/mule-standalone-${productVersion}/lib/opt/commons-pool2-2.11.1.jar
 /mule-standalone-${productVersion}/lib/opt/config-1.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/disruptor-1.2.10.jar
 /mule-standalone-${productVersion}/lib/opt/dom4j-2.1.3.jar
@@ -202,7 +202,7 @@
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.13.4.jar
 /mule-standalone-${productVersion}/lib/opt/javax.activation-1.2.0.jar
 /mule-standalone-${productVersion}/lib/opt/javax.activation-api-1.2.0.jar
-/mule-standalone-${productVersion}/lib/opt/javax.annotation-api-1.2.jar
+/mule-standalone-${productVersion}/lib/opt/javax.annotation-api-1.3.2.jar
 /mule-standalone-${productVersion}/lib/opt/javax.inject-1.jar
 /mule-standalone-${productVersion}/lib/opt/javax.jms-api-2.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/javax.json-1.0.4.jar
