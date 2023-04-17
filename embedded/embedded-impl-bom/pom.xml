@@ -16,6 +16,7 @@
 
     <properties>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <xmlApisVersion>1.4.01</xmlApisVersion>
     </properties>
 
     <dependencies>
@@ -29,6 +30,11 @@
                     <artifactId>mule-runtime-impl-bom</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>${xmlApisVersion}</version>
         </dependency>
     </dependencies>
 
