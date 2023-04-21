@@ -11,3 +11,8 @@ archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
 # "mavenSettingsXmlId" : "mule-runtime-maven-settings-MuleSettings",
 projectType: runtime
 jdkTool: OPEN-JDK17
+additionalTestConfigs:
+  jdk8:
+    testJdkTool: OPEN-JDK8
+  jdk11:
+    testJdkTool: OPEN-JDK11
