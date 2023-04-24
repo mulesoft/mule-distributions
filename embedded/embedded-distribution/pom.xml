@@ -37,8 +37,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>gmaven-plugin</artifactId>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -46,10 +46,20 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <source>${project.basedir}/BuildAggregator.groovy</source>
+                        	<scripts>
+                                <script>file:///${project.basedir}/BuildAggregator.groovy</script>
+                        	</scripts>
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy-ant</artifactId>
+                        <version>${groovyVersionBuild}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
