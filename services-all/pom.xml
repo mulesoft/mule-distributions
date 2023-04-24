@@ -66,10 +66,6 @@
                     <artifactId>mule-module-tls</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-servlet_3.0_spec</artifactId>
-                </exclusion>
-                <exclusion>
                     <groupId>org.mule.glassfish.grizzly</groupId>
                     <artifactId>grizzly-http-server</artifactId>
                 </exclusion>
