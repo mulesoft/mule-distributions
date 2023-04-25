@@ -27,6 +27,7 @@
     </dependencies>
 
     <properties>
+        <javaModuleName>org.mule.runtime.wrapper.additional.parameters.parser</javaModuleName>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 

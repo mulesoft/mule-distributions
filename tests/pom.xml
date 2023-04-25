@@ -13,6 +13,7 @@
     <name>Mule Distribution Tests</name>
 
     <properties>
+        <javaModuleName>org.mule.runtime.distribution.tests</javaModuleName>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 

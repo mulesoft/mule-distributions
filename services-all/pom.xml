@@ -18,6 +18,7 @@
     </description>
     
     <properties>
+        <javaModuleName>org.mule.runtime.service.all</javaModuleName>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
     

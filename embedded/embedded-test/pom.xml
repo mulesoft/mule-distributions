@@ -13,6 +13,7 @@
     <name>Mule Embedded Implementation Tests</name>
 
     <properties>
+        <javaModuleName>org.mule.runtime.embedded.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
         <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
