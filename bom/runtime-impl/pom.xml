@@ -14,7 +14,6 @@
     <description>A BOM project that provides all the implementation libraries required by the Mule runtime</description>
 
     <properties>
-        <javaModuleName>org.mule.runtime.bom.impl</javaModuleName>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
 

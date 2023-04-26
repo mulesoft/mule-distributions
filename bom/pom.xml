@@ -15,7 +15,6 @@
     <description>Mule runtime modules for BOMs</description>
 
     <properties>
-        <javaModuleName>org.mule.runtime.bom</javaModuleName>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 

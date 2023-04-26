@@ -14,7 +14,6 @@
     <name>Mule Embedded</name>
 
     <properties>
-        <javaModuleName>org.mule.runtime.embedded</javaModuleName>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
