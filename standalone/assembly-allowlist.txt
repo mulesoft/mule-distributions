@@ -55,14 +55,13 @@
 /mule-standalone-${productVersion}/lib/boot/wrapper-3.2.3.jar
 /mule-standalone-${productVersion}/lib/boot/wrapper-windows-x86-32.dll
 /mule-standalone-${productVersion}/lib/boot/disruptor-3.4.2.jar
-/mule-standalone-${productVersion}/lib/boot/jcl-over-slf4j-1.7.30.jar
-/mule-standalone-${productVersion}/lib/boot/jul-to-slf4j-1.7.30.jar
+/mule-standalone-${productVersion}/lib/boot/jcl-over-slf4j-2.0.7.jar
+/mule-standalone-${productVersion}/lib/boot/jul-to-slf4j-2.0.7.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-1.2-api-2.19.0.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-api-2.19.0.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-core-2.19.0.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-slf4j-impl-2.19.0.jar
-/mule-standalone-${productVersion}/lib/boot/slf4j-api-1.7.30.jar
-/mule-standalone-${productVersion}/lib/boot/slf4j-ext-1.7.30.jar
+/mule-standalone-${productVersion}/lib/boot/slf4j-api-2.0.7.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-annotations-2.13.4.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-core-2.13.4.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-databind-2.13.4.2.jar
