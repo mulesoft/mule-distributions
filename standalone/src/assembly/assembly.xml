@@ -136,7 +136,7 @@
                 <include>org.slf4j:slf4j-api</include>
                 <include>org.apache.logging.log4j:log4j-api</include>
                 <include>org.apache.logging.log4j:log4j-core</include>
-                <include>org.apache.logging.log4j:log4j-slf4j-impl</include>
+                <include>org.apache.logging.log4j:log4j-slf4j2-impl</include>
                 <include>org.apache.logging.log4j:log4j-1.2-api</include>
                 <include>org.slf4j:jcl-over-slf4j</include>
                 <include>org.slf4j:jul-to-slf4j</include>
@@ -382,7 +382,7 @@
                 <exclude>org.slf4j:slf4j-api</exclude>
                 <exclude>org.apache.logging.log4j:log4j-api</exclude>
                 <exclude>org.apache.logging.log4j:log4j-core</exclude>
-                <exclude>org.apache.logging.log4j:log4j-slf4j-impl</exclude>
+                <exclude>org.apache.logging.log4j:log4j-slf4j2-impl</exclude>
                 <exclude>org.apache.logging.log4j:log4j-1.2-api</exclude>
                 <exclude>org.slf4j:jcl-over-slf4j</exclude>
                 <exclude>org.slf4j:jul-to-slf4j</exclude>

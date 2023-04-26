@@ -60,7 +60,7 @@
 /mule-standalone-${productVersion}/lib/boot/log4j-1.2-api-2.19.0.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-api-2.19.0.jar
 /mule-standalone-${productVersion}/lib/boot/log4j-core-2.19.0.jar
-/mule-standalone-${productVersion}/lib/boot/log4j-slf4j-impl-2.19.0.jar
+/mule-standalone-${productVersion}/lib/boot/log4j-slf4j2-impl-2.19.0.jar
 /mule-standalone-${productVersion}/lib/boot/slf4j-api-2.0.7.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-annotations-2.13.4.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-core-2.13.4.jar
