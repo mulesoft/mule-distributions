@@ -14,6 +14,8 @@
     <description>Assembles the Mule core, modules, and transports into a single library (jar). This is useful for embedding Mule into an existing project.</description>
 
     <properties>
+        <gmavenPluginVersion>2.1.0</gmavenPluginVersion>
+
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
 
@@ -37,8 +39,9 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>gmaven-plugin</artifactId>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>${gmavenPluginVersion}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -46,10 +49,26 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <source>${project.basedir}/BuildAggregator.groovy</source>
+                            <scripts>
+                                <script>file:///${project.basedir}/BuildAggregator.groovy</script>
+                            </scripts>
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy</artifactId>
+                        <version>${groovyVersionBuild}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy-ant</artifactId>
+                        <version>${groovyVersionBuild}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
