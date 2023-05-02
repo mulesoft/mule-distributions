@@ -8,16 +8,22 @@ package org.mule.runtime.params;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.max;
+import static java.lang.System.getProperty;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 import static java.util.regex.Pattern.compile;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -28,9 +34,14 @@ import java.util.stream.Collectors;
  */
 public class AdditionalJvmParameters {
 
+  private static final String JAVA_8_VERSION = "1.8";
+  private static final String JAVA_RUNNING_VERSION = "java.specification.version";
+
   protected static String jpdaOpts = "";
   protected static int paramIndex = 0;
+  protected static int classpathIndex = 0;
   static final String wrapperPrefix = "wrapper.java.additional.";
+  static final String classpathPrefix = "wrapper.java.classpath.";
   static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 20;
 
   public static void main(String[] args) throws IOException {
@@ -56,6 +67,7 @@ public class AdditionalJvmParameters {
       String line = reader.readLine();
       while (line != null) {
         paramIndex = findWrapperAdditionalProperties(line);
+        classpathIndex = findWrapperClassPathEntries(line);
         line = reader.readLine();
       }
       paramIndex += getNumberOfAdditionalJavaProperties(args);
@@ -71,6 +83,24 @@ public class AdditionalJvmParameters {
         writeWrapperProps(args, writer);
       }
     }
+
+    File wrapperLicenseConfFile;
+    Properties bootstrapProps = new Properties();
+    // Do not use commons-lang3 to avoid having to add that jar to lib/boot
+    if (getProperty(JAVA_RUNNING_VERSION).startsWith(JAVA_8_VERSION)) {
+      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java8/wrapper.jvmDependant.conf")));
+      wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
+    } else {
+      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf")));
+      wrapperLicenseConfFile = new File(wrapperConfDir + "java11-plus/wrapper-license.conf");
+    }
+
+    processBootstrapProperties(bootstrapProps, writer);
+
+    if (wrapperLicenseConfFile.exists()) {
+      Files.copy(wrapperLicenseConfFile.toPath(), new File(wrapperConfDir + "wrapper-license.conf").toPath(), REPLACE_EXISTING);
+    }
+
     writer.close();
   }
 
@@ -134,6 +164,25 @@ public class AdditionalJvmParameters {
 
     if (prefixMatcher.find()) {
       Pattern prefixWithNumPattern = compile("^\\s*wrapper\\.java\\.additional\\.(\\d+).+");
+      Matcher prefixWithNumMatcher = prefixWithNumPattern.matcher(line);
+      prefixWithNumMatcher.find();
+      return max(parseInt(prefixWithNumMatcher.group(1)), paramIndex);
+    }
+    return paramIndex;
+  }
+
+  /**
+   * Find additional wrapper classpath entries that start with 'wrapper.java.classpath.-'
+   * 
+   * @param line a single line from the wrapper.conf file
+   * @return paramIndex that takes the number of additional classpath entries into account
+   */
+  protected static int findWrapperClassPathEntries(String line) {
+    Pattern prefixPattern = compile("^\\s*wrapper\\.java\\.classpath\\..+");
+    Matcher prefixMatcher = prefixPattern.matcher(line);
+
+    if (prefixMatcher.find()) {
+      Pattern prefixWithNumPattern = compile("^\\s*wrapper\\.java\\.classpath\\.(\\d+).+");
       Matcher prefixWithNumMatcher = prefixWithNumPattern.matcher(line);
       prefixWithNumMatcher.find();
       return max(parseInt(prefixWithNumMatcher.group(1)), paramIndex);
@@ -216,4 +265,17 @@ public class AdditionalJvmParameters {
     }
   }
 
+  protected static void processBootstrapProperties(Properties bootstrapProperties, FileWriter writer) throws IOException {
+    for (Entry entry : bootstrapProperties.entrySet()) {
+      if (entry.getKey().toString().matches("wrapper\\.java\\.additional\\.<n\\d>")) {
+        writer.write(wrapperPrefix + paramIndex++ + "=" + entry.getValue().toString() + "\n");
+      } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d>")) {
+        writer.write(classpathPrefix + classpathIndex++ + "=" + entry.getValue().toString() + "\n");
+      } else {
+        writer.write(entry.getKey() + "=" + entry.getValue().toString() + "\n");
+      }
+    }
+
+    writer.flush();
+  }
 }

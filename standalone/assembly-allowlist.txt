@@ -29,6 +29,10 @@
 /mule-standalone-${productVersion}/conf/tls-default.conf
 /mule-standalone-${productVersion}/conf/tls-fips140-2.conf
 /mule-standalone-${productVersion}/conf/tracer-exporter.conf
+/mule-standalone-${productVersion}/conf/java11-plus
+/mule-standalone-${productVersion}/conf/java11-plus/wrapper.jvmDependant.conf
+/mule-standalone-${productVersion}/conf/java8
+/mule-standalone-${productVersion}/conf/java8/wrapper.jvmDependant.conf
 
 #
 # /domains
