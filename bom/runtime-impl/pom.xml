@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mule-runtime-impl-bom</artifactId>
+    <packaging>pom</packaging>
     <name>Mule Runtime Implementation Libraries BOM</name>
     <description>A BOM project that provides all the implementation libraries required by the Mule runtime</description>
 
