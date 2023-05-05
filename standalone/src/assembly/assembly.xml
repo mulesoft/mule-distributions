@@ -133,6 +133,7 @@
                 <include>org.mule.runtime:mule-module-reboot</include>
                 <include>commons-cli:commons-cli</include>
                 <include>tanukisoft:wrapper</include>
+                <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.slf4j:slf4j-api</include>
                 <include>org.apache.logging.log4j:log4j-api</include>
                 <include>org.apache.logging.log4j:log4j-core</include>
@@ -239,6 +240,9 @@
                 <include>org.mule.runtime:mule-tracer-configuration-api</include>
                 <include>org.mule.runtime:mule-tracer-configuration-impl</include>
             </includes>
+            <excludes>
+                <exclude>org.mule.runtime:mule-module-logging</exclude>
+            </excludes>
         </dependencySet>
 
         <!-- Mule Services -->
