@@ -39,7 +39,7 @@ public class AdditionalJvmParameters {
 
   protected static String jpdaOpts = "";
   protected static int paramIndex = 0;
-  protected static int classpathIndex = 0;
+  protected static int classpathIndex = 1;
   static final String wrapperPrefix = "wrapper.java.additional.";
   static final String classpathPrefix = "wrapper.java.classpath.";
   static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 20;
@@ -62,17 +62,17 @@ public class AdditionalJvmParameters {
     boolean wrapperOptionsAvailable = isOptionAvailable(arguments, "-W");
 
     BufferedReader reader = new BufferedReader(new FileReader(wrapperConfigFile));
-    if (debugEnabled || adHocOptionsAvailable) {
-      // looking for maximum number of wrapper.java.additional property
-      String line = reader.readLine();
-      while (line != null) {
-        paramIndex = findWrapperAdditionalProperties(line);
-        classpathIndex = findWrapperClassPathEntries(line);
-        line = reader.readLine();
-      }
-      paramIndex += getNumberOfAdditionalJavaProperties(args);
-      reader.close();
+    // looking for maximum number of wrapper.java.additional property
+    String line = reader.readLine();
+    while (line != null) {
+      paramIndex = findWrapperAdditionalProperties(line);
+      classpathIndex = findWrapperClassPathEntries(line);
+      line = reader.readLine();
+    }
+    reader.close();
 
+    if (debugEnabled || adHocOptionsAvailable) {
+      paramIndex += getNumberOfAdditionalJavaProperties(args);
       if (debugEnabled) {
         writeJpdaOpts(writer);
       }
@@ -185,9 +185,9 @@ public class AdditionalJvmParameters {
       Pattern prefixWithNumPattern = compile("^\\s*wrapper\\.java\\.classpath\\.(\\d+).+");
       Matcher prefixWithNumMatcher = prefixWithNumPattern.matcher(line);
       prefixWithNumMatcher.find();
-      return max(parseInt(prefixWithNumMatcher.group(1)), paramIndex);
+      return max(parseInt(prefixWithNumMatcher.group(1)), classpathIndex);
     }
-    return paramIndex;
+    return classpathIndex;
   }
 
   /**
