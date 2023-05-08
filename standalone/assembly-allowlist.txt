@@ -29,6 +29,10 @@
 /mule-standalone-${productVersion}/conf/tls-default.conf
 /mule-standalone-${productVersion}/conf/tls-fips140-2.conf
 /mule-standalone-${productVersion}/conf/tracer-exporter.conf
+/mule-standalone-${productVersion}/conf/java11-plus
+/mule-standalone-${productVersion}/conf/java11-plus/wrapper.jvmDependant.conf
+/mule-standalone-${productVersion}/conf/java8
+/mule-standalone-${productVersion}/conf/java8/wrapper.jvmDependant.conf
 
 #
 # /domains
@@ -51,6 +55,7 @@
 /mule-standalone-${productVersion}/lib/boot/libwrapper-solaris-x86-32.so
 /mule-standalone-${productVersion}/lib/boot/commons-cli-1.2.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-reboot-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/boot/mule-module-logging-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/README.txt
 /mule-standalone-${productVersion}/lib/boot/wrapper-3.2.3.jar
 /mule-standalone-${productVersion}/lib/boot/wrapper-windows-x86-32.dll
@@ -122,7 +127,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-global-config-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-javaee-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-launcher-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-logging-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-impl-${productVersion}.jar
