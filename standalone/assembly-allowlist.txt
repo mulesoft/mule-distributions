@@ -152,6 +152,8 @@
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-metrics-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-metrics-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-exporter-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-internal-impl-${productVersion}.jar
