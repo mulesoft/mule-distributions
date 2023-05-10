@@ -1,10 +1,10 @@
-def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/master",
-                               "Mule-runtime/mule-http-service/master",
-                               "Mule-runtime/mule-oauth-service/master",
-                               "Mule-runtime/mule-scheduler-service/master",
-                               "Mule-runtime/mule-soap-service/master",
-                               "Mule-runtime/mule-embedded-api/master",
-                               "Mule-runtime/mule-maven-client/master" ]
+def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/support/4.1.4",
+                               "Mule-runtime/mule-http-service/support/1.1.4",
+                               "Mule-runtime/mule-oauth-service/support/1.1.5",
+                               "Mule-runtime/mule-scheduler-service/support/1.1.7",
+                               "Mule-runtime/mule-soap-service/support/1.1.8",
+                               "Mule-runtime/mule-embedded-api/support/1.1.3",
+                               "Mule-runtime/mule-maven-client/support/1.1.4" ]
 
 Map pipelineParams = [ "upstreamProjects" : UPSTREAM_PROJECTS_LIST.join(','),
                        "archiveArtifacts" : '**/logs/**,**/conf/wrapper*.conf',
