@@ -20,13 +20,14 @@ import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 
-import static com.mashape.unirest.http.Unirest.get;
-import static com.mashape.unirest.http.Unirest.post;
 import static java.lang.String.format;
 import static java.lang.System.getProperty;
 import static java.lang.Thread.sleep;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+
+import static com.mashape.unirest.http.Unirest.get;
+import static com.mashape.unirest.http.Unirest.post;
 import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
@@ -60,7 +61,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

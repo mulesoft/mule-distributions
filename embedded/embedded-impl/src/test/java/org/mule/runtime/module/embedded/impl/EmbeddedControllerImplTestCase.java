@@ -34,19 +34,19 @@ import io.qameta.allure.Story;
 @Feature(EMBEDDED_API)
 @Story(EMBEDDED)
 @Issue("W-11193698")
-public class EmbeddedControllerTestCase extends AbstractMuleTestCase {
+public class EmbeddedControllerImplTestCase extends AbstractMuleTestCase {
 
-  private EmbeddedController embeddedController;
+  private EmbeddedControllerImpl embeddedControllerImpl;
 
   @Before
   public void setUp() throws IOException, ClassNotFoundException {
     ContainerInfo containerInfo = new ContainerInfo("4.1.1", getMuleHomeFolder().toURI().toURL(), emptyList(), emptyList());
-    embeddedController = new EmbeddedController(serialize(containerInfo));
+    embeddedControllerImpl = new EmbeddedControllerImpl(serialize(containerInfo));
   }
 
   @Test
   public void muleHomeIsCorrectlySetWhenStartingTheController() throws Exception {
-    embeddedController.start();
+    embeddedControllerImpl.start();
     assertThat(getProperty("mule.home"), is(getMuleHomeFolder().getAbsolutePath()));
   }
 

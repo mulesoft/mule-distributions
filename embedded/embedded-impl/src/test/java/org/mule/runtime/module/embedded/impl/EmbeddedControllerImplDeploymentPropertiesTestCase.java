@@ -53,10 +53,10 @@ import io.qameta.allure.Story;
 
 @Feature(EMBEDDED_API)
 @Story(EMBEDDED)
-public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMuleTestCase {
+public class EmbeddedControllerImplDeploymentPropertiesTestCase extends AbstractMuleTestCase {
 
   private DeploymentService deploymentService;
-  private EmbeddedController embeddedController;
+  private EmbeddedControllerImpl embeddedControllerImpl;
 
   @Before
   public void setUp() throws IOException, ClassNotFoundException {
@@ -64,7 +64,7 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
     when(deploymentService.getLock()).thenReturn(new ReentrantLock());
 
     ContainerInfo containerInfo = new ContainerInfo("4.1.1", getMuleHomeFolder().toURI().toURL(), emptyList(), emptyList());
-    embeddedController = new EmbeddedController(serialize(containerInfo)) {
+    embeddedControllerImpl = new EmbeddedControllerImpl(serialize(containerInfo)) {
 
       @Override
       public void start() throws Exception {
@@ -183,7 +183,7 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
     DeploymentConfigurationBuilder deploymentConfigBuilder = DeploymentConfiguration.builder();
     deploymentConfigBuilderConfigurer.accept(deploymentConfigBuilder);
 
-    embeddedController.deployApplication(serialize(ArtifactConfiguration.builder()
+    embeddedControllerImpl.deployApplication(serialize(ArtifactConfiguration.builder()
         .artifactLocation(new File(""))
         .deploymentConfiguration(deploymentConfigBuilder
             .build())

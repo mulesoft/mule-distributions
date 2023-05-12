@@ -31,16 +31,15 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 @Features(@Feature(EMBEDDED_API))
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
