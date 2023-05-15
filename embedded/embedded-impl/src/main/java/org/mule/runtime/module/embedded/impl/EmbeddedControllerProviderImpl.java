@@ -6,10 +6,9 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
+import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.embedded.api.EmbeddedController;
 import org.mule.runtime.module.embedded.api.EmbeddedControllerProvider;
-
-import java.io.IOException;
 
 /**
  * Implementation of {@link EmbeddedControllerProvider}.
@@ -17,8 +16,8 @@ import java.io.IOException;
 public class EmbeddedControllerProviderImpl implements EmbeddedControllerProvider {
 
   @Override
-  public EmbeddedController createEmbeddedController(byte[] serializedContainerInfo) throws IOException, ClassNotFoundException {
-    return new EmbeddedControllerImpl(serializedContainerInfo);
+  public EmbeddedController createEmbeddedController(ContainerInfo containerInfo) {
+    return new EmbeddedControllerImpl(containerInfo);
   }
 
 }

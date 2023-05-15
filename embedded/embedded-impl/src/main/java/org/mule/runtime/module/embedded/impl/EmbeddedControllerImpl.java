@@ -56,9 +56,8 @@ public class EmbeddedControllerImpl implements EmbeddedController {
   private ArtifactClassLoader containerClassLoader;
   private MuleContainer muleContainer;
 
-  public EmbeddedControllerImpl(byte[] serializedContainerInfo)
-      throws IOException, ClassNotFoundException {
-    containerInfo = deserialize(serializedContainerInfo);
+  public EmbeddedControllerImpl(ContainerInfo containerInfo) {
+    this.containerInfo = containerInfo;
   }
 
   @Override
@@ -67,29 +66,25 @@ public class EmbeddedControllerImpl implements EmbeddedController {
   }
 
   @Override
-  public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
-    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
+  public synchronized void deployApplication(ArtifactConfiguration artifactConfiguration) {
     deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
   @Override
-  public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
-    String applicationName = deserialize(serializedApplicationName);
+  public void undeployApplication(String applicationName) {
     getMuleContainer().getDeploymentService().undeploy(applicationName);
   }
 
   @Override
-  public synchronized void deployDomain(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
-    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
+  public synchronized void deployDomain(ArtifactConfiguration artifactConfiguration) {
     deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deployDomain(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
   @Override
-  public void undeployDomain(byte[] serializedDomainName) throws IOException, ClassNotFoundException {
-    String applicationName = deserialize(serializedDomainName);
-    getMuleContainer().getDeploymentService().undeployDomain(applicationName);
+  public void undeployDomain(String domainName) {
+    getMuleContainer().getDeploymentService().undeployDomain(domainName);
   }
 
   private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {

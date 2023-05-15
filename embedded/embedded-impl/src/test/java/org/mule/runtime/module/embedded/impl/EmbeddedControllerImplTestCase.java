@@ -41,21 +41,12 @@ public class EmbeddedControllerImplTestCase extends AbstractMuleTestCase {
   @Before
   public void setUp() throws IOException, ClassNotFoundException {
     ContainerInfo containerInfo = new ContainerInfo("4.1.1", getMuleHomeFolder().toURI().toURL(), emptyList(), emptyList());
-    embeddedControllerImpl = new EmbeddedControllerImpl(serialize(containerInfo));
+    embeddedControllerImpl = new EmbeddedControllerImpl(containerInfo);
   }
 
   @Test
   public void muleHomeIsCorrectlySetWhenStartingTheController() throws Exception {
     embeddedControllerImpl.start();
     assertThat(getProperty("mule.home"), is(getMuleHomeFolder().getAbsolutePath()));
-  }
-
-  private static <T> byte[] serialize(T object) throws IOException {
-    try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
-      try (ObjectOutput objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
-        objectOutputStream.writeObject(object);
-        return byteArrayOutputStream.toByteArray();
-      }
-    }
   }
 }

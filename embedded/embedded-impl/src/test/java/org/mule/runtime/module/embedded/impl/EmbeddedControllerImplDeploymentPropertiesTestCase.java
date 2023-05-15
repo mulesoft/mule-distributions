@@ -64,7 +64,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
     when(deploymentService.getLock()).thenReturn(new ReentrantLock());
 
     ContainerInfo containerInfo = new ContainerInfo("4.1.1", getMuleHomeFolder().toURI().toURL(), emptyList(), emptyList());
-    embeddedControllerImpl = new EmbeddedControllerImpl(serialize(containerInfo)) {
+    embeddedControllerImpl = new EmbeddedControllerImpl(containerInfo) {
 
       @Override
       public void start() throws Exception {
@@ -179,25 +179,16 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   protected void deployWithProperties(Consumer<DeploymentConfiguration.DeploymentConfigurationBuilder> deploymentConfigBuilderConfigurer,
                                       ArgumentCaptor<Properties> deploymentPropertiesCaptor)
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     DeploymentConfigurationBuilder deploymentConfigBuilder = DeploymentConfiguration.builder();
     deploymentConfigBuilderConfigurer.accept(deploymentConfigBuilder);
 
-    embeddedControllerImpl.deployApplication(serialize(ArtifactConfiguration.builder()
+    embeddedControllerImpl.deployApplication(ArtifactConfiguration.builder()
         .artifactLocation(new File(""))
         .deploymentConfiguration(deploymentConfigBuilder
             .build())
-        .build()));
+        .build());
 
     verify(deploymentService).deploy(any(URI.class), deploymentPropertiesCaptor.capture());
-  }
-
-  private static <T> byte[] serialize(T object) throws IOException {
-    try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
-      try (ObjectOutput objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
-        objectOutputStream.writeObject(object);
-        return byteArrayOutputStream.toByteArray();
-      }
-    }
   }
 }
