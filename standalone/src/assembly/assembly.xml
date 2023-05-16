@@ -305,7 +305,8 @@
         <!-- 3rd-party libraries -->
         <dependencySet>
             <outputDirectory>lib/opt</outputDirectory>
-            <useStrictFiltering>true</useStrictFiltering>
+            <!-- TODO W-13158368 - restore strict filtering -->
+            <useStrictFiltering>false</useStrictFiltering>
 
             <!-- Since we don't define any "includes" here, this will suck in the whole
     universe of transitive dependencies.  Therefore, we need to explicitly
@@ -432,6 +433,12 @@
 
                 <!-- Exclude JVM version specific libraries -->                
                 <exclude>xml-apis:xml-apis</exclude>
+
+                <!-- Exclude artifacts included with the org.mule:maven-model-shaded artifact -->
+                <exclude>org.apache.maven:maven-artifact</exclude>
+                <exclude>org.apache.maven:maven-model</exclude>
+                <exclude>org.apache.maven:maven-model-builder</exclude>
+                <exclude>org.eclipse.sisu:org.eclipse.sisu.inject</exclude>
 
             </excludes>
         </dependencySet>
