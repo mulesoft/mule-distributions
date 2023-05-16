@@ -20,7 +20,6 @@ import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZ
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
-import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
 
 import static java.lang.String.valueOf;
 import static java.lang.System.setProperty;
@@ -33,7 +32,7 @@ import org.mule.runtime.api.lifecycle.InitialisationException;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.api.EmbeddedController;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
 import org.mule.runtime.module.launcher.MuleContainer;
 
 import java.io.File;
@@ -50,13 +49,13 @@ import net.lingala.zip4j.ZipFile;
  *
  * @since 4.0
  */
-public class EmbeddedControllerImpl implements EmbeddedController {
+public class DefaultEmbeddedController implements EmbeddedController {
 
   private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
   private MuleContainer muleContainer;
 
-  public EmbeddedControllerImpl(ContainerInfo containerInfo) {
+  public DefaultEmbeddedController(ContainerInfo containerInfo) {
     this.containerInfo = containerInfo;
   }
 

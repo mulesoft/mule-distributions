@@ -7,17 +7,17 @@
 package org.mule.runtime.module.embedded.impl;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.api.EmbeddedController;
-import org.mule.runtime.module.embedded.api.EmbeddedControllerProvider;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider;
 
 /**
  * Implementation of {@link EmbeddedControllerProvider}.
  */
-public class EmbeddedControllerProviderImpl implements EmbeddedControllerProvider {
+public class DefaultEmbeddedControllerProvider implements EmbeddedControllerProvider {
 
   @Override
   public EmbeddedController createEmbeddedController(ContainerInfo containerInfo) {
-    return new EmbeddedControllerImpl(containerInfo);
+    return new DefaultEmbeddedController(containerInfo);
   }
 
 }

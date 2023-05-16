@@ -30,41 +30,37 @@ import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration.DeploymentConfigurationBuilder;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
 import org.mule.runtime.module.launcher.MuleContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.net.URI;
 import java.util.Properties;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import org.mockito.ArgumentCaptor;
-
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 @Feature(EMBEDDED_API)
 @Story(EMBEDDED)
-public class EmbeddedControllerImplDeploymentPropertiesTestCase extends AbstractMuleTestCase {
+public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMuleTestCase {
 
   private DeploymentService deploymentService;
-  private EmbeddedControllerImpl embeddedControllerImpl;
+  private EmbeddedController embeddedController;
 
   @Before
-  public void setUp() throws IOException, ClassNotFoundException {
+  public void setUp() throws IOException {
     deploymentService = mock(DeploymentService.class);
     when(deploymentService.getLock()).thenReturn(new ReentrantLock());
 
     ContainerInfo containerInfo = new ContainerInfo("4.1.1", getMuleHomeFolder().toURI().toURL(), emptyList(), emptyList());
-    embeddedControllerImpl = new EmbeddedControllerImpl(containerInfo) {
+    embeddedController = new DefaultEmbeddedController(containerInfo) {
 
       @Override
       public void start() throws Exception {
@@ -87,7 +83,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void lazyInitializationFalseDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.lazyInitialization(false), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_INIT_DEPLOYMENT_PROPERTY), is("false"));
@@ -95,7 +91,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void lazyInitializationTrueDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.lazyInitialization(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_INIT_DEPLOYMENT_PROPERTY), is("true"));
@@ -103,7 +99,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void lazyConnectionsEnabledFalseDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.lazyConnectionsEnabled(false), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY), is("false"));
@@ -111,7 +107,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void lazyConnectionsEnabledTrueDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.lazyConnectionsEnabled(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_CONNECTIONS_DEPLOYMENT_PROPERTY), is("true"));
@@ -119,7 +115,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void xmlValidationsFalseDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.xmlValidations(false), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY), is("false"));
@@ -127,7 +123,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void xmlValidationsTrueDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.xmlValidations(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_LAZY_INIT_ENABLE_XML_VALIDATIONS_DEPLOYMENT_PROPERTY), is("true"));
@@ -135,7 +131,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void toolingObjectsNotToRegistryFalseDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.doNotAddToolingObjectsToRegistry(false), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("true"));
@@ -143,7 +139,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void toolingObjectsNotToRegistryTrueDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.doNotAddToolingObjectsToRegistry(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_TOOLING_OBJECTS_TO_REGISTRY), is("false"));
@@ -151,21 +147,21 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
 
   @Test
   public void artifactAstFalseDeploymentConfigurationForwardedToDeploymentProperties()
-      throws IOException, ClassNotFoundException {
+      throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.addArtifactAstToRegistry(false), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY), is("false"));
   }
 
   @Test
-  public void artifactAstTrueDeploymentConfigurationForwardedToDeploymentProperties() throws IOException, ClassNotFoundException {
+  public void artifactAstTrueDeploymentConfigurationForwardedToDeploymentProperties() throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> b.addArtifactAstToRegistry(true), deploymentPropertiesCaptor);
     assertThat(deploymentPropertiesCaptor.getValue().get(MULE_ADD_ARTIFACT_AST_TO_REGISTRY_DEPLOYMENT_PROPERTY), is("true"));
   }
 
   @Test
-  public void defaultDeploymentProperties() throws IOException, ClassNotFoundException {
+  public void defaultDeploymentProperties() throws IOException {
     ArgumentCaptor<Properties> deploymentPropertiesCaptor = forClass(Properties.class);
     deployWithProperties(b -> {
     }, deploymentPropertiesCaptor);
@@ -183,7 +179,7 @@ public class EmbeddedControllerImplDeploymentPropertiesTestCase extends Abstract
     DeploymentConfigurationBuilder deploymentConfigBuilder = DeploymentConfiguration.builder();
     deploymentConfigBuilderConfigurer.accept(deploymentConfigBuilder);
 
-    embeddedControllerImpl.deployApplication(ArtifactConfiguration.builder()
+    embeddedController.deployApplication(ArtifactConfiguration.builder()
         .artifactLocation(new File(""))
         .deploymentConfiguration(deploymentConfigBuilder
             .build())
