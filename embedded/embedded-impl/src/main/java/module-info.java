@@ -5,9 +5,6 @@
  * LICENSE.txt file.
  */
 
-import org.mule.runtime.module.embedded.impl.DefaultEmbeddedControllerProvider;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider;
-
 /**
  * Mule Embedded Implementation.
  *
@@ -29,7 +26,7 @@ module org.mule.distribution.embedded.impl {
   requires org.apache.commons.io;
   requires zip4j;
 
-  provides EmbeddedControllerProvider
-      with DefaultEmbeddedControllerProvider;
+  provides org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider
+      with org.mule.runtime.module.embedded.impl.DefaultEmbeddedControllerProvider;
 
 }
