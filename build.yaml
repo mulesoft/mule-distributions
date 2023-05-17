@@ -1,5 +1,5 @@
 upstreamProjects:
-  Mule-runtime/mule-integration-tests/master,
+  Mule-runtime/mule-integration-tests/master-TESTCYCLE-2020-DRY-RUN,
   Mule-runtime/mule-http-service/master,
   Mule-runtime/mule-oauth-service/master,
   Mule-runtime/mule-scheduler-service/master,
