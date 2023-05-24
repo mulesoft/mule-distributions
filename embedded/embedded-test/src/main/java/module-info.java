@@ -13,11 +13,8 @@
  */
 module org.mule.distribution.embedded.test {
 
-  requires mule.maven.client.api;
-  requires mule.maven.client.impl;
-  requires mule.maven.client.test;
   requires org.mule.runtime.embedded.api;
-  requires org.mule.distribution.embedded.impl;
+  requires org.mule.runtime.maven.client.test;
 
   requires junit;
   requires org.apache.commons.io;

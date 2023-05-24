@@ -6,7 +6,6 @@
  */
 package org.mule.runtime.module.embedded;
 
-import static org.mule.runtime.container.api.MuleFoldersUtil.DOMAINS_FOLDER;
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
@@ -45,6 +44,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
 
   private static final String ARTIFACTS_FOLDER = "artifacts";
   private static final String APPS_FOLDER = "apps";
+  private static final String DOMAINS_FOLDER = "domains";
 
   @BeforeClass
   public static void initialise() {

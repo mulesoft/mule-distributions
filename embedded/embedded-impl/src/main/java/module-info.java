@@ -20,7 +20,6 @@ module org.mule.distribution.embedded.impl {
   requires org.mule.runtime.artifact;
   requires org.mule.runtime.container;
   requires org.mule.runtime.deployment;
-  requires org.mule.runtime.deployment.model;
   requires org.mule.runtime.embedded.api;
 
   requires org.apache.commons.io;
