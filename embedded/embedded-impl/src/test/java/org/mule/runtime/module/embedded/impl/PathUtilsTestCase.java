@@ -9,6 +9,7 @@ package org.mule.runtime.module.embedded.impl;
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
+
 import static org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

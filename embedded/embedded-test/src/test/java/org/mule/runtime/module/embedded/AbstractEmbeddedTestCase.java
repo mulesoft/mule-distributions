@@ -6,23 +6,26 @@
  */
 package org.mule.runtime.module.embedded;
 
+import static org.mule.runtime.module.embedded.api.Product.MULE;
+import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
+import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
+
 import static java.lang.String.valueOf;
 import static java.util.Optional.empty;
+
 import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-import static org.mule.runtime.container.api.MuleFoldersUtil.DOMAINS_FOLDER;
-import static org.mule.runtime.module.embedded.api.Product.MULE;
-import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
-import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
+
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 import org.mule.tck.junit4.rule.FreePortFinder;
+import org.mule.tck.junit4.rule.SystemProperty;
 import org.mule.tck.probe.JUnitProbe;
 import org.mule.tck.probe.PollingProber;
 
@@ -34,6 +37,7 @@ import java.util.function.Consumer;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 
 
 public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
@@ -42,6 +46,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
 
   private static final String ARTIFACTS_FOLDER = "artifacts";
   private static final String APPS_FOLDER = "apps";
+  private static final String DOMAINS_FOLDER = "domains";
 
   @BeforeClass
   public static void initialise() {
@@ -52,6 +57,9 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   public static void dispose() {
     embeddedTestHelper.dispose();
   }
+
+  @Rule
+  public SystemProperty skipModuleTweakingValidation = new SystemProperty("mule.module.tweaking.validation.skip", "true");
 
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                      Consumer<Integer> portConsumer)

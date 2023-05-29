@@ -20,13 +20,14 @@ import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 
-import static com.mashape.unirest.http.Unirest.get;
-import static com.mashape.unirest.http.Unirest.post;
 import static java.lang.String.format;
 import static java.lang.System.getProperty;
 import static java.lang.Thread.sleep;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+
+import static com.mashape.unirest.http.Unirest.get;
+import static com.mashape.unirest.http.Unirest.post;
 import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
@@ -60,7 +61,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -94,18 +94,15 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Test
   public void applicationWithConnector() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
-    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
-      assertTestMessage(port);
-    }));
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> assertTestMessage(port)));
   }
 
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
   @Test
   public void restartEmbedded() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
-    doWithinApplicationRestartingEmbedded(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> {
-      assertTestMessage(port);
-    }));
+    doWithinApplicationRestartingEmbedded(bundleDescriptor, getAppFolder(HTTP_ECHO),
+                                          createRetryTestOperation(port -> assertTestMessage(port)));
   }
 
   @Description("Embedded runs an application that retrieves a resource from the JDK")
@@ -196,14 +193,12 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     File fileWriteDestination = new File(fileWriteFolder, getUUID());
 
     // start and stops the application, the scheduler within it should have been run if started
-    testWithSystemProperty("file.path", fileWriteDestination.getAbsolutePath(), () -> {
-      testWithSystemProperty(DISABLE_SCHEDULER_SOURCES_PROPERTY, "true", () -> {
-        BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("scheduler-stopped", empty());
-        doWithinApplication(bundleDescriptor, getAppFolder("scheduler-stopped"), port -> {
-          waitForPollToBeExecuted();
-        });
-      });
-    });
+    testWithSystemProperty("file.path", fileWriteDestination.getAbsolutePath(),
+                           () -> testWithSystemProperty(DISABLE_SCHEDULER_SOURCES_PROPERTY, "true", () -> {
+                             BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("scheduler-stopped", empty());
+                             doWithinApplication(bundleDescriptor, getAppFolder("scheduler-stopped"),
+                                                 port -> waitForPollToBeExecuted());
+                           }));
     assertThat(fileWriteDestination.exists(), is(false));
   }
 
@@ -211,9 +206,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Test
   public void applicationWithCustomLogger() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
-    doWithinApplication(bundleDescriptor, getAppFolder("http-echo"), createRetryTestOperation(port -> {
-      assertTestMessage(port);
-    }), false, true, true,
+    doWithinApplication(bundleDescriptor, getAppFolder("http-echo"),
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), false, true, true,
                         of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
     File expectedLoggingFile = new File(LOGGING_FILE);
     assertThat(expectedLoggingFile.exists(), is(true));
@@ -228,7 +222,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     runWithContainer((container) -> {
       container.getDeploymentService()
           .deployApplication(ArtifactConfiguration.builder().artifactLocation(artifactFile).build());
-      executeWithRetry(() -> assertAppIsRunning(true));;
+      executeWithRetry(() -> assertAppIsRunning(true));
     });
   }
 

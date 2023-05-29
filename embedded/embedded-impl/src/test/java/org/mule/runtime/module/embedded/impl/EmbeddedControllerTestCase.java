@@ -17,19 +17,16 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Story;
+import org.junit.Before;
+import org.junit.Test;
 
 @Feature(EMBEDDED_API)
 @Story(EMBEDDED)
@@ -39,23 +36,14 @@ public class EmbeddedControllerTestCase extends AbstractMuleTestCase {
   private EmbeddedController embeddedController;
 
   @Before
-  public void setUp() throws IOException, ClassNotFoundException {
+  public void setUp() throws IOException {
     ContainerInfo containerInfo = new ContainerInfo("4.1.1", getMuleHomeFolder().toURI().toURL(), emptyList(), emptyList());
-    embeddedController = new EmbeddedController(serialize(containerInfo));
+    embeddedController = new DefaultEmbeddedController(containerInfo);
   }
 
   @Test
   public void muleHomeIsCorrectlySetWhenStartingTheController() throws Exception {
     embeddedController.start();
     assertThat(getProperty("mule.home"), is(getMuleHomeFolder().getAbsolutePath()));
-  }
-
-  private static <T> byte[] serialize(T object) throws IOException {
-    try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
-      try (ObjectOutput objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
-        objectOutputStream.writeObject(object);
-        return byteArrayOutputStream.toByteArray();
-      }
-    }
   }
 }

@@ -20,7 +20,6 @@ import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZ
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
-import static org.mule.runtime.module.embedded.impl.SerializationUtils.deserialize;
 
 import static java.lang.String.valueOf;
 import static java.lang.System.setProperty;
@@ -28,84 +27,63 @@ import static java.lang.System.setProperty;
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.apache.commons.io.FilenameUtils.getName;
 
-import org.mule.runtime.api.artifact.Registry;
-import org.mule.runtime.api.connectivity.ConnectivityTestingService;
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.lifecycle.InitialisationException;
-import org.mule.runtime.api.metadata.MetadataService;
-import org.mule.runtime.api.value.ValueProviderService;
-import org.mule.runtime.core.api.context.notification.MuleContextListener;
-import org.mule.runtime.core.api.data.sample.SampleDataService;
-import org.mule.runtime.deployment.model.api.DeploymentStartException;
-import org.mule.runtime.deployment.model.api.InstallException;
-import org.mule.runtime.deployment.model.api.application.Application;
-import org.mule.runtime.deployment.model.api.application.ApplicationDescriptor;
-import org.mule.runtime.deployment.model.api.application.ApplicationPolicyManager;
-import org.mule.runtime.deployment.model.api.application.ApplicationStatus;
-import org.mule.runtime.deployment.model.api.artifact.ArtifactContext;
-import org.mule.runtime.deployment.model.api.domain.Domain;
-import org.mule.runtime.deployment.model.api.plugin.ArtifactPlugin;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
-import org.mule.runtime.module.artifact.api.classloader.RegionClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
 import org.mule.runtime.module.launcher.MuleContainer;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.List;
 import java.util.Properties;
 
 import net.lingala.zip4j.ZipFile;
 
 /**
- * Controller class for the runtime. It spin ups a new container instance using a temporary folder and dynamically loading the
+ * Controller class for the runtime. It spins up a new container instance using a temporary folder and dynamically loading the
  * container libraries.
- * <p>
- * Invoked by reflection
  *
  * @since 4.0
  */
-public class EmbeddedController {
+public class DefaultEmbeddedController implements EmbeddedController {
 
   private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
   private MuleContainer muleContainer;
 
-  public EmbeddedController(byte[] serializedContainerInfo)
-      throws IOException, ClassNotFoundException {
-    containerInfo = deserialize(serializedContainerInfo);
+  public DefaultEmbeddedController(ContainerInfo containerInfo) {
+    this.containerInfo = containerInfo;
   }
 
-  /**
-   * Invoked by reflection
-   */
+  @Override
   public void start() throws Exception {
     setUpEnvironment();
   }
 
-  public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
-    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
+  @Override
+  public synchronized void deployApplication(ArtifactConfiguration artifactConfiguration) {
     deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
-  public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
-    String applicationName = deserialize(serializedApplicationName);
+  @Override
+  public void undeployApplication(String applicationName) {
     getMuleContainer().getDeploymentService().undeploy(applicationName);
   }
 
-  public synchronized void deployDomain(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
-    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
+  @Override
+  public synchronized void deployDomain(ArtifactConfiguration artifactConfiguration) {
     deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deployDomain(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
-  public void undeployDomain(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
-    String applicationName = deserialize(serializedApplicationName);
-    getMuleContainer().getDeploymentService().undeployDomain(applicationName);
+  @Override
+  public void undeployDomain(String domainName) {
+    getMuleContainer().getDeploymentService().undeployDomain(domainName);
   }
 
   private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {
@@ -133,7 +111,15 @@ public class EmbeddedController {
     }
   }
 
-  public void executeWithinContainerClassLoader(ContainerTask task) {
+  @Override
+  public void stop() {
+    executeWithinContainerClassLoader(() -> {
+      muleContainer.stop();
+      muleContainer.getContainerClassLoader().dispose();
+    });
+  }
+
+  private void executeWithinContainerClassLoader(ContainerTask task) {
     ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
     try {
       Thread.currentThread().setContextClassLoader(containerClassLoader.getClassLoader());
@@ -146,13 +132,12 @@ public class EmbeddedController {
   }
 
   /**
-   * Invoked by reflection
+   * Interface for running tasks within the container class loader.
    */
-  public void stop() {
-    executeWithinContainerClassLoader(() -> {
-      muleContainer.stop();
-      muleContainer.getContainerClassLoader().dispose();
-    });
+  private interface ContainerTask {
+
+    void run() throws Exception;
+
   }
 
   private void setUpEnvironment() throws IOException, URISyntaxException, InitialisationException {
@@ -210,158 +195,6 @@ public class EmbeddedController {
 
     void deploy(Properties deploymentProperties) throws IOException;
 
-  }
-
-  /**
-   * Interface for running tasks within the container class loader.
-   */
-  @FunctionalInterface
-  interface ContainerTask {
-
-    void run() throws Exception;
-
-  }
-
-  // TODO MULE-10392: To be removed once we have methods to deploy with properties, unify this code inside deploymentService!
-  /**
-   * Just a temporary implementation of an Application in order to handle both deployments until code is unified.
-   */
-  private class NoOpApplication implements Application {
-
-    @Override
-    public RegionClassLoader getRegionClassLoader() {
-      return null;
-    }
-
-    @Override
-    public String getArtifactName() {
-      return null;
-    }
-
-    @Override
-    public String getArtifactId() {
-      return null;
-    }
-
-    @Override
-    public File[] getResourceFiles() {
-      return new File[0];
-    }
-
-    @Override
-    public ArtifactClassLoader getArtifactClassLoader() {
-      return null;
-    }
-
-    @Override
-    public void install() throws InstallException {
-
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void initTooling() {
-
-    }
-
-    @Override
-    public void lazyInit() {
-
-    }
-
-    @Override
-    public void lazyInit(boolean disableXmlValidations) {
-
-    }
-
-    @Override
-    public void lazyInitTooling(boolean disableXmlValidations) {
-
-    }
-
-    @Override
-    public void start() throws DeploymentStartException {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public ApplicationDescriptor getDescriptor() {
-      return null;
-    }
-
-    @Override
-    public void dispose() {
-
-    }
-
-    @Override
-    public Registry getRegistry() {
-      return null;
-    }
-
-    @Override
-    public ArtifactContext getArtifactContext() {
-      return null;
-    }
-
-    @Override
-    public File getLocation() {
-      return null;
-    }
-
-    @Override
-    public ConnectivityTestingService getConnectivityTestingService() {
-      return null;
-    }
-
-    @Override
-    public MetadataService getMetadataService() {
-      return null;
-    }
-
-    @Override
-    public ValueProviderService getValueProviderService() {
-      return null;
-    }
-
-    @Override
-    public List<ArtifactPlugin> getArtifactPlugins() {
-      return null;
-    }
-
-    @Override
-    public void setMuleContextListener(MuleContextListener muleContextListener) {
-
-    }
-
-    @Override
-    public Domain getDomain() {
-      return null;
-    }
-
-    @Override
-    public ApplicationStatus getStatus() {
-      return null;
-    }
-
-    @Override
-    public ApplicationPolicyManager getPolicyManager() {
-      return null;
-    }
-
-    @Override
-    public SampleDataService getSampleDataService() {
-      return null;
-    }
   }
 
 }
