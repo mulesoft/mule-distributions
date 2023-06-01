@@ -238,7 +238,6 @@
 /mule-standalone-${productVersion}/lib/opt/jakarta.mail-1.6.3.jar
 /mule-standalone-${productVersion}/lib/opt/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.8.7.jar
-/mule-standalone-${productVersion}/lib/opt/maven-repository-metadata-3.8.7.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.8.7.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.8.7.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-api-1.6.3.jar
