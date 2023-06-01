@@ -26,7 +26,7 @@
                 <groupId>org.mule.runtime.plugins</groupId>
                 <artifactId>mule-extensions-maven-plugin</artifactId>
                 <!-- Change back to latest snapshot MMP-596 once is fixed -->
-                <version>1.4.0</version>
+                <version>1.4.2-SNAPSHOT</version>
                 <extensions>true</extensions>
             </plugin>
         </plugins>
