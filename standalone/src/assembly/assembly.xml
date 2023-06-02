@@ -437,6 +437,7 @@
                 <exclude>org.apache.maven:maven-artifact</exclude>
                 <exclude>org.apache.maven:maven-model</exclude>
                 <exclude>org.apache.maven:maven-model-builder</exclude>
+                <exclude>org.apache.maven:maven-repository-metadata</exclude>
                 <exclude>org.eclipse.sisu:org.eclipse.sisu.inject</exclude>
 
             </excludes>
