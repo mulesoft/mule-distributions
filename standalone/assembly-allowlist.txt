@@ -258,7 +258,7 @@
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-impl-2.0.0-rc9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.0.0-rc9.jar
 /mule-standalone-${productVersion}/lib/opt/mule-oauth-client-2.0.0-+
-/mule-standalone-${productVersion}/lib/opt/mule-oauth-client-api-2.0.0-+
+/mule-standalone-${productVersion}/lib/opt/mule-oauth-client-api-2.0.0-rc9.jar
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.3.2.jar
 /mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.5.1.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-2.0.jar
