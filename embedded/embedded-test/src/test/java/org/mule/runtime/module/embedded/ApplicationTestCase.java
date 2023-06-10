@@ -97,6 +97,15 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> assertTestMessage(port)));
   }
 
+  @Description("Embedded runs an application depending on a connector in a legacy implementation")
+  @Test
+  public void legacyImplementationSupported() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    // TODO no tendria que ser un SNAPSHOT
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.1-SNAPSHOT");
+  }
+
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
   @Test
   public void restartEmbedded() throws Exception {

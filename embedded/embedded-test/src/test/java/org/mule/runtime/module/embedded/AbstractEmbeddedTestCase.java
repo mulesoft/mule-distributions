@@ -70,6 +70,15 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                      false);
   }
 
+  protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
+                                     Consumer<Integer> portConsumer, String muleVersion)
+      throws Exception {
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+                     APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
+                         .deployApplication(artifactConfiguration),
+                     false, muleVersion);
+  }
+
   protected void doWithinApplicationRestartingEmbedded(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                                        Consumer<Integer> portConsumer)
       throws Exception {
@@ -128,6 +137,26 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   BiConsumer<EmbeddedContainer, ArtifactConfiguration> deployConsumer,
                                   boolean restartingEmbedded)
       throws Exception {
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled, xmlValidationsEnabled,
+                     lazyConnectionsEnabled, log4JConfigurationFileOptional, validateUsageOfDeploymentService,
+                     artifactDeploymentFolder, installArtifact, deployConsumer, restartingEmbedded,
+                     System.getProperty("mule.version"));
+  }
+
+  protected void doWithinArtifact(BundleDescriptor applicationBundleDescriptor,
+                                  String artifactFolder,
+                                  Consumer<Integer> portConsumer,
+                                  boolean lazyInitializationEnabled,
+                                  boolean xmlValidationsEnabled,
+                                  boolean lazyConnectionsEnabled,
+                                  Optional<URI> log4JConfigurationFileOptional,
+                                  boolean validateUsageOfDeploymentService,
+                                  String artifactDeploymentFolder,
+                                  boolean installArtifact,
+                                  BiConsumer<EmbeddedContainer, ArtifactConfiguration> deployConsumer,
+                                  boolean restartingEmbedded,
+                                  String muleVersion)
+      throws Exception {
     File artifactFile =
         installArtifact ? installMavenArtifact(artifactFolder, applicationBundleDescriptor) : new File(artifactFolder);
     Integer httpListenerPort = new FreePortFinder(6000, 9000).find();
@@ -161,7 +190,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
         portConsumer.accept(httpListenerPort);
       };
       if (restartingEmbedded) {
-        embeddedTestHelper.testWithEmbeddedNotStarted(embeddedContainerBuilderConsumer, container -> {
+        embeddedTestHelper.testWithEmbeddedNotStarted(embeddedContainerBuilderConsumer, muleVersion, container -> {
           // Runs the test with the embedded container for the first time
           container.start();
           try {
@@ -181,7 +210,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
           }
         });
       } else {
-        embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilderConsumer, embeddedContainerConsumer);
+        embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilderConsumer, muleVersion, embeddedContainerConsumer);
       }
     });
   }
@@ -202,7 +231,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                is(deployed));
   }
 
-  protected void runWithContainer(Consumer<EmbeddedContainer> task) throws Exception {
+  protected void runWithContainer(Consumer<EmbeddedContainer> task) {
     try {
       embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
         try {
