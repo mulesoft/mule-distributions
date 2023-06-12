@@ -98,10 +98,10 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   }
 
   @Description("Embedded runs an application depending on a connector in a legacy implementation")
+  @Issue("W-13562329")
   @Test
   public void legacyImplementationSupported() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
-    // TODO no tendria que ser un SNAPSHOT
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.1-SNAPSHOT");
   }
