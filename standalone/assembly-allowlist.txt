@@ -117,6 +117,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-dependency-graph-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-serialization-1.1.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-jar-handling-utils-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-mule-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
@@ -163,7 +164,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-customization-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-impl-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-jar-handling-utils-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.6.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/dwb-api-2.6.0-SNAPSHOT.jar
 #
