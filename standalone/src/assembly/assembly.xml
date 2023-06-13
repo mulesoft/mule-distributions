@@ -397,7 +397,6 @@
                 <exclude>org.apache.logging.log4j:log4j-1.2-api</exclude>
                 <exclude>org.slf4j:jcl-over-slf4j</exclude>
                 <exclude>org.slf4j:jul-to-slf4j</exclude>
-                <exclude>commons-logging:commons-logging</exclude>
                 <exclude>com.lmax:disruptor</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
@@ -438,6 +437,7 @@
                 <exclude>org.apache.maven:maven-artifact</exclude>
                 <exclude>org.apache.maven:maven-model</exclude>
                 <exclude>org.apache.maven:maven-model-builder</exclude>
+                <exclude>org.apache.maven:maven-repository-metadata</exclude>
                 <exclude>org.eclipse.sisu:org.eclipse.sisu.inject</exclude>
 
             </excludes>
