@@ -91,7 +91,20 @@ public class EmbeddedTestHelper {
    */
   public void testWithDefaultSettings(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
                                       Consumer<EmbeddedContainer> test) {
-    testWithEmbeddedNotStarted(embeddedContainerConfigurer, embeddedContainer -> {
+    testWithDefaultSettings(embeddedContainerConfigurer, System.getProperty("mule.version"), test);
+  }
+
+  /**
+   * Preconfigures the {@link EmbeddedContainer} with default settings
+   *
+   * @param embeddedContainerConfigurer function to add configuration to the embedded container
+   * @param muleVersion                 version of the Runtime to run against.
+   * @param test                        function that run the tests
+   */
+  public void testWithDefaultSettings(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
+                                      String muleVersion,
+                                      Consumer<EmbeddedContainer> test) {
+    testWithEmbeddedNotStarted(embeddedContainerConfigurer, muleVersion, embeddedContainer -> {
       try {
         embeddedContainer.start();
         test.accept(container);
@@ -110,7 +123,7 @@ public class EmbeddedTestHelper {
   }
 
   public void testWithEmbeddedNotStarted(Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerConfigurer,
-                                         Consumer<EmbeddedContainer> test) {
+                                         String muleVersion, Consumer<EmbeddedContainer> test) {
     test(() -> {
       EmbeddedContainer.EmbeddedContainerBuilder embeddedContainerBuilder;
       try {
@@ -120,7 +133,7 @@ public class EmbeddedTestHelper {
                 : createDefaultCommunityMavenConfigurationBuilder(forceUpdateSnapshots);
         mavenConfigurationBuilder.ignoreArtifactDescriptorRepositories(ignoreArtifactDescriptorRepositories);
         embeddedContainerBuilder = builder()
-            .muleVersion(System.getProperty("mule.version"))
+            .muleVersion(muleVersion)
             .containerConfiguration(ContainerConfiguration.builder().containerFolder(containerFolder).build())
             .mavenConfiguration(mavenConfigurationBuilder
                 .remoteRepository(newRemoteRepositoryBuilder().id("local.repo")
