@@ -238,7 +238,6 @@
 /mule-standalone-${productVersion}/lib/opt/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-api-1.9.10.jar
-/mule-standalone-${productVersion}/lib/opt/maven-resolver-connector-basic-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-impl-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-named-locks-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-provider-3.9.2.jar
