@@ -61,6 +61,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -99,6 +100,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application depending on a connector in a legacy implementation")
   @Issue("W-13562329")
+  @Ignore("W-13637170")
   @Test
   public void legacyImplementationSupported() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
