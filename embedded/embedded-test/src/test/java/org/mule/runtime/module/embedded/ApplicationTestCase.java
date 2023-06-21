@@ -100,12 +100,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   @Description("Embedded runs an application depending on a connector in a legacy implementation")
   @Issue("W-13562329")
-  @Ignore("W-13637170")
   @Test
   public void legacyImplementationSupported() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
-                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.1-SNAPSHOT");
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.0");
   }
 
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
