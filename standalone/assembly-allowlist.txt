@@ -310,7 +310,7 @@
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-common-1.20.1.jar
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-trace-1.20.1.jar
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-semconv-1.20.1-alpha.jar
-/mule-standalone-${productVersion}/lib/opt/io.grpc-3.2.1.jar
+/mule-standalone-${productVersion}/lib/opt/io.grpc-2.6.1.jar
 # 3rd party libs to be loaded only when running with java 8
 /mule-standalone-${productVersion}/lib/opt/jdk-8
 /mule-standalone-${productVersion}/lib/opt/jdk-8/xml-apis-1.4.01.jar
