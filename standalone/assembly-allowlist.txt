@@ -271,7 +271,6 @@
 /mule-standalone-${productVersion}/lib/opt/reflections-0.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/rhino-1.7.12.jar
 /mule-standalone-${productVersion}/lib/opt/semver4j-3.1.0.jar
-/mule-standalone-${productVersion}/lib/opt/semantic-version-1.2.0.jar
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-2.0.jar
 /mule-standalone-${productVersion}/lib/opt/spotbugs-annotations-4.7.3.jar
 /mule-standalone-${productVersion}/lib/opt/spring-aop-5.3.27.jar
