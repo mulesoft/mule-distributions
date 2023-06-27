@@ -166,6 +166,9 @@
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.5.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/dwb-api-2.5.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-impl-${productVersion}.jar
+
 #
 # /services
 #
@@ -308,6 +311,12 @@
 # 3rd party libs to be loaded only when running with java 8
 /mule-standalone-${productVersion}/lib/opt/jdk-8
 /mule-standalone-${productVersion}/lib/opt/jdk-8/xml-apis-1.4.01.jar
+
+#
+# TODO W-13218993: Remove fake exporter.
+#
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-logging-1.20.1.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-testing-1.20.1.jar
 
 #
 # /lib/user
