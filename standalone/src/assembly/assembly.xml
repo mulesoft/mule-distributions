@@ -440,6 +440,8 @@
                 <exclude>org.apache.maven:maven-model</exclude>
                 <exclude>org.apache.maven:maven-model-builder</exclude>
                 <exclude>org.apache.maven:maven-repository-metadata</exclude>
+                <exclude>org.apache.maven.resolver:maven-resolver-impl</exclude>
+                <exclude>org.apache.maven.resolver:maven-resolver-named-locks</exclude>
                 <exclude>org.eclipse.sisu:org.eclipse.sisu.inject</exclude>
                 <exclude>io.takari.aether:takari-filemanager</exclude>
                 <exclude>io.takari.aether:takari-local-repository</exclude>

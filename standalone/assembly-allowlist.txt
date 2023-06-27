@@ -234,8 +234,6 @@
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-api-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-connector-basic-1.6.3.jar
-/mule-standalone-${productVersion}/lib/opt/maven-resolver-impl-1.9.10.jar
-/mule-standalone-${productVersion}/lib/opt/maven-resolver-named-locks-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-provider-3.9.2.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-spi-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-transport-http-1.9.10.jar
