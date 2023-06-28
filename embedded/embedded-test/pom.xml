@@ -17,7 +17,7 @@
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
         <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
-        <packagerVersion>3.1.6</packagerVersion>
+        <packagerVersion>4.0.0-SNAPSHOT</packagerVersion>
     </properties>
 
     <build>
