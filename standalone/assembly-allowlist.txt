@@ -70,6 +70,7 @@
 /mule-standalone-${productVersion}/lib/boot/jackson-annotations-2.15.0.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-core-2.15.0.jar
 /mule-standalone-${productVersion}/lib/boot/jackson-databind-2.15.0.jar
+/mule-standalone-${productVersion}/lib/boot/jackson-dataformat-yaml-2.15.0.jar
 
 #
 # /lib/boot/exec
