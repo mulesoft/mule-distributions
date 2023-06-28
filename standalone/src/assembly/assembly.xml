@@ -444,10 +444,14 @@
                 <exclude>xml-apis:xml-apis</exclude>
 
                 <!-- Exclude artifacts included with the org.mule:maven-model-shaded artifact -->
+                <exclude>io.takari:takari-filemanager</exclude>
+                <exclude>io.takari.aether:takari-local-repository</exclude>
                 <exclude>org.apache.maven:maven-artifact</exclude>
                 <exclude>org.apache.maven:maven-model</exclude>
                 <exclude>org.apache.maven:maven-model-builder</exclude>
                 <exclude>org.apache.maven:maven-repository-metadata</exclude>
+                <exclude>org.apache.maven.resolver:maven-resolver-impl</exclude>
+                <exclude>org.apache.maven.resolver:maven-resolver-named-locks</exclude>
                 <exclude>org.eclipse.sisu:org.eclipse.sisu.inject</exclude>
 
             </excludes>
