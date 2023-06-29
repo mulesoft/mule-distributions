@@ -81,6 +81,16 @@
             <version>2.11.3</version>
         </dependency>
 
+        <!--
+            TODO W-13205329 - remove, this is only needed because the requirement of org.slf4j in the boot layer messes
+             with the log4j implementation in the class loader created by mule-embedded-api, and the fix is to provide
+             it also at the boot layer level.
+        -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-allure</artifactId>
