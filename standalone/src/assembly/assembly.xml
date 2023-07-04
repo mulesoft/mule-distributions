@@ -245,6 +245,7 @@
                 <include>org.mule.runtime:mule-tracer-customization-impl</include>
                 <include>org.mule.runtime:mule-tracer-configuration-api</include>
                 <include>org.mule.runtime:mule-tracer-configuration-impl</include>
+                <include>org.mule.runtime:mule-tracer-common</include>
 
                 <!-- Mule Metrics Libs -->
                 <include>org.mule.runtime:mule-metrics-exporter-api</include>
@@ -436,6 +437,7 @@
                 <exclude>org.mule.runtime:mule-tracer-customization-impl</exclude>
                 <exclude>org.mule.runtime:mule-tracer-configuration-api</exclude>
                 <exclude>org.mule.runtime:mule-tracer-configuration-impl</exclude>
+                <exclude>org.mule.runtime:mule-tracer-common</exclude>
 
                 <!-- Exclude metrics libraries -->
                 <exclude>org.mule.runtime:mule-metrics-exporter-api</exclude>
