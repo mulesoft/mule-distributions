@@ -154,6 +154,7 @@
             <outputDirectory>lib/mule</outputDirectory>
             <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
             <useStrictFiltering>true</useStrictFiltering>
+            <!-- Implementation note: this must be kept consistent with the equivalent logic in test-runner and embedded-api -->
             <includes>
                 <!-- Mule Artifact Declaration -->
                 <include>org.mule.runtime:mule-artifact-declaration</include>
@@ -321,6 +322,7 @@
     universe of transitive dependencies.  Therefore, we need to explicitly
     _exclude_ all libs which should _not_ go into this directory (usually
     because they are already in a different directory). -->
+            <!-- Implementation note: this must be kept consistent with the equivalent logic in test-runner and embedded-api -->
             <excludes>
                 <!-- Mule Artifact Declaration -->  
                 <exclude>org.mule.runtime:mule-artifact-declaration</exclude>
