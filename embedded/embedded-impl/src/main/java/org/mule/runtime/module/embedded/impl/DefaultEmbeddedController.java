@@ -33,7 +33,7 @@ import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
-import org.mule.runtime.module.launcher.MuleContainer;
+import org.mule.runtime.module.launcher.DefaultMuleContainer;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +53,7 @@ public class DefaultEmbeddedController implements EmbeddedController {
 
   private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
-  private MuleContainer muleContainer;
+  private DefaultMuleContainer muleContainer;
 
   public DefaultEmbeddedController(ContainerInfo containerInfo) {
     this.containerInfo = containerInfo;
@@ -173,8 +173,7 @@ public class DefaultEmbeddedController implements EmbeddedController {
       }
     });
 
-    muleContainer = new MuleContainer(new String[0]);
-    muleContainer.setEmbeddedMode(true);
+    muleContainer = new DefaultMuleContainer(new String[0]);
     containerClassLoader = muleContainer.getContainerClassLoader();
     executeWithinContainerClassLoader(() -> {
       try {
@@ -186,7 +185,7 @@ public class DefaultEmbeddedController implements EmbeddedController {
     });
   }
 
-  protected MuleContainer getMuleContainer() {
+  protected DefaultMuleContainer getMuleContainer() {
     return muleContainer;
   }
 

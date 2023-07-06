@@ -32,7 +32,7 @@ import org.mule.runtime.api.lifecycle.InitialisationException;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.launcher.MuleContainer;
+import org.mule.runtime.module.launcher.DefaultMuleContainer;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -57,7 +57,7 @@ public class EmbeddedController {
 
   private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
-  private MuleContainer muleContainer;
+  private DefaultMuleContainer muleContainer;
 
   public EmbeddedController(byte[] serializedContainerInfo)
       throws IOException, ClassNotFoundException {
@@ -173,8 +173,7 @@ public class EmbeddedController {
       }
     });
 
-    muleContainer = new MuleContainer(new String[0]);
-    muleContainer.setEmbeddedMode(true);
+    muleContainer = new DefaultMuleContainer(new String[0]);
     containerClassLoader = muleContainer.getContainerClassLoader();
     executeWithinContainerClassLoader(() -> {
       try {
@@ -186,7 +185,7 @@ public class EmbeddedController {
     });
   }
 
-  protected MuleContainer getMuleContainer() {
+  protected DefaultMuleContainer getMuleContainer() {
     return muleContainer;
   }
 

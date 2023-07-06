@@ -31,7 +31,7 @@ import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration.DeploymentConfigurationBuilder;
 import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
-import org.mule.runtime.module.launcher.MuleContainer;
+import org.mule.runtime.module.launcher.DefaultMuleContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 
 import java.io.File;
@@ -73,8 +73,8 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
       }
 
       @Override
-      protected MuleContainer getMuleContainer() {
-        MuleContainer container = mock(MuleContainer.class);
+      protected DefaultMuleContainer getMuleContainer() {
+        DefaultMuleContainer container = mock(DefaultMuleContainer.class);
         when(container.getDeploymentService()).thenReturn(deploymentService);
         return container;
       }
