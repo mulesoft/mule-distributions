@@ -1,5 +1,8 @@
 #! /bin/sh
 
+echo "!! troubleshoot 123"
+echo `env`
+
 # Check for java in path
 
 JAVA=
