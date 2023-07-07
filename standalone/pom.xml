@@ -188,7 +188,7 @@
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-module-tanuki</artifactId>
+            <artifactId>mule-module-tanuki-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -132,7 +132,7 @@
             <includes>
                 <include>org.mule.runtime:mule-module-reboot</include>
                 <include>org.mule.runtime:mule-module-jpms-utils</include>
-                <include>org.mule.runtime:mule-module-tanuki</include>
+                <include>org.mule.runtime:mule-module-tanuki-boot</include>
                 <include>commons-cli:commons-cli</include>
                 <include>tanukisoft:wrapper</include>
                 <include>org.mule.runtime:mule-module-logging</include>
@@ -395,7 +395,7 @@
                 <exclude>org.mule.runtime:mule-module-properties-config</exclude>
                 <exclude>org.mule.runtime:mule-module-reboot</exclude>
                 <exclude>org.mule.runtime:mule-module-jpms-utils</exclude>
-                <exclude>org.mule.runtime:mule-module-tanuki</exclude>
+                <exclude>org.mule.runtime:mule-module-tanuki-boot</exclude>
                 <exclude>org.mule.runtime:mule-module-repository</exclude>
                 <exclude>org.mule.runtime:mule-module-spring-config</exclude>
                 <exclude>org.mule.runtime:mule-module-tls</exclude>
