@@ -202,7 +202,7 @@
                 <include>org.mule.runtime:mule-jar-handling-utils</include>
                 <include>org.mule.runtime:mule-module-artifact</include>
                 <include>org.mule.runtime:mule-module-artifact-activation</include>
-                <include>org.mule.runtime:mule-module-boot-logging</include>
+                <include>org.mule.runtime:mule-module-log4j-configurator</include>
                 <include>org.mule.runtime:mule-module-launcher</include>
                 <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.mule.runtime:mule-module-feature-management</include>
@@ -371,7 +371,7 @@
                 <exclude>org.mule.runtime:mule-modules-all</exclude>
                 <exclude>org.mule.runtime:mule-module-artifact</exclude>
                 <exclude>org.mule.runtime:mule-module-artifact-activation</exclude>
-                <exclude>org.mule.runtime:mule-module-boot-logging</exclude>
+                <exclude>org.mule.runtime:mule-module-log4j-configurator</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-soap-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-spring-support</exclude>
