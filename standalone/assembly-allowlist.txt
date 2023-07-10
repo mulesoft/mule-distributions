@@ -55,6 +55,7 @@
 /mule-standalone-${productVersion}/lib/boot/commons-cli-1.2.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-reboot-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-jpms-utils-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/boot/mule-module-tanuki-boot-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-logging-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/README.txt
 /mule-standalone-${productVersion}/lib/boot/wrapper-3.2.3.jar
