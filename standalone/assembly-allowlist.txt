@@ -120,7 +120,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-serialization-1.1.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-jar-handling-utils-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-boot-logging-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-mule-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
@@ -131,6 +130,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-global-config-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-javaee-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-launcher-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-log4j-configurator-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-model-impl-${productVersion}.jar
