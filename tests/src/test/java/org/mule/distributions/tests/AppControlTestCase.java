@@ -6,10 +6,11 @@
  */
 package org.mule.distributions.tests;
 
+import static org.mule.runtime.core.api.util.ClassUtils.getResource;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
-import static org.mule.runtime.core.api.util.ClassUtils.getResource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,6 +84,11 @@ public class AppControlTestCase extends AbstractAppControl {
 
   private static String getResourceAsString(String directory, String name) {
     return getResource(directory + "/" + name, AppControlTestCase.class).getPath();
+  }
+
+  @Override
+  public int getTestTimeoutSecs() {
+    return DEFAULT_TEST_TIMEOUT_SECS;
   }
 
 }
