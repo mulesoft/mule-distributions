@@ -88,7 +88,7 @@ public class AppControlTestCase extends AbstractAppControl {
 
   @Override
   public int getTestTimeoutSecs() {
-    return DEFAULT_TEST_TIMEOUT_SECS;
+    return DEFAULT_TIMEOUT_TEST_SECS;
   }
 
 }
