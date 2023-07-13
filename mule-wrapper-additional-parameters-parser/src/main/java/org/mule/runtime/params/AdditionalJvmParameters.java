@@ -39,7 +39,7 @@ public class AdditionalJvmParameters {
 
   protected static String jpdaOpts = "";
   protected static int paramIndex = 0;
-  protected static int classpathIndex = 1;
+  protected static int classpathIndex = 0;
   static final String wrapperPrefix = "wrapper.java.additional.";
   static final String classpathPrefix = "wrapper.java.classpath.";
   static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 20;

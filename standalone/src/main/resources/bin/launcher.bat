@@ -1,6 +1,12 @@
 @echo off
 
 rem ###############################################################
+rem Check for JAVA_HOME environment variable
+rem ###############################################################
+
+if not "%JAVA_HOME%" == "" goto HAS_JAVA_HOME
+
+rem ###############################################################
 rem Check for java in path
 rem ###############################################################
 
@@ -20,12 +26,6 @@ rem Check for JAVA environment variable
 rem ###############################################################
 
 if not "%JAVA%" == "" goto HAS_JAVA
-
-rem ###############################################################
-rem Check for JAVA_HOME environment variable
-rem ###############################################################
-
-if not "%JAVA_HOME%" == "" goto HAS_JAVA_HOME
 
 rem ###############################################################
 rem Check registry for JRE

@@ -3,13 +3,13 @@
 # Check for java in path
 
 JAVA=
-if [ -n "`which java 2>/dev/null`" ]
+if [ ! -z "$JAVA_HOME" ]
 then
-    JAVA=java
+    JAVA=$JAVA_HOME/bin/java
 else
-    if [ ! -z "$JAVA_HOME" ]
+    if [ -n "`which java 2>/dev/null`" ]
     then
-        JAVA=$JAVA_HOME/bin/java
+        JAVA=java
     fi
 fi
 
