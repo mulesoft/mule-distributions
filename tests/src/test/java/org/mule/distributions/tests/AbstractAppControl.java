@@ -6,6 +6,11 @@
  */
 package org.mule.distributions.tests;
 
+import static org.mule.distributions.tests.DistributionFinder.findDistribution;
+import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
+import static org.mule.test.infrastructure.process.MuleStatusProbe.isNotRunning;
+import static org.mule.test.infrastructure.process.MuleStatusProbe.isRunning;
+
 import static java.lang.Integer.parseInt;
 import static java.lang.Runtime.getRuntime;
 import static java.lang.System.getProperties;
@@ -16,14 +21,11 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.toMap;
+
 import static org.apache.commons.lang3.ArrayUtils.add;
 import static org.apache.commons.lang3.ArrayUtils.addAll;
 import static org.junit.Assert.assertFalse;
 import static org.junit.rules.RuleChain.outerRule;
-import static org.mule.distributions.tests.DistributionFinder.findDistribution;
-import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
-import static org.mule.test.infrastructure.process.MuleStatusProbe.isNotRunning;
-import static org.mule.test.infrastructure.process.MuleStatusProbe.isRunning;
 
 import org.mule.tck.junit4.AbstractMuleTestCase;
 import org.mule.tck.junit4.rule.SystemProperty;
@@ -35,20 +37,24 @@ import org.mule.test.infrastructure.process.rules.MuleDeployment;
 import org.mule.test.infrastructure.process.rules.MuleInstallation;
 import org.mule.test.infrastructure.process.rules.MuleServerFailureLogger;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import org.junit.rules.TestRule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
 
 public class AbstractAppControl extends AbstractMuleTestCase {
+
+  public static int LONGEST_TIMEOUT_TEST_SECS = 300;
+  public static int DEFAULT_TIMEOUT_TEST_SECS = LONGEST_TIMEOUT_TEST_SECS;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AbstractAppControl.class);
   public static final String LOCAL_REPOSITORY = "localRepository";
