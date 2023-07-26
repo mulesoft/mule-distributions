@@ -135,6 +135,7 @@
                 <include>org.mule.runtime:mule-module-tanuki-boot</include>
                 <include>commons-cli:commons-cli</include>
                 <include>tanukisoft:wrapper</include>
+                <include>org.mule.runtime:mule-module-log4j-boot-configurator</include>
                 <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.slf4j:slf4j-api</include>
                 <include>org.apache.logging.log4j:log4j-api</include>
@@ -379,6 +380,7 @@
                 <exclude>org.mule.runtime:mule-module-extensions-xml-support</exclude>
                 <exclude>org.mule.runtime:mule-module-container</exclude>
                 <exclude>org.mule.runtime:mule-module-launcher</exclude>
+                <exclude>org.mule.runtime:mule-module-log4j-boot-configurator</exclude>
                 <exclude>org.mule.runtime:mule-module-logging</exclude>
                 <exclude>org.mule.runtime:mule-module-feature-management</exclude>
                 <exclude>org.mule.runtime:mule-module-memory-management</exclude>
