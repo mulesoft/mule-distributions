@@ -74,7 +74,7 @@
 
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.6.1-MULE-SNAPSHOT</version>
+                <version>3.6.0-MULE-SNAPSHOT</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/assembly/assembly.xml</descriptor>
