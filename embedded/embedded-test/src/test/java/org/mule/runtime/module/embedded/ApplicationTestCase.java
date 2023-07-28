@@ -43,24 +43,28 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import org.junit.AfterClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
+
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.apache.commons.io.IOUtils;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.AfterClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -186,7 +190,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-invalid-xml", empty());
     expectedException.expectMessage(containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
     doWithinApplication(bundleDescriptor, getAppFolder("http-invalid-xml"), port -> {
-    }, true, true, true, empty(), false);
+    }, true, true, true, empty(), false, skipAstProperties());
   }
 
 
@@ -260,11 +264,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   public void redeploymentOfSuccessfulAppAfterFailingWithSameNameShouldWork() throws Exception {
     runWithContainer((container) -> {
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
 
-      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor);
+      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, System.currentTimeMillis()); // To force time to be different from
       // failing app.
       container.getDeploymentService()
@@ -280,7 +284,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
       long time = System.currentTimeMillis();
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time);
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
@@ -310,7 +314,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     runWithContainer((container) -> {
       long time = System.currentTimeMillis();
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time);
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
@@ -330,11 +335,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     runWithContainer((container) -> {
       long time = System.currentTimeMillis();
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time);
       deployExpectingFailureAndUndeploy(container, testAppLocation);
 
-      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor);
+      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time); // To force time to be the same of failing app.
       container.getDeploymentService()
           .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
@@ -413,6 +418,12 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     } catch (InterruptedException e) {
       // do nothing
     }
+  }
+
+  private Properties skipAstProperties() {
+    final Properties sysProps = new Properties();
+    sysProps.put("skipAST", "true");
+    return sysProps;
   }
 
   static void assertTestMessage(Integer port) {
