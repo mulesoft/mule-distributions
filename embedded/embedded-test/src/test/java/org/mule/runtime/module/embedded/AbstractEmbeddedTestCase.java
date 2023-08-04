@@ -59,6 +59,10 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   @Rule
   public SystemProperty skipModuleTweakingValidation = new SystemProperty("mule.module.tweaking.validation.skip", "true");
 
+  @Rule
+  public SystemProperty jvmVersionExtensionEnforcementLoose =
+      new SystemProperty("mule.jvm.version.extension.enforcement", "LOOSE");
+
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                      Consumer<Integer> portConsumer)
       throws Exception {
