@@ -13,6 +13,12 @@
     <name>Mule Embedded Implementation Tests</name>
 
     <properties>
+        <surefire.args>
+            ${surefire.args.base}
+            -XX:+IgnoreUnrecognizedVMOptions
+            --add-opens=java.base/java.lang=org.mule.runtime.jpms.utils
+        </surefire.args>
+
         <javaModuleName>org.mule.distribution.embedded.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
