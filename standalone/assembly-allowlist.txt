@@ -233,7 +233,7 @@
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.78.jar
 /mule-standalone-${productVersion}/lib/opt/jgrapht-core-1.3.1.jar
 /mule-standalone-${productVersion}/lib/opt/jheaps-0.10.jar
-/mule-standalone-${productVersion}/lib/opt/joda-time-2.9.1.jar
+/mule-standalone-${productVersion}/lib/opt/joda-time-2.12.5.jar
 /mule-standalone-${productVersion}/lib/opt/jopt-simple-5.0.3.jar
 /mule-standalone-${productVersion}/lib/opt/json-schema-core-1.2.10.jar
 /mule-standalone-${productVersion}/lib/opt/json-schema-validator-2.2.10.jar
