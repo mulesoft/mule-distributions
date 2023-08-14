@@ -258,6 +258,9 @@
                 <include>org.mule.runtime:mule-metrics-exporter-impl</include>
                 <include>org.mule.runtime:mule-metrics-exporter-configuration-api</include>
                 <include>org.mule.runtime:mule-metrics-exporter-configuration-impl</include>
+
+                <!-- Mule Observability Libs -->
+                <include>org.mule.runtime:mule-module-observability</include>
             </includes>
             <excludes>
                 <exclude>org.mule.runtime:mule-module-logging</exclude>
@@ -450,6 +453,9 @@
                 <!-- Exclude metrics libraries -->
                 <exclude>org.mule.runtime:mule-metrics-exporter-api</exclude>
                 <exclude>org.mule.runtime:mule-metrics-exporter-impl</exclude>
+
+                <!-- Exclude observability libraries -->
+                <exclude>org.mule.runtime:mule-module-observability</exclude>
 
                 <!-- Exclude parameter parsing -->
                 <exclude>org.mule.distributions:mule-wrapper-additional-parameters-parser</exclude>
