@@ -25,6 +25,8 @@ import static java.util.Optional.of;
 import static com.mashape.unirest.http.Unirest.get;
 import static com.mashape.unirest.http.Unirest.post;
 import static org.apache.commons.io.FileUtils.deleteQuietly;
+import static org.apache.commons.lang3.JavaVersion.JAVA_11;
+import static org.apache.commons.lang3.SystemUtils.isJavaVersionAtMost;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.startsWith;
@@ -32,6 +34,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeThat;
 import static org.junit.rules.ExpectedException.none;
 
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
@@ -101,6 +104,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Issue("W-13562329")
   @Test
   public void legacyImplementationSupported() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.0");
