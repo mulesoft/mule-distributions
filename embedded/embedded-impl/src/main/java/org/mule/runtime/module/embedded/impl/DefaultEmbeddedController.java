@@ -3,6 +3,7 @@
  */
 package org.mule.runtime.module.embedded.impl;
 
+import static org.mule.runtime.api.util.MuleSystemProperties.FORCE_PARSE_CONFIG_XMLS_ON_DEPLOYMENT_PROPERTY;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getAppsFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getConfFolder;
 import static org.mule.runtime.container.api.MuleFoldersUtil.getDomainFolder;
@@ -19,6 +20,8 @@ import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
 
 import static java.lang.String.valueOf;
+import static java.lang.System.clearProperty;
+import static java.lang.System.getProperty;
 import static java.lang.System.setProperty;
 
 import static org.apache.commons.io.FileUtils.toFile;
@@ -84,6 +87,10 @@ public class DefaultEmbeddedController implements EmbeddedController {
   }
 
   private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {
+    final String forceParseConfigXmlsOnDeploymentOriginalValue = getProperty(FORCE_PARSE_CONFIG_XMLS_ON_DEPLOYMENT_PROPERTY);
+    // Force parsing of MUnit test configs, which are not included in the serialized AST for an application
+    setProperty(FORCE_PARSE_CONFIG_XMLS_ON_DEPLOYMENT_PROPERTY, "true");
+
     try {
       getMuleContainer().getDeploymentService().getLock().lock();
       Properties deploymentProperties = new Properties();
@@ -104,6 +111,12 @@ public class DefaultEmbeddedController implements EmbeddedController {
     } finally {
       if (getMuleContainer().getDeploymentService().getLock().isHeldByCurrentThread()) {
         getMuleContainer().getDeploymentService().getLock().unlock();
+      }
+
+      if (forceParseConfigXmlsOnDeploymentOriginalValue == null) {
+        clearProperty(FORCE_PARSE_CONFIG_XMLS_ON_DEPLOYMENT_PROPERTY);
+      } else {
+        setProperty(FORCE_PARSE_CONFIG_XMLS_ON_DEPLOYMENT_PROPERTY, forceParseConfigXmlsOnDeploymentOriginalValue);
       }
     }
   }
