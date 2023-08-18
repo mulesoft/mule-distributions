@@ -123,6 +123,16 @@ public class DefaultEmbeddedController implements EmbeddedController {
 
   @Override
   public void stop() {
+    // TODO W-13967927 - analyze a better solution
+    try {
+      muleContainer.getContainerClassLoader().loadInternalClass("com.mulesoft.licm.impl.MuleLicenseInterrupter")
+          .getMethod("dispose").invoke(null);
+    } catch (ClassNotFoundException e) {
+      // The MuleLicenseInterrupter won't be present in case the CE Runtime is being used
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+
     executeWithinContainerClassLoader(() -> {
       muleContainer.stop();
       muleContainer.getContainerClassLoader().dispose();
