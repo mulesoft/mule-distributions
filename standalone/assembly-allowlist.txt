@@ -300,23 +300,27 @@
 /mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-10.jar
 /mule-standalone-${productVersion}/lib/opt/annotations-13.0.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.6.20.jar
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.5.31.jar
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-1.5.31.jar
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk8-1.5.31.jar
-/mule-standalone-${productVersion}/lib/opt/okhttp-4.10.0.jar
-/mule-standalone-${productVersion}/lib/opt/okio-jvm-3.0.0.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-api-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-context-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-api-logs-1.20.1-alpha.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-otlp-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-otlp-common-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-common-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-logs-1.20.1-alpha.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-metrics-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-common-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-trace-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-semconv-1.20.1-alpha.jar
+/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.6.20.jar
+/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-1.6.20.jar
+/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk8-1.6.20.jar
+/mule-standalone-${productVersion}/lib/opt/okhttp-4.11.0.jar
+/mule-standalone-${productVersion}/lib/opt/okio-3.2.0.jar
+/mule-standalone-${productVersion}/lib/opt/okio-jvm-3.2.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-api-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-context-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-api-events-1.27.0-alpha.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-otlp-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-otlp-common-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-common-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-logs-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-metrics-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-common-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-trace-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-semconv-1.27.0-alpha.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-extension-incubator-1.27.0-alpha.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-extension-autoconfigure-spi-1.27.0.jar
+
 /mule-standalone-${productVersion}/lib/opt/io.grpc-2.6.1.jar
 /mule-standalone-${productVersion}/lib/opt/perfmark-api-0.25.0.jar
 
@@ -327,8 +331,8 @@
 #
 # TODO W-13218993: Remove fake exporter.
 #
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-logging-1.20.1.jar
-/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-testing-1.20.1.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-logging-1.27.0.jar
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-testing-1.27.0.jar
 
 #
 # /lib/user
