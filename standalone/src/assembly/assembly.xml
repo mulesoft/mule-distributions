@@ -308,6 +308,16 @@
             </includes>
         </dependencySet>
 
+        <dependencySet>
+            <outputDirectory>services/${artifact.artifactId}-${artifact.baseVersion}</outputDirectory>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <useStrictFiltering>true</useStrictFiltering>
+            <unpack>true</unpack>
+            <includes>
+                <include>org.mule.services:mule-service-weave</include>
+            </includes>
+        </dependencySet>
+
         <!-- Launcher libraries -->
         <dependencySet>
             <outputDirectory>lib/launcher</outputDirectory>
