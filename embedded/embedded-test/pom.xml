@@ -14,16 +14,17 @@
 
     <properties>
         <surefire.args>
-            ${surefire.args.base}
-            -XX:+IgnoreUnrecognizedVMOptions
             --add-opens=java.base/java.lang=org.mule.runtime.jpms.utils
+            ${surefire.test.unit.open.args}
         </surefire.args>
 
         <javaModuleName>org.mule.distribution.embedded.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
         <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
+
         <packagerVersion>4.0.0-SNAPSHOT</packagerVersion>
+        <muleModulesParentVersion>1.6.0-SNAPSHOT</muleModulesParentVersion>
     </properties>
 
     <build>
