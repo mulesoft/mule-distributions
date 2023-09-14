@@ -59,13 +59,6 @@
                                     <type>tar.gz</type>
                                     <outputDirectory>${standaloneStructureDir}</outputDirectory>
                                 </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.mule.services</groupId>
-                                    <artifactId>mule-service-weave</artifactId>
-                                    <version>${weaveVersion}</version>
-                                    <classifier>mule-service</classifier>
-                                    <outputDirectory>${project.build.directory}/services/mule-service-weave-${weaveVersion}</outputDirectory>
-                                </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>
@@ -165,13 +158,6 @@
             <artifactId>mule-services-all</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
-            <exclusions>
-                <!--TODO(gfernandes): remove this, see validation's comment-->
-                <exclusion>
-                    <artifactId>mule-service-weave</artifactId>
-                    <groupId>org.mule.services</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- Add mule-dwb-api dep used by the DW mule-service-weave -->

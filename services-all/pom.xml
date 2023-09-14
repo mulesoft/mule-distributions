@@ -191,6 +191,12 @@
             <artifactId>mule-service-weave</artifactId>
             <groupId>org.mule.services</groupId>
             <classifier>mule-service</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
