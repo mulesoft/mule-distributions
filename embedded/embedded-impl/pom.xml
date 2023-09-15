@@ -15,7 +15,7 @@
 
     <properties>
         <surefire.args>
-			-XX:+IgnoreUnrecognizedVMOptions
+            -XX:+IgnoreUnrecognizedVMOptions
             --add-opens=org.mule.runtime.core/org.mule.runtime.core.internal.util=ALL-UNNAMED
             ${surefire.args.base}
         </surefire.args>
