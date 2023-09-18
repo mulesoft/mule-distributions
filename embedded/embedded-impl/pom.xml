@@ -14,6 +14,12 @@
     <name>Mule Embedded Implementation</name>
 
     <properties>
+        <surefire.args>
+            -XX:+IgnoreUnrecognizedVMOptions
+            --add-opens=org.mule.runtime.core/org.mule.runtime.core.internal.util=ALL-UNNAMED
+            ${surefire.args.base}
+        </surefire.args>
+
         <javaModuleName>org.mule.distribution.embedded.impl</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>

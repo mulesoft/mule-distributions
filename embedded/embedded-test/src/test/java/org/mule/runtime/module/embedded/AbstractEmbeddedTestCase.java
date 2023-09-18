@@ -17,7 +17,6 @@ import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
@@ -273,20 +272,15 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   }
 
   protected void runWithContainer(Consumer<EmbeddedContainer> task) {
-    try {
-      embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
-        try {
-          embeddedContainerBuilder.log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-              .product(MULE)
-              .build();
-        } catch (Exception e) {
-          throw new RuntimeException(e);
-        }
-      }, task);
-    } catch (Exception e) {
-      e.printStackTrace();
-      fail();
-    }
+    embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
+      try {
+        embeddedContainerBuilder.log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
+            .product(MULE)
+            .build();
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }, task);
   }
 
   @Override

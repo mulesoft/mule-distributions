@@ -19,6 +19,10 @@ module org.mule.distribution.embedded.impl {
   requires org.mule.runtime.artifact;
   requires org.mule.runtime.container;
   requires org.mule.runtime.deployment;
+  // TODO W-13718989 Remove when launcher module is properly modularized
+  requires org.mule.runtime.deployment.model.impl;
+  requires org.mule.runtime.log4j;
+
   requires org.mule.runtime.embedded.api;
 
   requires org.apache.commons.io;
