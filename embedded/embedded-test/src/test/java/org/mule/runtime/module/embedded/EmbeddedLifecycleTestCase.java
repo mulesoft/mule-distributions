@@ -59,6 +59,9 @@ public class EmbeddedLifecycleTestCase {
   @Rule
   public SystemProperty skipModuleTweakingValidation = new SystemProperty("mule.module.tweaking.validation.skip", "true");
 
+  @Rule
+  public SystemProperty useModules = new SystemProperty("mule.classloader.container.jpmsModuleLayer", "true");
+
   @Test
   public void shouldFailToCreateDueToMissingVersionOfEmbedded() throws IOException, URISyntaxException {
     try {

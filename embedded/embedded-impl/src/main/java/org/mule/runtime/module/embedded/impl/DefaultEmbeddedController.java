@@ -175,10 +175,6 @@ public class DefaultEmbeddedController implements EmbeddedController {
     getConfFolder().mkdirs();
     getAppsFolder().mkdirs();
 
-    // this is used to signal that we are running in embedded mode.
-    // Class loader model loader will not use try to use the container repository.
-    setProperty("mule.mode.embedded", "true");
-
     for (URL url : containerInfo.getServices()) {
       File originalFile = toFile(url);
       File destinationFile = new File(getServicesFolder(), getName(originalFile.getPath()).replaceAll("-mule-service\\.jar", ""));
