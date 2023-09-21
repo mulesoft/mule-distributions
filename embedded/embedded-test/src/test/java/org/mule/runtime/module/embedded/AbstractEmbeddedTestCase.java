@@ -62,9 +62,6 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   public SystemProperty skipModuleTweakingValidation = new SystemProperty("mule.module.tweaking.validation.skip", "true");
 
   @Rule
-  public SystemProperty useModules = new SystemProperty("mule.classloader.container.jpmsModuleLayer", "true");
-
-  @Rule
   public SystemProperty jvmVersionExtensionEnforcementLoose =
       new SystemProperty("mule.jvm.version.extension.enforcement", "LOOSE");
 
