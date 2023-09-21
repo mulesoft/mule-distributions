@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 
 import java.io.IOException;

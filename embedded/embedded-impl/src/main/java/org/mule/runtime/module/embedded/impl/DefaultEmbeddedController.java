@@ -35,7 +35,7 @@ import org.mule.runtime.api.lifecycle.InitialisationException;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
 import org.mule.runtime.module.launcher.DefaultMuleContainer;
 
 import java.io.File;
@@ -50,7 +50,7 @@ import net.lingala.zip4j.ZipFile;
  * Controller class for the runtime. It spins up a new container instance using a temporary folder and dynamically loading the
  * container libraries.
  *
- * @since 4.0
+ * @since 4.5
  */
 public class DefaultEmbeddedController implements EmbeddedController {
 
