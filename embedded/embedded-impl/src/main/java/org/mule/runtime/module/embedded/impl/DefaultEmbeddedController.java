@@ -35,7 +35,7 @@ import org.mule.runtime.api.lifecycle.InitialisationException;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
 import org.mule.runtime.module.launcher.DefaultMuleContainer;
 
 import java.io.File;
@@ -50,7 +50,7 @@ import net.lingala.zip4j.ZipFile;
  * Controller class for the runtime. It spins up a new container instance using a temporary folder and dynamically loading the
  * container libraries.
  *
- * @since 4.0
+ * @since 4.5
  */
 public class DefaultEmbeddedController implements EmbeddedController {
 
@@ -174,10 +174,6 @@ public class DefaultEmbeddedController implements EmbeddedController {
     getServerPluginsFolder().mkdirs();
     getConfFolder().mkdirs();
     getAppsFolder().mkdirs();
-
-    // this is used to signal that we are running in embedded mode.
-    // Class loader model loader will not use try to use the container repository.
-    setProperty("mule.mode.embedded", "true");
 
     for (URL url : containerInfo.getServices()) {
       File originalFile = toFile(url);

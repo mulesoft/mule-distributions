@@ -4,6 +4,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
+
 /**
  * Mule Embedded Implementation.
  *
@@ -28,7 +29,7 @@ module org.mule.distribution.embedded.impl {
   requires org.apache.commons.io;
   requires zip4j;
 
-  provides org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider
+  provides org.mule.runtime.module.embedded.api.controller.EmbeddedControllerProvider
       with org.mule.runtime.module.embedded.impl.DefaultEmbeddedControllerProvider;
 
 }

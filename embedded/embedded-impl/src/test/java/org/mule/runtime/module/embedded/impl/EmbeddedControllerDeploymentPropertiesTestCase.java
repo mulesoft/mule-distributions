@@ -30,7 +30,7 @@ import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration.DeploymentConfigurationBuilder;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
 import org.mule.runtime.module.launcher.DefaultMuleContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 
