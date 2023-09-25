@@ -130,6 +130,7 @@
             <useStrictFiltering>true</useStrictFiltering>
             <fileMode>0640</fileMode>
             <includes>
+                <include>org.mule.runtime:mule-module-boot-api</include>
                 <include>org.mule.runtime:mule-module-reboot</include>
                 <include>org.mule.runtime:mule-module-jpms-utils</include>
                 <include>org.mule.runtime:mule-module-tanuki-boot</include>
@@ -409,6 +410,7 @@
                 <exclude>org.mule.runtime:mule-module-service</exclude>
                 <exclude>org.mule.runtime:mule-module-policy-api</exclude>
                 <exclude>org.mule.runtime:mule-module-properties-config</exclude>
+                <exclude>org.mule.runtime:mule-module-boot-api</exclude>
                 <exclude>org.mule.runtime:mule-module-reboot</exclude>
                 <exclude>org.mule.runtime:mule-module-jpms-utils</exclude>
                 <exclude>org.mule.runtime:mule-module-tanuki-boot</exclude>
