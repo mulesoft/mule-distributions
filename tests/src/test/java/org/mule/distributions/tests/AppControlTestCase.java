@@ -29,7 +29,7 @@ public class AppControlTestCase extends AbstractAppControl {
   @Before
   public void setup() {
     getMule().deploy(getResourceAsString("apps", EMPTY_APP));
-    Map<String, String> envVars = new HashMap<>();
+    Map<String, String> envVars = new HashMap<>(System.getenv());
     envVars.put("DETAIL_STATUS", "true");
     getMule().setTestEnvVars(envVars);
   }
