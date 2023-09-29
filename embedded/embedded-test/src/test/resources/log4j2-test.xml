@@ -6,8 +6,6 @@
         </Console>
     </Appenders>
     <Loggers>
-        <AsyncLogger name="org.mule.test.infrastructure.maven" level="DEBUG"/>
-
         <Root level="INFO">
             <AppenderRef ref="Console"/>
         </Root>
