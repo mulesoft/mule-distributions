@@ -31,7 +31,6 @@ module org.mule.distribution.embedded.test {
   // log4j-slf4j2-impl
   requires org.apache.logging.log4j.slf4j;
 
-  exports org.mule.runtime.module.embedded to
-      junit;
+  exports org.mule.runtime.module.embedded.test.hepler;
 
 }
