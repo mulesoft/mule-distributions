@@ -103,7 +103,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> assertTestMessage(port)));
   }
 
-  @Description("Embedded runs an application depending on a connector in a legacy implementation")
+  @Description("Embedded runs an application depending on a connector in a legacy implementation prior to 4.5")
   @Issue("W-13562329")
   @Test
   public void legacyImplementationSupported() throws Exception {
@@ -111,6 +111,16 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.0");
+  }
+
+  @Description("Embedded runs an application depending on a connector in 4.5")
+  @Issue("W-14227143")
+  @Test
+  public void legacyImplementationForRuntime45Supported() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.5.0");
   }
 
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
