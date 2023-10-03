@@ -23,6 +23,9 @@
         <javaModuleName>org.mule.distribution.embedded.impl</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <java17SourceDirectory>src/main/java17</java17SourceDirectory>
+        <project.build.java17SourceDirectory>${project.basedir}/${java17SourceDirectory}</project.build.java17SourceDirectory>
+        <project.build.java17TestSourceDirectory>${project.basedir}/src/test/java17</project.build.java17TestSourceDirectory>
     </properties>
 
     <dependencies>
@@ -74,5 +77,74 @@
             <version>2.11.3</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>${javaFormatter.plugin.version}</version>
+                <configuration>
+                    <directories>
+                        <directory>${project.build.sourceDirectory}</directory>
+                        <directory>${project.build.testSourceDirectory}</directory>
+                        <directory>${project.build.java17SourceDirectory}</directory>
+                        <directory>${project.build.java17TestSourceDirectory}</directory>
+                    </directories>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile-java-17</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <release>17</release>
+                            <compileSourceRoots>
+                                <compileSourceRoot>${project.build.java17SourceDirectory}</compileSourceRoot>
+                            </compileSourceRoots>
+                            <multiReleaseOutput>true</multiReleaseOutput>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Multi-Release>true</Multi-Release>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <!-- Add the java 11 sources to the source artifact -->
+                        <id>attach-java17-sources</id>
+                        <!-- This has to run after compilation so it doesn't interfere with it (compler has its own MRJAR configuration) -->
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${java17SourceDirectory}</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

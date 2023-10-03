@@ -7,15 +7,12 @@
 package org.mule.runtime.module.embedded.impl;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedControllerProvider;
 
 /**
  * Implementation of {@link EmbeddedControllerProvider}.
- *
- * @deprecated moved to Java 8 MRJAR since 4.6 to avoid exporting an internal package in {@code mule-embedded-api}.
  */
-@Deprecated
 public class DefaultEmbeddedControllerProvider implements EmbeddedControllerProvider {
 
   @Override

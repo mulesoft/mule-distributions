@@ -7,16 +7,14 @@
 package org.mule.runtime.module.embedded.impl;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
 
 /**
  * Controller class for the runtime. It spins up a new container instance using a temporary folder and dynamically loading the
  * container libraries.
  *
- * @since 4.5
- * @deprecated moved to Java 8 MRJAR since 4.6 to avoid exporting an internal package in {@code mule-embedded-api}.
+ * @since 4.6
  */
-@Deprecated
 public class DefaultEmbeddedController extends CommonEmbeddedController implements EmbeddedController {
 
   public DefaultEmbeddedController(ContainerInfo containerInfo) {
