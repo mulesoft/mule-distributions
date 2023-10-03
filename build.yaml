@@ -16,3 +16,4 @@ additionalTestConfigs:
     testJdkTool: OPEN-JDK8
   jdk11:
     testJdkTool: OPEN-JDK11
+    mavenAdditionalArgs: -PtestJdkWithoutModulePath

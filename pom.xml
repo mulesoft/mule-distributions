@@ -61,4 +61,29 @@
         <module>tests</module>
         <module>mule-wrapper-additional-parameters-parser</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>testJdkWithoutModulePath</id>
+            <activation>
+                <!-- This profile cannot be activated based on the jdk because the jdk on which this has to be activated or not -->
+                <!-- is the one used to run the tests, not the one used to run Maven. -->
+                <property>
+                    <name>testJdkWithoutModulePath</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <useModulePath>false</useModulePath>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
