@@ -7,8 +7,8 @@
 package org.mule.runtime.module.embedded.impl;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
-import org.mule.runtime.module.embedded.api.controller.EmbeddedControllerProvider;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider;
 
 /**
  * Implementation of {@link EmbeddedControllerProvider}.
