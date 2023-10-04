@@ -4,16 +4,18 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.embedded.impl;
+package org.mule.runtime.module.embedded.impl.legacy;
 
 import org.mule.runtime.module.embedded.api.ContainerInfo;
-import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
-import org.mule.runtime.module.embedded.api.controller.EmbeddedControllerProvider;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
+import org.mule.runtime.module.embedded.internal.controller.EmbeddedControllerProvider;
 
 /**
  * Implementation of {@link EmbeddedControllerProvider}.
  *
- * @since 4.6
+ * @since 4.5
+ * @deprecated since 4.6 the implementation used is
+ *             {@link org.mule.runtime.module.embedded.impl.DefaultEmbeddedControllerProvider}.
  */
 public class DefaultEmbeddedControllerProvider implements EmbeddedControllerProvider {
 
