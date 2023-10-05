@@ -31,12 +31,6 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>org.mule.distributions</groupId>
-            <artifactId>mule-services-all</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-service-soap-api</artifactId>
             <version>${project.version}</version>
