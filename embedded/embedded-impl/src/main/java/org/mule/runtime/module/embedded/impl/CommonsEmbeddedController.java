@@ -185,7 +185,7 @@ public class CommonsEmbeddedController {
       }
     });
 
-    muleContainer = new DefaultMuleContainer(new String[0]);
+    muleContainer = new DefaultMuleContainer();
     containerClassLoader = muleContainer.getContainerClassLoader();
     executeWithinContainerClassLoader(() -> {
       try {
