@@ -21,6 +21,7 @@
     <modules>
         <module>runtime-api</module>
         <module>runtime-impl</module>
+        <module>runtime-impl-no-services</module>
     </modules>
 
 </project>
