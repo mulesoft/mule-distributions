@@ -179,8 +179,7 @@ public class EmbeddedController {
     containerInfo.getServerPlugins().stream().forEach(serverPluginUrl -> {
       File originalFile = toFile(serverPluginUrl);
       File destinationFile = new File(getServerPluginsFolder(), getName(originalFile.getPath()).replace(".zip", ""));
-      try {
-        ZipFile zipFile = new ZipFile(originalFile);
+      try (ZipFile zipFile = new ZipFile(originalFile)) {
         zipFile.extractAll(destinationFile.getAbsolutePath());
       } catch (Exception e) {
         throw new RuntimeException(e);
@@ -221,10 +220,9 @@ public class EmbeddedController {
   }
 
   private <T> T deserialize(byte[] object) throws IOException, ClassNotFoundException {
-    try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(object)) {
-      try (ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
-        return (T) objectInputStream.readObject();
-      }
+    try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(object);
+        ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
+      return (T) objectInputStream.readObject();
     }
   }
 

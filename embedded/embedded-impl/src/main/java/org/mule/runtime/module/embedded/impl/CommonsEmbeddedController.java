@@ -167,8 +167,7 @@ public class CommonsEmbeddedController {
     containerInfo.getServerPlugins().stream().forEach(serverPluginUrl -> {
       File originalFile = toFile(serverPluginUrl);
       File destinationFile = new File(getServerPluginsFolder(), getName(originalFile.getPath()).replace(".zip", ""));
-      try {
-        ZipFile zipFile = new ZipFile(originalFile);
+      try (ZipFile zipFile = new ZipFile(originalFile)) {
         zipFile.extractAll(destinationFile.getAbsolutePath());
       } catch (Exception e) {
         throw new RuntimeException(e);
