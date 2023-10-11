@@ -31,6 +31,12 @@
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
+
+        <!-- This is needed in order to prevent it from being set as provided -->
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
