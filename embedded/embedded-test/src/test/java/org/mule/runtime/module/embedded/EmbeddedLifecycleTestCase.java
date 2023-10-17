@@ -33,15 +33,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 
 @Features(@Feature(EMBEDDED_API))
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -135,6 +136,26 @@ public class EmbeddedLifecycleTestCase {
         .build();
 
     assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
+  }
+
+  @Test
+  public void checkJavaVersions() throws Exception {
+    File containerFolder = temporaryFolder.newFolder();
+
+    EmbeddedContainer embeddedContainer = builder()
+        .muleVersion(System.getProperty("mule.version"))
+        .containerConfiguration(ContainerConfiguration.builder()
+            .containerFolder(containerFolder)
+            .build())
+        .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
+            .localMavenRepositoryLocation(getLocalRepositoryFolder())
+            .build())
+        .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
+        .product(MULE)
+        .build();
+
+    assertThat(embeddedContainer.isCurrentJvmVersionRecommended(), is(true));
+    assertThat(embeddedContainer.isCurrentJvmVersionSupported(), is(true));
   }
 
 }
