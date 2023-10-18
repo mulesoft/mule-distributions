@@ -119,6 +119,11 @@ public class CommonsEmbeddedController {
   }
 
   public void stop() {
+    if (muleContainer == null) {
+      // Nothing to dispose
+      return;
+    }
+
     executeWithinContainerClassLoader(() -> {
       muleContainer.stop();
       muleContainer.getContainerClassLoader().dispose();
