@@ -28,5 +28,5 @@ commonsCliJar=`ls "$MULE_HOME"/lib/boot/commons-cli-*.jar`
 cp=.:$MULE_HOME/conf:$commonsCliJar
 
 # The string passed to eval must handle spaces in paths correctly.
-COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -jar ${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar $@"
+COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -jar \"${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar\" $@"
 eval $COMMAND_LINE
