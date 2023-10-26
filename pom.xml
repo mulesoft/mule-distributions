@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <name>Mule Distributions</name>
 
-
     <build>
         <plugins>
             <plugin>

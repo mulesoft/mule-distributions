@@ -26,6 +26,8 @@ import org.mule.runtime.module.embedded.api.ContainerConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
 import org.mule.runtime.module.embedded.test.hepler.EmbeddedTestHelper;
+import org.mule.tck.junit4.FlakinessDetectorTestRunner;
+import org.mule.tck.junit4.FlakyTest;
 import org.mule.tck.junit4.rule.SystemProperty;
 
 import java.io.File;
@@ -43,9 +45,11 @@ import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.junit.runner.RunWith;
 
 @Features(@Feature(EMBEDDED_API))
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
+@RunWith(FlakinessDetectorTestRunner.class)
 public class EmbeddedLifecycleTestCase {
 
   private static EmbeddedTestHelper embeddedTestHelper;
@@ -81,6 +85,7 @@ public class EmbeddedLifecycleTestCase {
   }
 
   @Test
+  @FlakyTest
   public void mavenUserProperties() throws IOException, URISyntaxException {
     File containerFolder = temporaryFolder.newFolder();
 
