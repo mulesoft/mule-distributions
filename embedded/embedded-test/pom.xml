@@ -24,7 +24,7 @@
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
         <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
 
-        <packagerVersion>4.0.0-SNAPSHOT</packagerVersion>
+        <packagerVersion>4.0.0</packagerVersion>
         <muleModulesParentVersion>1.6.0-SNAPSHOT</muleModulesParentVersion>
     </properties>
 
