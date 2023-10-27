@@ -187,6 +187,7 @@ public class CommonsEmbeddedController {
       muleContainer = new DefaultMuleContainer();
     } catch (Throwable t) {
       LOGGER.info("[CommonsEmbeddedController] Error occurred while creating Mule Container", t);
+      throw t;
     }
     containerClassLoader = muleContainer.getContainerClassLoader();
     executeWithinContainerClassLoader(() -> {
