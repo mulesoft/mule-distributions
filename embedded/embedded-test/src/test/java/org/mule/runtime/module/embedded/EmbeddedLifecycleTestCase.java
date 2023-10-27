@@ -85,7 +85,7 @@ public class EmbeddedLifecycleTestCase {
   }
 
   @Test
-  @FlakyTest
+  // @FlakyTest
   public void mavenUserProperties() throws IOException, URISyntaxException {
     File containerFolder = temporaryFolder.newFolder();
 

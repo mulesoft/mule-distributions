@@ -29,6 +29,7 @@ import static java.lang.System.setProperty;
 
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.apache.commons.io.FilenameUtils.getName;
+import static org.slf4j.LoggerFactory.getLogger;
 
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.lifecycle.InitialisationException;
@@ -44,6 +45,7 @@ import java.net.URL;
 import java.util.Properties;
 
 import net.lingala.zip4j.ZipFile;
+import org.slf4j.Logger;
 
 /**
  * Controller class for the runtime. It spins up a new container instance using a temporary folder and dynamically loading the
@@ -52,6 +54,8 @@ import net.lingala.zip4j.ZipFile;
  * @since 4.6
  */
 public class CommonsEmbeddedController {
+
+  private static final Logger LOGGER = getLogger(CommonsEmbeddedController.class);
 
   private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
@@ -179,7 +183,11 @@ public class CommonsEmbeddedController {
       }
     });
 
-    muleContainer = new DefaultMuleContainer();
+    try {
+      muleContainer = new DefaultMuleContainer();
+    } catch (Throwable t) {
+      LOGGER.info("[CommonsEmbeddedController] Error occurred while creating Mule Container", t);
+    }
     containerClassLoader = muleContainer.getContainerClassLoader();
     executeWithinContainerClassLoader(() -> {
       try {
