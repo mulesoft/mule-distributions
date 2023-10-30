@@ -395,6 +395,10 @@
                 <exclude>org.mule.runtime:mule-module-extensions-mule-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-xml-support</exclude>
                 <exclude>org.mule.runtime:mule-module-container</exclude>
+
+<!--                TODO: REMOVE - This module should not be CE in the first place-->
+                <exclude>org.mule.runtime:mule-module-integration-orchestrator</exclude>
+                
                 <exclude>org.mule.runtime:mule-module-launcher</exclude>
                 <exclude>org.mule.runtime:mule-module-log4j-boot-configurator</exclude>
                 <exclude>org.mule.runtime:mule-module-logging</exclude>
