@@ -11,13 +11,13 @@
             <directory>src/main/resources</directory>
             <outputDirectory></outputDirectory>
             <excludes>
-                <exclude>lib/boot/exec/**</exclude>
+                <exclude>lib/boot/tanuki/exec/**</exclude>
             </excludes>
         </fileSet>
 
         <fileSet>
-            <directory>src/main/resources/lib/boot/exec</directory>
-            <outputDirectory>lib/boot/exec</outputDirectory>
+            <directory>src/main/resources/lib/boot/tanuki/exec</directory>
+            <outputDirectory>lib/boot/tanuki/exec</outputDirectory>
             <fileMode>700</fileMode>
             <excludes>
                 <exclude>*.txt</exclude>
@@ -27,8 +27,8 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>src/main/resources/lib/boot/exec</directory>
-            <outputDirectory>lib/boot/exec</outputDirectory>
+            <directory>src/main/resources/lib/boot/tanuki/exec</directory>
+            <outputDirectory>lib/boot/tanuki/exec</outputDirectory>
             <fileMode>600</fileMode>
             <includes>
                 <include>*.txt</include>
