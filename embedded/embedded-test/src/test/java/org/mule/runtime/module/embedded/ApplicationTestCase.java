@@ -38,6 +38,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
+import static org.junit.Assume.assumeTrue;
 import static org.junit.rules.ExpectedException.none;
 
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
@@ -55,6 +56,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -135,6 +137,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Test
   // This test may fail depending on the JDK used to run the tests
   public void jdkResourceAvailableFromApp() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
+
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("jdk-exported-resource-app", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), createRetryTestOperation(port -> {
       try {
