@@ -1,6 +1,6 @@
 upstreamProjects:
   Mule-runtime/mule-integration-tests/4.6.0,
-  Mule-runtime/mule-http-service/master,
+  Mule-runtime/mule-http-service/1.8.0,
   Mule-runtime/mule-oauth-service/master,
   Mule-runtime/mule-scheduler-service/master,
   Mule-runtime/mule-soap-service/master,
