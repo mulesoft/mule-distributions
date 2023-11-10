@@ -26,6 +26,7 @@ import static java.lang.String.valueOf;
 import static java.lang.System.clearProperty;
 import static java.lang.System.getProperty;
 import static java.lang.System.setProperty;
+import static java.lang.Thread.currentThread;
 
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.apache.commons.io.FilenameUtils.getName;
@@ -131,14 +132,16 @@ public class CommonsEmbeddedController {
   }
 
   private void executeWithinContainerClassLoader(ContainerTask task) {
-    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+    ClassLoader contextClassLoader = currentThread().getContextClassLoader();
     try {
-      Thread.currentThread().setContextClassLoader(containerClassLoader.getClassLoader());
+      // This is the unfiltered classloader, to be consistent with how the standalone is bootstrapped.
+      // This is required to discover the server-plgins when running in a modularized environment.
+      currentThread().setContextClassLoader(containerClassLoader.getClass().getClassLoader());
       task.run();
     } catch (Exception e) {
       throw new RuntimeException(e);
     } finally {
-      Thread.currentThread().setContextClassLoader(contextClassLoader);
+      currentThread().setContextClassLoader(contextClassLoader);
     }
   }
 
