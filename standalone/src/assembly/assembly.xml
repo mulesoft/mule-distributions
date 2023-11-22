@@ -242,6 +242,11 @@
                 <include>org.mule.runtime:mule-metrics-api</include>
                 <include>org.mule.runtime:mule-metrics-impl</include>
 
+                <!-- Mule Runtime Env Libs -->
+                <include>org.mule.runtime:mule-runtime-environment-api</include>
+                <include>org.mule.runtime:mule-runtime-environment-single-app-api</include>
+                <include>org.mule.runtime:mule-runtime-environment-application-server</include>
+
                 <!-- Mule Tracing Libs -->
                 <include>org.mule.runtime:mule-tracer-api</include>
                 <include>org.mule.runtime:mule-tracer-exporter-api</include>
@@ -450,6 +455,11 @@
                 <exclude>org.mule.runtime:mule-metrics-impl</exclude>
                 <exclude>org.mule.runtime:mule-metrics-exporter-configuration-api</exclude>
                 <exclude>org.mule.runtime:mule-metrics-exporter-configuration-impl</exclude>
+
+                <!-- Exclude Runtime Environment Folder -->
+                <exclude>org.mule.runtime:mule-runtime-environment-api</exclude>
+                <exclude>org.mule.runtime:mule-runtime-environment-application-server</exclude>
+                <exclude>org.mule.runtime:mule-runtime-environment-single-app-api</exclude>
 
                 <!-- Exclude tracing libraries -->
                 <exclude>org.mule.runtime:mule-tracer-api</exclude>
