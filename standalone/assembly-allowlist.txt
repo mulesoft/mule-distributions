@@ -179,6 +179,9 @@
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-configuration-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-configuration-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-observability-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-runtime-environment-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-runtime-environment-application-server-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-runtime-environment-single-app-api-${productVersion}.jar
 
 #
 # /services
