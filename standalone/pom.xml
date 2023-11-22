@@ -179,6 +179,11 @@
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
+            <artifactId>mule-runtime-environment-application-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-tanuki-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
