@@ -171,7 +171,7 @@
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.10.7.jar
 /mule-standalone-${productVersion}/lib/opt/caffeine-2.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/cglib-nodep-3.2.10.jar
-/mule-standalone-${productVersion}/lib/opt/checker-qual-3.33.0.jar
+/mule-standalone-${productVersion}/lib/opt/checker-qual-3.37.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.15.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
