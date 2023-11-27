@@ -40,7 +40,7 @@ if "%MULE_APP_LONG%" == "" (
     set MULE_APP_LONG=Mule
 )
 
-set _WRAPPER_BASE=%MULE_HOME%\lib\boot\exec\wrapper
+set _WRAPPER_BASE=%MULE_HOME%\lib\boot\tanuki\exec\wrapper
 
 rem Configure remote Java debugging options here
 rem Setting suspend=y will wait for you to connect before proceeding
