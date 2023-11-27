@@ -195,7 +195,7 @@
 /mule-standalone-${productVersion}/lib/opt/btf-1.2.jar
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.14.0.jar
 /mule-standalone-${productVersion}/lib/opt/caffeine-2.8.0.jar
-/mule-standalone-${productVersion}/lib/opt/checker-qual-3.33.0.jar
+/mule-standalone-${productVersion}/lib/opt/checker-qual-3.37.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.15.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections4-4.4.jar
@@ -210,7 +210,7 @@
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.0.1.jar
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.5.11.jar
 /mule-standalone-${productVersion}/lib/opt/gson-2.8.9.jar
-/mule-standalone-${productVersion}/lib/opt/guava-32.1.1-jre.jar
+/mule-standalone-${productVersion}/lib/opt/guava-32.1.3-jre.jar
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.5.13.jar
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.4.16.jar
 /mule-standalone-${productVersion}/lib/opt/j2objc-annotations-2.8.jar
