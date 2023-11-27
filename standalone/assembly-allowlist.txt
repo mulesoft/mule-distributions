@@ -42,26 +42,12 @@
 # /lib/boot
 #
 /mule-standalone-${productVersion}/lib/boot
-/mule-standalone-${productVersion}/lib/boot/exec
-/mule-standalone-${productVersion}/lib/boot/libwrapper-linux-ia-64.so
-/mule-standalone-${productVersion}/lib/boot/libwrapper-linux-ppc-64.so
-/mule-standalone-${productVersion}/lib/boot/libwrapper-linux-x86-32.so
-/mule-standalone-${productVersion}/lib/boot/libwrapper-linux-x86-64.so
-/mule-standalone-${productVersion}/lib/boot/libwrapper-macosx-ppc-32.jnilib
-/mule-standalone-${productVersion}/lib/boot/libwrapper-macosx-universal-32.jnilib
-/mule-standalone-${productVersion}/lib/boot/libwrapper-solaris-sparc-32.so
-/mule-standalone-${productVersion}/lib/boot/libwrapper-solaris-sparc-64.so
-/mule-standalone-${productVersion}/lib/boot/libwrapper-solaris-x86-32.so
 /mule-standalone-${productVersion}/lib/boot/commons-cli-1.2.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-boot-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-reboot-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-jpms-utils-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/boot/mule-module-tanuki-boot-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-log4j-boot-configurator-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-logging-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/boot/README.txt
-/mule-standalone-${productVersion}/lib/boot/wrapper-3.2.3.jar
-/mule-standalone-${productVersion}/lib/boot/wrapper-windows-x86-32.dll
 /mule-standalone-${productVersion}/lib/boot/disruptor-3.4.3.jar
 /mule-standalone-${productVersion}/lib/boot/jcl-over-slf4j-2.0.7.jar
 /mule-standalone-${productVersion}/lib/boot/jul-to-slf4j-2.0.7.jar
@@ -75,21 +61,39 @@
 /mule-standalone-${productVersion}/lib/boot/jackson-databind-2.15.0.jar
 
 #
-# /lib/boot/exec
+# /lib/boot/tanuki
 #
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-freebsd-x86-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-hpux-parisc-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-linux-ia-64
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-linux-ppc-64
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-linux-x86-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-linux-x86-64
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-macosx-ppc-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-macosx-universal-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-solaris-sparc-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-solaris-sparc-64
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-solaris-x86-32
-/mule-standalone-${productVersion}/lib/boot/exec/wrapper-windows-x86-32.exe
+/mule-standalone-${productVersion}/lib/boot/tanuki
+/mule-standalone-${productVersion}/lib/boot/tanuki/README.txt
+/mule-standalone-${productVersion}/lib/boot/tanuki/wrapper-3.2.3.jar
+/mule-standalone-${productVersion}/lib/boot/tanuki/mule-module-tanuki-boot-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/boot/tanuki/wrapper-windows-x86-32.dll
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-linux-ia-64.so
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-linux-ppc-64.so
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-linux-x86-32.so
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-linux-x86-64.so
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-macosx-ppc-32.jnilib
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-macosx-universal-32.jnilib
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-solaris-sparc-32.so
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-solaris-sparc-64.so
+/mule-standalone-${productVersion}/lib/boot/tanuki/libwrapper-solaris-x86-32.so
 
+#
+# /lib/boot/tanuki/exec
+#
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-freebsd-x86-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-hpux-parisc-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-linux-ia-64
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-linux-ppc-64
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-linux-x86-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-linux-x86-64
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-macosx-ppc-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-macosx-universal-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-solaris-sparc-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-solaris-sparc-64
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-solaris-x86-32
+/mule-standalone-${productVersion}/lib/boot/tanuki/exec/wrapper-windows-x86-32.exe
 
 #
 # /lib/mule

@@ -96,7 +96,7 @@ APP_NAME=${MULE_APP}
 APP_LONG_NAME=${MULE_APP_LONG}
 
 # Wrapper
-WRAPPER_CMD="${MULE_HOME}/lib/boot/exec/wrapper"
+WRAPPER_CMD="${MULE_HOME}/lib/boot/tanuki/exec/wrapper"
 WRAPPER_CONF="${MULE_BASE}/conf/wrapper.conf"
 
 MULE_OPTS="wrapper.working.dir=\"$STARTUP_DIR\" \
