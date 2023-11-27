@@ -19,19 +19,24 @@ public class DistributionFinder {
 
   private static final String MULE_DISTRIBUTION_PROPERTY = "mule.distribution";
 
-  /**
-   * @return a mule distribution location if one was found.
-   */
   public static String findDistribution() {
     String muleDistribution = getProperty(MULE_DISTRIBUTION_PROPERTY);
     if (muleDistribution != null) {
       return muleDistribution;
     }
+
+    return findDistribution("standalone", "standalone");
+  }
+
+  /**
+   * @return a mule distribution location if one was found.
+   */
+  public static String findDistribution(String muleDistributionDir, String muleDistributionName) {
     File distributionTargetFolder =
-        Paths.get(new File(getProperty("user.dir")).getParent()).resolve("standalone").resolve("target").toFile();
+        Paths.get(new File(getProperty("user.dir")).getParent()).resolve(muleDistributionDir).resolve("target").toFile();
     if (distributionTargetFolder.exists()) {
       File[] files = distributionTargetFolder
-          .listFiles((dir, name) -> name.startsWith("mule-enterprise-standalone-") && name.endsWith(".zip"));
+          .listFiles((dir, name) -> name.startsWith("mule-enterprise-" + muleDistributionName + "-") && name.endsWith(".zip"));
       if (files.length > 0) {
         return files[0].getAbsolutePath();
       }

@@ -73,6 +73,12 @@
             <artifactId>zip4j</artifactId>
             <version>2.11.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.mule.runtime</groupId>
+            <artifactId>mule-runtime-environment-application-server</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
