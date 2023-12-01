@@ -144,6 +144,9 @@
                 <include>com.fasterxml.jackson.core:jackson-core</include>
                 <include>com.fasterxml.jackson.core:jackson-annotations</include>
             </includes>
+            <excludes>
+                <exclude>org.mule.runtime.boot:mule-module-tanuki-boot</exclude>
+            </excludes>
         </dependencySet>
 
         <!-- Mule bootstrap, Tanuki-specific -->
@@ -152,7 +155,7 @@
             <useStrictFiltering>true</useStrictFiltering>
             <fileMode>0640</fileMode>
             <includes>
-                <include>org.mule.runtime:mule-module-tanuki-boot</include>
+                <include>org.mule.runtime.boot:mule-module-tanuki-boot</include>
                 <include>tanukisoft:wrapper</include>
             </includes>
         </dependencySet>
