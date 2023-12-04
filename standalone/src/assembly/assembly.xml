@@ -130,12 +130,8 @@
             <useStrictFiltering>true</useStrictFiltering>
             <fileMode>0640</fileMode>
             <includes>
-                <include>org.mule.runtime:mule-module-boot-api</include>
-                <include>org.mule.runtime:mule-module-reboot</include>
-                <include>org.mule.runtime:mule-module-jpms-utils</include>
+                <include>org.mule.runtime.boot:*</include>
                 <include>commons-cli:commons-cli</include>
-                <include>org.mule.runtime:mule-module-log4j-boot-configurator</include>
-                <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.slf4j:slf4j-api</include>
                 <include>org.apache.logging.log4j:log4j-api</include>
                 <include>org.apache.logging.log4j:log4j-core</include>
@@ -148,6 +144,9 @@
                 <include>com.fasterxml.jackson.core:jackson-core</include>
                 <include>com.fasterxml.jackson.core:jackson-annotations</include>
             </includes>
+            <excludes>
+                <exclude>org.mule.runtime.boot:mule-module-tanuki-boot</exclude>
+            </excludes>
         </dependencySet>
 
         <!-- Mule bootstrap, Tanuki-specific -->
@@ -156,7 +155,7 @@
             <useStrictFiltering>true</useStrictFiltering>
             <fileMode>0640</fileMode>
             <includes>
-                <include>org.mule.runtime:mule-module-tanuki-boot</include>
+                <include>org.mule.runtime.boot:mule-module-tanuki-boot</include>
                 <include>tanukisoft:wrapper</include>
             </includes>
         </dependencySet>
@@ -217,7 +216,6 @@
                 <include>org.mule.runtime:mule-module-artifact-activation</include>
                 <include>org.mule.runtime:mule-module-log4j-configurator</include>
                 <include>org.mule.runtime:mule-module-launcher</include>
-                <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.mule.runtime:mule-module-feature-management</include>
                 <include>org.mule.runtime:mule-module-memory-management</include>
                 <include>org.mule.runtime:mule-module-global-config</include>
@@ -273,9 +271,6 @@
                 <!-- Mule Observability Libs -->
                 <include>org.mule.runtime:mule-module-observability</include>
             </includes>
-            <excludes>
-                <exclude>org.mule.runtime:mule-module-logging</exclude>
-            </excludes>
         </dependencySet>
 
         <!-- Mule Services -->
@@ -405,8 +400,6 @@
                 <exclude>org.mule.runtime:mule-module-extensions-xml-support</exclude>
                 <exclude>org.mule.runtime:mule-module-container</exclude>
                 <exclude>org.mule.runtime:mule-module-launcher</exclude>
-                <exclude>org.mule.runtime:mule-module-log4j-boot-configurator</exclude>
-                <exclude>org.mule.runtime:mule-module-logging</exclude>
                 <exclude>org.mule.runtime:mule-module-feature-management</exclude>
                 <exclude>org.mule.runtime:mule-module-memory-management</exclude>
                 <exclude>org.mule.runtime:mule-module-global-config</exclude>
@@ -421,10 +414,7 @@
                 <exclude>org.mule.runtime:mule-module-service</exclude>
                 <exclude>org.mule.runtime:mule-module-policy-api</exclude>
                 <exclude>org.mule.runtime:mule-module-properties-config</exclude>
-                <exclude>org.mule.runtime:mule-module-boot-api</exclude>
-                <exclude>org.mule.runtime:mule-module-reboot</exclude>
-                <exclude>org.mule.runtime:mule-module-jpms-utils</exclude>
-                <exclude>org.mule.runtime:mule-module-tanuki-boot</exclude>
+                <exclude>org.mule.runtime.boot:*</exclude>
                 <exclude>org.mule.runtime:mule-module-repository</exclude>
                 <exclude>org.mule.runtime:mule-module-spring-config</exclude>
                 <exclude>org.mule.runtime:mule-module-tls</exclude>

@@ -168,17 +168,17 @@
 
         <!-- Modules for standalone container -->
         <dependency>
-            <groupId>org.mule.runtime</groupId>
+            <groupId>org.mule.runtime.boot</groupId>
             <artifactId>mule-module-boot-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mule.runtime</groupId>
+            <groupId>org.mule.runtime.boot</groupId>
             <artifactId>mule-module-reboot</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mule.runtime</groupId>
+            <groupId>org.mule.runtime.boot</groupId>
             <artifactId>mule-module-tanuki-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
