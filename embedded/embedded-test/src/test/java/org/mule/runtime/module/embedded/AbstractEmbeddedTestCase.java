@@ -256,6 +256,13 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
     });
   }
 
+  protected void validateApplicationIsDeployed(EmbeddedContainer embeddedContainer, File applicationFile) {
+    validateArtifactState(APPS_FOLDER, applicationFile, embeddedContainer, true);
+  }
+
+  protected void validateApplicationIsUnDeployed(EmbeddedContainer embeddedContainer, File applicationFile) {
+    validateArtifactState(APPS_FOLDER, applicationFile, embeddedContainer, false);
+  }
 
   protected void validateDomainIsDeployed(EmbeddedContainer embeddedContainer, File domainFile) {
     validateArtifactState(DOMAINS_FOLDER, domainFile, embeddedContainer, true);
