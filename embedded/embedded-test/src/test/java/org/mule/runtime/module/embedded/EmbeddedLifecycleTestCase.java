@@ -16,9 +16,12 @@ import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.Deploym
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
 
+import static java.lang.System.getProperty;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.fail;
 
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
@@ -121,41 +124,45 @@ public class EmbeddedLifecycleTestCase {
   @Test
   @Issue("W-11996026")
   public void getMuleContainerVersionBeforeStart() throws Exception {
-    File containerFolder = temporaryFolder.newFolder();
-
-    EmbeddedContainer embeddedContainer = builder()
-        .muleVersion(System.getProperty("mule.version"))
-        .containerConfiguration(ContainerConfiguration.builder()
-            .containerFolder(containerFolder)
-            .build())
-        .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
-            .localMavenRepositoryLocation(getLocalRepositoryFolder())
-            .build())
-        .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-        .product(MULE)
-        .build();
+    EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
     assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
   }
 
   @Test
   public void checkJavaVersions() throws Exception {
-    File containerFolder = temporaryFolder.newFolder();
+    EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
-    EmbeddedContainer embeddedContainer = builder()
+    assertThat(embeddedContainer.isCurrentJvmVersionRecommended(), is(true));
+    assertThat(embeddedContainer.isCurrentJvmVersionSupported(), is(true));
+  }
+
+  @Test
+  @Issue("W-11193698")
+  public void muleHomeIsCorrectlySetWhenStartingTheController() throws Exception {
+    EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
+    String containerFolder = embeddedContainer.getContainerFolder().getAbsolutePath();
+
+    // Control test
+    assertThat(getProperty("mule.home"), is(not(containerFolder)));
+
+    embeddedContainer.start();
+    embeddedContainer.stop();
+
+    assertThat(getProperty("mule.home"), is(containerFolder));
+  }
+
+  private EmbeddedContainer.EmbeddedContainerBuilder getBuilderWithDefaults() throws IOException, URISyntaxException {
+    return builder()
         .muleVersion(System.getProperty("mule.version"))
         .containerConfiguration(ContainerConfiguration.builder()
-            .containerFolder(containerFolder)
+            .containerFolder(temporaryFolder.newFolder())
             .build())
         .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
             .localMavenRepositoryLocation(getLocalRepositoryFolder())
             .build())
         .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-        .product(MULE)
-        .build();
-
-    assertThat(embeddedContainer.isCurrentJvmVersionRecommended(), is(true));
-    assertThat(embeddedContainer.isCurrentJvmVersionSupported(), is(true));
+        .product(MULE);
   }
 
 }
