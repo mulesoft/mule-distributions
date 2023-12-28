@@ -302,7 +302,7 @@
 /mule-standalone-${productVersion}/lib/opt/xerces2-xsd11-2.11.3-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-3.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
-/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-10.jar
+/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-12.jar
 /mule-standalone-${productVersion}/lib/opt/annotations-13.0.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.9.10.jar
