@@ -91,7 +91,13 @@ public class AdditionalJvmParameters {
       bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java8/wrapper.jvmDependant.conf")));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
     } else {
-      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf")));
+      String wrapperConfName;
+      if (getProperty("os.name").toLowerCase().contains("win")) {
+        wrapperConfName = "wrapper.windows.jvmDependant.conf";
+      } else {
+        wrapperConfName = "wrapper.jvmDependant.conf";
+      }
+      bootstrapProps.load(new FileInputStream(wrapperConfDir + "java11-plus/" + wrapperConfName));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java11-plus/wrapper-license.conf");
     }
 
