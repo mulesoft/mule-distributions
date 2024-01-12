@@ -213,10 +213,12 @@
 /mule-standalone-${productVersion}/lib/opt/disruptor-1.+
 /mule-standalone-${productVersion}/lib/opt/dom4j-2.+
 /mule-standalone-${productVersion}/lib/opt/error_prone_annotations-2.+
+/mule-standalone-${productVersion}/lib/opt/everit-json-schema-1.+
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.+
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.+
 /mule-standalone-${productVersion}/lib/opt/gson-2.+
 /mule-standalone-${productVersion}/lib/opt/guava-32.+
+/mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.+
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.+
 /mule-standalone-${productVersion}/lib/opt/j2objc-annotations-2.+
@@ -265,7 +267,6 @@
 /mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.2.0-+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.inject-0.+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.+
-/mule-standalone-${productVersion}/lib/opt/org.everit.json.schema-1.+
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-2.+
 /mule-standalone-${productVersion}/lib/opt/plexus-component-annotations-1.+
 /mule-standalone-${productVersion}/lib/opt/plexus-interpolation-1.+
@@ -273,6 +274,7 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-4.+
 /mule-standalone-${productVersion}/lib/opt/plexus-xml-3.+
 /mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.+
+/mule-standalone-${productVersion}/lib/opt/re2j-1.+
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.+
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.+
 /mule-standalone-${productVersion}/lib/opt/reactor-extra-3.+
