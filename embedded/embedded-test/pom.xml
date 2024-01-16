@@ -14,6 +14,7 @@
 
     <properties>
         <surefire.args>
+            --add-reads=org.mule.distribution.embedded.test=org.apache.commons.lang3
             --add-exports=org.mule.distribution.embedded.test/org.mule.runtime.module.embedded=junit
             --add-opens=java.base/java.lang=org.mule.runtime.jpms.utils
             ${surefire.test.unit.open.args}
