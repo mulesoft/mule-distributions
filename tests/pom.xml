@@ -13,6 +13,12 @@
     <name>Mule Distribution Tests</name>
 
     <properties>
+        <surefire.args>
+            -XX:+IgnoreUnrecognizedVMOptions
+            --add-reads=org.mule.distribution.test=org.apache.commons.lang3
+            ${surefire.args.base}
+        </surefire.args>
+
         <javaModuleName>org.mule.distribution.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
