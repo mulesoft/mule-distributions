@@ -215,7 +215,7 @@
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.+
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.+
 /mule-standalone-${productVersion}/lib/opt/gson-2.+
-/mule-standalone-${productVersion}/lib/opt/guava-32.+
+/mule-standalone-${productVersion}/lib/opt/guava-+
 /mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.+
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.+
