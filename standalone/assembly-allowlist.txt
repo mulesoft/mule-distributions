@@ -214,6 +214,7 @@
 /mule-standalone-${productVersion}/lib/opt/everit-json-schema-1.+
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.+
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.+
+/mule-standalone-${productVersion}/lib/opt/graal-sdk-22.+
 /mule-standalone-${productVersion}/lib/opt/gson-2.+
 /mule-standalone-${productVersion}/lib/opt/guava-+
 /mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
@@ -239,6 +240,8 @@
 /mule-standalone-${productVersion}/lib/opt/jgrapht-core-1.+
 /mule-standalone-${productVersion}/lib/opt/jheaps-0.+
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.+
+/mule-standalone-${productVersion}/lib/opt/js-22.+
+/mule-standalone-${productVersion}/lib/opt/js-scriptengine-22.+
 /mule-standalone-${productVersion}/lib/opt/json-202+
 /mule-standalone-${productVersion}/lib/opt/jsoup-1.+
 /mule-standalone-${productVersion}/lib/opt/listenablefuture-9999.+
@@ -277,6 +280,7 @@
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.+
 /mule-standalone-${productVersion}/lib/opt/reactor-extra-3.+
 /mule-standalone-${productVersion}/lib/opt/reflections-0.+
+/mule-standalone-${productVersion}/lib/opt/regex-22.+
 /mule-standalone-${productVersion}/lib/opt/rhino-1.+
 /mule-standalone-${productVersion}/lib/opt/semver4j-3.+
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-2.+
@@ -286,6 +290,7 @@
 /mule-standalone-${productVersion}/lib/opt/spring-core-5.+
 /mule-standalone-${productVersion}/lib/opt/spring-expression-5.+
 /mule-standalone-${productVersion}/lib/opt/togglz-core-3.+
+/mule-standalone-${productVersion}/lib/opt/truffle-api-22.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
 /mule-standalone-${productVersion}/lib/opt/vibur-object-pool-23.+
