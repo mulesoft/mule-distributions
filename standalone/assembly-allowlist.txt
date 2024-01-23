@@ -312,7 +312,7 @@
 /mule-standalone-${productVersion}/lib/opt/yagi-1.+
 
 # Metrics/Tracing dependencies
-/mule-standalone-${productVersion}/lib/opt/annotations-17.+
+/mule-standalone-${productVersion}/lib/opt/annotations-+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-1.+
