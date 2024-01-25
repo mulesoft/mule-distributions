@@ -29,7 +29,7 @@ module org.mule.distribution.embedded.test {
   // log4j-1.2-api
   requires org.apache.log4j;
   // log4j-slf4j2-impl
-  requires org.apache.logging.log4j.slf4j;
+  requires org.apache.logging.log4j.slf4j2.impl;
 
   exports org.mule.runtime.module.embedded.test.hepler;
 
