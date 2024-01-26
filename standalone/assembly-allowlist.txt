@@ -288,7 +288,7 @@
 /mule-standalone-${productVersion}/lib/opt/togglz-core-3.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
-/mule-standalone-${productVersion}/lib/opt/vibur-object-pool-23.+
+/mule-standalone-${productVersion}/lib/opt/vibur-object-pool-+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-shared-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.+
