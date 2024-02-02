@@ -133,8 +133,10 @@ public class EmbeddedLifecycleTestCase {
   public void checkJavaVersions() throws Exception {
     EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
-    assertThat(embeddedContainer.isCurrentJvmVersionRecommended(), is(true));
-    assertThat(embeddedContainer.isCurrentJvmVersionSupported(), is(true));
+    assertThat("Java version `" + getProperty("java.version") + "` not recommended",
+               embeddedContainer.isCurrentJvmVersionRecommended(), is(true));
+    assertThat("Java version `" + getProperty("java.version") + "` not supported",
+               embeddedContainer.isCurrentJvmVersionSupported(), is(true));
   }
 
   @Test
