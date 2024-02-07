@@ -203,6 +203,7 @@
 /mule-standalone-${productVersion}/lib/opt/checker-qual-3.+
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.+
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.+
+/mule-standalone-${productVersion}/lib/opt/commons-collections-3.+
 /mule-standalone-${productVersion}/lib/opt/commons-collections4-4.+
 /mule-standalone-${productVersion}/lib/opt/commons-io-2.+
 /mule-standalone-${productVersion}/lib/opt/commons-lang3-3.+
