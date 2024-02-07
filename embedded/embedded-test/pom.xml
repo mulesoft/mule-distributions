@@ -25,7 +25,6 @@
         <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
 
         <packagerVersion>4.0.0</packagerVersion>
-        <muleModulesParentVersion>1.6.1-SNAPSHOT</muleModulesParentVersion>
     </properties>
 
     <build>
