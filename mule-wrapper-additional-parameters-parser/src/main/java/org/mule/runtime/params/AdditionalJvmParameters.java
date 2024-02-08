@@ -72,7 +72,6 @@ public class AdditionalJvmParameters {
     reader.close();
 
     if (debugEnabled || adHocOptionsAvailable) {
-      paramIndex += getNumberOfAdditionalJavaProperties(args);
       if (debugEnabled) {
         writeJpdaOpts(writer);
       }
@@ -268,7 +267,7 @@ public class AdditionalJvmParameters {
   protected static void processBootstrapProperties(Properties bootstrapProperties, FileWriter writer) throws IOException {
     for (Entry entry : bootstrapProperties.entrySet()) {
       if (entry.getKey().toString().matches("wrapper\\.java\\.additional\\.<n\\d>")) {
-        writer.write(wrapperPrefix + ++paramIndex + "=" + entry.getValue().toString() + "\n");
+        writer.write(wrapperPrefix + paramIndex++ + "=" + entry.getValue().toString() + "\n");
       } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d>")) {
         writer.write(classpathPrefix + ++classpathIndex + "=" + entry.getValue().toString() + "\n");
       } else {
