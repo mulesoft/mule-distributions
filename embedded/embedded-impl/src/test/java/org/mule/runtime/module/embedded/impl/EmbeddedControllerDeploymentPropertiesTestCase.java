@@ -1,5 +1,5 @@
 /*
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+ * Copyright 2023 Salesforce, Inc. All rights reserved.
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -30,8 +30,8 @@ import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerInfo;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration.DeploymentConfigurationBuilder;
-import org.mule.runtime.module.embedded.internal.controller.EmbeddedController;
-import org.mule.runtime.module.launcher.MuleContainer;
+import org.mule.runtime.module.embedded.api.controller.EmbeddedController;
+import org.mule.runtime.module.launcher.DefaultMuleContainer;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 
 import java.io.File;
@@ -73,8 +73,8 @@ public class EmbeddedControllerDeploymentPropertiesTestCase extends AbstractMule
       }
 
       @Override
-      protected MuleContainer getMuleContainer() {
-        MuleContainer container = mock(MuleContainer.class);
+      protected DefaultMuleContainer getMuleContainer() {
+        DefaultMuleContainer container = mock(DefaultMuleContainer.class);
         when(container.getDeploymentService()).thenReturn(deploymentService);
         return container;
       }

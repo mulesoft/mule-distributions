@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-bom</artifactId>
-        <version>4.5.0-SNAPSHOT</version>
+        <version>4.7.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,13 +20,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-modules-all</artifactId>
+            <groupId>org.mule.distributions</groupId>
+            <artifactId>mule-runtime-impl-no-services-bom</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
@@ -36,29 +31,11 @@
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
+
+        <!-- This is needed in order to prevent it from being set as provided -->
         <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-service-soap-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-service-http-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-service-oauth-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-dwb-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.distributions</groupId>
-            <artifactId>mule-wrapper-additional-parameters-parser</artifactId>
-            <version>${project.version}</version>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
         </dependency>
     </dependencies>
 

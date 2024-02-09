@@ -1,5 +1,5 @@
 /*
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+ * Copyright 2023 Salesforce, Inc. All rights reserved.
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -39,7 +39,7 @@ public class AdditionalJvmParameters {
 
   protected static String jpdaOpts = "";
   protected static int paramIndex = 0;
-  protected static int classpathIndex = 1;
+  protected static int classpathIndex = 0;
   static final String wrapperPrefix = "wrapper.java.additional.";
   static final String classpathPrefix = "wrapper.java.classpath.";
   static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 20;

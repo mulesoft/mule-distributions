@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.mule.extensions</groupId>
         <artifactId>mule-modules-parent</artifactId>
-        <version>1.3.1</version>
+        <version>1.6.0</version>
     </parent>
 
     <version>1.0.0</version>
@@ -18,18 +18,5 @@
     <properties>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
     </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <!-- BUILD PLUGIN FOR JAVA_AND_SMART_CONNECTORS -->
-                <groupId>org.mule.runtime.plugins</groupId>
-                <artifactId>mule-extensions-maven-plugin</artifactId>
-                <!-- Change back to latest snapshot MMP-596 once is fixed -->
-                <version>1.4.0</version>
-                <extensions>true</extensions>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

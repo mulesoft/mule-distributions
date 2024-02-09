@@ -96,7 +96,7 @@ APP_NAME=${MULE_APP}
 APP_LONG_NAME=${MULE_APP_LONG}
 
 # Wrapper
-WRAPPER_CMD="${MULE_HOME}/lib/boot/exec/wrapper"
+WRAPPER_CMD="${MULE_HOME}/lib/boot/tanuki/exec/wrapper"
 WRAPPER_CONF="${MULE_BASE}/conf/wrapper.conf"
 
 MULE_OPTS="wrapper.working.dir=\"$STARTUP_DIR\" \
@@ -372,6 +372,15 @@ then
     fi
 fi
 
+# Build the wrapper debug clause.
+WRAPPER_DEBUG=
+for i in "$@"; do
+    if [ "$i" = "wrapperDebug" ]
+    then
+        WRAPPER_DEBUG=wrapper.debug=TRUE
+    fi
+done
+
 checkUser() {
     # $1 touchLock flag
     # $2, $3, etc complete command line received
@@ -536,11 +545,16 @@ console() {
     if [ "X$pid" = "X" ]
     then
         # The string passed to eval must handle spaces in paths correctly.
-        COMMAND_LINE="$CMDNICE \"$WRAPPER_CMD\" \"$WRAPPER_CONF\" wrapper.syslog.ident=$APP_NAME wrapper.pidfile=\"$PIDFILE\" $ANCHORPROP $STATUSPROP $LOCKPROP"
+        COMMAND_LINE="$CMDNICE \"$WRAPPER_CMD\" \"$WRAPPER_CONF\" $WRAPPER_DEBUG wrapper.syslog.ident=$APP_NAME wrapper.pidfile=\"$PIDFILE\" $ANCHORPROP $STATUSPROP $LOCKPROP"
         ######################################################################
         # Customized for Mule
         ######################################################################
         eval $COMMAND_LINE $MULE_OPTS
+        retVal=$?
+        if [ $retVal -ne 0 ]; then
+            echo "Could not run $APP_LONG_NAME."
+            exit 1
+        fi
         ######################################################################
     else
         echo "$APP_LONG_NAME is already running."
@@ -554,11 +568,16 @@ start() {
     if [ "X$pid" = "X" ]
     then
         # The string passed to eval must handles spaces in paths correctly.
-        COMMAND_LINE="$CMDNICE \"$WRAPPER_CMD\" \"$WRAPPER_CONF\" wrapper.syslog.ident=$APP_NAME wrapper.pidfile=\"$PIDFILE\" wrapper.daemonize=TRUE $ANCHORPROP $STATUSPROP $IGNOREPROP $LOCKPROP"
+        COMMAND_LINE="$CMDNICE \"$WRAPPER_CMD\" \"$WRAPPER_CONF\" $WRAPPER_DEBUG wrapper.syslog.ident=$APP_NAME wrapper.pidfile=\"$PIDFILE\" wrapper.daemonize=TRUE $ANCHORPROP $STATUSPROP $IGNOREPROP $LOCKPROP"
         ######################################################################
         # Customized for Mule
         ######################################################################
         eval $COMMAND_LINE $MULE_OPTS
+        retVal=$?
+        if [ $retVal -ne 0 ]; then
+            echo "Could not start $APP_LONG_NAME."
+            exit 1
+        fi
         ######################################################################
     else
         echo "$APP_LONG_NAME is already running."

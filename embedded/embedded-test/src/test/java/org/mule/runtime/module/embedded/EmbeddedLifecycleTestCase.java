@@ -1,5 +1,5 @@
 /*
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+ * Copyright 2023 Salesforce, Inc. All rights reserved.
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -16,15 +16,19 @@ import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.Deploym
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
 
+import static java.lang.System.getProperty;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.fail;
 
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.ContainerConfiguration;
 import org.mule.runtime.module.embedded.api.DeploymentConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
+import org.mule.runtime.module.embedded.test.hepler.EmbeddedTestHelper;
 import org.mule.tck.junit4.rule.SystemProperty;
 
 import java.io.File;
@@ -32,15 +36,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 
 @Features(@Feature(EMBEDDED_API))
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -119,21 +124,47 @@ public class EmbeddedLifecycleTestCase {
   @Test
   @Issue("W-11996026")
   public void getMuleContainerVersionBeforeStart() throws Exception {
-    File containerFolder = temporaryFolder.newFolder();
+    EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
-    EmbeddedContainer embeddedContainer = builder()
+    assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
+  }
+
+  @Test
+  public void checkJavaVersions() throws Exception {
+    EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
+
+    assertThat("Java version `" + getProperty("java.version") + "` not recommended",
+               embeddedContainer.isCurrentJvmVersionRecommended(), is(true));
+    assertThat("Java version `" + getProperty("java.version") + "` not supported",
+               embeddedContainer.isCurrentJvmVersionSupported(), is(true));
+  }
+
+  @Test
+  @Issue("W-11193698")
+  public void muleHomeIsCorrectlySetWhenStartingTheController() throws Exception {
+    EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
+    String containerFolder = embeddedContainer.getContainerFolder().getAbsolutePath();
+
+    // Control test
+    assertThat(getProperty("mule.home"), is(not(containerFolder)));
+
+    embeddedContainer.start();
+    embeddedContainer.stop();
+
+    assertThat(getProperty("mule.home"), is(containerFolder));
+  }
+
+  private EmbeddedContainer.EmbeddedContainerBuilder getBuilderWithDefaults() throws IOException, URISyntaxException {
+    return builder()
         .muleVersion(System.getProperty("mule.version"))
         .containerConfiguration(ContainerConfiguration.builder()
-            .containerFolder(containerFolder)
+            .containerFolder(temporaryFolder.newFolder())
             .build())
         .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
             .localMavenRepositoryLocation(getLocalRepositoryFolder())
             .build())
         .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-        .product(MULE)
-        .build();
-
-    assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
+        .product(MULE);
   }
 
 }

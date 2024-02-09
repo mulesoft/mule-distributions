@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-distributions</artifactId>
-        <version>4.5.0-SNAPSHOT</version>
+        <version>4.7.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,6 +15,8 @@
 
     <properties>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
+    
+        <skipMuleModuleMojos>true</skipMuleModuleMojos>
     </properties>
 
     <modules>

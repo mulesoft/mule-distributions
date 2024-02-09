@@ -46,8 +46,8 @@
         </fileSet>
 
         <fileSet>
-            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot/exec</directory>
-            <outputDirectory>lib/boot/exec</outputDirectory>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot/tanuki/exec</directory>
+            <outputDirectory>lib/boot/tanuki/exec</outputDirectory>
             <fileMode>700</fileMode>
             <excludes>
                 <exclude>*.txt</exclude>
@@ -57,8 +57,8 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot/exec</directory>
-            <outputDirectory>lib/boot/exec</outputDirectory>
+            <directory>target/distribution-structure/${standaloneStructure}-${version}/lib/boot/tanuki/exec</directory>
+            <outputDirectory>lib/boot/tanuki/exec</outputDirectory>
             <fileMode>600</fileMode>
             <includes>
                 <include>*.txt</include>
@@ -130,11 +130,8 @@
             <useStrictFiltering>true</useStrictFiltering>
             <fileMode>0640</fileMode>
             <includes>
-                <include>org.mule.runtime:mule-module-reboot</include>
-                <include>org.mule.runtime:mule-module-jpms-utils</include>
+                <include>org.mule.runtime.boot:*</include>
                 <include>commons-cli:commons-cli</include>
-                <include>tanukisoft:wrapper</include>
-                <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.slf4j:slf4j-api</include>
                 <include>org.apache.logging.log4j:log4j-api</include>
                 <include>org.apache.logging.log4j:log4j-core</include>
@@ -146,6 +143,20 @@
                 <include>com.fasterxml.jackson.core:jackson-databind</include>
                 <include>com.fasterxml.jackson.core:jackson-core</include>
                 <include>com.fasterxml.jackson.core:jackson-annotations</include>
+            </includes>
+            <excludes>
+                <exclude>org.mule.runtime.boot:mule-module-tanuki-boot</exclude>
+            </excludes>
+        </dependencySet>
+
+        <!-- Mule bootstrap, Tanuki-specific -->
+        <dependencySet>
+            <outputDirectory>lib/boot/tanuki</outputDirectory>
+            <useStrictFiltering>true</useStrictFiltering>
+            <fileMode>0640</fileMode>
+            <includes>
+                <include>org.mule.runtime.boot:mule-module-tanuki-boot</include>
+                <include>tanukisoft:wrapper</include>
             </includes>
         </dependencySet>
 
@@ -173,6 +184,7 @@
                 <include>org.mule.runtime:mule-message-metadata-model</include>
                 <!-- extensions API -->
                 <include>org.mule.runtime:mule-extensions-api</include>
+                <include>org.mule.runtime:mule-extensions-mime-types</include>
                 <include>org.mule.runtime:mule-extensions-soap-api</include>
                 <include>org.mule.runtime:mule-extensions-api-persistence</include>
                 <include>org.mule.runtime:mule-extensions-api-dsql</include>
@@ -198,12 +210,11 @@
                 <include>org.mule.commons:mule-oauth-client-api</include>
                 <!-- Modules -->
                 <include>org.mule.runtime:mule-core-components</include>
-                <include>org.mule.runtime:mule-core-mvel</include>
                 <include>org.mule.runtime:mule-jar-handling-utils</include>
                 <include>org.mule.runtime:mule-module-artifact</include>
                 <include>org.mule.runtime:mule-module-artifact-activation</include>
+                <include>org.mule.runtime:mule-module-log4j-configurator</include>
                 <include>org.mule.runtime:mule-module-launcher</include>
-                <include>org.mule.runtime:mule-module-logging</include>
                 <include>org.mule.runtime:mule-module-feature-management</include>
                 <include>org.mule.runtime:mule-module-memory-management</include>
                 <include>org.mule.runtime:mule-module-global-config</include>
@@ -230,9 +241,6 @@
                 <include>org.mule.runtime:mule-module-tooling-support</include>
                 <include>org.mule.runtime:mule-module-troubleshooting</include>
 
-                <!-- Shared libs -->
-                <include>org.mule.mvel:mule-mvel2</include>
-
                 <!-- Mule Metrics Libs -->
                 <include>org.mule.runtime:mule-metrics-api</include>
                 <include>org.mule.runtime:mule-metrics-impl</include>
@@ -255,10 +263,10 @@
                 <include>org.mule.runtime:mule-metrics-exporter-impl</include>
                 <include>org.mule.runtime:mule-metrics-exporter-configuration-api</include>
                 <include>org.mule.runtime:mule-metrics-exporter-configuration-impl</include>
+
+                <!-- Mule Observability Libs -->
+                <include>org.mule.runtime:mule-module-observability</include>
             </includes>
-            <excludes>
-                <exclude>org.mule.runtime:mule-module-logging</exclude>
-            </excludes>
         </dependencySet>
 
         <!-- Mule Services -->
@@ -302,6 +310,16 @@
             </includes>
         </dependencySet>
 
+        <dependencySet>
+            <outputDirectory>services/${artifact.artifactId}-${artifact.baseVersion}</outputDirectory>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <useStrictFiltering>true</useStrictFiltering>
+            <unpack>true</unpack>
+            <includes>
+                <include>org.mule.services:mule-service-weave</include>
+            </includes>
+        </dependencySet>
+
         <!-- Launcher libraries -->
         <dependencySet>
             <outputDirectory>lib/launcher</outputDirectory>
@@ -316,8 +334,7 @@
         <!-- 3rd-party libraries -->
         <dependencySet>
             <outputDirectory>lib/opt</outputDirectory>
-            <!-- TODO W-13158368 - restore strict filtering -->
-            <useStrictFiltering>false</useStrictFiltering>
+            <useStrictFiltering>true</useStrictFiltering>
 
             <!-- Since we don't define any "includes" here, this will suck in the whole
     universe of transitive dependencies.  Therefore, we need to explicitly
@@ -342,6 +359,7 @@
                 <exclude>org.mule.runtime:mule-message-metadata-model</exclude>
                 <!--extensions API-->
                 <exclude>org.mule.runtime:mule-extensions-api</exclude>
+                <exclude>org.mule.runtime:mule-extensions-mime-types</exclude>
                 <exclude>org.mule.runtime:mule-extensions-soap-api</exclude>
                 <exclude>org.mule.runtime:mule-extensions-api-persistence</exclude>
                 <exclude>org.mule.runtime:mule-extensions-api-dsql</exclude>
@@ -360,16 +378,15 @@
                 <exclude>org.mule.commons:mule-oauth-client</exclude>
                 <exclude>org.mule.commons:mule-oauth-client-api</exclude>
                 <!-- lib/mule -->
-                <exclude>org.mule.mvel:mule-mvel2</exclude>
                 <exclude>org.mule.runtime:mule-core</exclude>
                 <exclude>org.mule.runtime:mule-core-components</exclude>
-                <exclude>org.mule.runtime:mule-core-mvel</exclude>
                 <exclude>org.mule.runtime:mule-jar-handling-utils</exclude>
                 <exclude>org.mule.runtime:mule-runtime-extension-model</exclude>
                 <exclude>org.mule.distributions:mule-services-all</exclude>
                 <exclude>org.mule.runtime:mule-modules-all</exclude>
                 <exclude>org.mule.runtime:mule-module-artifact</exclude>
                 <exclude>org.mule.runtime:mule-module-artifact-activation</exclude>
+                <exclude>org.mule.runtime:mule-module-log4j-configurator</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-soap-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-spring-support</exclude>
@@ -377,7 +394,6 @@
                 <exclude>org.mule.runtime:mule-module-extensions-xml-support</exclude>
                 <exclude>org.mule.runtime:mule-module-container</exclude>
                 <exclude>org.mule.runtime:mule-module-launcher</exclude>
-                <exclude>org.mule.runtime:mule-module-logging</exclude>
                 <exclude>org.mule.runtime:mule-module-feature-management</exclude>
                 <exclude>org.mule.runtime:mule-module-memory-management</exclude>
                 <exclude>org.mule.runtime:mule-module-global-config</exclude>
@@ -392,8 +408,7 @@
                 <exclude>org.mule.runtime:mule-module-service</exclude>
                 <exclude>org.mule.runtime:mule-module-policy-api</exclude>
                 <exclude>org.mule.runtime:mule-module-properties-config</exclude>
-                <exclude>org.mule.runtime:mule-module-reboot</exclude>
-                <exclude>org.mule.runtime:mule-module-jpms-utils</exclude>
+                <exclude>org.mule.runtime.boot:*</exclude>
                 <exclude>org.mule.runtime:mule-module-repository</exclude>
                 <exclude>org.mule.runtime:mule-module-spring-config</exclude>
                 <exclude>org.mule.runtime:mule-module-tls</exclude>
@@ -416,9 +431,6 @@
                 <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
                 <exclude>com.fasterxml.jackson.core:jackson-annotations</exclude>
-
-                <!-- Excludes libraries on lib/launcher-->
-                <exclude>org.codehaus.groovy:groovy</exclude>
 
                 <!-- Excludes services-->
                 <exclude>org.mule.services:*</exclude>
@@ -449,22 +461,14 @@
                 <exclude>org.mule.runtime:mule-metrics-exporter-api</exclude>
                 <exclude>org.mule.runtime:mule-metrics-exporter-impl</exclude>
 
+                <!-- Exclude observability libraries -->
+                <exclude>org.mule.runtime:mule-module-observability</exclude>
+
                 <!-- Exclude parameter parsing -->
                 <exclude>org.mule.distributions:mule-wrapper-additional-parameters-parser</exclude>
 
                 <!-- Exclude JVM version specific libraries -->                
                 <exclude>xml-apis:xml-apis</exclude>
-
-                <!-- Exclude artifacts included with the org.mule:maven-model-shaded artifact -->
-                <exclude>io.takari:takari-filemanager</exclude>
-                <exclude>io.takari.aether:takari-local-repository</exclude>
-                <exclude>org.apache.maven:maven-artifact</exclude>
-                <exclude>org.apache.maven:maven-model</exclude>
-                <exclude>org.apache.maven:maven-model-builder</exclude>
-                <exclude>org.apache.maven:maven-repository-metadata</exclude>
-                <exclude>org.apache.maven.resolver:maven-resolver-impl</exclude>
-                <exclude>org.apache.maven.resolver:maven-resolver-named-locks</exclude>
-                <exclude>org.eclipse.sisu:org.eclipse.sisu.inject</exclude>
 
             </excludes>
         </dependencySet>

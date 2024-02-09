@@ -1,10 +1,9 @@
 /*
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+ * Copyright 2023 Salesforce, Inc. All rights reserved.
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-
 package org.mule.runtime.module.embedded;
 
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
@@ -29,6 +28,8 @@ import static java.util.Optional.of;
 import static com.mashape.unirest.http.Unirest.get;
 import static com.mashape.unirest.http.Unirest.post;
 import static org.apache.commons.io.FileUtils.deleteQuietly;
+import static org.apache.commons.lang3.JavaVersion.JAVA_11;
+import static org.apache.commons.lang3.SystemUtils.isJavaVersionAtMost;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.startsWith;
@@ -36,6 +37,8 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeThat;
+import static org.junit.Assume.assumeTrue;
 import static org.junit.rules.ExpectedException.none;
 
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
@@ -47,24 +50,29 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import org.junit.AfterClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
+
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.apache.commons.io.IOUtils;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.AfterClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
@@ -97,13 +105,24 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO), createRetryTestOperation(port -> assertTestMessage(port)));
   }
 
-  @Description("Embedded runs an application depending on a connector in a legacy implementation")
+  @Description("Embedded runs an application depending on a connector in a legacy implementation prior to 4.5")
   @Issue("W-13562329")
   @Test
   public void legacyImplementationSupported() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.4.0");
+  }
+
+  @Description("Embedded runs an application depending on a connector in 4.5")
+  @Issue("W-14227143")
+  @Test
+  public void legacyImplementationForRuntime45Supported() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.5.0");
   }
 
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
@@ -118,6 +137,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Test
   // This test may fail depending on the JDK used to run the tests
   public void jdkResourceAvailableFromApp() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
+
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("jdk-exported-resource-app", empty());
     doWithinApplication(bundleDescriptor, getAppFolder("jdk-exported-resource-app"), createRetryTestOperation(port -> {
       try {
@@ -190,7 +211,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-invalid-xml", empty());
     expectedException.expectMessage(containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
     doWithinApplication(bundleDescriptor, getAppFolder("http-invalid-xml"), port -> {
-    }, true, true, true, empty(), false);
+    }, true, true, true, empty(), false, skipAstProperties());
   }
 
 
@@ -264,11 +285,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   public void redeploymentOfSuccessfulAppAfterFailingWithSameNameShouldWork() throws Exception {
     runWithContainer((container) -> {
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
 
-      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor);
+      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, System.currentTimeMillis()); // To force time to be different from
       // failing app.
       container.getDeploymentService()
@@ -284,7 +305,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
       long time = System.currentTimeMillis();
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time);
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
@@ -314,7 +335,8 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     runWithContainer((container) -> {
       long time = System.currentTimeMillis();
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time);
 
       deployExpectingFailureAndUndeploy(container, testAppLocation);
@@ -334,11 +356,11 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     runWithContainer((container) -> {
       long time = System.currentTimeMillis();
       BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("test-app", empty());
-      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor);
+      File testAppLocation = installMavenArtifact(getAppFolder("failing-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time);
       deployExpectingFailureAndUndeploy(container, testAppLocation);
 
-      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor);
+      testAppLocation = installMavenArtifact(getAppFolder("successful-app"), bundleDescriptor, skipAstProperties());
       overrideFileModificationTimeStamp(testAppLocation, time); // To force time to be the same of failing app.
       container.getDeploymentService()
           .deployApplication(ArtifactConfiguration.builder().artifactLocation(testAppLocation).build());
@@ -417,6 +439,12 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     } catch (InterruptedException e) {
       // do nothing
     }
+  }
+
+  private Properties skipAstProperties() {
+    final Properties sysProps = new Properties();
+    sysProps.put("skipAST", "true");
+    return sysProps;
   }
 
   static void assertTestMessage(Integer port) {

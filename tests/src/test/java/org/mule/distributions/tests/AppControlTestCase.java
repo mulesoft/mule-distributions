@@ -1,15 +1,16 @@
 /*
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+ * Copyright 2023 Salesforce, Inc. All rights reserved.
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
 package org.mule.distributions.tests;
 
+import static org.mule.runtime.core.api.util.ClassUtils.getResource;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
-import static org.mule.runtime.core.api.util.ClassUtils.getResource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class AppControlTestCase extends AbstractAppControl {
   @Before
   public void setup() {
     getMule().deploy(getResourceAsString("apps", EMPTY_APP));
-    Map<String, String> envVars = new HashMap<>();
+    Map<String, String> envVars = new HashMap<>(System.getenv());
     envVars.put("DETAIL_STATUS", "true");
     getMule().setTestEnvVars(envVars);
   }
@@ -83,6 +84,11 @@ public class AppControlTestCase extends AbstractAppControl {
 
   private static String getResourceAsString(String directory, String name) {
     return getResource(directory + "/" + name, AppControlTestCase.class).getPath();
+  }
+
+  @Override
+  public int getTestTimeoutSecs() {
+    return DEFAULT_TIMEOUT_TEST_SECS;
   }
 
 }

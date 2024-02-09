@@ -1,10 +1,9 @@
 /*
- * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+ * Copyright 2023 Salesforce, Inc. All rights reserved.
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-
 package org.mule.runtime.module.embedded;
 
 import static org.mule.runtime.module.artifact.api.descriptor.ArtifactPluginDescriptor.MULE_PLUGIN_CLASSIFIER;
@@ -25,12 +24,15 @@ import org.mule.tck.junit4.rule.DynamicPort;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -41,11 +43,18 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   @Rule
   public DynamicPort dynamicPort = new DynamicPort("httpPort");
 
+  @Before
+  public void installSmartConnectorUsingCore() {
+    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
+    final Properties props = new Properties();
+    // Skip the enforcer to allow using SNAPSHOT versions of the extensions-maven-plugin
+    props.put("enforcer.skip", "true");
+    installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor, props);
+  }
+
   @Description("Embedded deploys a domain and an application associated to that domain")
   @Test
   public void domainWithHttpConnector() throws Exception {
-    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
-    installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
     BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
     doWithinDomain(domainBundleDescriptor, getDomainFolder("simple-domain"), port -> {
       BundleDescriptor appBundleDescriptor = getApplicationBundleDescriptor("http-echo-domain-app", empty());
@@ -59,8 +68,6 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
   @Description("Embedded deploys a domain and an associated application that contains an xml sdk operation")
   @Test
   public void domainWithXmlSdkConfig() throws Exception {
-    BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
-    installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
     BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
     doWithinDomain(domainBundleDescriptor, getDomainFolder("simple-domain"), port -> {
       BundleDescriptor appBundleDescriptor = getApplicationBundleDescriptor("xml-sdk-domain-app", empty());
@@ -77,8 +84,6 @@ public class DomainTestCase extends AbstractEmbeddedTestCase {
     runWithContainer(container -> {
       try {
         testWithSystemProperty("httpPort", dynamicPort.getValue(), () -> {
-          BundleDescriptor connectorBundleDescriptor = getExtensionBundleDescriptor("smart-connector-using-core");
-          installMavenArtifact(getExtensionFolder("smart-connector-using-core"), connectorBundleDescriptor);
           BundleDescriptor domainBundleDescriptor = getDomainBundleDescriptor("simple-domain");
           File domainFile = installMavenArtifact(getDomainFolder("simple-domain"), domainBundleDescriptor);
           container.getDeploymentService().deployDomain(ArtifactConfiguration.builder().artifactLocation(domainFile).build());

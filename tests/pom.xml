@@ -6,13 +6,19 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-distributions</artifactId>
-        <version>4.5.0-SNAPSHOT</version>
+        <version>4.7.0-SNAPSHOT</version>
     </parent>
     <artifactId>mule-distro-tests</artifactId>
     <packaging>jar</packaging>
     <name>Mule Distribution Tests</name>
 
     <properties>
+        <surefire.args>
+            -XX:+IgnoreUnrecognizedVMOptions
+            --add-reads=org.mule.distribution.test=org.apache.commons.lang3
+            ${surefire.args.base}
+        </surefire.args>
+
         <javaModuleName>org.mule.distribution.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>

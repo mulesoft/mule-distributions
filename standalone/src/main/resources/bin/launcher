@@ -3,13 +3,13 @@
 # Check for java in path
 
 JAVA=
-if [ -n "`which java 2>/dev/null`" ]
+if [ ! -z "$JAVA_HOME" ]
 then
-    JAVA=java
+    JAVA=$JAVA_HOME/bin/java
 else
-    if [ ! -z "$JAVA_HOME" ]
+    if [ -n "`which java 2>/dev/null`" ]
     then
-        JAVA=$JAVA_HOME/bin/java
+        JAVA=java
     fi
 fi
 
@@ -28,5 +28,5 @@ commonsCliJar=`ls "$MULE_HOME"/lib/boot/commons-cli-*.jar`
 cp=.:$MULE_HOME/conf:$commonsCliJar
 
 # The string passed to eval must handle spaces in paths correctly.
-COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -jar ${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar $@"
+COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -jar \"${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar\" $@"
 eval $COMMAND_LINE

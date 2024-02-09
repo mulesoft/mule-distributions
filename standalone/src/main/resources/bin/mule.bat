@@ -40,7 +40,7 @@ if "%MULE_APP_LONG%" == "" (
     set MULE_APP_LONG=Mule
 )
 
-set _WRAPPER_BASE=%MULE_HOME%\lib\boot\exec\wrapper
+set _WRAPPER_BASE=%MULE_HOME%\lib\boot\tanuki\exec\wrapper
 
 rem Configure remote Java debugging options here
 rem Setting suspend=y will wait for you to connect before proceeding
@@ -90,7 +90,7 @@ rem ###############################################################
 
 rem Mule options: Set the working directory to the current one and pass all command-line
 rem options (-config, -builder, etc.) straight through to the main() method.
-set MULE_OPTS=set.MULE_APP=%MULE_APP% set.MULE_APP_LONG=%MULE_APP_LONG% set.MULE_HOME="%MULE_HOME%" set.MULE_BASE="%MULE_BASE%" set.MULE_LIB=%MULE_LIB% wrapper.working.dir="%CD%" wrapper.app.parameter.1=%1 wrapper.app.parameter.2=%2  wrapper.app.parameter.3=%3  wrapper.app.parameter.4=%4  wrapper.app.parameter.5=%5  wrapper.app.parameter.6=%6  wrapper.app.parameter.7=%7  wrapper.app.parameter.8=%8 wrapper.app.parameter.9=%9
+set MULE_OPTS=set.MULE_APP=%MULE_APP% set.MULE_APP_LONG=%MULE_APP_LONG% set.MULE_HOME="%MULE_HOME%" set.MULE_BASE="%MULE_BASE%" set.MULE_LIB=%MULE_LIB% set.JAVA_HOME="%JAVA_HOME%" wrapper.working.dir="%CD%" wrapper.app.parameter.1=%1 wrapper.app.parameter.2=%2  wrapper.app.parameter.3=%3  wrapper.app.parameter.4=%4  wrapper.app.parameter.5=%5  wrapper.app.parameter.6=%6  wrapper.app.parameter.7=%7  wrapper.app.parameter.8=%8 wrapper.app.parameter.9=%9
 
 rem Adding additional jvm arguments to wrapper configuration if needed
 rem The double %% in %%* is used to apply a late expansion and avoid having characters like the carat (^) being duplicated after a call command (SE-9110)
