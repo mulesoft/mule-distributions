@@ -38,7 +38,7 @@ public class AdditionalJvmParameters {
   private static final String JAVA_RUNNING_VERSION = "java.specification.version";
 
   protected static String jpdaOpts = "";
-  protected static int paramIndex = 0;
+  protected static int paramIndex = -1;
   protected static int classpathIndex = 0;
   static final String wrapperPrefix = "wrapper.java.additional.";
   static final String classpathPrefix = "wrapper.java.classpath.";
@@ -72,7 +72,6 @@ public class AdditionalJvmParameters {
     reader.close();
 
     if (debugEnabled || adHocOptionsAvailable) {
-      paramIndex += getNumberOfAdditionalJavaProperties(args);
       if (debugEnabled) {
         writeJpdaOpts(writer);
       }
@@ -226,9 +225,9 @@ public class AdditionalJvmParameters {
   protected static void writeJpdaOpts(FileWriter writer) throws IOException {
     List<String> jvmArgs = asList(jpdaOpts.split("\\s-"));
     for (String arg : jvmArgs) {
+      paramIndex++;
       writer.write(wrapperPrefix + paramIndex + "=-" + arg.replaceFirst("^-", "") + "\n");
       writer.flush();
-      paramIndex++;
     }
   }
 
@@ -242,10 +241,10 @@ public class AdditionalJvmParameters {
   protected static void writeAdHocProps(String[] args, FileWriter writer) throws IOException {
     List<String> adHocArgs = stream(args).filter(arg -> arg.startsWith("-M")).collect(Collectors.toList());
     for (String arg : adHocArgs) {
+      paramIndex++;
       writer.write(wrapperPrefix + paramIndex + "=\"" + arg.replaceFirst("^-M", "") + "\"\n");
       writer.write(wrapperPrefix + paramIndex + ".stripquotes=TRUE\n");
       writer.flush();
-      paramIndex++;
     }
 
   }
