@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-distributions</artifactId>
-        <version>4.4.0-20240122</version>
+        <version>4.4.0-20240215</version>
     </parent>
     <artifactId>mule-distro-tests</artifactId>
     <packaging>jar</packaging>
