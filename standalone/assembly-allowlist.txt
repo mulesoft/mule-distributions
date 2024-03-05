@@ -294,6 +294,8 @@
 /mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.+
 /mule-standalone-${productVersion}/lib/opt/xerces2-xsd11-2.11.3-MULE-002.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-3.+
+/mule-standalone-${productVersion}/lib/opt/log4j-slf4j-impl-2.23.0.jar
+/mule-standalone-${productVersion}/lib/opt/slf4j-simple-2.0.7.jar
 
 # raml-parser dependencies
 /mule-standalone-${productVersion}/lib/opt/btf-1.+
