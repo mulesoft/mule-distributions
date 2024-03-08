@@ -29,6 +29,24 @@
             <artifactId>mule-modules-all</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-log4j-boot-configurator</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-boot-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-jpms-utils</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mule.runtime</groupId>
