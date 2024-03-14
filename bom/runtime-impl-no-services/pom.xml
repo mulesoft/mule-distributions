@@ -32,15 +32,7 @@
             <exclusions>
                 <exclusion>
                     <groupId>org.mule.runtime.boot</groupId>
-                    <artifactId>mule-module-log4j-boot-configurator</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime.boot</groupId>
                     <artifactId>mule-module-boot-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime.boot</groupId>
-                    <artifactId>mule-module-logging</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.mule.runtime.boot</groupId>
