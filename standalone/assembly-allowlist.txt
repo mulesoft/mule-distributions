@@ -333,7 +333,9 @@
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-extension-incubator-1.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-sdk-extension-autoconfigure-spi-1.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-sender-okhttp-1.+
-/mule-standalone-${productVersion}/lib/opt/io.grpc-2.+
+/mule-standalone-${productVersion}/lib/opt/grpc-api-1.+
+/mule-standalone-${productVersion}/lib/opt/grpc-core-1.+
+/mule-standalone-${productVersion}/lib/opt/grpc-context-1.+
 /mule-standalone-${productVersion}/lib/opt/perfmark-api-0.+
 
 # 3rd party libs to be loaded only when running with java 8
