@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.mule.distributions</groupId>
+        <artifactId>mule-bom</artifactId>
+        <version>4.8.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mule-runtime-impl-no-services-no-boot-bom</artifactId>
+    <packaging>pom</packaging>
+    <name>Mule Runtime Implementation Libraries Without Services and Boot dependencies BOM</name>
+    <description>A BOM project that provides all the implementation libraries required by the Mule runtime, excluding services, boot dependencies</description>
+
+    <properties>
+        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mule.distributions</groupId>
+            <artifactId>mule-runtime-impl-no-services-bom</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-boot-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-jpms-utils</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mule.runtime.boot</groupId>
+                    <artifactId>mule-module-boot-commons</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>

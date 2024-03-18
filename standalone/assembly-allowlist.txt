@@ -44,6 +44,7 @@
 /mule-standalone-${productVersion}/lib/boot
 /mule-standalone-${productVersion}/lib/boot/commons-cli-1.+
 /mule-standalone-${productVersion}/lib/boot/mule-module-boot-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/boot/mule-module-boot-commons-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-reboot-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-jpms-utils-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-log4j-boot-configurator-${productVersion}.jar
