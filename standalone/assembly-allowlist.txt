@@ -99,7 +99,7 @@
 # /lib/mule
 #
 /mule-standalone-${productVersion}/lib/mule
-/mule-standalone-${productVersion}/lib/mule/mule-api-1.7.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-api-1.7.0-20240318.jar
 /mule-standalone-${productVersion}/lib/mule/mule-profiling-api-1.3.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.7.0-20240318.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.7.0-20240318.jar
