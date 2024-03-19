@@ -30,8 +30,6 @@
         <muleDependenciesVersion>1.x-SNAPSHOT</muleDependenciesVersion>
         <muleBomVersion>${project.version}</muleBomVersion>
 
-        <assertJVersion>3.5.2</assertJVersion>
-
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
 
@@ -50,12 +48,6 @@
                 <version>${muleDependenciesVersion}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertJVersion}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
