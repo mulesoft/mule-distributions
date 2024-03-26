@@ -125,6 +125,13 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.5.0");
   }
 
+  @Test
+  public void legacyImplementationForRuntime46Supported() throws Exception {
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.6.0");
+  }
+
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
   @Test
   public void restartEmbedded() throws Exception {
