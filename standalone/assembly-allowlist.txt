@@ -199,7 +199,7 @@
 /mule-standalone-${productVersion}/lib/opt/antlr-runtime-3.+
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.+
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.+
-/mule-standalone-${productVersion}/lib/opt/caffeine-+
+/mule-standalone-${productVersion}/lib/opt/caffeine-2.+
 /mule-standalone-${productVersion}/lib/opt/checker-qual-3.+
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.+
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.+
@@ -216,7 +216,7 @@
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.+
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.+
 /mule-standalone-${productVersion}/lib/opt/gson-2.+
-/mule-standalone-${productVersion}/lib/opt/guava-+
+/mule-standalone-${productVersion}/lib/opt/guava-33.+
 /mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.+
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.+
@@ -289,7 +289,7 @@
 /mule-standalone-${productVersion}/lib/opt/togglz-core-3.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
-/mule-standalone-${productVersion}/lib/opt/vibur-object-pool-+
+/mule-standalone-${productVersion}/lib/opt/vibur-object-pool-25.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-shared-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.+
@@ -313,7 +313,7 @@
 /mule-standalone-${productVersion}/lib/opt/yagi-1.+
 
 # Metrics/Tracing dependencies
-/mule-standalone-${productVersion}/lib/opt/annotations-+
+/mule-standalone-${productVersion}/lib/opt/annotations-24.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-1.+
