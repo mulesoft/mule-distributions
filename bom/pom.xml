@@ -22,6 +22,7 @@
         <module>runtime-api</module>
         <module>runtime-impl</module>
         <module>runtime-impl-no-services</module>
+        <module>runtime-impl-no-services-no-boot</module>
     </modules>
 
 </project>
