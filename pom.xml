@@ -26,7 +26,7 @@
     </build>
 
 	<properties>
-        <muleEmbeddedApiVersion>1.5.4-rc2</muleEmbeddedApiVersion>
+        <muleEmbeddedApiVersion>1.5.4</muleEmbeddedApiVersion>
         <muleDependenciesVersion>1.0.21</muleDependenciesVersion>
         <muleBomVersion>${project.version}</muleBomVersion>
 
