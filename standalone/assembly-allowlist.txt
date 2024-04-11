@@ -321,6 +321,7 @@
 /mule-standalone-${productVersion}/lib/opt/okhttp-4.+
 /mule-standalone-${productVersion}/lib/opt/okio-jvm-3.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-api-1.+
+/mule-standalone-${productVersion}/lib/opt/opentelemetry-api-incubator-1.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-context-1.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-api-events-1.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-exporter-otlp-1.+
