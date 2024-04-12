@@ -27,12 +27,6 @@
         </dependency>
         <dependency>
             <groupId>org.mule.distributions</groupId>
-            <artifactId>mule-runtime-impl-no-services-no-boot-bom</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.distributions</groupId>
             <artifactId>mule-services-all</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
