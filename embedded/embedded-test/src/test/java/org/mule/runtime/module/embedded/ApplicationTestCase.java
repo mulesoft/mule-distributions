@@ -133,6 +133,16 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.6.0");
   }
 
+  @Description("Embedded runs an application depending on a connector in 4.6")
+  @Issue("W-14853053")
+  @Test
+  public void legacyImplementationForRuntime47Supported() throws Exception {
+    assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
+    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
+    doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
+                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.7.0-rc1");
+  }
+
   @Description("Embedded can be restarted, start an instance of the container, runs the test, stop it and start it again and runs the test again")
   @Test
   public void restartEmbedded() throws Exception {
