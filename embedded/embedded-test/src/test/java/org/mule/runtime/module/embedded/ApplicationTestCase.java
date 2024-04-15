@@ -133,7 +133,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
                         createRetryTestOperation(ApplicationTestCase::assertTestMessage), "4.6.0");
   }
 
-  @Description("Embedded runs an application depending on a connector in 4.6")
+  @Description("Embedded runs an application depending on a connector in 4.7")
   @Issue("W-14853053")
   @Test
   public void legacyImplementationForRuntime47Supported() throws Exception {
