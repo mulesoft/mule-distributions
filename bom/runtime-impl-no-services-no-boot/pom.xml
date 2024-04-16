@@ -25,6 +25,9 @@
             <artifactId>mule-runtime-impl-no-services-bom</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
+
+            <!-- we cannot exclude the entire org.mule.runtime.boot group, since modules including
+            log4j-boot-configurator and mule-module-logging still need to remain in the mule class loader.-->
             <exclusions>
                 <exclusion>
                     <groupId>org.mule.runtime.boot</groupId>
