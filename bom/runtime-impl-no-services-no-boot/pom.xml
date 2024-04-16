@@ -34,10 +34,6 @@
                     <groupId>org.mule.runtime.boot</groupId>
                     <artifactId>mule-module-jpms-utils</artifactId>
                 </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime.boot</groupId>
-                    <artifactId>mule-module-boot-commons</artifactId>
-                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>
