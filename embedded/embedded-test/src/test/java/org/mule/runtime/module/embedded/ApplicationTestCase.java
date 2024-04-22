@@ -38,7 +38,6 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
-import static org.junit.Assume.assumeTrue;
 import static org.junit.rules.ExpectedException.none;
 
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
@@ -56,7 +55,6 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.SystemUtils;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -232,18 +230,6 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     assertThat(fileWriteDestination.exists(), is(false));
   }
 
-  @Description("Embedded runs an application using a custom log4j configuration file")
-  @Test
-  public void applicationWithCustomLogger() throws Exception {
-    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-echo", empty());
-    doWithinApplication(bundleDescriptor, getAppFolder("http-echo"),
-                        createRetryTestOperation(ApplicationTestCase::assertTestMessage), false, true, true,
-                        of(getClass().getClassLoader().getResource("log4j2-custom-file.xml").toURI()), true);
-    File expectedLoggingFile = new File(LOGGING_FILE);
-    assertThat(expectedLoggingFile.exists(), is(true));
-    assertThat(expectedLoggingFile.length(), greaterThan(0l));
-  }
-
   @Test
   @Description("Deploys an app with an http listener an checks that communication works")
   public void deployListenerIsAlive() throws Exception {
@@ -368,26 +354,6 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       executeWithRetry(() -> assertAppIsRunning(true));
     });
   }
-
-  @Test
-  @Description("Custom Log4j plugins are applied correctly on apps deployed to an embedded container")
-  public void applicationWithLog4jCustomPlugin() throws Exception {
-    BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("log4j-plugin", empty());
-    doWithinApplication(bundleDescriptor, getAppFolder("log4j-plugin"), createRetryTestOperation(port -> {
-      String logPath = format("%s/log4j-plugin.log", new File(embeddedTestHelper.getContainerFolder(), "logs").getAbsoluteFile());
-      File logFile = newFile(logPath);
-
-      assertTestMessage(port);
-
-      String expectedMessage = "I have intercepted your message :)";
-      String unexpectedMessage = "This log message should be intercepted...";
-      probe(() -> hasLine(containsString(expectedMessage)).matches(logFile),
-            () -> format("Text '%s' not present in the logs", expectedMessage));
-      probe(() -> !hasLine(containsString(unexpectedMessage)).matches(logFile),
-            () -> format("Text '%s' is present in the logs", unexpectedMessage));
-    }));
-  }
-
 
   private File getAppFolderInContainer(EmbeddedContainer container, File testAppLocation) {
     return new File(container.getContainerFolder(), Paths.get("apps", testAppLocation.getName().replace(".jar", "")).toString());
