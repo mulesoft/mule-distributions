@@ -1,7 +1,7 @@
 upstreamProjects:
   Mule-runtime/mule-integration-tests/rel/4.6.4,
   Mule-runtime/mule-http-service/rel/1.8.4,
-  Mule-runtime/mule-oauth-service/support/2.3.x,
+  Mule-runtime/mule-oauth-service/rel/2.3.4,
   Mule-runtime/mule-scheduler-service/rel/1.6.4,
   Mule-runtime/mule-soap-service/support/1.6.x,
   Mule-runtime/mule-embedded-api/rel/1.6.4,
