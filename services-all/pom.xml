@@ -26,21 +26,6 @@
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-scheduler</artifactId>
             <classifier>mule-service</classifier>
-            <exclusions>
-                <!--TODO(gfernandes): remove this, see validation's comment-->
-                <exclusion>
-                    <groupId>org.quartz-scheduler</groupId>
-                    <artifactId>quartz</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.mchange</groupId>
-                    <artifactId>c3p0</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.graalvm.js</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mule.services</groupId>
@@ -51,152 +36,16 @@
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-http</artifactId>
             <classifier>mule-service</classifier>
-            <exclusions>
-                <!-- Runtime Dependencies-->
-                <exclusion>
-                    <groupId>org.mule.runtime</groupId>
-                    <artifactId>mule-service-http-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime</groupId>
-                    <artifactId>mule-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime</groupId>
-                    <artifactId>mule-module-tls</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.glassfish.grizzly</groupId>
-                    <artifactId>grizzly-http-server</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.glassfish.grizzly</groupId>
-                    <artifactId>connection-pool</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.mail</groupId>
-                    <artifactId>mailapi</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.glassfish.grizzly</groupId>
-                    <artifactId>grizzly-http-client</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.glassfish.grizzly</groupId>
-                    <artifactId>grizzly-websockets</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.glassfish.grizzly</groupId>
-                    <artifactId>grizzly-http-servlet</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-text</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mule.services</groupId>
             <artifactId>mule-service-soap</artifactId>
             <classifier>mule-service</classifier>
-            <exclusions>
-                <!-- Runtime Dependencies-->
-                <exclusion>
-                    <groupId>org.apache.cxf</groupId>
-                    <artifactId>cxf-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.cxf</groupId>
-                    <artifactId>cxf-rt-frontend-simple</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>net.sf.saxon</groupId>
-                    <artifactId>Saxon-HE</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>net.java.dev.stax-utils</groupId>
-                    <artifactId>stax-utils</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.cxf</groupId>
-                    <artifactId>cxf-rt-ws-security</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.santuario</groupId>
-                    <artifactId>xmlsec</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.bouncycastle</groupId>
-                    <artifactId>bcprov-jdk18on</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-lang3</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.cxf</groupId>
-                    <artifactId>cxf-rt-ws-rm</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime</groupId>
-                    <artifactId>mule-service-http-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule</groupId>
-                    <artifactId>mule-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.runtime</groupId>
-                    <artifactId>mule-service-soap-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.services</groupId>
-                    <artifactId>mule-service-http</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mule.wsdl</groupId>
-                    <artifactId>mule-wsdl-parser</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.xml.messaging.saaj</groupId>
-                    <artifactId>saaj-impl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.cryptacular</groupId>
-                    <artifactId>cryptacular</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.fasterxml.woodstox</groupId>
-                    <artifactId>woodstox-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jetbrains.kotlin</groupId>
-                    <artifactId>kotlin-stdlib</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>jakarta.xml.ws</groupId>
-                    <artifactId>jakarta.xml.ws-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.activation</groupId>
-                    <artifactId>jakarta.activation</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <artifactId>mule-service-weave</artifactId>
             <groupId>org.mule.services</groupId>
             <classifier>mule-service</classifier>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 </project>
