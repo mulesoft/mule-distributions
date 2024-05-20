@@ -23,6 +23,7 @@ module org.mule.distribution.embedded.impl {
   requires org.mule.runtime.log4j;
 
   requires org.mule.runtime.embedded.api;
+  requires org.mule.runtime.embedded.commons;
 
   requires org.apache.commons.io;
   requires zip4j;
