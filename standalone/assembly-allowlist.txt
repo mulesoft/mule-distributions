@@ -339,6 +339,7 @@
 /mule-standalone-${productVersion}/lib/opt/grpc-core-1.+
 /mule-standalone-${productVersion}/lib/opt/grpc-context-1.+
 /mule-standalone-${productVersion}/lib/opt/perfmark-api-0.+
+/mule-standalone-${productVersion}/lib/opt/hazelcast-5.+
 
 # 3rd party libs to be loaded only when running with java 8
 /mule-standalone-${productVersion}/lib/opt/jdk-8
