@@ -8,6 +8,7 @@ package org.mule.runtime.params;
 
 import static java.lang.System.getProperty;
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Files.newTemporaryFile;
@@ -19,8 +20,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -214,6 +218,35 @@ public class AdditionalJvmParametersTestCase {
     sb.append("wrapper.java.additional.21.stripquotes=TRUE\n");
     sb.append("-Dmule.anotherone=false");
     assertThat(wrapperAdditionalConfFile).hasContent(sb.toString());
+  }
+
+  @Test
+  public void testProps() throws IOException {
+    String wrapperPrefix = "wrapper.java.additional.";
+    StringWriter writer = new StringWriter();
+    Properties properties = new Properties();
+    properties.setProperty("wrapper.java.additional.<n1>", "value1");
+    properties.setProperty("wrapper.java.additional.<n1>.suffix", "value1");
+    properties.setProperty("wrapper.java.additional.<n2>", "value2");
+    properties.setProperty("wrapper.java.classpath.<n1>", "classpathValue1");
+    properties.setProperty("other.property", "otherValue");
+
+    AdditionalJvmParameters.processBootstrapProperties(properties, writer);
+
+    List<String> actualList = Arrays.asList(writer.toString().split("\n"));
+    List<String> list = actualList.stream().filter(s -> s.matches("wrapper\\.java\\.additional.*value1")).collect(toList());
+    assertThat(list.size(), is(2));
+
+    String prop1 = list.get(0);
+    int prop1EndIdx = prop1.indexOf("=", wrapperPrefix.length() + 1);
+    String prop2 = list.get(1);
+    int prop2EndIdx = prop2.indexOf(".", wrapperPrefix.length() + 1);
+    assertThat(prop1.substring(0, prop1EndIdx), is(prop2.substring(0, prop2EndIdx)));
+
+    Arrays.asList("wrapper.java.additional.\\d+=value2",
+                  "wrapper.java.classpath.\\d+=classpathValue1",
+                  "other.property=otherValue")
+        .forEach(pattern -> assertThat(actualList.stream().anyMatch(p -> p.matches(pattern)), is(true)));
   }
 
 }
