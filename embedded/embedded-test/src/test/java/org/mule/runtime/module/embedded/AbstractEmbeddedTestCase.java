@@ -66,7 +66,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   public SystemProperty jvmVersionExtensionEnforcementLoose =
       new SystemProperty("mule.jvm.version.extension.enforcement", "LOOSE");
 
-  // mule-embedded-api no longer supports log4j configuration since 1.8, this property has to be set so the log4j configuration
+  // mule-embedded-api no longer supports log4j configuration since 1.7, this property has to be set so the log4j configuration
   // doesn't take place
   @Rule
   public SystemProperty simpleLogging =
