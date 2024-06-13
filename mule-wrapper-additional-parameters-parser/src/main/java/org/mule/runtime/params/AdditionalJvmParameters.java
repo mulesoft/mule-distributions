@@ -72,6 +72,7 @@ public class AdditionalJvmParameters {
     reader.close();
 
     if (debugEnabled || adHocOptionsAvailable) {
+      paramIndex += getNumberOfAdditionalJavaProperties(args);
       if (debugEnabled) {
         writeJpdaOpts(writer);
       }
