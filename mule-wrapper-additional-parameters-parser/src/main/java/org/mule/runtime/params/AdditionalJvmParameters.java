@@ -42,7 +42,7 @@ public class AdditionalJvmParameters {
   protected static int classpathIndex = 0;
   static final String wrapperPrefix = "wrapper.java.additional.";
   static final String classpathPrefix = "wrapper.java.classpath.";
-  static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 20;
+  static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 0;
 
   public static void main(String[] args) throws IOException {
     File wrapperConfigFile = new File(args[0]);
