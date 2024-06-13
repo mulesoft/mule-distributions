@@ -112,7 +112,7 @@ public class AdditionalJvmParametersTestCase {
     assertThat(indexWithAdditionalProperties, is(41));
     args[4] = "";
     int indexWithoutAdditionalProperties = additionalJvmParameters.getNumberOfAdditionalJavaProperties(args);
-    assertThat(indexWithoutAdditionalProperties, is(21));
+    assertThat(indexWithoutAdditionalProperties, is(1));
     args[4] = "-additionalJavaProperties=40";
   }
 
