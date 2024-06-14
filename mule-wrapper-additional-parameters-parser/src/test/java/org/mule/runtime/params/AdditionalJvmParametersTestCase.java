@@ -13,6 +13,7 @@ import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Files.newTemporaryFile;
 import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.matchesPattern;
 import static org.junit.Assert.assertThat;
@@ -236,7 +237,7 @@ public class AdditionalJvmParametersTestCase {
 
     List<String> actualList = asList(writer.toString().split("\n"));
     List<String> list = actualList.stream().filter(s -> s.matches("wrapper\\.java\\.additional.*value1")).collect(toList());
-    assertThat(list.size(), is(2));
+    assertThat(list, hasSize(2));
 
     String prop1 = list.get(0);
     int prop1EndIdx = prop1.indexOf("=", wrapperPrefix.length() + 1);
