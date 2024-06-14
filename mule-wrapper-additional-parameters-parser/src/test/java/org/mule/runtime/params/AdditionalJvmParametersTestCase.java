@@ -12,7 +12,9 @@ import static java.util.stream.Collectors.toList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Files.newTemporaryFile;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.matchesPattern;
 import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
@@ -22,7 +24,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -221,7 +222,7 @@ public class AdditionalJvmParametersTestCase {
   }
 
   @Test
-  public void testProps() throws IOException {
+  public void testProcessBootstrapProperties() throws IOException {
     String wrapperPrefix = "wrapper.java.additional.";
     StringWriter writer = new StringWriter();
     Properties properties = new Properties();
@@ -233,7 +234,7 @@ public class AdditionalJvmParametersTestCase {
 
     AdditionalJvmParameters.processBootstrapProperties(properties, writer);
 
-    List<String> actualList = Arrays.asList(writer.toString().split("\n"));
+    List<String> actualList = asList(writer.toString().split("\n"));
     List<String> list = actualList.stream().filter(s -> s.matches("wrapper\\.java\\.additional.*value1")).collect(toList());
     assertThat(list.size(), is(2));
 
@@ -243,10 +244,8 @@ public class AdditionalJvmParametersTestCase {
     int prop2EndIdx = prop2.indexOf(".", wrapperPrefix.length() + 1);
     assertThat(prop1.substring(0, prop1EndIdx), is(prop2.substring(0, prop2EndIdx)));
 
-    Arrays.asList("wrapper.java.additional.\\d+=value2",
-                  "wrapper.java.classpath.\\d+=classpathValue1",
-                  "other.property=otherValue")
-        .forEach(pattern -> assertThat(actualList.stream().anyMatch(p -> p.matches(pattern)), is(true)));
+    assertThat(actualList, hasItem(matchesPattern("wrapper.java.additional.\\d+=value2")));
+    assertThat(actualList, hasItem(matchesPattern("wrapper.java.classpath.\\d+=classpathValue1")));
+    assertThat(actualList, hasItem(matchesPattern("other.property=otherValue")));
   }
-
 }
