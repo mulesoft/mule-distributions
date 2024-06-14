@@ -20,8 +20,11 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -265,10 +268,18 @@ public class AdditionalJvmParameters {
     }
   }
 
-  protected static void processBootstrapProperties(Properties bootstrapProperties, FileWriter writer) throws IOException {
+  protected static void processBootstrapProperties(Properties bootstrapProperties, Writer writer) throws IOException {
+    Pattern additionalPattern = compile("wrapper\\.java\\.additional\\.(<n\\d>)(\\.\\w+)?");
+    // Correspond <n> component number with the index in order to re-use the same index for the same component number
+    Map<String, Integer> nComponentIndexMap = new HashMap<>();
+
     for (Entry entry : bootstrapProperties.entrySet()) {
-      if (entry.getKey().toString().matches("wrapper\\.java\\.additional\\.<n\\d>")) {
-        writer.write(wrapperPrefix + ++paramIndex + "=" + entry.getValue().toString() + "\n");
+      Matcher additionalMatcher = additionalPattern.matcher(entry.getKey().toString());
+      if (additionalMatcher.matches()) {
+        String wrapperSuffix = additionalMatcher.group(2) != null ? additionalMatcher.group(2) : "";
+        int index = nComponentIndexMap.computeIfAbsent(additionalMatcher.group(1), k -> ++paramIndex);
+
+        writer.write(wrapperPrefix + index + wrapperSuffix + "=" + entry.getValue().toString() + "\n");
       } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d>")) {
         writer.write(classpathPrefix + ++classpathIndex + "=" + entry.getValue().toString() + "\n");
       } else {
