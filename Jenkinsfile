@@ -1,4 +1,4 @@
-def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/4.3.0-APRIL-2023",
+def UPSTREAM_PROJECTS_LIST = [ "Mule-runtime/mule-integration-tests/4.3.0-APRIL-2023-WITH-W-15141905-W-15782010",
                                "Mule-runtime/mule-http-service/1.5.21",
                                "Mule-runtime/mule-oauth-service/2.0.1",
                                "Mule-runtime/mule-scheduler-service/1.3.5",
