@@ -200,7 +200,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
       } catch (UnirestException e) {
         assertThat(org.apache.commons.lang3.exception.ExceptionUtils.getRootCause(e), instanceOf(ConnectException.class));
       }
-    }, true, false, true, empty(), false);
+    }, true, false, true, false);
   }
 
   @Description("Embedded runs an application in lazy init mode and enable xml validations")
@@ -209,7 +209,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-invalid-xml", empty());
     expectedException.expectMessage(containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
     doWithinApplication(bundleDescriptor, getAppFolder("http-invalid-xml"), port -> {
-    }, true, true, true, empty(), false, skipAstProperties());
+    }, true, true, true, false, skipAstProperties());
   }
 
 

@@ -74,7 +74,6 @@ public class EmbeddedLifecycleTestCase {
               .build())
           .mavenConfiguration(newMavenConfigurationBuilder().localMavenRepositoryLocation(temporaryFolder.newFolder())
               .build())
-          .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
           .product(MULE)
           .build();
       fail("Should fail to create");
@@ -99,7 +98,6 @@ public class EmbeddedLifecycleTestCase {
             .localMavenRepositoryLocation(getLocalRepositoryFolder())
             .userProperties(userProperties)
             .build())
-        .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
         .product(MULE)
         .build();
 
@@ -163,7 +161,6 @@ public class EmbeddedLifecycleTestCase {
         .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
             .localMavenRepositoryLocation(getLocalRepositoryFolder())
             .build())
-        .log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
         .product(MULE);
   }
 
