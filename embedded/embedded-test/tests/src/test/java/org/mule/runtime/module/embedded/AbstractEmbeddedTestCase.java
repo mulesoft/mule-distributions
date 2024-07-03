@@ -12,7 +12,6 @@ import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArti
 
 import static java.lang.String.valueOf;
 import static java.util.Arrays.asList;
-import static java.util.Optional.empty;
 
 import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.io.FileUtils.toFile;
@@ -31,9 +30,7 @@ import org.mule.tck.probe.JUnitProbe;
 import org.mule.tck.probe.PollingProber;
 
 import java.io.File;
-import java.net.URI;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.Properties;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -90,7 +87,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                      Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, true,
                      APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration),
                      false);
@@ -99,7 +96,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                      Consumer<Integer> portConsumer, String muleVersion)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, true,
                      APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration),
                      false, muleVersion, new Properties());
@@ -108,7 +105,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinApplicationRestartingEmbedded(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                                        Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, true,
                      APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration),
                      true);
@@ -117,7 +114,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinApplicationNotInstalled(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                                  Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, true,
                      APPS_FOLDER, false, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration),
                      false);
@@ -130,12 +127,11 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                      boolean lazyInitializationEnabled,
                                      boolean xmlValidationsEnabled,
                                      boolean lazyConnectionsEnabled,
-                                     Optional<URI> log4JConfigurationFileOptional,
                                      boolean validateUsageOfDeploymentService)
       throws Exception {
     doWithinApplication(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled,
-                        xmlValidationsEnabled, lazyConnectionsEnabled, log4JConfigurationFileOptional,
-                        validateUsageOfDeploymentService, new Properties());
+                        xmlValidationsEnabled, lazyConnectionsEnabled, validateUsageOfDeploymentService,
+                        new Properties());
   }
 
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor,
@@ -144,13 +140,11 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                      boolean lazyInitializationEnabled,
                                      boolean xmlValidationsEnabled,
                                      boolean lazyConnectionsEnabled,
-                                     Optional<URI> log4JConfigurationFileOptional,
                                      boolean validateUsageOfDeploymentService,
                                      Properties props)
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled,
-                     xmlValidationsEnabled, lazyConnectionsEnabled,
-                     log4JConfigurationFileOptional, validateUsageOfDeploymentService,
+                     xmlValidationsEnabled, lazyConnectionsEnabled, validateUsageOfDeploymentService,
                      APPS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployApplication(artifactConfiguration),
                      false, props);
@@ -159,7 +153,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void doWithinDomain(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                 Consumer<Integer> portConsumer)
       throws Exception {
-    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, empty(), true,
+    doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, false, true, true, true,
                      DOMAINS_FOLDER, true, (container, artifactConfiguration) -> container.getDeploymentService()
                          .deployDomain(artifactConfiguration),
                      false);
@@ -171,7 +165,6 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   boolean lazyInitializationEnabled,
                                   boolean xmlValidationsEnabled,
                                   boolean lazyConnectionsEnabled,
-                                  Optional<URI> log4JConfigurationFileOptional,
                                   boolean validateUsageOfDeploymentService,
                                   String artifactDeploymentFolder,
                                   boolean installArtifact,
@@ -179,7 +172,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   boolean restartingEmbedded)
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled, xmlValidationsEnabled,
-                     lazyConnectionsEnabled, log4JConfigurationFileOptional, validateUsageOfDeploymentService,
+                     lazyConnectionsEnabled, validateUsageOfDeploymentService,
                      artifactDeploymentFolder, installArtifact, deployConsumer, restartingEmbedded,
                      System.getProperty("mule.version"), new Properties());
   }
@@ -190,7 +183,6 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   boolean lazyInitializationEnabled,
                                   boolean xmlValidationsEnabled,
                                   boolean lazyConnectionsEnabled,
-                                  Optional<URI> log4JConfigurationFileOptional,
                                   boolean validateUsageOfDeploymentService,
                                   String artifactDeploymentFolder,
                                   boolean installArtifact,
@@ -199,7 +191,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   Properties props)
       throws Exception {
     doWithinArtifact(applicationBundleDescriptor, artifactFolder, portConsumer, lazyInitializationEnabled, xmlValidationsEnabled,
-                     lazyConnectionsEnabled, log4JConfigurationFileOptional, validateUsageOfDeploymentService,
+                     lazyConnectionsEnabled, validateUsageOfDeploymentService,
                      artifactDeploymentFolder, installArtifact, deployConsumer, restartingEmbedded,
                      System.getProperty("mule.version"), props);
   }
@@ -210,7 +202,6 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   boolean lazyInitializationEnabled,
                                   boolean xmlValidationsEnabled,
                                   boolean lazyConnectionsEnabled,
-                                  Optional<URI> log4JConfigurationFileOptional,
                                   boolean validateUsageOfDeploymentService,
                                   String artifactDeploymentFolder,
                                   boolean installArtifact,
