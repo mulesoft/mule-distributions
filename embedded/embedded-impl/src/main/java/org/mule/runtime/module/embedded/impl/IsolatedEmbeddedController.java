@@ -55,7 +55,6 @@ import net.lingala.zip4j.ZipFile;
  *
  * @since 4.8
  */
-@Deprecated
 public class IsolatedEmbeddedController {
 
   private final ContainerInfo containerInfo;
