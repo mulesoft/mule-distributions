@@ -58,6 +58,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <useModulePath>false</useModulePath>
                     <systemPropertyVariables>
                         <mule.version>${project.version}</mule.version>
                         <settings.file>${settingsFile}</settings.file>
@@ -70,25 +71,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-embedded-api</artifactId>
-            <version>${muleEmbeddedApiVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.tests</groupId>
-            <artifactId>mule-tests-unit</artifactId>
+            <groupId>org.mule.distributions</groupId>
+            <artifactId>mule-module-embedded-test-helper-bootstrap</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mule</groupId>
-            <artifactId>mule-maven-client-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.lingala.zip4j</groupId>
-            <artifactId>zip4j</artifactId>
-            <version>2.11.3</version>
-        </dependency>
-        
+
         <!--
             This is only needed because the requirement of `org.slf4j` in the boot layer messes
             with the `log4j` implementation in the class loader created by `mule-embedded-api`, and the fix is to provide
@@ -114,38 +101,20 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-tests-allure</artifactId>
             <version>${project.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mockito</groupId>-->
+<!--            <artifactId>mockito-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.mashape.unirest</groupId>
-            <artifactId>unirest-java</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpmime</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-module-artifact</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.tests</groupId>
-            <artifactId>mule-tests-infrastructure</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
         </dependency>
     </dependencies>
 

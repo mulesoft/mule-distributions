@@ -10,13 +10,18 @@
  * @moduleGraph
  * @since 4.5
  */
-module org.mule.distribution.embedded.test {
+module org.mule.distribution.embedded.test.helper {
 
   requires org.mule.runtime.embedded.api;
   requires org.mule.runtime.maven.client.test;
+  requires org.mule.runtime.artifact;
+  requires org.mule.test.unit;
+  requires org.mule.test.infrastructure;
+  requires org.mule.distribution.embedded.test.helper.bootstrap;
 
   requires junit;
   requires org.apache.commons.io;
+  requires org.hamcrest;
   requires org.slf4j;
   requires zip4j;
 
@@ -31,6 +36,6 @@ module org.mule.distribution.embedded.test {
   // log4j-slf4j2-impl
   requires org.apache.logging.log4j.slf4j2.impl;
 
-  exports org.mule.runtime.module.embedded.test.hepler;
+  exports org.mule.runtime.module.embedded.test.helper;
 
 }
