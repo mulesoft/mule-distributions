@@ -7,15 +7,12 @@
 package org.mule.runtime.module.embedded;
 
 import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
-import static org.mule.runtime.core.api.util.FileUtils.newFile;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
-import static org.mule.tck.probe.PollingProber.probe;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EMBEDDED_API;
 import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedApiStory.CONFIGURATION;
-import static org.mule.test.infrastructure.FileContainsInLine.hasLine;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.getApplicationBundleDescriptor;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 
@@ -31,7 +28,6 @@ import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.lang3.JavaVersion.JAVA_11;
 import static org.apache.commons.lang3.SystemUtils.isJavaVersionAtMost;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
@@ -43,6 +39,7 @@ import static org.junit.rules.ExpectedException.none;
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
+import org.mule.runtime.module.embedded.test.runner.ArtifactClassLoaderRunner;
 import org.mule.tck.junit4.rule.DynamicPort;
 
 import java.io.File;
@@ -71,9 +68,11 @@ import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.junit.runner.RunWith;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
+@RunWith(ArtifactClassLoaderRunner.class)
 public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   private static final String LOGGING_FILE = "app.log";

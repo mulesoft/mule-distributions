@@ -5,12 +5,12 @@
  * LICENSE.txt file.
  */
 /**
- * Mule Embedded Implementation Tests.
+ * Mule Embedded Implementation Tests Helper.
  *
  * @moduleGraph
  * @since 4.5
  */
-module org.mule.distribution.embedded.test {
+module org.mule.distribution.embedded.test.helper {
 
   requires org.mule.runtime.embedded.api;
   requires org.mule.runtime.maven.client.test;

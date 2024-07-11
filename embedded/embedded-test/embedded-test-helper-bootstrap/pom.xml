@@ -4,24 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.mule.distributions</groupId>
-        <artifactId>mule-embedded</artifactId>
+        <artifactId>mule-module-embedded-test-parent</artifactId>
         <version>4.8.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mule-module-embedded-test-parent</artifactId>
-    <name>Mule Embedded Implementation Tests Parent</name>
-
-    <packaging>pom</packaging>
+    <artifactId>mule-module-embedded-test-helper-bootstrap</artifactId>
+    <name>Mule Embedded Implementation Tests Helper Bootstrapper</name>
 
     <properties>
-        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
+        <javaModuleName>org.mule.distribution.embedded.test.helper.bootstrap</javaModuleName>
+        <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
     </properties>
-
-    <modules>
-        <module>tests</module>
-        <module>embedded-test-helper</module>
-        <module>embedded-test-helper-bootstrap</module>
-    </modules>
 
 </project>
