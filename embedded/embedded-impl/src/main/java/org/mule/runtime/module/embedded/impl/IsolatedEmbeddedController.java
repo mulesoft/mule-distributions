@@ -133,7 +133,9 @@ public class IsolatedEmbeddedController {
   public void executeWithinContainerClassLoader(ContainerTask task) {
     ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
     try {
-      Thread.currentThread().setContextClassLoader(containerClassLoader.getClassLoader());
+      // This is the unfiltered classloader, to be consistent with how the standalone is bootstrapped.
+      // This is required to discover the server-plgins when running in a modularized environment.
+      Thread.currentThread().setContextClassLoader(containerClassLoader.getClass().getClassLoader());
       task.run();
     } catch (Exception e) {
       throw new RuntimeException(e);
