@@ -39,7 +39,6 @@ import static org.junit.rules.ExpectedException.none;
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
 import org.mule.runtime.module.embedded.api.EmbeddedContainer;
-import org.mule.runtime.module.embedded.test.runner.ArtifactClassLoaderRunner;
 import org.mule.tck.junit4.rule.DynamicPort;
 
 import java.io.File;
@@ -68,11 +67,9 @@ import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import org.junit.runner.RunWith;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
-@RunWith(ArtifactClassLoaderRunner.class)
 public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   private static final String LOGGING_FILE = "app.log";
