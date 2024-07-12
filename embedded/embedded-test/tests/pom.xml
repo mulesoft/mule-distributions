@@ -13,6 +13,11 @@
     <name>Mule Embedded Implementation Tests</name>
 
     <properties>
+        <!--
+            The testing approach in W-15884079 works as long as packages needed for `org.mule.runtime.jpms.utils` are opened
+            to the unnamed module in `surefire.test.unit.open.args`, otherwise we would need to set `org.mule.runtime.embedded.api`
+            in a module layer instead of the unnamed module and propagate the `opens`.
+         -->
         <surefire.args>
             ${surefire.test.unit.open.args}
         </surefire.args>
