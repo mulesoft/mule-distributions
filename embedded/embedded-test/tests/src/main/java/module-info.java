@@ -7,7 +7,7 @@
 
 
 /**
- * Embedded tests.
+ * Mule Embedded Implementation Tests.
  *
  * @since 4.5
  */
