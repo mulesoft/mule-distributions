@@ -9,6 +9,7 @@
 /**
  * Mule Embedded Implementation Tests.
  *
+ * @moduleGraph
  * @since 4.5
  */
 module org.mule.distribution.embedded.test {

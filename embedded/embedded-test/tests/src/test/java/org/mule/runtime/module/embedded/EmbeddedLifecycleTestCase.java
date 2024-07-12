@@ -80,7 +80,7 @@ public class EmbeddedLifecycleTestCase {
   @Parameter
   public boolean useIsolation;
 
-  @Parameters(name = "{0}")
+  @Parameters(name = "useIsolation: {0}")
   public static Collection<Boolean> data() {
     return asList(false, true);
   }
