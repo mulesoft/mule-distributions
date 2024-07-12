@@ -21,7 +21,6 @@
     <modules>
         <module>tests</module>
         <module>embedded-test-helper</module>
-        <module>embedded-test-helper-bootstrap</module>
     </modules>
 
 </project>
