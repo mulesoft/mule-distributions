@@ -18,6 +18,7 @@ import static org.mule.test.allure.AllureConstants.EmbeddedApiFeature.EmbeddedAp
 
 import static java.lang.System.getProperty;
 
+import static com.google.common.primitives.Booleans.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
@@ -34,6 +35,7 @@ import org.mule.tck.junit4.rule.SystemProperty;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
@@ -46,9 +48,14 @@ import io.qameta.allure.Features;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 @Features(@Feature(EMBEDDED_API))
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
+@RunWith(Parameterized.class)
 public class EmbeddedLifecycleTestCase {
 
   private static EmbeddedTestHelper embeddedTestHelper;
@@ -64,8 +71,22 @@ public class EmbeddedLifecycleTestCase {
   @Rule
   public SystemProperty skipModuleTweakingValidation = new SystemProperty("mule.module.tweaking.validation.skip", "true");
 
+  // mule-embedded-api no longer supports log4j configuration since 1.7, this property has to be set so the log4j configuration
+  // doesn't take place
+  @Rule
+  public SystemProperty simpleLogging =
+      new SystemProperty("mule.simpleLog", "true");
+
+  @Parameter
+  public boolean useIsolation;
+
+  @Parameters(name = "useIsolation: {0}")
+  public static Collection<Boolean> data() {
+    return asList(false, true);
+  }
+
   @Test
-  public void shouldFailToCreateDueToMissingVersionOfEmbedded() throws IOException, URISyntaxException {
+  public void shouldFailToCreateDueToMissingVersionOfEmbedded() throws IOException {
     try {
       builder()
           .muleVersion("1.0.0")
@@ -75,6 +96,7 @@ public class EmbeddedLifecycleTestCase {
           .mavenConfiguration(newMavenConfigurationBuilder().localMavenRepositoryLocation(temporaryFolder.newFolder())
               .build())
           .product(MULE)
+          .useIsolation(useIsolation)
           .build();
       fail("Should fail to create");
     } catch (IllegalStateException e) {
@@ -99,6 +121,7 @@ public class EmbeddedLifecycleTestCase {
             .userProperties(userProperties)
             .build())
         .product(MULE)
+        .useIsolation(useIsolation)
         .build();
 
     embeddedContainer.start();
@@ -152,7 +175,7 @@ public class EmbeddedLifecycleTestCase {
     assertThat(getProperty("mule.home"), is(containerFolder));
   }
 
-  private EmbeddedContainer.EmbeddedContainerBuilder getBuilderWithDefaults() throws IOException, URISyntaxException {
+  private EmbeddedContainer.EmbeddedContainerBuilder getBuilderWithDefaults() throws IOException {
     return builder()
         .muleVersion(System.getProperty("mule.version"))
         .containerConfiguration(ContainerConfiguration.builder()
@@ -161,7 +184,8 @@ public class EmbeddedLifecycleTestCase {
         .mavenConfiguration(createDefaultCommunityMavenConfigurationBuilder()
             .localMavenRepositoryLocation(getLocalRepositoryFolder())
             .build())
-        .product(MULE);
+        .product(MULE)
+        .useIsolation(useIsolation);
   }
 
 }
