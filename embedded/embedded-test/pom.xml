@@ -9,140 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mule-module-embedded-test</artifactId>
-    <name>Mule Embedded Implementation Tests</name>
+    <artifactId>mule-module-embedded-test-parent</artifactId>
+    <name>Mule Embedded Implementation Tests Parent</name>
+
+    <packaging>pom</packaging>
 
     <properties>
-        <surefire.args>
-            --add-reads=org.mule.distribution.embedded.test=org.apache.commons.lang3
-            --add-exports=org.mule.distribution.embedded.test/org.mule.runtime.module.embedded=junit
-            --add-opens=java.base/java.lang=org.mule.runtime.jpms.utils
-            ${surefire.test.unit.open.args}
-        </surefire.args>
-
-        <javaModuleName>org.mule.distribution.embedded.test</javaModuleName>
-        <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../../formatter.xml</formatterConfigPath>
-        <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
-
-        <packagerVersion>4.0.0</packagerVersion>
     </properties>
 
-    <build>
-        <testResources>
-            <testResource>
-                <filtering>true</filtering>
-                <directory>${basedir}/src/test/resources</directory>
-            </testResource>
-        </testResources>
-        <plugins>
-            <!-- This plugin copies the effective maven settings to a file so it can be used by MavenTestUtils. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-help-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>process-test-resources</phase>
-                        <id>copy-settings</id>
-                        <goals>
-                            <goal>effective-settings</goal>
-                        </goals>
-                        <configuration>
-                            <output>${settingsFile}</output>
-                            <showPasswords>true</showPasswords>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <systemPropertyVariables>
-                        <mule.version>${project.version}</mule.version>
-                        <settings.file>${settingsFile}</settings.file>
-                        <maven.home>${maven.home}</maven.home>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-embedded-api</artifactId>
-            <version>${muleEmbeddedApiVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.tests</groupId>
-            <artifactId>mule-tests-unit</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mule</groupId>
-            <artifactId>mule-maven-client-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.lingala.zip4j</groupId>
-            <artifactId>zip4j</artifactId>
-            <version>2.11.3</version>
-        </dependency>
-        
-        <!--
-            This is only needed because the requirement of `org.slf4j` in the boot layer messes
-            with the `log4j` implementation in the class loader created by `mule-embedded-api`, and the fix is to provide
-            it also at the boot layer level.
-        -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j2-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-1.2-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mule.tests</groupId>
-            <artifactId>mule-tests-allure</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mashape.unirest</groupId>
-            <artifactId>unirest-java</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpmime</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.runtime</groupId>
-            <artifactId>mule-module-artifact</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.tests</groupId>
-            <artifactId>mule-tests-infrastructure</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>tests</module>
+        <module>embedded-test-helper</module>
+    </modules>
 
 </project>

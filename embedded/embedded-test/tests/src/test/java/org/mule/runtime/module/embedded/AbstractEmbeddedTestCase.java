@@ -11,6 +11,7 @@ import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 
 import static java.lang.String.valueOf;
+import static java.util.Arrays.asList;
 import static java.util.Optional.empty;
 
 import static org.apache.commons.io.FileUtils.deleteQuietly;
@@ -31,6 +32,7 @@ import org.mule.tck.probe.PollingProber;
 
 import java.io.File;
 import java.net.URI;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.function.BiConsumer;
@@ -39,8 +41,13 @@ import java.util.function.Consumer;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 
+@RunWith(Parameterized.class)
 public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
 
   protected static EmbeddedTestHelper embeddedTestHelper;
@@ -71,6 +78,14 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   @Rule
   public SystemProperty simpleLogging =
       new SystemProperty("mule.simpleLog", "true");
+
+  @Parameter
+  public boolean useIsolation;
+
+  @Parameters(name = "useIsolation: {0}")
+  public static Collection<Boolean> data() {
+    return asList(false, true);
+  }
 
   protected void doWithinApplication(BundleDescriptor applicationBundleDescriptor, String artifactFolder,
                                      Consumer<Integer> portConsumer)
@@ -211,11 +226,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
       embeddedTestHelper.recreateContainerFolder();
       Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerBuilderConsumer = embeddedContainerBuilder -> {
         try {
-          embeddedContainerBuilder.log4jConfigurationFile(log4JConfigurationFileOptional
-              .orElse(getClass().getClassLoader().getResource("log4j2-default.xml").toURI()))
-              .product(MULE)
-              .build();
-
+          embeddedContainerBuilder.product(MULE).useIsolation(useIsolation).build();
         } catch (Exception e) {
           throw new RuntimeException(e);
         }
@@ -288,9 +299,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
   protected void runWithContainer(Consumer<EmbeddedContainer> task) {
     embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilder -> {
       try {
-        embeddedContainerBuilder.log4jConfigurationFile(getClass().getClassLoader().getResource("log4j2-default.xml").toURI())
-            .product(MULE)
-            .build();
+        embeddedContainerBuilder.product(MULE).useIsolation(useIsolation).build();
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
