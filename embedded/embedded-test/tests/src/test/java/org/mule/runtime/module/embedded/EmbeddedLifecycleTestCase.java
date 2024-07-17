@@ -71,12 +71,6 @@ public class EmbeddedLifecycleTestCase {
   @Rule
   public SystemProperty skipModuleTweakingValidation = new SystemProperty("mule.module.tweaking.validation.skip", "true");
 
-  // mule-embedded-api no longer supports log4j configuration since 1.7, this property has to be set so the log4j configuration
-  // doesn't take place
-  @Rule
-  public SystemProperty simpleLogging =
-      new SystemProperty("mule.simpleLog", "true");
-
   @Parameter
   public boolean useIsolation;
 
