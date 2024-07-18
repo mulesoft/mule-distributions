@@ -38,7 +38,9 @@ import java.util.stream.Collectors;
 public class AdditionalJvmParameters {
 
   private static final String JAVA_8_VERSION = "1.8";
+  private static final String JAVA_11_VERSION = "11";
   private static final String JAVA_RUNNING_VERSION = "java.specification.version";
+  private static final String JAVA_11_ON_CLASSPATH = "-Dmule.java11.use.classpath";
 
   protected static String jpdaOpts = "";
   protected static int paramIndex = -1;
@@ -90,11 +92,11 @@ public class AdditionalJvmParameters {
     File wrapperLicenseConfFile;
     Properties bootstrapProps = new Properties();
     // Do not use commons-lang3 to avoid having to add that jar to lib/boot
-    if (getProperty(JAVA_RUNNING_VERSION).startsWith(JAVA_8_VERSION)) {
-      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java8/wrapper.jvmDependant.conf")));
+    if (isJava8() || (isJava11() && useClasspathOnJava11(wrapperConfigFile))) {
+      bootstrapProps.load(new FileInputStream(wrapperConfDir + "java8/wrapper.jvmDependant.conf"));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
     } else {
-      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf")));
+      bootstrapProps.load(new FileInputStream(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf"));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java11-plus/wrapper-license.conf");
     }
 
@@ -105,6 +107,25 @@ public class AdditionalJvmParameters {
     }
 
     writer.close();
+  }
+
+  private static boolean useClasspathOnJava11(File wrapperConfigFile) throws IOException {
+    Properties wrapperConfProps = new Properties();
+    wrapperConfProps.load(new FileInputStream(wrapperConfigFile));
+
+    return wrapperConfProps.contains(JAVA_11_ON_CLASSPATH);
+  }
+
+  private static boolean isJava8() {
+    return getJavaVersion().startsWith(JAVA_8_VERSION);
+  }
+
+  private static boolean isJava11() {
+    return getJavaVersion().startsWith(JAVA_11_VERSION);
+  }
+
+  private static String getJavaVersion() {
+    return getProperty(JAVA_RUNNING_VERSION);
   }
 
   /**
