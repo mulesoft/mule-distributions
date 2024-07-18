@@ -3,7 +3,7 @@ upstreamProjects:
   Mule-runtime/mule-http-service/1.9.2-DRY-RUN,
   Mule-runtime/mule-oauth-service/2.4.2-DRY-RUN,
   Mule-runtime/mule-scheduler-service/1.7.2-DRY-RUN,
-  Mule-runtime/mule-soap-service/support/1.7.x,
+  Mule-runtime/mule-soap-service/1.7.2-DRY-RUN,
   Mule-runtime/mule-embedded-api/1.7.2-DRY-RUN,
   Mule-runtime/mule-maven-client/2.2.3-DRY-RUN
 archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
