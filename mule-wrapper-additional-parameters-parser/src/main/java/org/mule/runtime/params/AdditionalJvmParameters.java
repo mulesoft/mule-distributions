@@ -13,6 +13,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 import static java.util.regex.Pattern.compile;
+import static java.util.stream.Collectors.toList;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +23,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +32,6 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 
 /**
@@ -40,7 +42,7 @@ public class AdditionalJvmParameters {
   private static final String JAVA_8_VERSION = "1.8";
   private static final String JAVA_11_VERSION = "11";
   private static final String JAVA_RUNNING_VERSION = "java.specification.version";
-  private static final String JAVA_11_ON_CLASSPATH = "-Dmule.java11.use.classpath";
+  private static final Pattern BOOTSTRAP_LEGACY_MODE_PATTERN = compile("^(-M)?-Dbootstrap\\.legacy\\.mode(?<value>=.*)?$");
 
   protected static String jpdaOpts = "";
   protected static int paramIndex = -1;
@@ -92,7 +94,7 @@ public class AdditionalJvmParameters {
     File wrapperLicenseConfFile;
     Properties bootstrapProps = new Properties();
     // Do not use commons-lang3 to avoid having to add that jar to lib/boot
-    if (isJava8() || (isJava11() && useClasspathOnJava11(wrapperConfigFile))) {
+    if (isJava8() || (isJava11() && useBootstrapLegacyMode(wrapperConfigFile, adHocOptionsAvailable, args))) {
       bootstrapProps.load(new FileInputStream(wrapperConfDir + "java8/wrapper.jvmDependant.conf"));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
     } else {
@@ -109,11 +111,43 @@ public class AdditionalJvmParameters {
     writer.close();
   }
 
-  private static boolean useClasspathOnJava11(File wrapperConfigFile) throws IOException {
+  private static boolean useBootstrapLegacyMode(File wrapperConfigFile, boolean adHocOptionsAvailable, String[] args)
+      throws IOException {
     Properties wrapperConfProps = new Properties();
     wrapperConfProps.load(new FileInputStream(wrapperConfigFile));
 
-    return wrapperConfProps.contains(JAVA_11_ON_CLASSPATH);
+    boolean isUseBootstrapLegacyModeConf = isUseBootstrapLegacyMode(wrapperConfProps.values().stream()
+        .filter(v -> v instanceof String).map(v -> (String) v).collect(toList()));
+
+    if (!isUseBootstrapLegacyModeConf && adHocOptionsAvailable) {
+      return isUseBootstrapLegacyMode(getAdHocArgs(args));
+    }
+
+    return isUseBootstrapLegacyModeConf;
+  }
+
+  private static boolean isUseBootstrapLegacyMode(Collection<String> args) {
+    for (String arg : args) {
+      Matcher matcher = BOOTSTRAP_LEGACY_MODE_PATTERN.matcher(arg);
+      if (matcher.matches()) {
+        String value = matcher.group("value");
+        return value == null || value.equals("=true");
+      }
+    }
+
+    return false;
+  }
+
+  private static List<String> getAdHocArgs(String[] args) {
+    return getArgsWithPrefix(args, "-M");
+  }
+
+  private static List<String> getWrapperProps(String[] args) {
+    return getArgsWithPrefix(args, "-W");
+  }
+
+  private static List<String> getArgsWithPrefix(String[] args, String prefix) {
+    return stream(args).filter(arg -> arg.startsWith(prefix)).collect(toList());
   }
 
   private static boolean isJava8() {
@@ -264,7 +298,7 @@ public class AdditionalJvmParameters {
    * @throws IOException
    */
   protected static void writeAdHocProps(String[] args, FileWriter writer) throws IOException {
-    List<String> adHocArgs = stream(args).filter(arg -> arg.startsWith("-M")).collect(Collectors.toList());
+    List<String> adHocArgs = getAdHocArgs(args);
     for (String arg : adHocArgs) {
       paramIndex++;
       writer.write(wrapperPrefix + paramIndex + "=\"" + arg.replaceFirst("^-M", "") + "\"\n");
@@ -282,7 +316,7 @@ public class AdditionalJvmParameters {
    * @throws IOException
    */
   protected static void writeWrapperProps(String[] args, FileWriter writer) throws IOException {
-    List<String> wrapperArgs = stream(args).filter(arg -> arg.startsWith("-W")).collect(Collectors.toList());
+    List<String> wrapperArgs = getWrapperProps(args);
     for (String arg : wrapperArgs) {
       writer.write(arg.replaceFirst("^-W", "") + "\n");
       writer.flush();
