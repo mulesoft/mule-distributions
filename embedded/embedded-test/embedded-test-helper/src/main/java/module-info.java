@@ -8,7 +8,7 @@
  * Mule Embedded Implementation Tests Helper.
  *
  * @moduleGraph
- * @since 4.8
+ * @since 4.8, 4.7.2, 4.6.6
  */
 module org.mule.distribution.embedded.test.helper {
 
