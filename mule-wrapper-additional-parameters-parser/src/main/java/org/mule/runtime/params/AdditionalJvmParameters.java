@@ -8,6 +8,7 @@ package org.mule.runtime.params;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.max;
+import static java.lang.String.format;
 import static java.lang.System.getProperty;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static java.util.Arrays.asList;
@@ -41,6 +42,7 @@ public class AdditionalJvmParameters {
   private static final String JAVA_8_VERSION = "1.8";
   private static final String JAVA_11_VERSION = "11";
   private static final String JAVA_RUNNING_VERSION = "java.specification.version";
+  private static final String BOOTSTRAP_LEGACY_MODE_PROPERTY = "bootstrap.legacy.mode";
   private static final Pattern BOOTSTRAP_LEGACY_MODE_PATTERN = compile("^(-M)?-Dbootstrap\\.legacy\\.mode(?<value>=.*)?$");
 
   protected static String jpdaOpts = "";
@@ -90,10 +92,16 @@ public class AdditionalJvmParameters {
       }
     }
 
+    boolean isUseBootstrapLegacyMode = useBootstrapLegacyMode(wrapperConfigFile, adHocOptionsAvailable, args);
+    if (isUseBootstrapLegacyMode && !isJava11()) {
+      System.out.printf("WARN Attempted to use property '%s' in Java %s, its usage is restricted to Java %s%n",
+                        BOOTSTRAP_LEGACY_MODE_PROPERTY, getJavaVersion(), JAVA_11_VERSION);
+    }
+
     File wrapperLicenseConfFile;
     Properties bootstrapProps = new Properties();
     // Do not use commons-lang3 to avoid having to add that jar to lib/boot
-    if (isJava8() || (isJava11() && useBootstrapLegacyMode(wrapperConfigFile, adHocOptionsAvailable, args))) {
+    if (isJava8() || (isJava11() && isUseBootstrapLegacyMode)) {
       bootstrapProps.load(new FileInputStream(wrapperConfDir + "java8/wrapper.jvmDependant.conf"));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
     } else {
