@@ -53,7 +53,7 @@ import net.lingala.zip4j.ZipFile;
  * <p>
  * Invoked by reflection
  *
- * @since 4.8
+ * @since 4.8, 4.7.2, 4.6.6
  */
 public class IsolatedEmbeddedController {
 
