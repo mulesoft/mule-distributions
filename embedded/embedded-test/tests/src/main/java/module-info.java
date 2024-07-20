@@ -4,6 +4,8 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
+
+
 /**
  * Mule Embedded Implementation Tests.
  *
@@ -12,16 +14,8 @@
  */
 module org.mule.distribution.embedded.test {
 
-  requires org.mule.runtime.embedded.api;
-  requires org.mule.runtime.maven.client.test;
-
-  requires junit;
-  requires org.apache.commons.io;
-  requires org.slf4j;
-  requires zip4j;
-
-  // This is only needed because the requirement of `org.slf4j` in the boot layer messes with the `log4j` implementation in the
-  // class loader created by `mule-embedded-api`, and the fix is to provide it also at the boot layer level.
+  // This is only needed because some Runtime libs require log4j, but we're no longer providing it since `W-15522743`,
+  // so we have to put it at the boot layer level.
   // log4j-api
   requires org.apache.logging.log4j;
   // log4j-core
@@ -30,7 +24,7 @@ module org.mule.distribution.embedded.test {
   requires org.apache.log4j;
   // log4j-slf4j2-impl
   requires org.apache.logging.log4j.slf4j2.impl;
-
-  exports org.mule.runtime.module.embedded.test.hepler;
+  // disruptor
+  requires com.lmax.disruptor;
 
 }
