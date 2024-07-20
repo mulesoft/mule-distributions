@@ -16,9 +16,6 @@ module org.mule.distribution.embedded.test {
 
   // This is only needed because some Runtime libs require log4j, but we're no longer providing it since `W-15522743`,
   // so we have to put it at the boot layer level.
-  // slf4j-api
-  //requires org.slf4j;
-  requires com.lmax.disruptor;
   // log4j-api
   requires org.apache.logging.log4j;
   // log4j-core
@@ -27,5 +24,7 @@ module org.mule.distribution.embedded.test {
   requires org.apache.log4j;
   // log4j-slf4j2-impl
   requires org.apache.logging.log4j.slf4j2.impl;
+  // disruptor
+  requires com.lmax.disruptor;
 
 }
