@@ -269,7 +269,7 @@ public class AdditionalJvmParameters {
   }
 
   protected static void processBootstrapProperties(Properties bootstrapProperties, Writer writer) throws IOException {
-    Pattern additionalPattern = compile("wrapper\\.java\\.additional\\.(<n\\d>)(\\.\\w+)?");
+    Pattern additionalPattern = compile("wrapper\\.java\\.additional\\.(<n\\d+>)(\\.\\w+)?");
     // Correspond <n> component number with the index in order to re-use the same index for the same component number
     Map<String, Integer> nComponentIndexMap = new HashMap<>();
 
@@ -280,7 +280,7 @@ public class AdditionalJvmParameters {
         int index = nComponentIndexMap.computeIfAbsent(additionalMatcher.group(1), k -> ++paramIndex);
 
         writer.write(wrapperPrefix + index + wrapperSuffix + "=" + entry.getValue().toString() + "\n");
-      } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d>")) {
+      } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d+>")) {
         writer.write(classpathPrefix + ++classpathIndex + "=" + entry.getValue().toString() + "\n");
       } else {
         writer.write(entry.getKey() + "=" + entry.getValue().toString() + "\n");
