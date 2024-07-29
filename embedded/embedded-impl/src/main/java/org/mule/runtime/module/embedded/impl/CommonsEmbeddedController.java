@@ -21,6 +21,7 @@ import static org.mule.runtime.core.api.config.MuleDeploymentProperties.MULE_LAZ
 import static org.mule.runtime.core.api.config.MuleProperties.MULE_HOME_DIRECTORY_PROPERTY;
 import static org.mule.runtime.core.api.util.FileUtils.unzip;
 import static org.mule.runtime.module.embedded.impl.PathUtils.getPath;
+import static org.mule.runtime.module.embedded.impl.util.FileUtils.copyFolder;
 
 import static java.lang.String.valueOf;
 import static java.lang.System.clearProperty;
@@ -168,9 +169,15 @@ public class CommonsEmbeddedController {
 
     for (URL url : containerInfo.getServices()) {
       File originalFile = toFile(url);
-      File destinationFile = new File(getServicesFolder(), getName(originalFile.getPath()).replaceAll("-mule-service\\.jar", ""));
-      destinationFile.mkdirs();
-      unzip(originalFile, destinationFile, false);
+      if (originalFile.isDirectory()) {
+        File destinationFile = new File(getServicesFolder(), originalFile.getName());
+        copyFolder(originalFile.toPath(), destinationFile.toPath());
+      } else {
+        File destinationFile =
+            new File(getServicesFolder(), getName(originalFile.getPath()).replaceAll("-mule-service\\.jar", ""));
+        destinationFile.mkdirs();
+        unzip(originalFile, destinationFile, false);
+      }
     }
     containerInfo.getServerPlugins().stream().forEach(serverPluginUrl -> {
       File originalFile = toFile(serverPluginUrl);
