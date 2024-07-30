@@ -185,11 +185,20 @@ public class EmbeddedController {
     }
     containerInfo.getServerPlugins().stream().forEach(serverPluginUrl -> {
       File originalFile = toFile(serverPluginUrl);
-      File destinationFile = new File(getServerPluginsFolder(), getName(originalFile.getPath()).replace(".zip", ""));
-      try (ZipFile zipFile = new ZipFile(originalFile)) {
-        zipFile.extractAll(destinationFile.getAbsolutePath());
-      } catch (Exception e) {
-        throw new RuntimeException(e);
+      if (originalFile.isDirectory()) {
+        File destinationFile = new File(getServerPluginsFolder(), originalFile.getName());
+        try {
+          copyFolder(originalFile.toPath(), destinationFile.toPath());
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      } else {
+        File destinationFile = new File(getServerPluginsFolder(), getName(originalFile.getPath()).replace(".zip", ""));
+        try (ZipFile zipFile = new ZipFile(originalFile)) {
+          zipFile.extractAll(destinationFile.getAbsolutePath());
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
       }
     });
 
