@@ -186,7 +186,8 @@ public class EmbeddedController {
         }
       } else {
         File destinationFile = new File(getServerPluginsFolder(), getName(originalFile.getPath()).replace(".zip", ""));
-        try (ZipFile zipFile = new ZipFile(originalFile)) {
+        try {
+          ZipFile zipFile = new ZipFile(originalFile);
           zipFile.extractAll(destinationFile.getAbsolutePath());
         } catch (Exception e) {
           throw new RuntimeException(e);
