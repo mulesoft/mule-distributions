@@ -8,10 +8,14 @@ package org.mule.runtime.params;
 
 import static java.lang.System.getProperty;
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Files.newTemporaryFile;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.matchesPattern;
 import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
@@ -19,8 +23,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -36,7 +42,7 @@ import org.junit.runners.MethodSorters;
 public class AdditionalJvmParametersTestCase {
 
   // TODO W-12266734: refactor for making additional properties parser more testable.
-  private String[] args = new String[6];
+  private final String[] args = new String[6];
   private List<String> arguments = new ArrayList<>();
   private String jpdaOpts = "";
   private File file;
@@ -109,10 +115,10 @@ public class AdditionalJvmParametersTestCase {
   @Test
   public void testGetNumberOfAdditionalJavaProperties() {
     int indexWithAdditionalProperties = additionalJvmParameters.getNumberOfAdditionalJavaProperties(args);
-    assertThat(indexWithAdditionalProperties, is(41));
+    assertThat(indexWithAdditionalProperties, is(40));
     args[4] = "";
     int indexWithoutAdditionalProperties = additionalJvmParameters.getNumberOfAdditionalJavaProperties(args);
-    assertThat(indexWithoutAdditionalProperties, is(21));
+    assertThat(indexWithoutAdditionalProperties, is(0));
     args[4] = "-additionalJavaProperties=40";
   }
 
@@ -217,4 +223,31 @@ public class AdditionalJvmParametersTestCase {
     assertThat(wrapperAdditionalConfFile).hasContent(sb.toString());
   }
 
+  @Test
+  public void testProcessBootstrapProperties() throws IOException {
+    String wrapperPrefix = "wrapper.java.additional.";
+    StringWriter writer = new StringWriter();
+    Properties properties = new Properties();
+    properties.setProperty("wrapper.java.additional.<n1>", "value1");
+    properties.setProperty("wrapper.java.additional.<n1>.suffix", "value1");
+    properties.setProperty("wrapper.java.additional.<n2>", "value2");
+    properties.setProperty("wrapper.java.classpath.<n1>", "classpathValue1");
+    properties.setProperty("other.property", "otherValue");
+
+    AdditionalJvmParameters.processBootstrapProperties(properties, writer);
+
+    List<String> actualList = asList(writer.toString().split("\n"));
+    List<String> list = actualList.stream().filter(s -> s.matches("wrapper\\.java\\.additional.*value1")).collect(toList());
+    assertThat(list, hasSize(2));
+
+    String prop1 = list.get(0);
+    int prop1EndIdx = prop1.indexOf("=", wrapperPrefix.length() + 1);
+    String prop2 = list.get(1);
+    int prop2EndIdx = prop2.indexOf(".", wrapperPrefix.length() + 1);
+    assertThat(prop1.substring(0, prop1EndIdx), is(prop2.substring(0, prop2EndIdx)));
+
+    assertThat(actualList, hasItem(matchesPattern("wrapper.java.additional.\\d+=value2")));
+    assertThat(actualList, hasItem(matchesPattern("wrapper.java.classpath.\\d+=classpathValue1")));
+    assertThat(actualList, hasItem(matchesPattern("other.property=otherValue")));
+  }
 }

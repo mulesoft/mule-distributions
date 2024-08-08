@@ -6,19 +6,13 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-distributions</artifactId>
-        <version>4.7.0-SNAPSHOT</version>
+        <version>4.8.0-SNAPSHOT</version>
     </parent>
     <artifactId>mule-distro-tests</artifactId>
     <packaging>jar</packaging>
     <name>Mule Distribution Tests</name>
 
     <properties>
-        <surefire.args>
-            -XX:+IgnoreUnrecognizedVMOptions
-            --add-reads=org.mule.distribution.test=org.apache.commons.lang3
-            ${surefire.args.base}
-        </surefire.args>
-
         <javaModuleName>org.mule.distribution.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <formatterConfigPath>../formatter.xml</formatterConfigPath>
@@ -30,20 +24,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <argLine>-Dfile.encoding=UTF-8 -Xmx1024m -Xms256m -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjVersion}/aspectjweaver-${aspectjVersion}.jar -javaagent:${settings.localRepository}/org/jacoco/org.jacoco.agent/${jacoco.version}/org.jacoco.agent-${jacoco.version}-runtime.jar=destfile='${session.executionRootDirectory}/target/jacoco.exec'</argLine>
+                    <argLine>-Xmx1024m -Xms256m ${surefire.args.base}</argLine>
                     <workingDirectory>${project.build.directory}</workingDirectory>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
-                    </properties>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                        </property>
-                    </systemProperties>
                     <systemPropertyVariables>
                         <mule.distribution>${org.mule.distributions:mule-standalone:zip}</mule.distribution>
                         <scheduler.service>${org.mule.services:mule-service-scheduler:zip}</scheduler.service>
@@ -52,13 +34,6 @@
                         <workingDirectory>${project.build.directory}</workingDirectory>
                     </systemPropertyVariables>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectjVersion}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
