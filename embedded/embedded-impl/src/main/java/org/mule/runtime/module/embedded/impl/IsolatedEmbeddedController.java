@@ -27,7 +27,6 @@ import static java.lang.String.valueOf;
 import static java.lang.System.clearProperty;
 import static java.lang.System.getProperty;
 import static java.lang.System.setProperty;
-import static java.lang.Thread.currentThread;
 
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.apache.commons.io.FilenameUtils.getName;
@@ -35,12 +34,14 @@ import static org.apache.commons.io.FilenameUtils.getName;
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.lifecycle.InitialisationException;
 import org.mule.runtime.module.artifact.api.classloader.ArtifactClassLoader;
-import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
-import org.mule.runtime.module.embedded.api.ContainerInfo;
+import org.mule.runtime.module.embedded.commons.api.ArtifactConfiguration;
+import org.mule.runtime.module.embedded.commons.api.ContainerInfo;
 import org.mule.runtime.module.launcher.DefaultMuleContainer;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Properties;
@@ -48,41 +49,51 @@ import java.util.Properties;
 import net.lingala.zip4j.ZipFile;
 
 /**
- * Controller class for the runtime. It spins up a new container instance using a temporary folder and dynamically loading the
+ * Controller class for the runtime. It spin ups a new container instance using a temporary folder and dynamically loading the
  * container libraries.
+ * <p>
+ * Invoked by reflection
  *
- * @since 4.6
+ * @since 4.8, 4.7.2, 4.6.6
  */
-public class CommonsEmbeddedController {
+public class IsolatedEmbeddedController {
 
   private final ContainerInfo containerInfo;
   private ArtifactClassLoader containerClassLoader;
   private DefaultMuleContainer muleContainer;
 
-  public CommonsEmbeddedController(ContainerInfo containerInfo) {
-    this.containerInfo = containerInfo;
+  public IsolatedEmbeddedController(byte[] serializedContainerInfo)
+      throws IOException, ClassNotFoundException {
+    containerInfo = deserialize(serializedContainerInfo);
   }
 
+  /**
+   * Invoked by reflection
+   */
   public void start() throws Exception {
     setUpEnvironment();
   }
 
-  public synchronized void deployApplication(ArtifactConfiguration artifactConfiguration) {
+  public synchronized void deployApplication(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
+    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
     deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deploy(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
-  public void undeployApplication(String applicationName) {
+  public void undeployApplication(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
+    String applicationName = deserialize(serializedApplicationName);
     getMuleContainer().getDeploymentService().undeploy(applicationName);
   }
 
-  public synchronized void deployDomain(ArtifactConfiguration artifactConfiguration) {
+  public synchronized void deployDomain(byte[] serializedArtifactConfiguration) throws IOException, ClassNotFoundException {
+    ArtifactConfiguration artifactConfiguration = deserialize(serializedArtifactConfiguration);
     deployArtifactTemplateMethod(artifactConfiguration, deploymentProperties -> getMuleContainer().getDeploymentService()
         .deployDomain(artifactConfiguration.getArtifactLocation().toURI(), deploymentProperties));
   }
 
-  public void undeployDomain(String domainName) {
-    getMuleContainer().getDeploymentService().undeployDomain(domainName);
+  public void undeployDomain(byte[] serializedApplicationName) throws IOException, ClassNotFoundException {
+    String applicationName = deserialize(serializedApplicationName);
+    getMuleContainer().getDeploymentService().undeployDomain(applicationName);
   }
 
   private void deployArtifactTemplateMethod(ArtifactConfiguration artifactConfiguration, DeploymentTask deploymentTask) {
@@ -120,39 +131,28 @@ public class CommonsEmbeddedController {
     }
   }
 
-  public void stop() {
-    if (muleContainer == null) {
-      // Nothing to dispose
-      return;
-    }
-
-    executeWithinContainerClassLoader(() -> {
-      muleContainer.stop();
-      muleContainer.getContainerClassLoader().dispose();
-    });
-  }
-
-  private void executeWithinContainerClassLoader(ContainerTask task) {
-    ClassLoader contextClassLoader = currentThread().getContextClassLoader();
+  public void executeWithinContainerClassLoader(ContainerTask task) {
+    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
     try {
       // This is the unfiltered classloader, to be consistent with how the standalone is bootstrapped.
       // This is required to discover the server-plgins when running in a modularized environment.
-      currentThread().setContextClassLoader(containerClassLoader.getClass().getClassLoader());
+      Thread.currentThread().setContextClassLoader(containerClassLoader.getClass().getClassLoader());
       task.run();
     } catch (Exception e) {
       throw new RuntimeException(e);
     } finally {
-      currentThread().setContextClassLoader(contextClassLoader);
+      Thread.currentThread().setContextClassLoader(contextClassLoader);
     }
   }
 
   /**
-   * Interface for running tasks within the container class loader.
+   * Invoked by reflection
    */
-  private interface ContainerTask {
-
-    void run() throws Exception;
-
+  public void stop() {
+    executeWithinContainerClassLoader(() -> {
+      muleContainer.stop();
+      muleContainer.getContainerClassLoader().dispose();
+    });
   }
 
   private void setUpEnvironment() throws IOException, URISyntaxException, InitialisationException {
@@ -166,6 +166,10 @@ public class CommonsEmbeddedController {
     getServerPluginsFolder().mkdirs();
     getConfFolder().mkdirs();
     getAppsFolder().mkdirs();
+
+    // this is used to signal that we are running in embedded mode.
+    // Class loader model loader will not use try to use the container repository.
+    setProperty("mule.mode.embedded", "true");
 
     for (URL url : containerInfo.getServices()) {
       File originalFile = toFile(url);
@@ -220,5 +224,23 @@ public class CommonsEmbeddedController {
     void deploy(Properties deploymentProperties) throws IOException;
 
   }
+
+  /**
+   * Interface for running tasks within the container class loader.
+   */
+  @FunctionalInterface
+  interface ContainerTask {
+
+    void run() throws Exception;
+
+  }
+
+  private <T> T deserialize(byte[] object) throws IOException, ClassNotFoundException {
+    try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(object);
+        ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
+      return (T) objectInputStream.readObject();
+    }
+  }
+
 
 }

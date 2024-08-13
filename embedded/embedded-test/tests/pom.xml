@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.mule.distributions</groupId>
+        <artifactId>mule-module-embedded-test-parent</artifactId>
+        <version>4.9.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mule-module-embedded-test</artifactId>
+    <name>Mule Embedded Implementation Tests</name>
+
+    <properties>
+        <!--
+            The testing approach in W-15884079 works as long as packages needed for `org.mule.runtime.jpms.utils` are opened
+            to the unnamed module in `surefire.test.unit.open.args`, otherwise we would need to set `org.mule.runtime.embedded.api`
+            in a module layer instead of the unnamed module and propagate the `opens`.
+         -->
+        <surefire.args>
+            ${surefire.test.unit.open.args}
+        </surefire.args>
+
+        <javaModuleName>org.mule.distribution.embedded.test</javaModuleName>
+        <skipExportTests>false</skipExportTests>
+        <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
+        <packagerVersion>4.0.0</packagerVersion>
+
+        <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
+    </properties>
+
+    <build>
+        <testResources>
+            <testResource>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <!-- This plugin copies the effective maven settings to a file so it can be used by MavenTestUtils. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-help-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-test-resources</phase>
+                        <id>copy-settings</id>
+                        <goals>
+                            <goal>effective-settings</goal>
+                        </goals>
+                        <configuration>
+                            <output>${settingsFile}</output>
+                            <showPasswords>true</showPasswords>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <mule.version>${project.version}</mule.version>
+                        <settings.file>${settingsFile}</settings.file>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!--
+            This is only needed because some Runtime libs require log4j, but we're no longer providing it since `W-15522743`,
+            so we have to put it at the boot layer level.
+        -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-1.2-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mule.distributions</groupId>
+            <artifactId>mule-module-embedded-test-helper</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.runtime</groupId>
+            <artifactId>mule-embedded-api</artifactId>
+            <version>${muleEmbeddedApiVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.tests</groupId>
+            <artifactId>mule-tests-unit</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.tests</groupId>
+            <artifactId>mule-tests-allure</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpmime</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.runtime</groupId>
+            <artifactId>mule-module-artifact</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.tests</groupId>
+            <artifactId>mule-tests-infrastructure</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

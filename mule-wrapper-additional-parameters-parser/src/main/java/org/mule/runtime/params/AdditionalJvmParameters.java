@@ -20,8 +20,11 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -38,11 +41,11 @@ public class AdditionalJvmParameters {
   private static final String JAVA_RUNNING_VERSION = "java.specification.version";
 
   protected static String jpdaOpts = "";
-  protected static int paramIndex = 0;
+  protected static int paramIndex = -1;
   protected static int classpathIndex = 0;
   static final String wrapperPrefix = "wrapper.java.additional.";
   static final String classpathPrefix = "wrapper.java.classpath.";
-  static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 20;
+  static final int DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS = 0;
 
   public static void main(String[] args) throws IOException {
     File wrapperConfigFile = new File(args[0]);
@@ -91,13 +94,7 @@ public class AdditionalJvmParameters {
       bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java8/wrapper.jvmDependant.conf")));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
     } else {
-      String wrapperConfName;
-      if (getProperty("os.name").toLowerCase().contains("win")) {
-        wrapperConfName = "wrapper.windows.jvmDependant.conf";
-      } else {
-        wrapperConfName = "wrapper.jvmDependant.conf";
-      }
-      bootstrapProps.load(new FileInputStream(wrapperConfDir + "java11-plus/" + wrapperConfName));
+      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf")));
       wrapperLicenseConfFile = new File(wrapperConfDir + "java11-plus/wrapper-license.conf");
     }
 
@@ -218,9 +215,9 @@ public class AdditionalJvmParameters {
       Matcher additionalJavaArgMatcher = argPattern.matcher(additionalJavaArgument);
       additionalJavaArgMatcher.find();
 
-      return parseInt(additionalJavaArgMatcher.group(1)) + 1;
+      return parseInt(additionalJavaArgMatcher.group(1));
     }
-    return DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS + 1;
+    return DEFAULT_NUMBER_OF_ADDITIONAL_JAVA_ARGUMENTS;
   }
 
   /**
@@ -232,9 +229,9 @@ public class AdditionalJvmParameters {
   protected static void writeJpdaOpts(FileWriter writer) throws IOException {
     List<String> jvmArgs = asList(jpdaOpts.split("\\s-"));
     for (String arg : jvmArgs) {
+      paramIndex++;
       writer.write(wrapperPrefix + paramIndex + "=-" + arg.replaceFirst("^-", "") + "\n");
       writer.flush();
-      paramIndex++;
     }
   }
 
@@ -248,10 +245,10 @@ public class AdditionalJvmParameters {
   protected static void writeAdHocProps(String[] args, FileWriter writer) throws IOException {
     List<String> adHocArgs = stream(args).filter(arg -> arg.startsWith("-M")).collect(Collectors.toList());
     for (String arg : adHocArgs) {
+      paramIndex++;
       writer.write(wrapperPrefix + paramIndex + "=\"" + arg.replaceFirst("^-M", "") + "\"\n");
       writer.write(wrapperPrefix + paramIndex + ".stripquotes=TRUE\n");
       writer.flush();
-      paramIndex++;
     }
 
   }
@@ -271,11 +268,19 @@ public class AdditionalJvmParameters {
     }
   }
 
-  protected static void processBootstrapProperties(Properties bootstrapProperties, FileWriter writer) throws IOException {
+  protected static void processBootstrapProperties(Properties bootstrapProperties, Writer writer) throws IOException {
+    Pattern additionalPattern = compile("wrapper\\.java\\.additional\\.(<n\\d+>)(\\.\\w+)?");
+    // Correspond <n> component number with the index in order to re-use the same index for the same component number
+    Map<String, Integer> nComponentIndexMap = new HashMap<>();
+
     for (Entry entry : bootstrapProperties.entrySet()) {
-      if (entry.getKey().toString().matches("wrapper\\.java\\.additional\\.<n\\d>")) {
-        writer.write(wrapperPrefix + ++paramIndex + "=" + entry.getValue().toString() + "\n");
-      } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d>")) {
+      Matcher additionalMatcher = additionalPattern.matcher(entry.getKey().toString());
+      if (additionalMatcher.matches()) {
+        String wrapperSuffix = additionalMatcher.group(2) != null ? additionalMatcher.group(2) : "";
+        int index = nComponentIndexMap.computeIfAbsent(additionalMatcher.group(1), k -> ++paramIndex);
+
+        writer.write(wrapperPrefix + index + wrapperSuffix + "=" + entry.getValue().toString() + "\n");
+      } else if (entry.getKey().toString().matches("wrapper\\.java\\.classpath\\.<n\\d+>")) {
         writer.write(classpathPrefix + ++classpathIndex + "=" + entry.getValue().toString() + "\n");
       } else {
         writer.write(entry.getKey() + "=" + entry.getValue().toString() + "\n");
