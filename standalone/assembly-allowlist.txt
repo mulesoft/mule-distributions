@@ -200,7 +200,7 @@
 /mule-standalone-${productVersion}/lib/opt/apfloat-1.+
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.+
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.+
-/mule-standalone-${productVersion}/lib/opt/caffeine-2.+
+/mule-standalone-${productVersion}/lib/opt/caffeine-3.+
 /mule-standalone-${productVersion}/lib/opt/checker-qual-3.+
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.+
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.+
