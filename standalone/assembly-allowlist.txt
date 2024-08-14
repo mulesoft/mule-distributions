@@ -197,6 +197,7 @@
 #
 /mule-standalone-${productVersion}/lib/opt
 /mule-standalone-${productVersion}/lib/opt/antlr-runtime-3.+
+/mule-standalone-${productVersion}/lib/opt/apfloat-1.+
 /mule-standalone-${productVersion}/lib/opt/aspectjweaver-1.+
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.+
 /mule-standalone-${productVersion}/lib/opt/caffeine-3.+
