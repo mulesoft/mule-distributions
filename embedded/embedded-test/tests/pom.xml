@@ -25,7 +25,6 @@
         <javaModuleName>org.mule.distribution.embedded.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
         <settingsFile>${java.io.tmpdir}/effective-settings.xml</settingsFile>
-        <packagerVersion>4.0.0</packagerVersion>
 
         <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
     </properties>
