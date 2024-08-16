@@ -2,7 +2,7 @@ upstreamProjects:
   Mule-runtime/mule-integration-tests/4.7.3-DRY-RUN,
   Mule-runtime/mule-http-service/1.9.3-DRY-RUN,
   Mule-runtime/mule-oauth-service/support/2.4.x,
-  Mule-runtime/mule-scheduler-service/support/1.7.x,
+  Mule-runtime/mule-scheduler-service/1.7.3-DRY-RUN,
   Mule-runtime/mule-soap-service/support/1.7.x,
   Mule-runtime/mule-embedded-api/1.7.3-DRY-RUN,
   Mule-runtime/mule-maven-client/2.2.3-DRY-RUN
