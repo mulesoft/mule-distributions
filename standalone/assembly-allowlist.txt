@@ -48,7 +48,7 @@
 /mule-standalone-${productVersion}/lib/boot/mule-module-jpms-utils-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-log4j-boot-configurator-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/boot/mule-module-logging-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/boot/disruptor-3.+
+/mule-standalone-${productVersion}/lib/boot/disruptor-4.+
 /mule-standalone-${productVersion}/lib/boot/jcl-over-slf4j-2.+
 /mule-standalone-${productVersion}/lib/boot/jul-to-slf4j-2.+
 /mule-standalone-${productVersion}/lib/boot/log4j-1.2-api-2.+
