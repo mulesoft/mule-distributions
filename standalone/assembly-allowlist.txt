@@ -341,9 +341,6 @@
 /mule-standalone-${productVersion}/lib/opt/grpc-context-1.+
 /mule-standalone-${productVersion}/lib/opt/perfmark-api-0.+
 
-# 3rd party libs to be loaded only when running with java 8
-/mule-standalone-${productVersion}/lib/opt/jdk-8
-/mule-standalone-${productVersion}/lib/opt/jdk-8/xml-apis-1.+
 
 #
 # TODO W-13218993: Remove fake exporter.
