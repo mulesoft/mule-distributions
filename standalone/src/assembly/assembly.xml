@@ -469,9 +469,6 @@
                 <!-- Exclude parameter parsing -->
                 <exclude>org.mule.distributions:mule-wrapper-additional-parameters-parser</exclude>
 
-                <!-- Exclude JVM version specific libraries -->                
-                <exclude>xml-apis:xml-apis</exclude>
-
             </excludes>
         </dependencySet>
     </dependencySets>
