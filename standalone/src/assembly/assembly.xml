@@ -199,6 +199,7 @@
                 <include>org.mule.runtime:mule-properties-api</include>
                 <!-- Core -->
                 <include>org.mule.runtime:mule-core</include>
+                <include>org.mule.runtime:mule-manifest</include>
                 <include>org.mule.runtime:mule-runtime-extension-model</include>
                 <include>org.mule.runtime:mule-runtime-errors</include>
                 <!--Services-->
@@ -382,6 +383,7 @@
                 <exclude>org.mule.runtime:mule-core</exclude>
                 <exclude>org.mule.runtime:mule-core-components</exclude>
                 <exclude>org.mule.runtime:mule-jar-handling-utils</exclude>
+                <exclude>org.mule.runtime:mule-manifest</exclude>
                 <exclude>org.mule.runtime:mule-runtime-extension-model</exclude>
                 <exclude>org.mule.runtime:mule-runtime-errors</exclude>
                 <exclude>org.mule.distributions:mule-services-all</exclude>
