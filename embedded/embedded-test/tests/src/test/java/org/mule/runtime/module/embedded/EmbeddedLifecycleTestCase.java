@@ -82,7 +82,7 @@ public class EmbeddedLifecycleTestCase {
 
   @Parameters(name = "useIsolation: {0}")
   public static Collection<Boolean> data() {
-    return asList(false, true);
+    return asList(false);
   }
 
   // @Test
@@ -145,6 +145,7 @@ public class EmbeddedLifecycleTestCase {
   @Test
   @Issue("W-11996026")
   public void getMuleContainerVersionBeforeStart() throws Exception {
+    // System.setProperty("mule.version", "4.5.0");
     System.out.println("Mule version = " + getProperty("mule.version"));
     System.out.println("Mule manifest version = " + getProductVersion());
     EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();

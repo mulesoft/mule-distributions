@@ -39,7 +39,6 @@ import org.junit.Test;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
-@Ignore
 public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   @Rule

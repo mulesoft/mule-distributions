@@ -241,6 +241,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
       if (restartingEmbedded) {
         embeddedTestHelper.testWithEmbeddedNotStarted(embeddedContainerBuilderConsumer, muleVersion, container -> {
           // Runs the test with the embedded container for the first time
+          System.out.println("Embedded Container actual version is: " + container.getMuleContainerVersion());
           container.start();
           try {
             embeddedContainerConsumer.accept(container);

@@ -132,6 +132,8 @@ public class EmbeddedTestHelper {
             enterprise ? createDefaultEnterpriseMavenConfigurationBuilder(forceUpdateSnapshots)
                 : createDefaultCommunityMavenConfigurationBuilder(forceUpdateSnapshots);
         mavenConfigurationBuilder.ignoreArtifactDescriptorRepositories(ignoreArtifactDescriptorRepositories);
+        System.out.println("Embedded Container property version is: " + System.getProperty("mule.version"));
+        System.out.println("Embedded Container version is: " + muleVersion);
         embeddedContainerBuilder = builder()
             .muleVersion(muleVersion)
             .containerConfiguration(ContainerConfiguration.builder().containerFolder(containerFolder).build())
