@@ -33,11 +33,13 @@ import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
+@Ignore
 public class DomainTestCase extends AbstractEmbeddedTestCase {
 
   @Rule

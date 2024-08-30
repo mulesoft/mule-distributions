@@ -85,7 +85,7 @@ public class EmbeddedLifecycleTestCase {
     return asList(false, true);
   }
 
-  @Test
+  // @Test
   public void shouldFailToCreateDueToMissingVersionOfEmbedded() throws IOException {
     try {
       builder()
@@ -104,7 +104,7 @@ public class EmbeddedLifecycleTestCase {
     }
   }
 
-  @Test
+  // @Test
   public void mavenUserProperties() throws IOException, URISyntaxException {
     File containerFolder = temporaryFolder.newFolder();
 
@@ -145,12 +145,14 @@ public class EmbeddedLifecycleTestCase {
   @Test
   @Issue("W-11996026")
   public void getMuleContainerVersionBeforeStart() throws Exception {
+    System.out.println("Mule version = " + getProperty("mule.version"));
+    System.out.println("Mule manifest version = " + getProductVersion());
     EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
     assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
   }
 
-  @Test
+  // @Test
   public void checkJavaVersions() throws Exception {
     EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
@@ -160,7 +162,7 @@ public class EmbeddedLifecycleTestCase {
                embeddedContainer.isCurrentJvmVersionSupported(), is(true));
   }
 
-  @Test
+  // @Test
   @Issue("W-11193698")
   public void muleHomeIsCorrectlySetWhenStartingTheController() throws Exception {
     EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();

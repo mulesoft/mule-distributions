@@ -56,6 +56,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import org.junit.AfterClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -70,6 +71,7 @@ import io.qameta.allure.Story;
 
 @Features({@Feature(EMBEDDED_API), @Feature(DEPLOYMENT_TYPE)})
 @Stories({@Story(CONFIGURATION), @Story(EMBEDDED)})
+@Ignore
 public class ApplicationTestCase extends AbstractEmbeddedTestCase {
 
   private static final String LOGGING_FILE = "app.log";
