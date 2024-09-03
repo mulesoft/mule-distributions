@@ -136,7 +136,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-feature-management-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-memory-management-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-global-config-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-javaee-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-launcher-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-log4j-configurator-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-deployment-${productVersion}.jar
