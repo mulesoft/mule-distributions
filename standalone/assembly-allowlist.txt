@@ -114,6 +114,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-api-2.4.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-activation-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-manifest-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-api-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-java-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-xml-1.9.0-SNAPSHOT.jar
@@ -343,9 +344,6 @@
 /mule-standalone-${productVersion}/lib/opt/grpc-context-1.+
 /mule-standalone-${productVersion}/lib/opt/perfmark-api-0.+
 
-# 3rd party libs to be loaded only when running with java 8
-/mule-standalone-${productVersion}/lib/opt/jdk-8
-/mule-standalone-${productVersion}/lib/opt/jdk-8/xml-apis-1.+
 
 #
 # TODO W-13218993: Remove fake exporter.

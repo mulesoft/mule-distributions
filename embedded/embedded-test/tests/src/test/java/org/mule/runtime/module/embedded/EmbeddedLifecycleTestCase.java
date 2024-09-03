@@ -9,7 +9,7 @@ package org.mule.runtime.module.embedded;
 import static org.mule.maven.client.api.model.MavenConfiguration.newMavenConfigurationBuilder;
 import static org.mule.maven.client.test.MavenTestHelper.createDefaultCommunityMavenConfigurationBuilder;
 import static org.mule.maven.client.test.MavenTestHelper.getLocalRepositoryFolder;
-import static org.mule.runtime.core.api.config.MuleManifest.getProductVersion;
+import static org.mule.runtime.manifest.api.MuleManifest.getMuleManifest;
 import static org.mule.runtime.module.embedded.api.EmbeddedContainer.builder;
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DeploymentTypeStory.EMBEDDED;
@@ -147,7 +147,7 @@ public class EmbeddedLifecycleTestCase {
   public void getMuleContainerVersionBeforeStart() throws Exception {
     EmbeddedContainer embeddedContainer = getBuilderWithDefaults().build();
 
-    assertThat(embeddedContainer.getMuleContainerVersion(), is(getProductVersion()));
+    assertThat(embeddedContainer.getMuleContainerVersion(), is(getMuleManifest().getProductVersion()));
   }
 
   @Test
