@@ -98,8 +98,8 @@
                     <artifactId>mule-netty-http-service</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>jakarta.activation</groupId>
-                    <artifactId>jakarta.activation-api</artifactId>
+                    <groupId>jakarta.mail</groupId>
+                    <artifactId>jakarta.mail-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -190,8 +190,8 @@
                     <artifactId>jakarta.xml.ws-api</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>jakarta.mail</groupId>
-                    <artifactId>jakarta.mail-api</artifactId>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
