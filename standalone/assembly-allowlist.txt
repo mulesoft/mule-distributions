@@ -266,6 +266,8 @@
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-api-2.4.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-impl-2.4.0-+
 /mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.4.0-+
+/mule-standalone-${productVersion}/lib/opt/micrometer-commons-1.+
+/mule-standalone-${productVersion}/lib/opt/micrometer-observation-1.+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.inject-0.+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.+
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-2.+
@@ -283,11 +285,11 @@
 /mule-standalone-${productVersion}/lib/opt/rhino-1.+
 /mule-standalone-${productVersion}/lib/opt/semver4j-3.+
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-2.+
-/mule-standalone-${productVersion}/lib/opt/spring-aop-5.+
-/mule-standalone-${productVersion}/lib/opt/spring-beans-5.+
-/mule-standalone-${productVersion}/lib/opt/spring-context-5.+
-/mule-standalone-${productVersion}/lib/opt/spring-core-5.+
-/mule-standalone-${productVersion}/lib/opt/spring-expression-5.+
+/mule-standalone-${productVersion}/lib/opt/spring-aop-6.+
+/mule-standalone-${productVersion}/lib/opt/spring-beans-6.+
+/mule-standalone-${productVersion}/lib/opt/spring-context-6.+
+/mule-standalone-${productVersion}/lib/opt/spring-core-6.+
+/mule-standalone-${productVersion}/lib/opt/spring-expression-6.+
 /mule-standalone-${productVersion}/lib/opt/togglz-core-3.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
