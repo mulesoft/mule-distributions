@@ -63,6 +63,8 @@
                         <mule.version>${project.version}</mule.version>
                         <settings.file>${settingsFile}</settings.file>
                         <maven.home>${maven.home}</maven.home>
+                        
+                        <amazon.redshift.version>${amazon.redshift.version}</amazon.redshift.version>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
