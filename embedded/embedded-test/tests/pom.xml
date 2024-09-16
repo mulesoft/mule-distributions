@@ -65,6 +65,7 @@
                         <maven.home>${maven.home}</maven.home>
                         
                         <amazon.redshift.version>${amazon.redshift.version}</amazon.redshift.version>
+                        <h2Version>${h2Version}</h2Version>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
