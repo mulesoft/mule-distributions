@@ -66,6 +66,7 @@
                         
                         <amazon.redshift.version>${amazon.redshift.version}</amazon.redshift.version>
                         <h2Version>${h2Version}</h2Version>
+                        <log4jVersion>${log4jVersion}</log4jVersion>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
