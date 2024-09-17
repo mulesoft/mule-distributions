@@ -695,6 +695,15 @@ checkAdditionalJvmParams() {
     fi
 }
 
+refreshAdditionalJvmParams() {
+    "${JAVA_CMD}" -cp "${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar" org.mule.runtime.params.WrapperAdditionalRefresher "$WRAPPER_CONF"
+    EXIT_STATUS=$?
+
+    if [ "$EXIT_STATUS" -ne "0" ] ; then
+        exit $EXIT_STATUS
+    fi
+}
+
 logMuleHome() {
     echo "MULE_HOME is set to ${MULE_HOME}"
     echo "MULE_BASE is set to ${MULE_BASE}"
@@ -725,6 +734,7 @@ case "$1" in
     'restart')
         logMuleHome
         checkUser touchlock $*
+        refreshAdditionalJvmParams
         stopit
         start
         ;;
