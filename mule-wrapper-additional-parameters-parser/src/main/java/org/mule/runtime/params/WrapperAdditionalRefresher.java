@@ -9,7 +9,8 @@ package org.mule.runtime.params;
 import static org.mule.runtime.params.ConfigFileUtils.getFileInSameDir;
 import static org.mule.runtime.params.ConfigFileUtils.lookupLastSequencesFromConfig;
 
-import static java.nio.file.Files.copy;
+import static java.nio.file.Files.deleteIfExists;
+import static java.nio.file.Files.move;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 import java.io.BufferedReader;
@@ -32,8 +33,13 @@ public class WrapperAdditionalRefresher {
     File updatedWrapperAdditionalConfFile = getFileInSameDir(wrapperConfigFile, "wrapper-additional-tmp.conf");
 
     SequenceInfo sequenceInfo = lookupLastSequencesFromConfig(wrapperConfigFile);
-    copyUpdatingSequences(wrapperAdditionalConfFile, updatedWrapperAdditionalConfFile, sequenceInfo);
-    copy(updatedWrapperAdditionalConfFile.toPath(), wrapperAdditionalConfFile.toPath(), REPLACE_EXISTING);
+    try {
+      copyUpdatingSequences(wrapperAdditionalConfFile, updatedWrapperAdditionalConfFile, sequenceInfo);
+      move(updatedWrapperAdditionalConfFile.toPath(), wrapperAdditionalConfFile.toPath(), REPLACE_EXISTING);
+    } finally {
+      // Makes sure the temporary file does not exist anymore
+      deleteIfExists(updatedWrapperAdditionalConfFile.toPath());
+    }
   }
 
   private static void copyUpdatingSequences(File srcConfFile, File dstConfFile, SequenceInfo sequenceInfo) throws IOException {

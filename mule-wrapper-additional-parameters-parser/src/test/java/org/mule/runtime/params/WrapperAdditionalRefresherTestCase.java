@@ -13,8 +13,10 @@ import static org.apache.commons.io.FileUtils.readLines;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.hamcrest.io.FileMatchers.anExistingFile;
+import static org.hamcrest.io.FileMatchers.anExistingFileOrDirectory;
 import static org.junit.Assert.assertThrows;
 import static org.junit.internal.matchers.ThrowableMessageMatcher.hasMessage;
 
@@ -39,6 +41,7 @@ public class WrapperAdditionalRefresherTestCase {
 
   private static final String WRAPPER_CONF = "wrapper.conf";
   private static final String WRAPPER_ADDITIONAL_CONF = "wrapper-additional.conf";
+  private static final String WRAPPER_ADDITIONAL_CONF_TEMP = "wrapper-additional-tmp.conf";
 
   @Rule
   public TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -75,6 +78,8 @@ public class WrapperAdditionalRefresherTestCase {
                                                    () -> WrapperAdditionalRefresher
                                                        .main(new String[] {wrapperConfFile.getPath()}));
     assertThat(exception, hasMessage(containsString(WRAPPER_ADDITIONAL_CONF)));
+    // Checks the temporary file is not left behind
+    assertThat(fileFromTemp(WRAPPER_ADDITIONAL_CONF_TEMP), is(not(anExistingFileOrDirectory())));
   }
 
   @Test
@@ -84,6 +89,8 @@ public class WrapperAdditionalRefresherTestCase {
                                                    () -> WrapperAdditionalRefresher
                                                        .main(new String[] {wrapperConfFile.getPath()}));
     assertThat(exception, hasMessage(containsString(WRAPPER_CONF)));
+    // Checks the temporary file is not left behind
+    assertThat(fileFromTemp(WRAPPER_ADDITIONAL_CONF_TEMP), is(not(anExistingFileOrDirectory())));
   }
 
   private void runUsingAdditionalAndAssertExpected(String wrapperAdditionalResource, String expectedResource) throws IOException {
@@ -92,6 +99,9 @@ public class WrapperAdditionalRefresherTestCase {
     File actual = fileFromTemp(WRAPPER_ADDITIONAL_CONF);
     assertThat(actual, is(anExistingFile()));
     assertSameContents(actual, fileFromResource(expectedResource));
+
+    // Checks the temporary file is not left behind
+    assertThat(fileFromTemp(WRAPPER_ADDITIONAL_CONF_TEMP), is(not(anExistingFileOrDirectory())));
   }
 
   private void copyWrapper() throws IOException {
