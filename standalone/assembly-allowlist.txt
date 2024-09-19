@@ -202,6 +202,7 @@
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.+
 /mule-standalone-${productVersion}/lib/opt/caffeine-3.+
 /mule-standalone-${productVersion}/lib/opt/checker-qual-3.+
+/mule-standalone-${productVersion}/lib/opt/collections-24.+
 /mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.+
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.+
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.+
@@ -216,11 +217,13 @@
 /mule-standalone-${productVersion}/lib/opt/everit-json-schema-1.+
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.+
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.+
+/mule-standalone-${productVersion}/lib/opt/graal-sdk-24.+
 /mule-standalone-${productVersion}/lib/opt/gson-2.+
 /mule-standalone-${productVersion}/lib/opt/guava-33.+
 /mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.+
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.+
+/mule-standalone-${productVersion}/lib/opt/icu4j-+
 /mule-standalone-${productVersion}/lib/opt/j2objc-annotations-3.+
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.+
 /mule-standalone-${productVersion}/lib/opt/jackson-dataformat-yaml-2.+
@@ -241,6 +244,8 @@
 /mule-standalone-${productVersion}/lib/opt/jgrapht-core-1.+
 /mule-standalone-${productVersion}/lib/opt/jheaps-0.+
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.+
+/mule-standalone-${productVersion}/lib/opt/js-23.+
+/mule-standalone-${productVersion}/lib/opt/js-scriptengine-24.+
 /mule-standalone-${productVersion}/lib/opt/json-202+
 /mule-standalone-${productVersion}/lib/opt/jsoup-1.+
 /mule-standalone-${productVersion}/lib/opt/listenablefuture-9999.+
@@ -267,6 +272,7 @@
 /mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.4.0-+
 /mule-standalone-${productVersion}/lib/opt/micrometer-commons-1.+
 /mule-standalone-${productVersion}/lib/opt/micrometer-observation-1.+
+/mule-standalone-${productVersion}/lib/opt/nativeimage-24.+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.inject-0.+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.+
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-2.+
@@ -275,12 +281,14 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-sec-dispatcher-2.+
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-4.+
 /mule-standalone-${productVersion}/lib/opt/plexus-xml-3.+
+/mule-standalone-${productVersion}/lib/opt/polyglot-24.+
 /mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-15.jar
 /mule-standalone-${productVersion}/lib/opt/re2j-1.+
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.+
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.+
 /mule-standalone-${productVersion}/lib/opt/reactor-extra-3.+
 /mule-standalone-${productVersion}/lib/opt/reflections-0.+
+/mule-standalone-${productVersion}/lib/opt/regex-24.+
 /mule-standalone-${productVersion}/lib/opt/rhino-1.+
 /mule-standalone-${productVersion}/lib/opt/semver4j-3.+
 /mule-standalone-${productVersion}/lib/opt/snakeyaml-2.+
@@ -290,12 +298,14 @@
 /mule-standalone-${productVersion}/lib/opt/spring-core-6.+
 /mule-standalone-${productVersion}/lib/opt/spring-expression-6.+
 /mule-standalone-${productVersion}/lib/opt/togglz-core-3.+
+/mule-standalone-${productVersion}/lib/opt/truffle-api-24.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
 /mule-standalone-${productVersion}/lib/opt/vibur-object-pool-25.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-shared-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.+
+/mule-standalone-${productVersion}/lib/opt/word-24.+
 /mule-standalone-${productVersion}/lib/opt/xerces2-xsd11-2.11.3-MULE-002.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-5.+
 
