@@ -220,7 +220,6 @@
                 <include>org.mule.runtime:mule-module-feature-management</include>
                 <include>org.mule.runtime:mule-module-memory-management</include>
                 <include>org.mule.runtime:mule-module-global-config</include>
-                <include>org.mule.runtime:mule-module-javaee</include>
                 <include>org.mule.runtime:mule-module-deployment</include>
                 <include>org.mule.runtime:mule-module-deployment-model</include>
                 <include>org.mule.runtime:mule-module-deployment-model-impl</include>
@@ -401,7 +400,6 @@
                 <exclude>org.mule.runtime:mule-module-feature-management</exclude>
                 <exclude>org.mule.runtime:mule-module-memory-management</exclude>
                 <exclude>org.mule.runtime:mule-module-global-config</exclude>
-                <exclude>org.mule.runtime:mule-module-javaee</exclude>
                 <exclude>org.mule.runtime:mule-module-deployment</exclude>
                 <exclude>org.mule.runtime:mule-module-deployment-model</exclude>
                 <exclude>org.mule.runtime:mule-module-deployment-model-impl</exclude>
