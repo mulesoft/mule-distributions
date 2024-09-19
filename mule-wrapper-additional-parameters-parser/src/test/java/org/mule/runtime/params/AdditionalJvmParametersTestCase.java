@@ -166,8 +166,8 @@ public class AdditionalJvmParametersTestCase {
   }
 
   /**
-   * Tests AdditionalJvmParameters class. New wrapper-additional.conf file will be created with starting index 59. (Index in
-   * wrapper.conf ends with 18 and -additionalJavaProperties=40 will add 40. 40+18=58.)
+   * Tests AdditionalJvmParameters class. New wrapper-additional-with-gap.conf file will be created with starting index 59. (Index
+   * in wrapper.conf ends with 18 and -additionalJavaProperties=40 will add 40. 40+18=58.)
    * 
    * @throws IOException
    */
@@ -178,7 +178,7 @@ public class AdditionalJvmParametersTestCase {
     additionalJvmParameters.jpdaOpts = args[1];
     String wrapperConfDir = additionalJvmParameters.extractWrapperConfDir(wrapperConfigFile);
 
-    // create wrapper-additional.conf
+    // create wrapper-additional-with-gap.conf
     File wrapperAdditionalConfFile = newTemporaryFile();
     FileWriter writer = new FileWriter(wrapperAdditionalConfFile);
     additionalJvmParameters.writeHeader(writer);

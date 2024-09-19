@@ -219,11 +219,6 @@
         </dependency>
 
         <dependency>
-            <groupId>xml-apis</groupId>
-            <artifactId>xml-apis</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.mule.distributions</groupId>
             <artifactId>mule-wrapper-additional-parameters-parser</artifactId>
             <version>${project.version}</version>

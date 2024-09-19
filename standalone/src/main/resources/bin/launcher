@@ -1,32 +1,9 @@
 #! /bin/sh
 
-# Check for java in path
-
-JAVA=
-if [ ! -z "$JAVA_HOME" ]
-then
-    JAVA=$JAVA_HOME/bin/java
-else
-    if [ -n "`which java 2>/dev/null`" ]
-    then
-        JAVA=java
-    fi
-fi
-
-if [ "$JAVA" = "" ]
-then
-    echo "**********************************************************************"
-    echo "* ERROR: java could not be found. Please install the JRE or JDK.     *"
-    echo "* If it is already installed, configure the system variables PATH or *"
-    echo "* JAVA_HOME appropriately.                                           *"
-    echo "**********************************************************************"
-    exit 1
-fi
-
 commonsCliJar=`ls "$MULE_HOME"/lib/boot/commons-cli-*.jar`
 
 cp=.:$MULE_HOME/conf:$commonsCliJar
 
 # The string passed to eval must handle spaces in paths correctly.
-COMMAND_LINE="\"${JAVA}\" -Dmule.home=\"${MULE_HOME}\" -jar \"${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar\" $@"
+COMMAND_LINE="\"${JAVA_CMD}\" -Dmule.home=\"${MULE_HOME}\" -jar \"${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar\" $@"
 eval $COMMAND_LINE

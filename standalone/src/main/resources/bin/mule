@@ -280,6 +280,53 @@ do
 done
 ######################################################################
 
+###############################################
+# Begin Customized for Mule
+###############################################
+# Use jvm from JAVA_HOME if present
+
+if [ -z "$JAVA_HOME" ]; then
+    echo "No JAVA_HOME set, determining it..."
+
+    # Determine it from $PATH
+    JAVA_PATH=`which java 2>/dev/null`
+    if [ -n "$JAVA_PATH" ]; then
+        if [ `echo "$JAVA_PATH" | grep "/bin/java$"` ]; then
+            export JAVA_HOME=${JAVA_PATH%/bin/java*}
+        fi
+    fi
+
+    # OSX always places Java in the same location so we can reliably set JAVA_HOME
+    if [ "$DIST_OS" = "macosx" ]
+    then
+        if [ -x /usr/libexec/java_home ]; then
+            JAVA_HOME=`/usr/libexec/java_home`; export JAVA_HOME
+        else
+            JAVA_HOME="/Library/Java/Home"; export JAVA_HOME
+        fi
+    fi
+
+	if [ -n "$JAVA_HOME" ]; then
+	    echo "Determined JAVA_HOME: $JAVA_HOME"
+	fi
+fi
+
+if [ -z "$JAVA_HOME" ]
+then
+    echo "**********************************************************************"
+    echo "* ERROR: java could not be found. Please install the JRE or JDK.     *"
+    echo "* If it is already installed, configure the system variables PATH or *"
+    echo "* JAVA_HOME appropriately.                                           *"
+    echo "**********************************************************************"
+    exit 1
+fi
+
+export JAVA_CMD="$JAVA_HOME/bin/java"
+
+###############################################
+# End Customized for Mule
+###############################################
+
 outputFile() {
     if [ -f "$1" ]
     then
@@ -695,6 +742,15 @@ checkAdditionalJvmParams() {
     fi
 }
 
+refreshAdditionalJvmParams() {
+    "${JAVA_CMD}" -cp "${MULE_HOME}/lib/launcher/mule-wrapper-additional-parameters-parser.jar" org.mule.runtime.params.WrapperAdditionalRefresher "$WRAPPER_CONF"
+    EXIT_STATUS=$?
+
+    if [ "$EXIT_STATUS" -ne "0" ] ; then
+        exit $EXIT_STATUS
+    fi
+}
+
 logMuleHome() {
     echo "MULE_HOME is set to ${MULE_HOME}"
     echo "MULE_BASE is set to ${MULE_BASE}"
@@ -725,6 +781,7 @@ case "$1" in
     'restart')
         logMuleHome
         checkUser touchlock $*
+        refreshAdditionalJvmParams
         stopit
         start
         ;;
