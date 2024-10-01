@@ -107,7 +107,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.9.0-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-2.4.0-SNAPSHOT.jar
@@ -131,7 +130,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-mule-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-xml-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-feature-management-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-memory-management-${productVersion}.jar
@@ -161,7 +159,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-compatibility-api-0.11.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-api-${productVersion}.jar
@@ -190,7 +187,6 @@
 /mule-standalone-${productVersion}/services/mule-service-scheduler-1.9.0-+
 /mule-standalone-${productVersion}/services/mule-service-http-1.11.0-+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.6.0-+
-/mule-standalone-${productVersion}/services/mule-service-soap-1.9.0-+
 /mule-standalone-${productVersion}/services/mule-service-weave-2.9.0-+
 #
 # /lib/opt
