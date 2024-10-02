@@ -297,7 +297,7 @@
 /mule-standalone-${productVersion}/lib/opt/spring-context-6.+
 /mule-standalone-${productVersion}/lib/opt/spring-core-6.+
 /mule-standalone-${productVersion}/lib/opt/spring-expression-6.+
-/mule-standalone-${productVersion}/lib/opt/togglz-core-3.+
+/mule-standalone-${productVersion}/lib/opt/togglz-core-4.+
 /mule-standalone-${productVersion}/lib/opt/truffle-api-24.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
@@ -326,7 +326,7 @@
 /mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-15.jar
 
 # Metrics/Tracing dependencies
-/mule-standalone-${productVersion}/lib/opt/annotations-24.+
+/mule-standalone-${productVersion}/lib/opt/annotations-25.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.+
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-1.+

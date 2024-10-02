@@ -12,3 +12,6 @@ archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
 projectType: runtime
 mavenTool: "3.9.9"
 jdkTool: OPEN-JDK17
+additionalTestConfigs:
+  jdk21:
+    testJdkTool: TEMURIN-JDK21
