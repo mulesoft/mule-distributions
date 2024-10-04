@@ -327,10 +327,9 @@
 
 # Metrics/Tracing dependencies
 /mule-standalone-${productVersion}/lib/opt/annotations-25.+
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.+
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.+
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-1.+
-/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk8-1.+
+/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-2.+
+/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk7-2.+
+/mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-jdk8-2.+
 /mule-standalone-${productVersion}/lib/opt/okhttp-4.+
 /mule-standalone-${productVersion}/lib/opt/okio-jvm-3.+
 /mule-standalone-${productVersion}/lib/opt/opentelemetry-api-1.+
