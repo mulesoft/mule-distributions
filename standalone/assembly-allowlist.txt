@@ -203,7 +203,7 @@
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.15.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections4-4.4.jar
-/mule-standalone-${productVersion}/lib/opt/commons-io-2.13.0.jar
+/mule-standalone-${productVersion}/lib/opt/commons-io-2.17.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang-2.6.jar
 /mule-standalone-${productVersion}/lib/opt/commons-lang3-3.12.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-pool2-2.11.1.jar
