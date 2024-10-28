@@ -223,7 +223,7 @@
 /mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
 /mule-standalone-${productVersion}/lib/opt/httpclient-4.+
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.+
-/mule-standalone-${productVersion}/lib/opt/icu4j-+
+/mule-standalone-${productVersion}/lib/opt/icu4j-71.+
 /mule-standalone-${productVersion}/lib/opt/j2objc-annotations-3.+
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.+
 /mule-standalone-${productVersion}/lib/opt/jackson-dataformat-yaml-2.+
