@@ -8,7 +8,6 @@ package org.mule.runtime.params;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.max;
-import static java.lang.System.getProperty;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
@@ -87,19 +86,11 @@ public class AdditionalJvmParameters {
       }
     }
 
-    File wrapperLicenseConfFile;
     Properties bootstrapProps = new Properties();
-    // Do not use commons-lang3 to avoid having to add that jar to lib/boot
-    if (getProperty(JAVA_RUNNING_VERSION).startsWith(JAVA_8_VERSION)) {
-      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java8/wrapper.jvmDependant.conf")));
-      wrapperLicenseConfFile = new File(wrapperConfDir + "java8/wrapper-license.conf");
-    } else {
-      bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf")));
-      wrapperLicenseConfFile = new File(wrapperConfDir + "java11-plus/wrapper-license.conf");
-    }
-
+    bootstrapProps.load(new FileInputStream(new File(wrapperConfDir + "java11-plus/wrapper.jvmDependant.conf")));
     processBootstrapProperties(bootstrapProps, writer);
 
+    File wrapperLicenseConfFile = new File(wrapperConfDir + "java11-plus/wrapper-license.conf");
     if (wrapperLicenseConfFile.exists()) {
       Files.copy(wrapperLicenseConfFile.toPath(), new File(wrapperConfDir + "wrapper-license.conf").toPath(), REPLACE_EXISTING);
     }
