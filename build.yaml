@@ -5,7 +5,7 @@ upstreamProjects:
   Mule-runtime/mule-scheduler-service/1.4.4,
   Mule-runtime/mule-soap-service/1.4.13,
   Mule-runtime/mule-embedded-api/1.4.0-20241021-WITH-W-17110125,
-  Mule-runtime/mule-maven-client/1.6.0-NOVEMBER-2024
+  Mule-runtime/mule-maven-client/1.6.0-20241021-WITH-W-17110125
 archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
 # MULE-18045: Comment public setting to get raml-parser 2 from private repo until it is released in a public repo
 # "mavenSettingsXmlId" : "mule-runtime-maven-settings-MuleSettings",
