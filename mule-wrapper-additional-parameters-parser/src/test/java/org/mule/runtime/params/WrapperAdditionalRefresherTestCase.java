@@ -23,7 +23,6 @@ import static org.junit.internal.matchers.ThrowableMessageMatcher.hasMessage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.junit.Before;
@@ -105,7 +104,7 @@ public class WrapperAdditionalRefresherTestCase {
   }
 
   private void copyWrapper() throws IOException {
-    copyResourceToTemp(Paths.get("conf", WRAPPER_CONF).toString(), WRAPPER_CONF);
+    copyResourceToTemp("conf/" + WRAPPER_CONF, WRAPPER_CONF);
   }
 
   private void useWrapperAdditional(String wrapperAdditionalName) throws IOException {
