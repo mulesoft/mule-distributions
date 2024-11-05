@@ -199,6 +199,7 @@
                 <include>org.mule.runtime:mule-properties-api</include>
                 <!-- Core -->
                 <include>org.mule.runtime:mule-core</include>
+                <include>org.mule.runtime:mule-manifest</include>
                 <include>org.mule.runtime:mule-runtime-extension-model</include>
                 <include>org.mule.runtime:mule-runtime-errors</include>
                 <!--Services-->
@@ -219,7 +220,6 @@
                 <include>org.mule.runtime:mule-module-feature-management</include>
                 <include>org.mule.runtime:mule-module-memory-management</include>
                 <include>org.mule.runtime:mule-module-global-config</include>
-                <include>org.mule.runtime:mule-module-javaee</include>
                 <include>org.mule.runtime:mule-module-deployment</include>
                 <include>org.mule.runtime:mule-module-deployment-model</include>
                 <include>org.mule.runtime:mule-module-deployment-model-impl</include>
@@ -227,7 +227,6 @@
                 <include>org.mule.runtime:mule-module-service</include>
                 <include>org.mule.runtime:mule-module-container</include>
                 <include>org.mule.runtime:mule-module-extensions-support</include>
-                <include>org.mule.runtime:mule-module-extensions-soap-support</include>
                 <include>org.mule.runtime:mule-module-extensions-spring-support</include>
                 <include>org.mule.runtime:mule-module-extensions-mule-support</include>
                 <include>org.mule.runtime:mule-module-extensions-xml-support</include>
@@ -382,6 +381,7 @@
                 <exclude>org.mule.runtime:mule-core</exclude>
                 <exclude>org.mule.runtime:mule-core-components</exclude>
                 <exclude>org.mule.runtime:mule-jar-handling-utils</exclude>
+                <exclude>org.mule.runtime:mule-manifest</exclude>
                 <exclude>org.mule.runtime:mule-runtime-extension-model</exclude>
                 <exclude>org.mule.runtime:mule-runtime-errors</exclude>
                 <exclude>org.mule.distributions:mule-services-all</exclude>
@@ -390,7 +390,6 @@
                 <exclude>org.mule.runtime:mule-module-artifact-activation</exclude>
                 <exclude>org.mule.runtime:mule-module-log4j-configurator</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-support</exclude>
-                <exclude>org.mule.runtime:mule-module-extensions-soap-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-spring-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-mule-support</exclude>
                 <exclude>org.mule.runtime:mule-module-extensions-xml-support</exclude>
@@ -399,7 +398,6 @@
                 <exclude>org.mule.runtime:mule-module-feature-management</exclude>
                 <exclude>org.mule.runtime:mule-module-memory-management</exclude>
                 <exclude>org.mule.runtime:mule-module-global-config</exclude>
-                <exclude>org.mule.runtime:mule-module-javaee</exclude>
                 <exclude>org.mule.runtime:mule-module-deployment</exclude>
                 <exclude>org.mule.runtime:mule-module-deployment-model</exclude>
                 <exclude>org.mule.runtime:mule-module-deployment-model-impl</exclude>
@@ -469,22 +467,7 @@
                 <!-- Exclude parameter parsing -->
                 <exclude>org.mule.distributions:mule-wrapper-additional-parameters-parser</exclude>
 
-                <!-- Exclude JVM version specific libraries -->                
-                <exclude>xml-apis:xml-apis</exclude>
-
             </excludes>
-        </dependencySet>
-
-        <!-- 3rd-party libraries, jdk 8 specific -->
-        <dependencySet>
-            <outputDirectory>lib/opt/jdk-8</outputDirectory>
-            <useStrictFiltering>true</useStrictFiltering>
-            <includes>
-                <!-- Include JVM version specific libraries -->                
-
-                <!-- This has colliding packages with java.xml module (org.w3c.*) when running with java11+ -->
-                <include>xml-apis:xml-apis</include>
-            </includes>
         </dependencySet>
     </dependencySets>
 </assembly>
