@@ -35,10 +35,6 @@ import java.util.stream.Collectors;
  * Process additional JVM parameters in wrapper.conf file and write required information to wrapper-additional.conf
  */
 public class AdditionalJvmParameters {
-
-  private static final String JAVA_8_VERSION = "1.8";
-  private static final String JAVA_RUNNING_VERSION = "java.specification.version";
-
   protected static String jpdaOpts = "";
   protected static int paramIndex = -1;
   protected static int classpathIndex = 0;
