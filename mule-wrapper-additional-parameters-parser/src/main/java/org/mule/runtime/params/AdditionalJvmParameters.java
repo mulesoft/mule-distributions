@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
  * Process additional JVM parameters in wrapper.conf file and write required information to wrapper-additional.conf
  */
 public class AdditionalJvmParameters {
+
   protected static String jpdaOpts = "";
   protected static int paramIndex = -1;
   protected static int classpathIndex = 0;
