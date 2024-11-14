@@ -8,10 +8,12 @@ package org.mule.runtime.module.embedded;
 
 import static org.mule.runtime.module.embedded.api.Product.MULE;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
+import static org.mule.test.infrastructure.maven.MavenTestUtils.installMavenArtifact;
 
 import static java.lang.String.valueOf;
 import static java.util.Arrays.asList;
 
+import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.io.FileUtils.toFile;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
