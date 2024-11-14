@@ -31,9 +31,13 @@ import org.mule.tck.probe.PollingProber;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -210,8 +214,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   String muleVersion,
                                   Properties props)
       throws Exception {
-    File artifactFile =
-        installArtifact ? installMavenArtifact(artifactFolder, applicationBundleDescriptor, props) : new File(artifactFolder);
+    File artifactFile = resolveArtifact(applicationBundleDescriptor, artifactFolder, installArtifact, props);
     Integer httpListenerPort = new FreePortFinder(6000, 9000).find();
     testWithSystemProperty("httpPort", valueOf(httpListenerPort), () -> {
       embeddedTestHelper.recreateContainerFolder();
@@ -222,7 +225,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
           throw new RuntimeException(e);
         }
       };
-      Consumer<EmbeddedContainer> embeddedContainerConsumer = (container) -> {
+      Consumer<EmbeddedContainer> embeddedContainerConsumer = container -> {
         ArtifactConfiguration artifactConfiguration = ArtifactConfiguration.builder()
             .artifactLocation(artifactFile)
             .deploymentConfiguration(DeploymentConfiguration.builder()
@@ -262,6 +265,18 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
         embeddedTestHelper.testWithDefaultSettings(embeddedContainerBuilderConsumer, muleVersion, embeddedContainerConsumer);
       }
     });
+  }
+
+  private static final Map<Pair<BundleDescriptor, Properties>, File> INSTALLED_ARTIFACT_CACHES = new HashMap<>();
+
+  private File resolveArtifact(BundleDescriptor applicationBundleDescriptor,
+                               String artifactFolder,
+                               boolean installArtifact,
+                               Properties props) {
+    return installArtifact
+        ? INSTALLED_ARTIFACT_CACHES.computeIfAbsent(Pair.of(applicationBundleDescriptor, props),
+                                                    k -> installMavenArtifact(artifactFolder, k.getLeft(), k.getRight()))
+        : new File(artifactFolder);
   }
 
   protected void validateApplicationIsDeployed(EmbeddedContainer embeddedContainer, File applicationFile) {
