@@ -267,16 +267,16 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
     });
   }
 
-  private static Map<Pair<BundleDescriptor, Properties>, File> INSTALLED_ARTIFACT_CACHES = new HashMap<>();
+  private static final Map<Pair<BundleDescriptor, Properties>, File> INSTALLED_ARTIFACT_CACHES = new HashMap<>();
 
-  private File resolveArtifact(BundleDescriptor applicationBundleDescriptor, String artifactFolder, boolean installArtifact,
+  private File resolveArtifact(BundleDescriptor applicationBundleDescriptor,
+                               String artifactFolder,
+                               boolean installArtifact,
                                Properties props) {
-    File artifactFile =
-        INSTALLED_ARTIFACT_CACHES.computeIfAbsent(Pair.of(applicationBundleDescriptor, props),
-                                                  k -> installArtifact
-                                                      ? installMavenArtifact(artifactFolder, k.getLeft(), k.getRight())
-                                                      : new File(artifactFolder));
-    return artifactFile;
+    return installArtifact
+        ? INSTALLED_ARTIFACT_CACHES.computeIfAbsent(Pair.of(applicationBundleDescriptor, props),
+                                                    k -> installMavenArtifact(artifactFolder, k.getLeft(), k.getRight()))
+        : new File(artifactFolder);
   }
 
   protected void validateApplicationIsDeployed(EmbeddedContainer embeddedContainer, File applicationFile) {
