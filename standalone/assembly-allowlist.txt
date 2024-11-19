@@ -107,7 +107,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.9.0-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.9.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-2.4.0-SNAPSHOT.jar
@@ -160,7 +159,6 @@
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-compatibility-api-0.11.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-service-soap-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-api-${productVersion}.jar
@@ -189,7 +187,6 @@
 /mule-standalone-${productVersion}/services/mule-service-scheduler-1.9.0-+
 /mule-standalone-${productVersion}/services/mule-service-http-1.11.0-+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.6.0-+
-/mule-standalone-${productVersion}/services/mule-service-soap-1.9.0-+
 /mule-standalone-${productVersion}/services/mule-service-weave-2.9.0-+
 #
 # /lib/opt
@@ -231,12 +228,9 @@
 /mule-standalone-${productVersion}/lib/opt/jakarta.inject-api-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.jms-api-2.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.json-1.+
-/mule-standalone-${productVersion}/lib/opt/jakarta.jws-api-1.+
-/mule-standalone-${productVersion}/lib/opt/jakarta.resource-api-1.+
+/mule-standalone-${productVersion}/lib/opt/jakarta.mail-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.transaction-api-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.xml.bind-api-2.+
-/mule-standalone-${productVersion}/lib/opt/jakarta.xml.soap-api-1.+
-/mule-standalone-${productVersion}/lib/opt/jakarta.xml.ws-api-2.+
 /mule-standalone-${productVersion}/lib/opt/jaxb-impl-2.+
 /mule-standalone-${productVersion}/lib/opt/failsafe-2.+
 /mule-standalone-${productVersion}/lib/opt/jcommander-1.+
