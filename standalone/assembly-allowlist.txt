@@ -206,6 +206,7 @@
 /mule-standalone-${productVersion}/lib/opt/commons-io-2.+
 /mule-standalone-${productVersion}/lib/opt/commons-lang3-3.+
 /mule-standalone-${productVersion}/lib/opt/commons-pool2-2.+
+/mule-standalone-${productVersion}/lib/opt/commons-text-1.+
 /mule-standalone-${productVersion}/lib/opt/config-1.+
 /mule-standalone-${productVersion}/lib/opt/disruptor-1.+
 /mule-standalone-${productVersion}/lib/opt/dom4j-2.+
