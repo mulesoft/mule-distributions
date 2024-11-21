@@ -215,7 +215,7 @@ public abstract class AbstractEmbeddedTestCase extends AbstractMuleTestCase {
                                   Properties props)
       throws Exception {
     File artifactFile = resolveArtifact(applicationBundleDescriptor, artifactFolder, installArtifact, props);
-    Integer httpListenerPort = new FreePortFinder(6000, 9000).find();
+    Integer httpListenerPort = new FreePortFinder(6000, 18000).find();
     testWithSystemProperty("httpPort", valueOf(httpListenerPort), () -> {
       embeddedTestHelper.recreateContainerFolder();
       Consumer<EmbeddedContainer.EmbeddedContainerBuilder> embeddedContainerBuilderConsumer = embeddedContainerBuilder -> {

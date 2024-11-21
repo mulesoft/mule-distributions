@@ -59,11 +59,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <forkCount>5</forkCount>
+                    <reuseForks>true</reuseForks>
                     <systemPropertyVariables>
                         <mule.version>${project.version}</mule.version>
                         <settings.file>${settingsFile}</settings.file>
                         <maven.home>${maven.home}</maven.home>
-                        
                         <amazon.redshift.version>${amazon.redshift.version}</amazon.redshift.version>
                         <h2Version>${h2Version}</h2Version>
                         <log4jVersion>${log4jVersion}</log4jVersion>
