@@ -18,6 +18,7 @@
             to the unnamed module in `surefire.test.unit.open.args`, otherwise we would need to set `org.mule.runtime.embedded.api`
             in a module layer instead of the unnamed module and propagate the `opens`.
          -->
+        <surefire.test.unit.open.args.target>ALL-UNNAMED</surefire.test.unit.open.args.target>
         <surefire.args>
             ${surefire.test.unit.open.args}
         </surefire.args>
