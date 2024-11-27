@@ -6,7 +6,7 @@
  */
 package org.mule.runtime.module.embedded;
 
-import static org.mule.runtime.api.deployment.management.ComponentInitialStateManager.DISABLE_SCHEDULER_SOURCES_PROPERTY;
+import static org.mule.runtime.api.util.MuleSystemProperties.DISABLE_SCHEDULER_SOURCES_PROPERTY;
 import static org.mule.runtime.core.api.util.UUID.getUUID;
 import static org.mule.tck.MuleTestUtils.testWithSystemProperty;
 import static org.mule.test.allure.AllureConstants.DeploymentTypeFeature.DEPLOYMENT_TYPE;
@@ -27,14 +27,14 @@ import static com.mashape.unirest.http.Unirest.post;
 import static org.apache.commons.io.FileUtils.deleteQuietly;
 import static org.apache.commons.lang3.JavaVersion.JAVA_11;
 import static org.apache.commons.lang3.SystemUtils.isJavaVersionAtMost;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
-import static org.junit.rules.ExpectedException.none;
 
 import org.mule.runtime.module.artifact.api.descriptor.BundleDescriptor;
 import org.mule.runtime.module.embedded.api.ArtifactConfiguration;
@@ -58,7 +58,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 
 import io.qameta.allure.Description;
@@ -77,9 +76,6 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   private static final String LISTENER_URL = "http://localhost:%d/test";
 
   private static final String HTTP_ECHO = "http-echo";
-
-  @Rule
-  public ExpectedException expectedException = none();
 
   @Rule
   public DynamicPort isAlivePort = new DynamicPort("isAlivePort");
@@ -203,9 +199,10 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Test
   public void applicationDeploymentLazyInitButEnableXmlValidations() throws Exception {
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("http-invalid-xml", empty());
-    expectedException.expectMessage(containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
-    doWithinApplication(bundleDescriptor, getAppFolder("http-invalid-xml"), port -> {
-    }, true, true, true, false, skipAstProperties());
+    var thrown = assertThrows(RuntimeException.class,
+                              () -> doWithinApplication(bundleDescriptor, getAppFolder("http-invalid-xml"), port -> {
+                              }, true, true, true, false, skipAstProperties()));
+    assertThat(thrown.getMessage(), containsString("There were '2' errors while parsing the given file 'mule-config.xml'."));
   }
 
 
