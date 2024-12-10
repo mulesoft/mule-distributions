@@ -99,6 +99,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Issue("W-13562329")
   @Test
   public void legacyImplementationSupported() throws Exception {
+    // TODO W-17281788: Migrate test
     assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
@@ -109,6 +110,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Issue("W-14227143")
   @Test
   public void legacyImplementationForRuntime45Supported() throws Exception {
+    // TODO W-17281788: Migrate test
     assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor(HTTP_ECHO, empty());
     doWithinApplication(bundleDescriptor, getAppFolder(HTTP_ECHO),
@@ -127,6 +129,7 @@ public class ApplicationTestCase extends AbstractEmbeddedTestCase {
   @Test
   // This test may fail depending on the JDK used to run the tests
   public void jdkResourceAvailableFromApp() throws Exception {
+    // TODO W-17281788: Migrate test
     assumeThat(isJavaVersionAtMost(JAVA_11), is(true));
 
     BundleDescriptor bundleDescriptor = getApplicationBundleDescriptor("jdk-exported-resource-app", empty());
