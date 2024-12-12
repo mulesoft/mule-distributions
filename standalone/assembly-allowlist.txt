@@ -214,7 +214,6 @@
 /mule-standalone-${productVersion}/lib/opt/everit-json-schema-1.+
 /mule-standalone-${productVersion}/lib/opt/failureaccess-1.+
 /mule-standalone-${productVersion}/lib/opt/fastutil-8.+
-/mule-standalone-${productVersion}/lib/opt/graal-sdk-24.+
 /mule-standalone-${productVersion}/lib/opt/gson-2.+
 /mule-standalone-${productVersion}/lib/opt/guava-33.+
 /mule-standalone-${productVersion}/lib/opt/handy-uri-templates-2.+
