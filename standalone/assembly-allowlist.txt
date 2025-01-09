@@ -295,7 +295,7 @@
 /mule-standalone-${productVersion}/lib/opt/truffle-api-24.+
 /mule-standalone-${productVersion}/lib/opt/uuid-3.4.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/validation-api-1.+
-/mule-standalone-${productVersion}/lib/opt/vibur-object-pool-25.+
+/mule-standalone-${productVersion}/lib/opt/vibur-object-pool-26.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-http-shared-3.+
 /mule-standalone-${productVersion}/lib/opt/wagon-provider-api-3.+
