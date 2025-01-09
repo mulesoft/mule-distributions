@@ -158,6 +158,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-api-0.12.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-compatibility-api-0.12.0-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-http-api-${productVersion}.jar
+/mule-standalone-${productVersion}/lib/mule/mule-http2-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-service-oauth-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-impl-${productVersion}.jar

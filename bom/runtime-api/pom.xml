@@ -74,6 +74,12 @@
             </dependency>
             <dependency>
                 <groupId>org.mule.runtime</groupId>
+                <artifactId>mule-http2-api</artifactId>
+                <version>${project.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mule.runtime</groupId>
                 <artifactId>mule-service-oauth-api</artifactId>
                 <version>${project.version}</version>
                 <scope>provided</scope>

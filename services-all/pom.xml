@@ -55,6 +55,10 @@
                 </exclusion>
                 <exclusion>
                     <groupId>org.mule.runtime</groupId>
+                    <artifactId>mule-http2-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mule.runtime</groupId>
                     <artifactId>mule-core</artifactId>
                 </exclusion>
                 <exclusion>
