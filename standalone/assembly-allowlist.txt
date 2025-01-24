@@ -242,6 +242,7 @@
 /mule-standalone-${productVersion}/lib/opt/js-scriptengine-24.+
 /mule-standalone-${productVersion}/lib/opt/json-202+
 /mule-standalone-${productVersion}/lib/opt/jsoup-1.+
+/mule-standalone-${productVersion}/lib/opt/jspecify-1.+
 /mule-standalone-${productVersion}/lib/opt/listenablefuture-9999.+
 /mule-standalone-${productVersion}/lib/opt/maven-builder-support-3.+
 /mule-standalone-${productVersion}/lib/opt/maven-resolver-api-1.+
