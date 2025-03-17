@@ -236,7 +236,7 @@
 /mule-standalone-${productVersion}/lib/opt/jaxb-impl-3.+
 /mule-standalone-${productVersion}/lib/opt/jaxb-core-3.+
 /mule-standalone-${productVersion}/lib/opt/failsafe-2.+
-/mule-standalone-${productVersion}/lib/opt/jcommander-1.+
+/mule-standalone-${productVersion}/lib/opt/jcommander-2.+
 /mule-standalone-${productVersion}/lib/opt/jgrapht-core-1.+
 /mule-standalone-${productVersion}/lib/opt/jheaps-0.+
 /mule-standalone-${productVersion}/lib/opt/joda-time-2.+
