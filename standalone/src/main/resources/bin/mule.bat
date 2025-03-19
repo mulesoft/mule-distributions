@@ -42,6 +42,10 @@ if "%MULE_APP_LONG%" == "" (
 
 set _WRAPPER_BASE=%MULE_HOME%\lib\boot\tanuki\exec\wrapper
 
+rem Remove trailing backslash from JAVA_HOME if present
+rem The wrapper.java.command property does not work with a trailing backlash
+if "%JAVA_HOME:~-1%"=="\" set JAVA_HOME=%JAVA_HOME:~0,-1%
+
 rem Configure remote Java debugging options here
 rem Setting suspend=y will wait for you to connect before proceeding
 set JPDA_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
