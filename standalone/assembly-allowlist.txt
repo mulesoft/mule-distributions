@@ -227,7 +227,6 @@
 /mule-standalone-${productVersion}/lib/opt/jakarta.annotation-api-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.inject-api-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.jms-api-2.+
-/mule-standalone-${productVersion}/lib/opt/jakarta.json-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.jws-api-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.resource-api-1.+
 /mule-standalone-${productVersion}/lib/opt/jakarta.transaction-api-1.+
