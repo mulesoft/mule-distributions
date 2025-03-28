@@ -175,7 +175,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-common-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.8.2.jar
+/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.8.4-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/dwb-api-2.+
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-impl-${productVersion}.jar
@@ -191,7 +191,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.10.6-+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.5.6-+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.8.6-+
-/mule-standalone-${productVersion}/services/mule-service-weave-2.8.2+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.8.4-+
 #
 # /lib/opt
 #
