@@ -239,7 +239,7 @@
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.3.9.jar
 /mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
-/mule-standalone-${productVersion}/lib/opt/api-annotations-1.3.0-20250319.jar
+/mule-standalone-${productVersion}/lib/opt/api-annotations-1.3.0-20250403.jar
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-3.5.3.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-1.6.0-20250319.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-1.6.0-20250319.jar
