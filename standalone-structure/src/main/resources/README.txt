@@ -2,7 +2,7 @@ GETTING STARTED WITH MULE
 =========================
 
 This file describes the basics of how to get started using Mule.
-For full details, see https://developer.mulesoft.com/docs/display/current/Installing.
+For full details, see https://docs.mulesoft.com/mule-runtime/latest/runtime-installation-task.
 
 
 Setting Up Your Environment
@@ -85,7 +85,7 @@ using start, stop, or restart as the first parameter as needed.
     mule start|stop|restart
 
 For more information on running Mule, see
-https://developer.mulesoft.com/docs/display/current/Downloading+and+Starting+Mule+ESB
+https://docs.mulesoft.com/mule-runtime/latest/starting-and-stopping-mule-esb
 
 
 Where Do I Go Next?
