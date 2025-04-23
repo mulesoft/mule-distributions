@@ -172,8 +172,8 @@
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-configuration-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-tracer-common-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.6.14-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/dwb-api-2.6.14-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-dwb-api-2.6.13-rc2.jar
+/mule-standalone-${productVersion}/lib/mule/dwb-api-2.6.13-rc2.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-api-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-impl-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metrics-exporter-configuration-api-${productVersion}.jar
