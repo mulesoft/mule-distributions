@@ -109,8 +109,8 @@
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.9.4-rc1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.9.4-rc1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.9.4-rc1.jar
-/mule-standalone-${productVersion}/lib/mule/mule-oauth-client-2.4.4-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-oauth-client-api-2.4.4-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-oauth-client-2.4.4-rc1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-oauth-client-api-2.4.4-rc1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-activation-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-manifest-${productVersion}.jar
