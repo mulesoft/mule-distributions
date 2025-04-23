@@ -109,9 +109,9 @@
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-persistence-1.4.1-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-catalog-1.4.1-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-message-metadata-model-1.4.1-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-1.0.1-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-dependency-graph-1.0.1-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.0.1-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-1.0.0-20250423.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-dependency-graph-1.0.0-20250423.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.0.0-20250423.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-soap-support-${productVersion}.jar
