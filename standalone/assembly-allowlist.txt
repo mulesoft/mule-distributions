@@ -188,7 +188,7 @@
 /mule-standalone-${productVersion}/services/mule-service-http-1.8.16-rc1+
 /mule-standalone-${productVersion}/services/mule-service-oauth-2.3.16-rc1+
 /mule-standalone-${productVersion}/services/mule-service-soap-1.6.16-rc1+
-/mule-standalone-${productVersion}/services/mule-service-weave-2.6.14-rc1+
+/mule-standalone-${productVersion}/services/mule-service-weave-2.6.14+
 #
 # /lib/opt
 #
