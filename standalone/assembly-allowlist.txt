@@ -277,7 +277,7 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-sec-dispatcher-2.0.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-4.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-xml-3.0.0.jar
-/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-12.jar
+/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-17.jar
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.0.4.jar
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.4.22.jar
 /mule-standalone-${productVersion}/lib/opt/reactor-extra-3.4.8.jar
@@ -302,7 +302,7 @@
 /mule-standalone-${productVersion}/lib/opt/xercesImpl-2.12.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-3.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
-/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-12.jar
+/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-17.jar
 /mule-standalone-${productVersion}/lib/opt/annotations-13.0.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.9.10.jar
