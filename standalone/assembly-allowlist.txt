@@ -219,6 +219,7 @@
 /mule-standalone-${productVersion}/lib/opt/httpcore-4.4.16.jar
 /mule-standalone-${productVersion}/lib/opt/j2objc-annotations-2.8.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-coreutils-1.9.jar
+/mule-standalone-${productVersion}/lib/opt/jakarta.json-api-2.1.3.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-module-jsonSchema-2.15.4.jar
 /mule-standalone-${productVersion}/lib/opt/jackson-dataformat-yaml-2.15.4.jar
 /mule-standalone-${productVersion}/lib/opt/jakarta.activation-1.2.2.jar
@@ -261,6 +262,7 @@
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.9.6.jar
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.9.6.jar
 /mule-standalone-${productVersion}/lib/opt/msg-simple-1.1.jar
+/mule-standalone-${productVersion}/lib/opt/parsson-1.1.7.jar
 /mule-standalone-${productVersion}/lib/opt/api-annotations-1.5.18-+
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-3.8.5.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-2.1.17-+
@@ -277,7 +279,7 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-sec-dispatcher-2.0.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-4.0.0.jar
 /mule-standalone-${productVersion}/lib/opt/plexus-xml-3.0.0.jar
-/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-12.jar
+/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-17.jar
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.0.4.jar
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.4.22.jar
 /mule-standalone-${productVersion}/lib/opt/reactor-extra-3.4.8.jar
@@ -302,7 +304,7 @@
 /mule-standalone-${productVersion}/lib/opt/xercesImpl-2.12.2-MULE-001.jar
 /mule-standalone-${productVersion}/lib/opt/xmlbeans-3.1.0.jar
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.2.1.jar
-/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-12.jar
+/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-17.jar
 /mule-standalone-${productVersion}/lib/opt/annotations-13.0.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-1.9.10.jar
 /mule-standalone-${productVersion}/lib/opt/kotlin-stdlib-common-1.9.10.jar
