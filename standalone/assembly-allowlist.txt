@@ -102,11 +102,11 @@
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-mvel-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.6.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.6.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.6.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.6.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.6.17-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.6.17-rc1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.6.17-rc1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-soap-api-1.6.17-rc1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.6.17-rc1.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.6.17-rc1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-2.1.17-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-api-2.1.17-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
