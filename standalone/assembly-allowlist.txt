@@ -144,7 +144,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-service-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-container-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-metadata-support-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.6.17-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-module-policy-api-1.6.17-rc1.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-properties-config-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-repository-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-spring-config-${productVersion}.jar
