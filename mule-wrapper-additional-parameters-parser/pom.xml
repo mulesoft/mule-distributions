@@ -34,7 +34,6 @@
 
     <properties>
         <javaModuleName>org.mule.distribution.additional.parameters.parser</javaModuleName>
-        <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
     <description>It parses the command line arguments to set them as parameters for the Tanuki wrapper jvm.</description>

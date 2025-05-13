@@ -14,10 +14,6 @@
 
     <packaging>pom</packaging>
 
-    <properties>
-        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
-    </properties>
-
     <modules>
         <module>tests</module>
         <module>embedded-test-helper</module>

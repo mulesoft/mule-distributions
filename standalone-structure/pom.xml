@@ -16,12 +16,6 @@
     <name>Standalone Distribution Structure</name>
     <description>Defines the basic structure of a Mule standalone distribution in the filesystem.</description>
 
-    <properties>
-        <formatterConfigPath>../formatter.xml</formatterConfigPath>
-
-        <jackson2Version>2.11.3</jackson2Version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>

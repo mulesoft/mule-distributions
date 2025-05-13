@@ -15,7 +15,6 @@
     <properties>
         <javaModuleName>org.mule.distribution.test</javaModuleName>
         <skipExportTests>false</skipExportTests>
-        <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
     <build>

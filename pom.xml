@@ -29,8 +29,6 @@
         <muleEmbeddedApiVersion>1.10.0-SNAPSHOT</muleEmbeddedApiVersion>
         <muleDependenciesVersion>1.x-SNAPSHOT</muleDependenciesVersion>
         <muleBomVersion>${project.version}</muleBomVersion>
-
-        <formatterConfigPath>formatter.xml</formatterConfigPath>
 	</properties>
 
     <dependencyManagement>

@@ -15,8 +15,4 @@
     <name>Smart Connector using core components</name>
     <description>A Mule extension done with pure Mule DSL that depends JUST in the runtime MPs (set-payload, set-variable, etc.)</description>
 
-    <properties>
-        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
-    </properties>
-
 </project>
