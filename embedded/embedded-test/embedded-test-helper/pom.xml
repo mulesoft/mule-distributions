@@ -14,7 +14,6 @@
 
     <properties>
         <javaModuleName>org.mule.distribution.embedded.test.helper</javaModuleName>
-        <formatterConfigPath>../../../formatter.xml</formatterConfigPath>
     </properties>
 
     <dependencies>

@@ -14,8 +14,6 @@
     <name>Mule Embedded</name>
 
     <properties>
-        <formatterConfigPath>../formatter.xml</formatterConfigPath>
-    
         <skipMuleModuleMojos>true</skipMuleModuleMojos>
     </properties>
 

@@ -19,8 +19,6 @@
     <properties>
         <standaloneStructureDir>${project.build.directory}/distribution-structure</standaloneStructureDir>
         <standaloneStructure>mule-standalone-structure</standaloneStructure>
-        
-        <formatterConfigPath>../formatter.xml</formatterConfigPath>
     </properties>
 
     <build>

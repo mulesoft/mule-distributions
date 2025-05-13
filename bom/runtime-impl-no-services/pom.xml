@@ -14,10 +14,6 @@
     <name>Mule Runtime Implementation Libraries Without Services BOM</name>
     <description>A BOM project that provides all the implementation libraries required by the Mule runtime, excluding services</description>
 
-    <properties>
-        <formatterConfigPath>../../formatter.xml</formatterConfigPath>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.mule.runtime</groupId>
