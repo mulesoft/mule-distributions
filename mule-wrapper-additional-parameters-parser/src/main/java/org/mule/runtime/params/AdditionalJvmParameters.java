@@ -97,7 +97,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Find the directory where wrapper.conf file is stored
-   * 
+   *
    * @param wrapperConfigFile
    * @return directory
    */
@@ -111,7 +111,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Set default header unconditionally
-   * 
+   *
    * @param writer
    * @throws IOException
    */
@@ -124,7 +124,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Check if there is an element related to debug in the arguments
-   * 
+   *
    * @param arguments
    * @return
    */
@@ -134,7 +134,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Check if there is an option related to the prefix provided in the arguments
-   * 
+   *
    * @param arguments
    * @param s         prefix provided, '-M' for adhoc, '-W' for wrapper options
    * @return
@@ -145,7 +145,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Find additional wrapper properties that start with 'wrapper.java.additional.-'
-   * 
+   *
    * @param line a single line from the wrapper.conf file
    * @return paramIndex that takes the number of additional properties into account
    */
@@ -164,7 +164,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Find additional wrapper classpath entries that start with 'wrapper.java.classpath.-'
-   * 
+   *
    * @param line a single line from the wrapper.conf file
    * @return paramIndex that takes the number of additional classpath entries into account
    */
@@ -183,7 +183,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Check if the number of additional java properties is specified, using '-additionalJavaProperties='
-   * 
+   *
    * @param args
    * @return paramIndex that takes the number of additional properties into account
    */
@@ -210,7 +210,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Write Jpda option related lines to wrapper-additional.conf
-   * 
+   *
    * @param writer
    * @throws IOException
    */
@@ -225,7 +225,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Write adhoc option related lines to wrapper-additional.conf
-   * 
+   *
    * @param args   arguments provided
    * @param writer
    * @throws IOException
@@ -243,7 +243,7 @@ public class AdditionalJvmParameters {
 
   /**
    * Write wrapper option related lines to wrapper-addition.conf
-   * 
+   *
    * @param args   arguments provided
    * @param writer
    * @throws IOException

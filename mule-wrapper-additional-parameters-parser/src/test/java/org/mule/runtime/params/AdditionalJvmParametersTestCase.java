@@ -150,7 +150,7 @@ public class AdditionalJvmParametersTestCase {
   /**
    * Write additional property after 3 tests(test1WriteJpdaOptions(), test2WriteAdHocProperties(), test3WriteWrapperProperties())
    * and check if the index given is correct.
-   * 
+   *
    * @throws IOException
    */
   @Test
@@ -168,7 +168,7 @@ public class AdditionalJvmParametersTestCase {
   /**
    * Tests AdditionalJvmParameters class. New wrapper-additional-with-gap.conf file will be created with starting index 59. (Index
    * in wrapper.conf ends with 18 and -additionalJavaProperties=40 will add 40. 40+18=58.)
-   * 
+   *
    * @throws IOException
    */
   @Test
