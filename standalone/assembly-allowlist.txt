@@ -152,7 +152,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-tooling-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-troubleshooting-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-mvel2-2.1.9-MULE-020.jar
-/mule-standalone-${productVersion}/lib/mule/mule-properties-api-1.2.16.jar
+/mule-standalone-${productVersion}/lib/mule/mule-properties-api-1.2.17.jar
 /mule-standalone-${productVersion}/lib/mule/mule-runtime-extension-model-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-api-0.10.4.jar
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-compatibility-api-0.10.4.jar
