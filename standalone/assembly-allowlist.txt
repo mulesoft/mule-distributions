@@ -119,10 +119,10 @@
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-persistence-1.6.18-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-metadata-model-catalog-1.6.18-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-message-metadata-model-1.6.18-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-1.2.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-dependency-graph-1.2.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.2.17-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-serialization-1.2.17-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-1.2.18-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-dependency-graph-1.2.18-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-xml-parser-1.2.18-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-ast-serialization-1.2.18-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-jar-handling-utils-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-mule-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-extensions-spring-support-${productVersion}.jar
