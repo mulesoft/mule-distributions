@@ -27,7 +27,7 @@
 
 	<properties>
         <muleEmbeddedApiVersion>1.4.0-20250519</muleEmbeddedApiVersion>
-        <muleDependenciesVersion>1.x-SNAPSHOT</muleDependenciesVersion>
+        <muleDependenciesVersion>1.0.25</muleDependenciesVersion>
         <muleBomVersion>${project.version}</muleBomVersion>
 
         <formatterConfigPath>formatter.xml</formatterConfigPath>
