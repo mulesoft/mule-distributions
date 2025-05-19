@@ -1,5 +1,5 @@
 upstreamProjects:
-  Mule-runtime/mule-integration-tests/support/4.4.x,
+  Mule-runtime/mule-integration-tests/4.4.0-JUNE-2025,
   Mule-runtime/mule-http-service/support/1.6.x,
   Mule-runtime/mule-oauth-service/support/2.1.x,
   Mule-runtime/mule-scheduler-service/support/1.4.x,
