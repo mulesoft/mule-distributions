@@ -259,10 +259,10 @@
 /mule-standalone-${productVersion}/lib/opt/api-annotations-1.7.6-rc1.jar
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-4.2.0.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-2.3.6-rc1.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-2.3.6-+
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-2.3.6-rc1.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-api-2.3.6-rc1.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-impl-2.3.6-rc1.jar
-/mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.3.6-+
+/mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.3.6-rc1.jar
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.inject-0.+
 /mule-standalone-${productVersion}/lib/opt/org.eclipse.sisu.plexus-0.+
 /mule-standalone-${productVersion}/lib/opt/plexus-cipher-2.+
