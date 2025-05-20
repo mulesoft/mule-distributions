@@ -311,7 +311,7 @@
 /mule-standalone-${productVersion}/lib/opt/spotbugs-annotations-4.+
 /mule-standalone-${productVersion}/lib/opt/uri-template-0.+
 /mule-standalone-${productVersion}/lib/opt/xmlschema-core-2.+
-/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-17.jar
+/mule-standalone-${productVersion}/lib/opt/yagi-1.0.44-15.jar
 
 # Metrics/Tracing dependencies
 /mule-standalone-${productVersion}/lib/opt/annotations-24.+
