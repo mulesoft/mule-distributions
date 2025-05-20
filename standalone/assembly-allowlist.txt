@@ -100,7 +100,7 @@
 #
 /mule-standalone-${productVersion}/lib/mule
 /mule-standalone-${productVersion}/lib/mule/mule-api-1.8.7-SNAPSHOT.jar
-/mule-standalone-${productVersion}/lib/mule/mule-profiling-api-1.4.6-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-profiling-api-1.4.7-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.8.7-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.8.7-SNAPSHOT.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
