@@ -271,7 +271,7 @@
 /mule-standalone-${productVersion}/lib/opt/plexus-sec-dispatcher-2.+
 /mule-standalone-${productVersion}/lib/opt/plexus-utils-4.+
 /mule-standalone-${productVersion}/lib/opt/plexus-xml-3.+
-/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-17.jar
+/mule-standalone-${productVersion}/lib/opt/raml-parser-2-1.0.44-15.jar
 /mule-standalone-${productVersion}/lib/opt/re2j-1.+
 /mule-standalone-${productVersion}/lib/opt/reactive-streams-1.+
 /mule-standalone-${productVersion}/lib/opt/reactor-core-3.+
