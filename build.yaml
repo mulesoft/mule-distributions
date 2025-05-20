@@ -3,7 +3,7 @@ upstreamProjects:
   Mule-runtime/mule-http-service/1.8.18,
   Mule-runtime/mule-oauth-service/2.3.18,
   Mule-runtime/mule-scheduler-service/1.6.18,
-  Mule-runtime/mule-soap-service/support/1.6.x,
+  Mule-runtime/mule-soap-service/1.6.18,
   Mule-runtime/mule-embedded-api/1.6.18,
   Mule-runtime/mule-maven-client/2.1.18
 archiveArtifacts: "**/logs/**,**/conf/wrapper*.conf"
