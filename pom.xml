@@ -9,7 +9,7 @@
     </parent>
     <groupId>org.mule.distributions</groupId>
     <artifactId>mule-distributions</artifactId>
-    <version>4.4.0-20250519</version>
+    <version>4.4.0-20250522</version>
     <packaging>pom</packaging>
     <name>Mule Distributions</name>
 
