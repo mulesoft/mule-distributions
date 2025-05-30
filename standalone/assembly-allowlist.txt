@@ -101,8 +101,8 @@
 /mule-standalone-${productVersion}/lib/mule
 /mule-standalone-${productVersion}/lib/mule/mule-api-1.9.6-rc3.jar
 /mule-standalone-${productVersion}/lib/mule/mule-profiling-api-1.5.6-rc3.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.9.6-rc3.jar
-/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.9.6-rc3.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-1.9.6.jar
+/mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.9.6.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.9.6-rc3.jar
