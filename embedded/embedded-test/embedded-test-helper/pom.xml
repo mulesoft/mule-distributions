@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.mule.distributions</groupId>
         <artifactId>mule-module-embedded-test-parent</artifactId>
-        <version>4.9.6</version>
+        <version>4.9.6-WITH-W-18622349</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
