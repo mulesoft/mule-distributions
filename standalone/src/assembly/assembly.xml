@@ -203,6 +203,7 @@
                 <include>org.mule.runtime:mule-runtime-errors</include>
                 <!--Services-->
                 <include>org.mule.runtime:mule-service-http-api</include>
+                <include>org.mule.runtime:mule-module-http-support</include>
                 <include>org.mule.runtime:mule-service-oauth-api</include>
                 <include>org.mule.runtime:mule-dwb-api</include>
                 <include>org.mule.weave:dwb-api</include>
@@ -358,6 +359,7 @@
                 <exclude>org.mule.runtime:mule-properties-api</exclude>
                 <!--Services-->
                 <exclude>org.mule.runtime:mule-service-http-api</exclude>
+                <exclude>org.mule.runtime:mule-module-http-support</exclude>
                 <exclude>org.mule.runtime:mule-service-oauth-api</exclude>
                 <exclude>org.mule.runtime:mule-dwb-api</exclude>
                 <exclude>org.mule.weave:dwb-api</exclude>
