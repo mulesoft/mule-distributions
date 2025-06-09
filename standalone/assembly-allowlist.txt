@@ -105,10 +105,10 @@
 /mule-standalone-${productVersion}/lib/mule/mule-artifact-declaration-persistence-1.9.6-WITH-W-18622349.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-core-components-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.9.6.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.9.6.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.9.6.jar
-/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.9.6.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-1.9.6-WITH-W-18622349.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-mime-types-1.9.6-WITH-W-18622349.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-persistence-1.9.6-WITH-W-18622349.jar
+/mule-standalone-${productVersion}/lib/mule/mule-extensions-api-dsql-1.9.6-WITH-W-18622349.jar
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-2.4.6.jar
 /mule-standalone-${productVersion}/lib/mule/mule-oauth-client-api-2.4.6.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-artifact-${productVersion}.jar
