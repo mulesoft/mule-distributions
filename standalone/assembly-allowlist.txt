@@ -259,10 +259,10 @@
 /mule-standalone-${productVersion}/lib/opt/api-annotations-1.8.6-WITH-W-18622349.jar
 /mule-standalone-${productVersion}/lib/opt/mule-classloader-model-4.2.0.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-2.4.6-WITH-W-18622349.jar
-/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-2.4.6.jar
+/mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-2.4.6-WITH-W-18622349.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-api-2.4.6-WITH-W-18622349.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-impl-2.4.6-WITH-W-18622349.jar
-/mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.4.6.jar
+/mule-standalone-${productVersion}/lib/opt/maven-model-shaded-2.4.6-WITH-W-18622349.jar
 /mule-standalone-${productVersion}/lib/opt/micrometer-commons-1.+
 /mule-standalone-${productVersion}/lib/opt/micrometer-observation-1.+
 /mule-standalone-${productVersion}/lib/opt/nativeimage-24.+
