@@ -150,7 +150,7 @@
 /mule-standalone-${productVersion}/lib/mule/mule-module-tls-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-tooling-support-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-module-troubleshooting-${productVersion}.jar
-/mule-standalone-${productVersion}/lib/mule/mule-properties-api-1.6.0-SNAPSHOT.jar
+/mule-standalone-${productVersion}/lib/mule/mule-properties-api-1.6.0-20250610.jar
 /mule-standalone-${productVersion}/lib/mule/mule-runtime-errors-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-runtime-extension-model-${productVersion}.jar
 /mule-standalone-${productVersion}/lib/mule/mule-sdk-api-0.12.0-SNAPSHOT.jar
