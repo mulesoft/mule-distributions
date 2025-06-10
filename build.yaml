@@ -1,7 +1,7 @@
 upstreamProjects:
   Mule-runtime/mule-integration-tests/master-JUNE-2025,
   Mule-runtime/mule-http-service/master-JUNE-2025,
-  Mule-runtime/mule-oauth-service/master,
+  Mule-runtime/mule-oauth-service/master-JUNE-2025,
   Mule-runtime/mule-scheduler-service/master-JUNE-2025,
   Mule-runtime/mule-soap-service/1.8.1,
   Mule-runtime/mule-embedded-api/master-JUNE-2025,
