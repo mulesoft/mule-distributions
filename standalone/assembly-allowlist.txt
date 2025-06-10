@@ -261,7 +261,7 @@
 /mule-standalone-${productVersion}/lib/opt/maven-settings-3.+
 /mule-standalone-${productVersion}/lib/opt/maven-settings-builder-3.+
 /mule-standalone-${productVersion}/lib/opt/api-annotations-1.9.0-+
-/mule-standalone-${productVersion}/lib/opt/mule-classloader-model-4.+
+/mule-standalone-${productVersion}/lib/opt/mule-classloader-model-4.5.0.jar
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-api-2.5.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-client-impl-2.5.0-+
 /mule-standalone-${productVersion}/lib/opt/mule-maven-pom-parser-api-2.5.0-+
