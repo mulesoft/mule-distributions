@@ -199,7 +199,7 @@
 /mule-standalone-${productVersion}/lib/opt/byte-buddy-1.14.0.jar
 /mule-standalone-${productVersion}/lib/opt/caffeine-2.8.0.jar
 /mule-standalone-${productVersion}/lib/opt/checker-qual-3.33.0.jar
-/mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.9.4.jar
+/mule-standalone-${productVersion}/lib/opt/commons-beanutils-1.11.0.jar
 /mule-standalone-${productVersion}/lib/opt/commons-codec-1.15.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections-3.2.2.jar
 /mule-standalone-${productVersion}/lib/opt/commons-collections4-4.4.jar
