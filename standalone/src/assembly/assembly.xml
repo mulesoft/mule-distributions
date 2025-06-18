@@ -338,6 +338,7 @@
                 <!--Mule API-->
                 <exclude>org.mule.runtime:mule-api</exclude>
                 <exclude>org.mule.runtime:mule-profiling-api</exclude>
+                <exclude>org.mule.runtime:mule-features-api</exclude>
                 <!--Metadata API-->
                 <exclude>org.mule.runtime:mule-metadata-model-api</exclude>
                 <exclude>org.mule.runtime:mule-metadata-model-java</exclude>
