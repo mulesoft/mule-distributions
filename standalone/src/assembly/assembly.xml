@@ -173,6 +173,7 @@
                 <!-- Mule API -->
                 <include>org.mule.runtime:mule-api</include>
                 <include>org.mule.runtime:mule-profiling-api</include>
+                <include>org.mule.runtime:mule-features-api</include>
                 <!--Metadata API-->
                 <include>org.mule.runtime:mule-metadata-model-api</include>
                 <include>org.mule.runtime:mule-metadata-model-java</include>
