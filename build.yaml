@@ -2,7 +2,7 @@ upstreamProjects:
   Mule-runtime/mule-integration-tests/master-TESTCYCLE-2020-DRY-RUN,
   Mule-runtime/mule-http-service/master-TESTCYCLE-2020-DRY-RUN,
   Mule-runtime/mule-oauth-service/master,
-  Mule-runtime/mule-scheduler-service/master,
+  Mule-runtime/mule-scheduler-service/master-TESTCYCLE-2020-DRY-RUN,
   Mule-runtime/mule-soap-service/1.8.1,
   Mule-runtime/mule-embedded-api/master-TESTCYCLE-2020-DRY-RUN,
   Mule-runtime/mule-maven-client/master-TESTCYCLE-2020-DRY-RUN
